@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+  }
+
+header{
+    height: 100%;
+    width:100%;
+    background-image: url('../images/DuCampu.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2% 6%;
+}
+
+nav img{
+    width: 200px;
+}
+
+.nav-links{
+    flex:1;
+    text-align:right;
+}
+
+.nav-links ul li{
+    padding: 8px 12px;
+    position: relative;
+    display: inline-block;
+    list-style: none;
+}
+
+.nav-links ul li a{
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+}

@@ -1,0 +1,45 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700|Poppins:400,700');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "poppins";
+}
+
+img#capaRestaurante {
+    width: 100%;
+    object-fit: cover;
+    height: 10em;
+}
+
+h1{
+    font-size: 2em;
+}
+
+h3{
+    font-size: 1.7em;
+}
+
+#classificao::before{
+    content: "\002605 ";
+}
+
+#tempo{
+    color:  rgb(120, 120, 120);
+}
+
+
+.menuRestaurante a{
+    color: black;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+
+.comida:hover{
+    box-shadow: 0 0 1em  rgb(183, 181, 181);
+    transition: 0.5s ease-in-out;
+}
+
+

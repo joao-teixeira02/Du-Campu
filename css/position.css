@@ -1,0 +1,62 @@
+.menuRestaurante li{
+    padding: 1em;
+}
+
+
+#capaRestaurante ~ *{
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.menuRestaurante{
+    width: 100%;
+    height: fit-content;
+    position: sticky;
+    position: -webkit-sticky;
+    background-color: white;
+    top: 0px;
+    
+    grid-column-start: 1;
+}
+
+.menuRestaurante ul{
+    list-style: none;
+
+}
+
+#listaPratos{
+    width: 100%;
+    grid-column-start: 2;
+}
+
+#listaPratos ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.restaurant main{
+    display: grid;
+    grid-template: 100% / 20em 1fr;
+
+    margin-top: 2em;
+
+}
+
+.comida {
+    max-width: 100%;
+    width: 15em;
+    margin: 1em;
+    padding: 5px;
+    text-align: center;
+}
+
+
+.comida figcaption{
+    font-weight: bold;
+}
+
+.comida figcaption, p{
+    text-align: left;
+}
