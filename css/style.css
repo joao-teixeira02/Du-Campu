@@ -3,17 +3,11 @@
     padding: 0;
 }
 
-html, body {
-    height: 100%;
-  }
-
+/* HEADER */
 header{
-    height: 100%;
     width:100%;
-    background-image: url('../images/DuCampu.jpg');
-    background-size: cover;
-    background-position: center;
-    position: relative;
+    background-color: rgb(15,20,24);
+    background-size: 100vw 100vh;
 }
 
 nav{
@@ -21,10 +15,6 @@ nav{
     justify-content: space-between;
     align-items: center;
     padding: 2% 6%;
-}
-
-nav img{
-    width: 200px;
 }
 
 .nav-links{
@@ -41,6 +31,94 @@ nav img{
 
 .nav-links ul li a{
     color: white;
-    font-size: 15px;
+    font-size: 20px;
     text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+#lupa{
+    display: none;  
+}
+
+.search{
+    width: 0em;
+    visibility: collapse;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+#lupa:checked + .search{
+    visibility: visible;
+    width: 10em;
+}
+
+/* MAIN PAGE  */
+.mainPage img{
+    width: 100%;
+    position: relative;
+}
+
+.mainPage {
+    background-color: rgb(24, 31, 36);
+}
+
+/* FOOTER */
+.pageFooter{
+    background-color: rgb(24, 31, 36);
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+}
+
+.pageFooter .information{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+  
+.pageFooter .information .box{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.pageFooter .information .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.pageFooter .information .box img{
+    width: 200px;
+    align-items:center;
+}
+
+.pageFooter .information .box h2{
+    margin-bottom: 25px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+
+.pageFooter .information .box p{
+    margin-bottom: 1px;
+    color: #b6b6b6;
+    text-align: center;
+}
+
+
+.pageFooter .copyright{
+    background-color: rgb(15,20,24);
+    padding: 15px 10px;
+    text-align: center;
+    color: white;
+
+}
+
+.pageFooter .small{
+    font-size: 50px;
 }
