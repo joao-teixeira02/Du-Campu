@@ -10,22 +10,7 @@ header.menu{
     background-size: 100vw 100vh;
 }
 
-.menu nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2% 6%;
-}
-
-.menu .nav-links{
-    flex:1;
-    text-align:right;
-}
-
 .menu .nav-links ul li{
-    padding: 8px 12px;
-    position: relative;
-    display: inline-block;
     list-style: none;
 }
 
@@ -57,6 +42,7 @@ header.menu{
 }
 
 /* MAIN PAGE  */
+
 .mainPage img{
     width: 100%;
     position: relative;
@@ -76,24 +62,13 @@ header.menu{
 .pageFooter .information{
     width: 100%;
     max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns:repeat(3, 1fr);
-    grid-gap: 50px;
     padding: 45px 0px;
 }
-  
-.pageFooter .information .box{
-    margin-left:auto;
-    margin-right:auto;
-}
+
 
 .pageFooter .information .box figure{
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items:center;
 }
 
 .pageFooter .information .box img{
@@ -102,7 +77,6 @@ header.menu{
 }
 
 .pageFooter .information .box h2{
-    margin-bottom: 25px;
     font-size: 20px;
     color: white;
     text-align: center;
@@ -163,5 +137,14 @@ header.menu{
 .restaurant .comida:hover{
     box-shadow: 0 0 1em  rgb(183, 181, 181);
     transition: 0.5s ease-in-out;
+}
+
+#listaPratos{
+    width: 100%;
+
+}
+
+.comida figcaption{
+    font-weight: bold;
 }
 
