@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins:wght@200&display=swap");
+
 *{
     margin: 0;
     padding: 0;
@@ -103,6 +105,14 @@ header.menu{
 
 
 /* Restaurant */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+strong{
+    font-weight: bold;
+}
+
+.restaurant{
+    font-family: 'Poppins', sans-serif;
+}
 
 .restaurant img#capaRestaurante {
     width: 100%;
