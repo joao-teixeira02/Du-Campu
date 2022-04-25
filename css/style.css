@@ -4,32 +4,32 @@
 }
 
 /* HEADER */
-header{
+header.menu{
     width:100%;
     background-color: rgb(15,20,24);
     background-size: 100vw 100vh;
 }
 
-nav{
+.menu nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2% 6%;
 }
 
-.nav-links{
+.menu .nav-links{
     flex:1;
     text-align:right;
 }
 
-.nav-links ul li{
+.menu .nav-links ul li{
     padding: 8px 12px;
     position: relative;
     display: inline-block;
     list-style: none;
 }
 
-.nav-links ul li a{
+.menu .nav-links ul li a{
     color: white;
     font-size: 20px;
     text-decoration: none;
@@ -39,6 +39,10 @@ nav{
 #lupa{
     display: none;  
 }
+
+[clickable]{  
+    cursor: pointer ;
+}   
 
 .search{
     width: 0em;
@@ -122,3 +126,42 @@ nav{
 .pageFooter .small{
     font-size: 50px;
 }
+
+
+/* Restaurant */
+
+.restaurant img#capaRestaurante {
+    width: 100%;
+    object-fit: cover;
+    height: 10em;
+}
+
+.restaurant h1{
+    font-size: 2em;
+}
+
+.restaurant h3{
+    font-size: 1.7em;
+}
+
+.restaurant #classificao::before{
+    content: "\002605 ";
+}
+
+.restaurant #tempo{
+    color:  rgb(120, 120, 120);
+}
+
+
+.restaurant .menuRestaurante a{
+    color: black;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+
+.restaurant .comida:hover{
+    box-shadow: 0 0 1em  rgb(183, 181, 181);
+    transition: 0.5s ease-in-out;
+}
+
