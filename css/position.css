@@ -1,3 +1,11 @@
+
+body{ 
+     /* serve para o footer possa ficar sempre no fundo da pagina*/
+    min-height: 100vh;
+    display:flex; 
+    flex-direction:column; 
+}
+
 /* HEADER */
 
 .menu nav{
@@ -20,6 +28,10 @@
 
 
 /* FOOTER */
+
+.pageFooter{
+    margin-top:auto;    /* fazer com que fique sempre no fundo da pagina*/
+}
 
 .pageFooter .information{
     margin: auto;
