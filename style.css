@@ -1,0 +1,41 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0em;
+}
+
+#filters {
+    text-align: center;
+    background-color: #3895c7;
+}
+
+#category {
+    background-color: gray;
+}
+
+#category > h1 {
+    padding-left: 1em;
+}
+
+#category ul {
+    list-style-type: none;
+}
+
+#category ul li {
+    padding-right: 2em;
+}
+
+#category ul li p {
+    background-color: white;
+    padding: 0.5em;
+    text-align: center;
+}
+
+article {
+    background-color: rgb(15,20,24);;
+    margin: 1em;
+}
+
+article * {
+    color: white;
+    padding: 1em;
+}
