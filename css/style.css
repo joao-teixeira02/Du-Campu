@@ -158,3 +158,104 @@ strong{
     font-weight: bold;
 }
 
+
+
+/* LOGIN  */
+
+
+.input{
+    background-color: rgb(15,20,24);
+    padding: 0.2em;
+    padding-left: 0.5em;
+    border: 3px solid white;
+    color: white;
+}
+.input_div{
+    position: relative;
+    margin: auto;
+}
+
+.input_label{
+    transition: ease-in-out 0.5s;
+    color: white;
+    position: absolute;
+    cursor: text;    
+    padding-left: 0.5em;
+    left: 0;
+}
+
+.login_box{
+    align-items: center;
+}
+
+.input:focus ~ .input_label , .input:not(:placeholder-shown) ~ .input_label{
+    transition: ease-in-out 0.5s;
+    transform: translateY(-1rem) scale(0.8);
+    padding: 0;
+    cursor: default; 
+    background-color: rgb(15,20,24);
+}
+
+.login{
+    background-image: url("../images/DuCampua.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 80vh;
+    
+}
+
+.login_box{
+    font-family: "Poppins";
+    position: absolute;
+    padding: 2em;
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    top: 0;
+    margin: auto; 
+    color: white;
+    width: 20em;
+    height: 20em;
+    
+    padding-top: 1em;
+    background-color: rgb(15,20,24);
+}
+
+
+.login_box form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login h2{
+    margin-top: 2em;
+    text-align: center;
+}
+
+.white_button{
+    background-color: white;
+    color: rgb(15,20,24);
+    width: 10em;
+    margin: auto;
+    padding: 0.2em;
+    border-radius: 5px;
+}
+
+.white_button:hover{
+    background-color: rgb(231, 231, 231);
+}
+
+
+.black_button{
+    background-color: rgb(15,20,24);
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 0.2em;
+    border-radius: 5px;
+}
+
+.black_button:hover{
+    text-decoration: underline;
+}
