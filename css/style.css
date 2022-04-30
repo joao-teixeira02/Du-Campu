@@ -158,3 +158,256 @@ strong{
     font-weight: bold;
 }
 
+
+.filters{
+    padding: 0 10px;
+    padding-bottom: 20px;
+}
+
+
+
+/* RESTAURANTS LIST PRICE BAR*/
+[slider] {
+    width: 150px;
+    position: relative;
+    height: 5px;
+    margin-top: 15px;
+  }
+  
+  [slider] > div {
+    position: absolute;
+    left: 13px;
+    right: 15px;
+    height: 5px;
+  }
+  [slider] > div > [inverse-left] {
+    position: absolute;
+    left: 0;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #CCC;
+    margin: 0 7px;
+  }
+  
+  [slider] > div > [inverse-right] {
+    position: absolute;
+    right: 0;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #CCC;
+    margin: 0 7px;
+  }
+  
+  
+  [slider] > div > [range] {
+    position: absolute;
+    left: 0;
+    height: 5px;
+    border-radius: 14px;
+    background-color: rgb(24, 31, 36);
+  }
+  
+  [slider] > div > [thumb] {
+    position: absolute;
+    top: -7px;
+    z-index: 2;
+    height: 20px;
+    width: 20px;
+    text-align: left;
+    margin-left: -11px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    background-color: #FFF;
+    border-radius: 50%;
+    outline: none;
+  }
+  
+  [slider] > input[type=range] {
+    position: absolute;
+    pointer-events: none;
+    -webkit-appearance: none;
+    z-index: 3;
+    height: 14px;
+    top: -2px;
+    width: 100%;
+    opacity: 0;
+  }
+  
+  div[slider] > input[type=range]:focus::-webkit-slider-runnable-track {
+    background: transparent;
+    border: transparent;
+  }
+  
+  div[slider] > input[type=range]:focus {
+    outline: none;
+  }
+  
+  div[slider] > input[type=range]::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 28px;
+    height: 28px;
+    border-radius: 0px;
+    border: 0 none;
+    background: rgb(24, 31, 36);
+    -webkit-appearance: none;
+  }
+  
+  div[slider] > input[type=range]::-ms-fill-lower {
+    background: transparent;
+    border: 0 none;
+  }
+  
+  div[slider] > input[type=range]::-ms-fill-upper {
+    background: transparent;
+    border: 0 none;
+  }
+  
+  div[slider] > input[type=range]::-ms-tooltip {
+    display: none;
+  }
+  
+  [slider] > div > [sign] {
+    opacity: 0;
+    position: absolute;
+    margin-left: -11px;
+    top: -39px;
+    z-index:3;
+    background-color: rgb(24, 31, 36);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+    -webkit-border-radius: 28px;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  [slider] > div > [sign]:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    border-radius: 16px;
+    top: 19px;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top-width: 16px;
+    border-top-style: solid;
+    border-top-color: rgb(24, 31, 36);
+  }
+  
+  [slider] > div > [sign] > span {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 28px;
+  }
+  
+  [slider]:hover > div > [sign] {
+    opacity: 1;
+  }
+
+
+  /* CLASSIFICATION */
+.classification {
+    float: left;
+    height: 40px
+}
+
+.classification:not(:checked) > input {
+    display: none;  
+}
+
+.classification:not(:checked) > label {
+    float:right;
+    width:1em;
+    cursor:pointer;
+    font-size:30px;
+    color:#b6b6b6;
+}
+.classification:not(:checked) > label:before {
+    content: '★';
+}
+.classification > input:checked ~ label {
+    color: #ffc800ea;    
+}
+
+.classification > input:checked + label:hover,
+.classification > input:checked ~ label:hover,
+.classification > input:checked ~ label:hover ~ label,
+.classification > label:hover ~ input:checked ~ label,
+.classification > input:checked + label:hover ~ label,
+.classification:not(:checked) > label:hover,
+.classification:not(:checked) > label:hover ~ label {
+    color: #c59c08e8;
+}
+
+
+/* restaurant list */
+
+.restaurantsList {
+    display: grid;
+    grid-template-columns: 15em 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+.filters {
+    grid-column-start: 1;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top:0;
+    height:fit-content;
+}
+
+.restaurants {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-column-start: 2;
+}
+
+.orderBy {
+    grid-column-start: 2;
+}
+
+.restaurant {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "img name button"
+                         "img address button"
+                         "img price rating";
+    margin:0.5em;
+    margin-left: 0em;
+}
+
+#category ul {
+    display: flex;
+    align-content: space-between;
+    flex-direction: column;
+    flex-grow: 2;
+}
+
+.restaurant > img {
+    grid-area: img;
+}
+
+.restaurant > #name {
+    grid-area: name;
+}
+
+.restaurant > #address {
+    grid-area: address;
+}
+
+.restaurant > #price {
+    grid-area: price;
+}
+
+.restaurant > button {
+    grid-area: button;
+}
+
+.restaurant > #rating {
+    grid-area: rating;
+} 
