@@ -1,4 +1,5 @@
 <?php
+    require_once('user_session.php');
     require_once('template/essentials.php');
 ?>
 
@@ -11,7 +12,7 @@
     </head>
     <body>
 
-    <?show_header_menu();?>
+    <?show_header_menu(isLogged());?>
 
     <section class="mainPage">
         <img src = "images/DuCampua.jpg">

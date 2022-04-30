@@ -1,4 +1,4 @@
-<?php function show_header_menu(){?>
+<?php function show_header_menu(bool $logged){?>
 
     <header class="menu">
         <nav>
@@ -8,7 +8,7 @@
                     <li> <a href ="index.php">HOME</a></li>
                     <li> <a href ="restaurants.html">RESTAURANTS</a></li>
                     <li> <a href ="aboutUs.html">ABOUT US</a></li>
-                    <li> <a href ="index.html">LOGIN</a></li>
+                    <li> <a href ="index.html"><?php echo($logged?"PROFILE": "LOGIN");?></a></li>
                     <li> 
                         <input type="checkbox" id="lupa"/>
                         <input type="search" name="search" class="search" placeholder="Search">
