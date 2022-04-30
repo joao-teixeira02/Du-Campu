@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS "Restaurant" (
 	"id"	INTEGER,
 	"name"	VARCHAR NOT NULL,
 	"address"	VARCHAR NOT NULL UNIQUE,
+	"category_id" INTEGER NOT NULL,
 	"owner_id"	INTEGER NOT NULL,
 	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("owner_id") REFERENCES "Owner"("id")
@@ -37,16 +38,9 @@ CREATE TABLE IF NOT EXISTS "Photo" (
 	"path"	TEXT NOT NULL UNIQUE,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
-CREATE TABLE IF NOT EXISTS "DishesPhoto" (
-	"id_dish"	INTEGER,
-	"id_photo"	INTEGER,
-	PRIMARY KEY("id_dish","id_photo"),
-	FOREIGN KEY("id_dish") REFERENCES "Dish"("id"),
-	FOREIGN KEY("id_photo") REFERENCES "Photo"("id")
-);
 CREATE TABLE IF NOT EXISTS "RestaurantPhoto" (
 	"id_restaurante"	INTEGER,
-	"id_photo"	INTEGER,
+	"id_photo"	INTEGER UNIQUE,
 	PRIMARY KEY("id_restaurante","id_photo"),
 	FOREIGN KEY("id_photo") REFERENCES "Photo"("id"),
 	FOREIGN KEY("id_restaurante") REFERENCES "Restaurant"("id")
@@ -81,7 +75,7 @@ CREATE TABLE IF NOT EXISTS "OrderDishQuantity" (
 	"quantity"	INTEGER NOT NULL CHECK("quantity" > 0),
 	PRIMARY KEY("id"),
 	FOREIGN KEY("id_dish") REFERENCES "Dish"("id"),
-	FOREIGN KEY("id_order") REFERENCES "OrderDishQuantity"("id")
+	FOREIGN KEY("id_order") REFERENCES "Order"("id")
 );
 CREATE TABLE IF NOT EXISTS "FavoriteRestaurant" (
 	"id_customer"	INTEGER,
@@ -94,10 +88,13 @@ CREATE TABLE IF NOT EXISTS "Dish" (
 	"id"	INTEGER,
 	"name"	TEXT NOT NULL,
 	"price"	REAL NOT NULL,
+	"dish_type" TEXT NOT NULL,
+	"id_photo" TEXT NOT NULL,
 	"category_id"	INTEGER NOT NULL,
 	"restaurant_id"	INTEGER NOT NULL,
 	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("restaurant_id") REFERENCES "Restaurant"("id")
+	FOREIGN KEY("id_photo") REFERENCES "Photo"("id")
 );
 CREATE TABLE IF NOT EXISTS "FavoriteDish" (
 	"id_customer"	INTEGER,

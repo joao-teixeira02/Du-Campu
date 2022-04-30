@@ -17,7 +17,17 @@ INSERT INTO Category (name) VALUES ('Thailandese');
 INSERT INTO Category (name) VALUES ('Indian');
 INSERT INTO Category (name) VALUES ('Pizza');
 
-INSERT INTO Restaurant (name, address, owner_id) VALUES ("Bao's - Taiwanese Burger", 'R. de Cedofeita 263, 4050-174 Porto', 1);
-INSERT INTO Restaurant (name, address, owner_id) VALUES ("AM Indiano Restaurant", 'R. do Gen. Torres 1220 piso -1 LJ 24, 4400-164 Vila Nova de Gaia', 2);
-INSERT INTO Restaurant (name, address, owner_id) VALUES ("Thamel Restaurant", 'Rua da Picaria 25, 4000-407 Porto', 3);
-INSERT INTO Restaurant (name, address, owner_id) VALUES ("Mexcanita", 'Rua da Nené 49, 4050-148 Porto', 1);
+INSERT INTO Restaurant (name, address, category_id, owner_id) VALUES ("Bao's - Taiwanese Burger", 'R. de Cedofeita 263, 4050-174 Porto', 1);
+INSERT INTO Restaurant (name, address, category_id, owner_id) VALUES ("AM Indiano Restaurant", 'R. do Gen. Torres 1220 piso -1 LJ 24, 4400-164 Vila Nova de Gaia', 2);
+INSERT INTO Restaurant (name, address, category_id, owner_id) VALUES ("Thamel Restaurant", 'Rua da Picaria 25, 4000-407 Porto', 3);
+INSERT INTO Restaurant (name, address, category_id, owner_id) VALUES ("Mexcanita", 'Rua da Nené 49, 4050-148 Porto', 1);
+
+INSERT INTO Dish (name, price, dish_type, category_id, restaurant_id) VALUES ('Lu Rou Fan', 11.50, 'Noodle Soups', 1);
+INSERT INTO Dish (name, price, dish_type, category_id, restaurant_id) VALUES ();
+INSERT INTO Dish (name, price, dish_type, category_id, restaurant_id) VALUES ();
+INSERT INTO Dish (name, price, dish_type, category_id, restaurant_id) VALUES ();
+INSERT INTO Dish (name, price, dish_type, category_id, restaurant_id) VALUES ();
+INSERT INTO Dish (name, price, dish_type, category_id, restaurant_id) VALUES ();
+INSERT INTO Dish (name, price, dish_type, category_id, restaurant_id) VALUES ();
+INSERT INTO Dish (name, price, dish_type, category_id, restaurant_id) VALUES ();
+INSERT INTO Dish (name, price, dish_type, category_id, restaurant_id) VALUES ();
