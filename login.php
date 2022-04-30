@@ -1,14 +1,9 @@
 <?php
     require_once('user_session.php');
-    require_once('template/essentials.php');
+    require_once('template/essentials.tpl.php');
     
 
-    // validate login
-    if (isset($_GET['u']) && isset($_GET['p'])){
-        if(validateLogin($_GET['u'], $_GET['p'])){
-            $_SESSION["username"] = $_GET['u'];
-        }
-    }
+    
 
 ?>
 
@@ -21,7 +16,7 @@
     </head>
     <body>
 
-    <?show_header_menu(isLogged());?>
+    <?php show_header_menu(isLogged());?>
 
     <section class="login">
         <div class = "login_box">
@@ -43,7 +38,7 @@
 
                 <br>
 
-                <input formaction="login.php" formmethod="get" type="submit" class="white_button" value="Login">
+                <input formaction="action_login.php" formmethod="get" type="submit" class="white_button" value="Login">
 
                 
                 <p class="black_button">Register</p>
@@ -52,6 +47,6 @@
 
     </section>
 
-    <?show_footer();?>
+    <?php show_footer();?>
     </body>
 </html>

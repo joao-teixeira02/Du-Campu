@@ -8,7 +8,7 @@
                     <li> <a href ="index.php">HOME</a></li>
                     <li> <a href ="restaurants.html">RESTAURANTS</a></li>
                     <li> <a href ="aboutUs.html">ABOUT US</a></li>
-                    <li> <a href ="index.html"><?php echo($logged?"PROFILE": "LOGIN");?></a></li>
+                    <li> <a href ="login.php"><?php echo($logged?"PROFILE": "LOGIN"); ?></a></li>
                     <li> 
                         <input type="checkbox" id="lupa"/>
                         <input type="search" name="search" class="search" placeholder="Search">
@@ -19,11 +19,12 @@
         </nav>
     </header>
 
-<?}?>
 
+<?php 
 
+}
 
-<?php function show_footer(){?>
+function show_footer(){?>
 
 <footer class="pageFooter">
 
@@ -57,4 +58,5 @@
 </footer>
 
 
-<?}?>
+<?php } ?>
+
