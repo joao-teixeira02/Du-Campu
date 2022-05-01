@@ -1,5 +1,7 @@
 <?php
-    require_once('template/essentials.php');
+    require_once('user_session.php');
+    require_once('template/essentials.tpl.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -11,12 +13,12 @@
     </head>
     <body>
 
-    <?show_header_menu();?>
+    <?php show_header_menu(isLogged()); ?>
 
     <section class="mainPage">
         <img src = "images/DuCampua.jpg">
     </section>
 
-    <?show_footer();?>
+    <?php show_footer(); ?>
     </body>
 </html>

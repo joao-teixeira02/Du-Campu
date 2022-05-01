@@ -6,7 +6,7 @@ INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (3, 1);
 INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (4, 1);
 
 INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('joaoteixeira', 'João Teixeira', 'joaoteixeira@gmail.com', 't73indfm9nc205c', '', '935497249');
-INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('afonsobaldo', 'Afonso Baldo', 'afonsobaldo@gmail.com', 'rvh2m53r3', '', '914352559');
+INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('afonsobaldo', 'Afonso Baldo', 'afonsobaldo@gmail.com', 'ola123', '', '914352559');
 INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('inescardoso', 'Inês Cardoso', 'inescardoso@gmail.com', '424s6784', '', '962643176');
 INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('andrerestivo', 'André Restivo', 'andrerestivo@gmail.com', '0l3394ov13rtc5', '', '910546926');
 

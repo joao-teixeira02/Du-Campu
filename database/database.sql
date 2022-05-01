@@ -1,24 +1,26 @@
-BEGIN TRANSACTION;
+
 CREATE TABLE IF NOT EXISTS "Owner" (
 	"id"	INTEGER,
-	"username"	VARCHAR 20 NOT NULL UNIQUE,
+	"username"	VARCHAR NOT NULL UNIQUE,
 	"name"	TEXT NOT NULL,
 	"mail"	TEXT NOT NULL UNIQUE,
-	"password"	VARCHAR 20 NOT NULL,
+	"password"	VARCHAR NOT NULL,
 	"address"	TEXT,
 	"phone"	TEXT UNIQUE,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
+
 CREATE TABLE IF NOT EXISTS "Customer" (
 	"id"	INTEGER,
-	"username"	VARCHAR 20 NOT NULL UNIQUE,
+	"username"	VARCHAR NOT NULL UNIQUE,
 	"name"	TEXT NOT NULL,
 	"mail"	TEXT NOT NULL UNIQUE,
-	"password"	VARCHAR 20 NOT NULL,
+	"password"	VARCHAR NOT NULL,
 	"address"	TEXT,
 	"phone"	TEXT UNIQUE,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
+
 CREATE TABLE IF NOT EXISTS "Restaurant" (
 	"id"	INTEGER,
 	"name"	VARCHAR NOT NULL,
@@ -46,10 +48,9 @@ CREATE TABLE IF NOT EXISTS "Photo" (
 );
 CREATE TABLE IF NOT EXISTS "RestaurantPhoto" (
 	"id_restaurant"	INTEGER,
-	"id_photo"	INTEGER UNIQUE,
-	PRIMARY KEY("id_restaurante","id_photo"),
+	"id_photo"	INTEGER PRIMARY KEY,
 	FOREIGN KEY("id_photo") REFERENCES "Photo"("id"),
-	FOREIGN KEY("id_restaurante") REFERENCES "Restaurant"("id")
+	FOREIGN KEY("id_restaurant") REFERENCES "Restaurant"("id")
 );
 CREATE TABLE IF NOT EXISTS "Reviews" (
 	"id"	INTEGER,
@@ -61,6 +62,25 @@ CREATE TABLE IF NOT EXISTS "Reviews" (
 	FOREIGN KEY("customer_id") REFERENCES "Customer"("id"),
 	FOREIGN KEY("restaurant_id") REFERENCES "Restaurant"("id")
 );
+
+
+CREATE TABLE IF NOT EXISTS "FavoriteRestaurant" (
+	"id_customer"	INTEGER,
+	"id_restaurant"	INTEGER,
+	PRIMARY KEY("id_customer","id_restaurant"),
+	FOREIGN KEY("id_restaurant") REFERENCES "Restaurant"("id"),
+	FOREIGN KEY("id_customer") REFERENCES "Customer"("id")
+);
+
+CREATE TABLE IF NOT EXISTS "FavoriteDish" (
+	"id_customer"	INTEGER,
+	"id_dish"	INTEGER,
+	PRIMARY KEY("id_customer","id_dish"),
+	FOREIGN KEY("id_customer") REFERENCES "Customer"("id"),
+	FOREIGN KEY("id_dish") REFERENCES "Dish"("id")
+);
+
+
 CREATE TABLE IF NOT EXISTS "State" (
 	"id"	INTEGER,
 	"state"	INTEGER NOT NULL UNIQUE,
@@ -119,4 +139,3 @@ CREATE TABLE IF NOT EXISTS "FavoriteDish" (
 	FOREIGN KEY("id_customer") REFERENCES "Customer"("id"),
 	FOREIGN KEY("id_dish") REFERENCES "Dish"("id")
 );
-COMMIT;
