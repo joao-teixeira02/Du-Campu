@@ -16,7 +16,7 @@
             return false;
         }
 
-        return $customer->{password} === $password;
+        return $customer->{$password} === $password;
     }
 
 
