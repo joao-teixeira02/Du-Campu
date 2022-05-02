@@ -20,15 +20,15 @@
 
         function getType(PDO $db) : ?string {
             $stmt = $db->prepare('SELECT type FROM Type WHERE Type.id=(SELECT id_dish FROM Dish WHERE Dish.id=?)');
-            $stmt->execute(array($id));
+            $stmt->execute(array($this->id));
 
             $type = null;
             while ($type_data = $stmt->fetch()) {
-                $type = type_data["type"];
+                $type = $type_data["type"];
                 
                 break;
             }
-            return type;
+            return $type;
         }
 
 
