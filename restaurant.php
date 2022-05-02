@@ -2,8 +2,8 @@
     declare(strict_types = 1);
 
     require_once('template/essentials.tpl.php');
-    require_once('template/essentials.tpl.php');
     require_once('database/restaurant.class.php');
+    require_once('database/dish.class.php');
     require_once('database/connection.db.php');
     
 
@@ -14,8 +14,9 @@
                     $types = array();
                     $db = getDatabaseConnection();
 
-                    
-                    print_r($types);
+                    foreach(Restaurant::getDishes($db, $id) as $dish ){
+                        $types[] = $dish->getType($db);
+                    }
                     
                     foreach( array_unique($types) as $type){
                         ?>

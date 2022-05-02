@@ -1,5 +1,7 @@
 <?php
     declare(strict_types = 1);
+    
+    require_once('database/dish.class.php');
 
     class Restaurant{
         public int $id;
@@ -12,12 +14,14 @@
             $stmt->execute(array($id));
             $dishes = array();
             while ($dish = $stmt->fetch()) {
+                
                 $dishes[] = new Dish(
-                  $dish['id'],
-                  $dish['name'],
-                  $dish['price']
+                    intval($dish['id']),
+                    $dish['name'],
+                    floatval($dish['price'])
                 );
-              }
+                
+            }
             return $dishes;
         }
 

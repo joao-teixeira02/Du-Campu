@@ -7,9 +7,9 @@
         public float $price;
         
         public function __construct(int $id, string $name, float $price){ 
-        $this->id = $id;
-        $this->name = $name;
-        $this->price = $price;
+            $this->id = $id;
+            $this->name = $name;
+            $this->price = $price;
         }
 
         static function getPhoto(PDO $db, int $id) : ?string {
@@ -19,12 +19,13 @@
         }
 
         function getType(PDO $db) : ?string {
-            $stmt = $db->prepare('SELECT type FROM Type WHERE Type.id=(SELECT id_dish FROM Dish WHERE Dish.id=?)');
+            
+            $stmt = $db->prepare('SELECT name FROM Type WHERE Type.id=(SELECT id_type FROM DishType WHERE DishType.id_dish=?)');
             $stmt->execute(array($this->id));
 
             $type = null;
             while ($type_data = $stmt->fetch()) {
-                $type = $type_data["type"];
+                $type = $type_data["name"];
                 
                 break;
             }
