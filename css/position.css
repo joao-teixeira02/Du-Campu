@@ -60,17 +60,17 @@ body{
 
 /* Restaurant */
 
-.menuRestaurante li{
+.restaurant-page .menuRestaurante li{
     padding: 1em;
 }
 
 
-#capaRestaurante ~ *{
+.restaurant-page #capaRestaurante ~ *{
     margin-left: 1em;
     margin-right: 1em;
 }
 
-.menuRestaurante{
+.restaurant-page .menuRestaurante{
     width: 100%;
     height: fit-content;
     position: sticky;
@@ -81,23 +81,23 @@ body{
     grid-column-start: 1;
 }
 
-.menuRestaurante ul{
+.restaurant-page .menuRestaurante ul{
     list-style: none;
 
 }
 
-#listaPratos{
+.restaurant-page #listaPratos{
     grid-column-start: 2;
 }
 
-#listaPratos ul{
+.restaurant-page #listaPratos ul{
     display: flex;
     flex-direction: row;
     list-style: none;
     flex-wrap: wrap;
 }
 
-.restaurant main{
+.restaurant-page  main{
     display: grid;
     grid-template: 100% / 20em 1fr;
 
@@ -105,7 +105,7 @@ body{
 
 }
 
-.comida {
+.restaurant-page .comida {
     max-width: 100%;
     width: 15em;
     margin: 1em;
@@ -114,12 +114,10 @@ body{
 }
 
 
-.comida figcaption, .comida p{
+.restaurant-page .comida figcaption, .comida p{
     text-align: left;
 }
 
-
-/* LOGIN */
 
 /* LOGIN  */
 

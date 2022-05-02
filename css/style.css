@@ -104,62 +104,61 @@ header.menu{
 }
 
 
-/* Restaurant */
+/* Restaurant Page */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
 strong{
     font-weight: bold;
 }
 
-.restaurant{
+.restaurant-page{
     font-family: 'Poppins', sans-serif;
 }
 
-.restaurant img#capaRestaurante {
+.restaurant-page img#capaRestaurante {
     width: 100%;
     object-fit: cover;
     height: 10em;
 }
 
-.restaurant h1{
+.restaurant-page h1{
     font-size: 2em;
 }
 
-.restaurant h3{
+.restaurant-page h3{
     font-size: 1.7em;
 }
 
-.restaurant #classificao::before{
+.restaurant-page #classificao::before{
     content: "\002605 ";
 }
 
-.restaurant #tempo{
+.restaurant-page #tempo{
     color:  rgb(120, 120, 120);
 }
 
 
-.restaurant .menuRestaurante a{
+.restaurant-page .menuRestaurante a{
     color: black;
     font-size: 1.2em;
     text-decoration: none;
 }
 
 
-.restaurant .comida:hover{
+.restaurant-page .comida:hover{
     box-shadow: 0 0 1em  rgb(183, 181, 181);
     transition: 0.5s ease-in-out;
 }
 
-#listaPratos{
+.restaurant-page #listaPratos{
     width: 100%;
 
 }
 
-.comida figcaption{
+.restaurant-page .comida figcaption{
     font-weight: bold;
 }
 
-
-.filters{
+.restaurant-page .filters{
     padding: 0 10px;
     padding-bottom: 20px;
 }
