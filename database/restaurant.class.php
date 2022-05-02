@@ -22,7 +22,7 @@
         }
 
         static function getPhoto(PDO $db, int $id) : array {
-            $stmt = $db->prepare('SELECT path FROM Photo WHERE Photo.id=(SELECT id_photo FROM RestaurantPhoto WHERE Restaurant.id=?');
+            $stmt = $db->prepare('SELECT path FROM Photo WHERE Photo.id=(SELECT id_photo FROM RestaurantPhoto WHERE Restaurant.id=?)');
             $stmt->execute(array($id));
             $paths = array();
             while ($path = $stmt->fetch()) {
@@ -39,7 +39,7 @@
         }
 
         static function getCategory(PDO $db, int $id) : array {
-            $stmt = $db->prepare('SELECT name FROM Category WHERE Category.id=(SELECT id_restaurant FROM RestaurantCategory WHERE Restaurant.id=?');
+            $stmt = $db->prepare('SELECT name FROM Category WHERE Category.id=(SELECT id_restaurant FROM RestaurantCategory WHERE Restaurant.id=?)');
             $stmt->execute(array($id));
             $categories = array();
             while ($category = $stmt->fetch()) {

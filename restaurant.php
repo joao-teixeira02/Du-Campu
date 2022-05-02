@@ -1,7 +1,39 @@
 <?php
+    declare(strict_types = 1);
+
     require_once('template/essentials.tpl.php');
     require_once('template/essentials.tpl.php');
+    require_once('database/restaurant.class.php');
+    require_once('database/connection.db.php');
     
+
+    function show_dishes_types(int $id){ ?>
+
+            <ul>
+                <?php 
+                    $types = array();
+                    $db = getDatabaseConnection();
+
+                    
+                    print_r($types);
+                    
+                    foreach( array_unique($types) as $type){
+                        ?>
+
+                        <li>
+                            <a href="#<?php echo ($type);?>"><?php echo ($type);?></a>
+                        </li>
+
+                        <?php
+                    }
+                ?>
+
+            </ul>
+
+        <?php
+
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -32,27 +64,7 @@
             <main>
 
             <nav class="menuRestaurante">
-                    <ul>
-                        
-                        <li>
-                            <a href="#Leitao">Leitao</a>
-                        </li>
-                        <li>
-                            <a href="#Vinhos">Vinhos</a>
-                        </li>
-                        <li>
-                            <a href="#Refrigerantes">Refrigerantes</a>
-                        </li>
-                        <li>
-                            <a href="#Espumantes">Espumantes</a>
-                        </li>
-                        <li>
-                            <a href="#Acompanhamentos">Acompanhamentos</a>
-                        </li>
-                        <li>
-                            <a href="#Bebidas">Bebidas</a>
-                        </li>
-                    </ul>
+                    <?php show_dishes_types(1); ?>
 
                 </nav>
 
