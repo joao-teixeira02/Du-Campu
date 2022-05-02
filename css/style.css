@@ -341,8 +341,20 @@ strong{
     color: #c59c08e8;
 }
 
-
 /* restaurant list */
+
+
+.restaurantsListPage{
+    font-family: 'Poppins', sans-serif;
+    margin: 0.5em;
+    margin-right: 0;
+    margin-bottom: 1em;
+}
+
+.restaurantsListPage h1{
+    font-size: 2em;
+    font-weight: bold;
+}
 
 .restaurantsList {
     display: grid;
@@ -356,6 +368,9 @@ strong{
     position: sticky;
     top:0;
     height:fit-content;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 10px;
+    padding-bottom: 20px;
 }
 
 .restaurants {
@@ -367,18 +382,33 @@ strong{
 
 .orderBy {
     grid-column-start: 2;
+    display:flex;
+    flex-direction: row;
+    height: 1.2em;
+    margin: 0.5em;
 }
 
-.restaurant {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: "img name button"
-                         "img address button"
-                         "img price rating";
-    margin:0.5em;
-    margin-left: 0em;
+.orderBy #sorter{
+    margin-left: 0.6em;
+    margin-right: 0.4em;
 }
+
+.restaurantsList .restaurantContainer{
+    position: relative;
+}
+
+.restaurantsList .restaurantContainer {
+    display: flex;
+    flex-direction: row;
+    margin:0.5em;
+    background-color: rgba(0, 0, 0, 0.152);
+    border-radius: 25px;
+    padding: 1em;
+    width: 35em;
+    height: 150px;
+    cursor: pointer;
+}
+
 
 #category ul {
     display: flex;
@@ -387,31 +417,56 @@ strong{
     flex-grow: 2;
 }
 
-.restaurant > img {
-    grid-area: img;
+
+.restaurantsList .restaurantContainer  img {
+    border-radius: 10px;
+    margin-right: 1em;
 }
 
-.restaurant > #name {
-    grid-area: name;
+.restaurantsList .restaurantInfo #name {
+    align-self: auto;
+    display: block;
 }
 
-.restaurant > #address {
-    grid-area: address;
+.restaurantsList .restaurantInfo  #address {
+    padding-bottom: 3em;
+    display: block;
 }
 
-.restaurant > #price {
-    grid-area: price;
+.restaurantsList .restaurantInfo  #price {
+    align-self:baseline;
+    display: block;
 }
 
-.restaurant > button {
-    grid-area: button;
+.restaurantsList .restaurantInfo  #like-button {
+    cursor: pointer;
+    position: absolute;
+    top:3em;
+    right:3em;
+    width:20px;
+    height:20px;
 }
 
-.restaurant > #rating {
-    grid-area: rating;
+.restaurantsList .restaurantInfo  #rating {
+    display:inline-flex;
+    width:fit-content;
+} 
+
+.restaurantsList .restaurantInfo  #rating::after {
+    content: "\00a0●";
+} 
+
+.restaurantsList .restaurantInfo  #category{
+    display:inline;
+    width:fit-content;
 } 
 
 
+.restaurantsList .restaurants .restaurantContainer:hover{
+    box-shadow: 0 0 1em  rgb(183, 181, 181);
+    transition: 0.3s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.35);
+}
 
 /* LOGIN  */
 
