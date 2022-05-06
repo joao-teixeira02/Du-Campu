@@ -12,10 +12,18 @@
             $this->price = $price;
         }
 
+        function getName() : string {
+            return $this->name;
+        }
+
+        function getPrice() : float {
+            return $this->price;
+        }
+
         static function getPhoto(PDO $db, int $id) : ?string {
             $stmt = $db->prepare('SELECT path FROM Photo WHERE Photo.id=(SELECT id_photo FROM Dish WHERE Dish.id=?)');
             $stmt->execute(array($id));
-            return $stmt->fetch();
+            return $stmt->fetch()['path'];
         }
 
         function getType(PDO $db) : ?string {

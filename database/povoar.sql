@@ -1,17 +1,14 @@
-INSERT INTO Photo (path) VALUES ('https://s3.amazonaws.com/blog.dentrodahistoria.com.br/wp-content/uploads/2020/07/24172038/papinhas-de-beb%C3%AA-scaled.jpg');
-
+INSERT INTO Photo (path) VALUES ('https://www.altoastral.com.br/media/_versions/legacy/2016/09/bebe-comendo-papinha-inteligencia_widexl.jpg');
+INSERT INTO Photo (path) VALUES ('https://institutopensi.org.br/wp-content/uploads/2020/04/shutterstock_631322687-890x420.jpg');
 
 INSERT INTO Owner(username, name, mail, password, address, phone) VALUES ('osvaldoteixeira', 'Osvaldo Teixeira', 'osvaldoteixeira@gmail.com', '25w774a858ag94u', '', '932368189');
 INSERT INTO Owner(username, name, mail, password, address, phone) VALUES ('adelinobaldo', 'Adelino Baldo', 'adelinobaldo@gmail.com', '73673233k210e5', '', '963592065');
 INSERT INTO Owner(username, name, mail, password, address, phone) VALUES ('sergiocalado', 'Sérgio Calado', 'sergiocalado@gmail.com', '3b7573f0', '', '911816913');
 
-
 INSERT INTO Restaurant (name, address, owner_id) VALUES ("Bao's - Taiwanese Burger", 'R. de Cedofeita 263, 4050-174 Porto', 1);
 INSERT INTO Restaurant (name, address, owner_id) VALUES ("AM Indiano Restaurant", 'R. do Gen. Torres 1220 piso -1 LJ 24, 4400-164 Vila Nova de Gaia', 2);
 INSERT INTO Restaurant (name, address, owner_id) VALUES ("Thamel Restaurant", 'Rua da Picaria 25, 4000-407 Porto', 3);
 INSERT INTO Restaurant (name, address, owner_id) VALUES ("Mexcanita", 'Rua da Nené 49, 4050-148 Porto', 1);
-
-
 
 INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES ('Lu Rou Fan', 11.50, 1, 1);
 INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES ('Fried Veggue Rice', 11.50, 1, 1);
@@ -88,7 +85,7 @@ INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES ('Coke 330ml', 2.
 INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES ('Seven Up 330ml', 2.50, 1, 4);
 INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES ('Water 50cl', 1.50, 1, 4);
 
-INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (1, 1);
+INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (1, 2);
 
 INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('joaoteixeira', 'João Teixeira', 'joaoteixeira@gmail.com', 't73indfm9nc205c', '', '935497249');
 INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('afonsobaldo', 'Afonso Baldo', 'afonsobaldo@gmail.com', 'ola123', '', '914352559');

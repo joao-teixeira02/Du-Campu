@@ -9,6 +9,29 @@
         public string $address;
         public int $owner_id;
 
+        static function getRestaurant(PDO $db, int $id) : ?Restaurant {
+            $stmt = $db->prepare('SELECT * FROM Restaurant WHERE Restaurant.id=?');
+            $stmt->execute(array($id));
+        
+            $restaurant = null;
+            while ($restaurant_data = $stmt->fetch()) {
+                $restaurant = new Restaurant(
+                intval($restaurant_data['id']),
+                $restaurant_data['name'],
+                $restaurant_data['address'],
+                intval($restaurant_data['owner_id'])
+                );
+                
+                break;
+            }
+    
+            return $restaurant;
+        }
+
+        function getName() : string {
+            return $this->name;
+        }
+
         static function getDishes(PDO $db, int $id) : array {
             $stmt = $db->prepare('SELECT * FROM Dish WHERE Dish.restaurant_id=?');
             $stmt->execute(array($id));
@@ -25,29 +48,29 @@
             return $dishes;
         }
 
-        static function getPhoto(PDO $db, int $id) : array {
-            $stmt = $db->prepare('SELECT path FROM Photo WHERE Photo.id=(SELECT id_photo FROM RestaurantPhoto WHERE Restaurant.id=?)');
+        static function getPhoto(PDO $db, int $id) : string {
+            $stmt = $db->prepare('SELECT path FROM Photo WHERE Photo.id=(SELECT id_photo FROM RestaurantPhoto WHERE RestaurantPhoto.id_restaurant=?)');
             $stmt->execute(array($id));
-            $paths = array();
-            while ($path = $stmt->fetch()) {
-                $paths[] = $path;
-            }
-            return $paths;
+            $path = $stmt->fetch();
+            return $path['path'];
         }
 
         static function calcRating(PDO $db, int $id) : int {
             $stmt = $db->prepare('SELECT points FROM Reviews WHERE Reviews.restaurant_id=?');
             $stmt->execute(array($id));
-            $a = $stmt->fetchAll();
+            $a = array();
+            while ($rating = $stmt->fetch()) {
+                $a[] = $rating['points'];
+            }
             return array_sum($a)/count($a);
         }
 
         static function getCategory(PDO $db, int $id) : array {
-            $stmt = $db->prepare('SELECT name FROM Category WHERE Category.id=(SELECT id_restaurant FROM RestaurantCategory WHERE Restaurant.id=?)');
+            $stmt = $db->prepare('SELECT * FROM Category WHERE Category.id IN (SELECT id_category FROM RestaurantCategory WHERE RestaurantCategory.id_restaurant=?)');
             $stmt->execute(array($id));
             $categories = array();
             while ($category = $stmt->fetch()) {
-                $categories[] = $category;
+                $categories[] = $category['name'];
             }
             return $categories;
         }
