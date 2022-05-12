@@ -16,14 +16,16 @@
             return false;
         }
 
-        return $customer->{$password} === $password;
+        return $customer->password === $password;
     }
 
 
     // validate login
     if (isset($_GET['u']) && isset($_GET['p'])){
         if(validateLogin($_GET['u'], $_GET['p'])){
-            $_SESSION["username"] = $_GET['u'];
+            $_SESSION["username"] = $_GET['u']; 
+            header('Location: ' . "index.php");
+            exit();
         }
     }
 
