@@ -62,9 +62,7 @@
         <?php
     }
 
-    function show_dishes(int $id) {?>
-
-        <?php
+    function show_dishes(int $id) {
 
             $types = array();
             $db = getDatabaseConnection();
@@ -97,8 +95,23 @@
 
             }
 
-    } 
-        ?>
+    }
+
+    function show_reviews(int $id){
+
+        $db = getDatabaseConnection();
+        $reviews = Restaurant::getReviews($db, $id);
+
+        foreach($reviews as $review){ ?>
+            <section class = "review">
+            <p class="reviewUsername"><?php echo($review->getUsername($db)); ?></p>
+            <p class="review"><?php echo($review->review); ?></p>
+            <p class="points"><?php echo($review->points); ?></p>
+            </section>
+        <?php
+        }
+    }
+    ?>
 
 <!DOCTYPE html>
 <html>
@@ -122,7 +135,7 @@
             
             <main>
 
-            <nav class="menuRestaurante">
+                <nav class="menuRestaurante">
                     <?php show_dishes_types(1); ?>
 
                 </nav>
@@ -135,7 +148,18 @@
 
             </main>
 
+            <section class="reviews">
+                <?php show_reviews(1); ?>
+            </section>
+
         </article>
+
+        <form>
+            <input class="input" type="text" placeholder="Write your review here" name="r" id="review_input">
+            <input class="input" type="float" placeholder="Points from 0 to 5" name="p" id="points_input">
+            <input formaction="action_review.php" formmethod="get" type="submit" class="white_button" value="Publish">
+        </form>
+
     </main>
 
 

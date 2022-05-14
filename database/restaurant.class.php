@@ -2,6 +2,7 @@
     declare(strict_types = 1);
     
     require_once('database/dish.class.php');
+    require_once('database/review.class.php');
 
     class Restaurant{
         public int $id;
@@ -55,7 +56,7 @@
             return $path['path'];
         }
 
-        static function calcRating(PDO $db, int $id) : int {
+        static function calcRating(PDO $db, int $id) : float {
             $stmt = $db->prepare('SELECT points FROM Reviews WHERE Reviews.restaurant_id=?');
             $stmt->execute(array($id));
             $a = array();
@@ -63,6 +64,23 @@
                 $a[] = $rating['points'];
             }
             return array_sum($a)/count($a);
+        }
+
+        static function getReviews(PDO $db, int $id) : array {
+            $stmt = $db->prepare('SELECT * FROM Reviews WHERE Reviews.restaurant_id=?');
+            $stmt->execute(array($id));
+            $reviews = array();
+            
+            while($review = $stmt->fetch()){
+                $reviews[] = new Review(
+                    intval($review['id']),
+                    $review['review'],
+                    intval($review['customer_id']),
+                    floatval($review['points']),
+                    intval($reviews['restaurant_id'])
+                );
+            }
+            return $reviews;
         }
 
         static function getCategory(PDO $db, int $id) : array {
