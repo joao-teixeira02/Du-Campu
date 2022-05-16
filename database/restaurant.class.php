@@ -96,18 +96,52 @@
         }
 
 
-        static function search(PDO $db, string $name, array $category, array $prices, float $rating_min, float $rating_max, string $orderBy ) : array {
-            /*string $que = 'SELECT * FROM Restaurant WHERE name like \"%:name%\" AND  :rating_min <= (SELECT avg(points) FROM Reviews) <= :rating_max';*/
-
+        static function search(PDO $db, string $name, array $categories, array $prices, float $rating_min, float $rating_max, string $orderBy, bool $asc ) : array {
+            $query = "";
             
-            $stmt = $db->prepare('SELECT * FROM Restaurant WHERE name like "%%" AND  0 <= (SELECT avg(points) FROM Reviews) <= 5');
+            $nCategories = count($categories)-1;
 
-            /*
-            $stmt->bindParam(":name", $name);
+            if($nCategories > 0){
+                for($i = 0; $i<$nCategories; $i++){
+                    if($i != 0){
+                        $query .= ' UNION ';
+                    }
+                    $query .= ' Select id FROM Restaurant join RestaurantCategory WHERE RestaurantCategory.id_restaurant = Restaurant.id AND RestaurantCategory.id_category = :category'.$i;
+                }
+                
+                $query .= ' INTERSECT ';
+            }
+
+            $query .= 'SELECT id FROM Restaurant WHERE ( (SELECT avg(points) FROM Reviews Where Reviews.restaurant_id = Restaurant.id) 
+            BETWEEN CAST(:rating_min AS FLOAT) AND CAST(:rating_max AS FLOAT) OR  
+            (SELECT count(points) FROM Reviews Where Reviews.restaurant_id = Restaurant.id) == 0 AND 0 == CAST(:rating_min AS FLOAT) ) ';
+
+            $name = trim($name);
+            if(!empty($name)){
+                $query .= ' AND name like :name ';
+            }
+            $query = "SELECT *, (SELECT avg(points) FROM Reviews Where Reviews.restaurant_id = Restaurant.id) as rating FROM Restaurant WHERE id in (".$query.")";
+          
+            if($orderBy === "rating"){
+                $query .= " order by rating " . ($asc?'asc':'desc');
+            }
+
+
+            $stmt = $db->prepare($query);            
+
+            if(!empty($name)){
+                
+                $name = '%'.$name.'%';
+                $stmt->bindParam(':name', $name);
+            }
             $stmt->bindParam(":rating_min", $rating_min);
             $stmt->bindParam(":rating_max", $rating_max);
-            /*$stmt->bindParam(":category", $category);*/
-            
+
+
+            for($i = 0; $i<$nCategories; $i++){
+                $stmt->bindParam(":category".$i, $categories[$i]);
+            }
+
 
             $stmt->execute();
             $restaurants = array();

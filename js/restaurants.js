@@ -1,11 +1,24 @@
+const search = document.querySelector('input.search')
 const rangeL = document.querySelector('#rangeLeft')
 const rangeR = document.querySelector('#rangeRight')
 const categories_input = document.querySelectorAll('.categories input')
+const asc = document.querySelector('#asc')
+const sorter = document.querySelector('#sorter')
+
 if (rangeL) {
   rangeL.addEventListener('input', updateRestaurantList)
 }
 if (rangeR) {
   rangeR.addEventListener('input', updateRestaurantList)
+}
+if(search){
+  search.addEventListener('input', updateRestaurantList)
+}
+if (asc) {
+  asc.addEventListener('input', updateRestaurantList)
+}
+if (sorter) {
+  sorter.addEventListener('input', updateRestaurantList)
 }
 
 for(category of categories_input){
@@ -27,12 +40,10 @@ async function updateRestaurantList() {
       }
     }
 
-
-    const response = await fetch('api_restaurants.php?name=&category'+ list_categories_str
-                                  + "&rating_min="+min_rating+"&rating_max=" + max_rating)
+    const response = await fetch('api_restaurants.php?name=' + search.value + '&category='+ list_categories_str
+                                  + "&rating_min="+min_rating+"&rating_max=" + max_rating+ "&order=" + sorter.value + "&asc=" + (asc.checked?1:0) );
     const restaurants = await response.json()
 
-    console.log(restaurants);
 
     const section = document.querySelector('.restaurants')
     section.innerHTML = ''
