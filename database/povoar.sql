@@ -86,6 +86,9 @@ INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES ('Seven Up 330ml'
 INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES ('Water 50cl', 1.50, 1, 4);
 
 INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (1, 2);
+INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (2, 2);
+INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (3, 2);
+INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (4, 2);
 
 INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('joaoteixeira', 'João Teixeira', 'joaoteixeira@gmail.com', 't73indfm9nc205c', '', '935497249');
 INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('afonsobaldo', 'Afonso Baldo', 'afonsobaldo@gmail.com', 'ola123', '', '914352559');
