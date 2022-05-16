@@ -27,6 +27,10 @@ header.menu{
     display: none;  
 }
 
+#cart{
+    display: none;  
+}
+
 [clickable]{  
     cursor: pointer ;
 }   
@@ -166,11 +170,12 @@ strong{
 
 
 /* RESTAURANTS LIST PRICE BAR*/
+
 [slider] {
-    width: 150px;
+    width: 160px;
     position: relative;
     height: 5px;
-    margin-top: 15px;
+    margin-top: 20px;
   }
   
   [slider] > div {
@@ -189,7 +194,7 @@ strong{
   }
   
   [slider] > div > [inverse-right] {
-    position: absolute;
+    position: down;
     right: 0;
     height: 5px;
     border-radius: 10px;
@@ -308,37 +313,10 @@ strong{
 
 
   /* CLASSIFICATION */
-.classification {
+.price-range {
     float: left;
-    height: 40px
-}
-
-.classification:not(:checked) > input {
-    display: none;  
-}
-
-.classification:not(:checked) > label {
-    float:right;
-    width:1em;
-    cursor:pointer;
-    font-size:30px;
-    color:#b6b6b6;
-}
-.classification:not(:checked) > label:before {
-    content: '★';
-}
-.classification > input:checked ~ label {
-    color: #ffc800ea;    
-}
-
-.classification > input:checked + label:hover,
-.classification > input:checked ~ label:hover,
-.classification > input:checked ~ label:hover ~ label,
-.classification > label:hover ~ input:checked ~ label,
-.classification > input:checked + label:hover ~ label,
-.classification:not(:checked) > label:hover,
-.classification:not(:checked) > label:hover ~ label {
-    color: #c59c08e8;
+    height: 40px;
+    display:block;
 }
 
 /* restaurant list */
@@ -409,7 +387,6 @@ strong{
     cursor: pointer;
 }
 
-
 #category ul {
     display: flex;
     align-content: space-between;
@@ -421,11 +398,15 @@ strong{
 .restaurantsList .restaurantContainer  img {
     border-radius: 10px;
     margin-right: 1em;
+    height: 100%;
+    width: 10em;
 }
 
 .restaurantsList .restaurantInfo #name {
     align-self: auto;
     display: block;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 .restaurantsList .restaurantInfo  #address {
@@ -436,6 +417,15 @@ strong{
 .restaurantsList .restaurantInfo  #price {
     align-self:baseline;
     display: block;
+}
+
+
+.restaurantsList .restaurantInfo  #rating::after {
+    content: "\00a0•\00a0";
+}
+
+.restaurantsList .restaurantInfo  #rating::before {
+    content: "\002605 ";
 }
 
 .restaurantsList .restaurantInfo  #like-button {
@@ -452,9 +442,6 @@ strong{
     width:fit-content;
 } 
 
-.restaurantsList .restaurantInfo  #rating::after {
-    content: "\00a0●";
-} 
 
 .restaurantsList .restaurantInfo  #category{
     display:inline;

@@ -15,7 +15,7 @@
     <?php show_header_menu(); ?>
 
     <section class="mainPage">
-        <img src = "images/DuCampua.jpg">
+        <img src = "images/image.jpg">
     </section>
 
     <?php show_footer(); ?>

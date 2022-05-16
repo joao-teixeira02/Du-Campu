@@ -10,9 +10,13 @@
             <div class = "nav-links">
                 <ul>
                     <li> <a href ="index.php">HOME</a></li>
-                    <li> <a href ="restaurants.html">RESTAURANTS</a></li>
-                    <li> <a href ="aboutUs.html">ABOUT US</a></li>
+                    <li> <a href ="restaurants.php">RESTAURANTS</a></li>
+                    
                     <li> <a href ="login.php"><?php echo(isLogged()?"PROFILE": "LOGIN"); ?></a></li>
+                    <li> 
+                        <input type="checkbox" id="cart"/>
+                        <label for="cart" > <img clickable src="images/cart1.png" width="20px" height="20px" alt="Cart"></label>
+                    </li>
                     <li> 
                         <input type="checkbox" id="lupa"/>
                         <input type="search" name="search" class="search" placeholder="Search">
