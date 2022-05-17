@@ -100,18 +100,4 @@ async function updateRestaurantList() {
       
     }
 
-    /*
-    <div class = "restaurantContainer" > 
-                    <img src = "https://picsum.photos/150/150?" alt = "">
-                    <article class = "restaurantInfo">
-                        <span id = "name">Restaurante do Zé</span>
-                        <span id = "address">Rua dos martelinhos 304</span>
-                        <span id = "rating">rating</span>
-                        <span id = "category">categoria</span>
-                        <span id = "price">Intervalo de preço: € - €€ </span>
-                        <button type = "button" id = "like-button" ></button>
-                    </article>
-                </div>
-    */
-
   }

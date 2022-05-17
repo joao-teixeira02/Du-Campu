@@ -8,6 +8,7 @@
     <head>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/position.css">
+        <script type="text/javascript" src="js/cart.js" defer></script>
         <title>Du'Campu</title>
     </head>
     <body>

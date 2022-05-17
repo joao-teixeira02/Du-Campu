@@ -47,6 +47,33 @@ header.menu{
     width: 10em;
 }
 
+/* CART */
+
+#cart_box{
+    display: none;
+    position: fixed;
+    width:  25em;
+    height: 10em;
+    right: 2em;
+    top: 5em;
+    z-index: 5;
+    background-color: white;
+    box-shadow: rgb(0, 0, 0, 0.35) 0px 0px 5px;
+    -webkit-transition: all 0.5s ease-in-out;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+[display_block]#cart_box{
+    display: block;
+}
+
+#cart_box .cross{
+    width: 1em;
+    height: 1em;
+}
+
+
 /* MAIN PAGE  */
 
 .mainPage img{

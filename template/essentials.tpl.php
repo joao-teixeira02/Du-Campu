@@ -1,5 +1,6 @@
 <?php 
     
+    require_once('cart.tpl.php');
     require_once('user_session.php');
 
     function show_header_menu(){?>
@@ -15,7 +16,7 @@
                     <li> <a href ="login.php"><?php echo(isLogged()?"PROFILE": "LOGIN"); ?></a></li>
                     <li> 
                         <input type="checkbox" id="cart"/>
-                        <label for="cart" > <img clickable src="images/cart1.png" width="20px" height="20px" alt="Cart"></label>
+                        <label for="cart" onclick="show_cart()" > <img clickable src="images/cart1.png" width="20px" height="20px" alt="Cart"></label>
                     </li>
                     <li> 
                         <input type="checkbox" id="lupa"/>
@@ -29,6 +30,9 @@
 
 
 <?php 
+
+    show_cart();
+
 
 }
 
