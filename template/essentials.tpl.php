@@ -39,7 +39,7 @@ function show_footer(){?>
     <div class = information>
         <div class = "box">
             <figure>
-                <a href = "index.html"> <img src = "images/logo.png"> </a>
+                <a href = "index.php"> <img src = "images/logo.png"> </a>
             </figure>
         </div>
 
