@@ -1,21 +1,24 @@
-function rangeLeft(){
-    let range = document.getElementById("rangeLeft");
-    range.value=Math.min(range.value,range.parentNode.childNodes[5].value-0.5);
-    let value = (range.value/parseInt(range.max))*100;
-    let  children = range.parentNode.childNodes[1].childNodes;
-    children[1].style.width=value+'%';
-    children[5].style.left=value+'%';
-    children[7].style.left=value+'%';children[11].style.left=value+'%';
-    children[11].childNodes[1].innerHTML=range.value;
-}
+const range= document.querySelectorAll('.range-slider input');
+progress = document.querySelector('.range-slider .progress');
+let gap = 0.1;
+const inputValue = document.querySelectorAll('.numberValinput');
 
-function rangeRight(){
-    let range = document.getElementById("rangeRight");
-    range.value=Math.max(range.value,range.parentNode.childNodes[3].value-(-0.5));
-    let value = (range.value/parseInt(range.max))*100;
-    let children = range.parentNode.childNodes[1].childNodes;
-    children[3].style.width=(100-value)+'%';
-    children[5].style.right=(100-value)+'%';
-    children[9].style.left=value+'%';children[13].style.left=value+'%';
-    children[13].childNodes[1].innerHTML=range.value;
-}
+range.forEach( input => {
+    input.addEventListener('input', e=>{
+        let minrange = parseInt(range[0].value);
+        let maxrange = parseInt(range[1].value);
+
+        if(maxrange - minrange < gap){
+            if(e.target.className === "range-min"){
+                range[0].value = maxrange - gap;
+            }
+            else{
+                range[1].value = minrange + gap;
+            } 
+        } 
+        else{
+            progress.style.left= (minrange/ range[0].max) * 100 + '%';
+            progress.style.right= 100 - (maxrange/ range[1].max) * 100 + '%';
+        }
+    })
+})

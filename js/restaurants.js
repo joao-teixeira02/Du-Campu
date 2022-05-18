@@ -16,9 +16,12 @@ for(category of categories_input){
 
 updateRestaurantList();
 
+
 async function updateRestaurantList() {
+  /*
     min_rating = rangeL.value
     max_rating = rangeR.value
+    */
     list_categories_str = "";
 
     for(category of categories_input){

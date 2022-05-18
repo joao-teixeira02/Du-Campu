@@ -65,10 +65,12 @@ function show_restaurant_category(){ ?>
 
             <section class = "price-range">
                 <p><h3>Price range</h3></p> 
-                    <input type="checkbox" id="€" name="classification" value="€"> <label for="€"></label>
-                    <input type="checkbox" id="€€" name="classification" value="€€"> <label for="€€"></label>
-                    <input type="checkbox" id="€€€" name="classification" value="€€€"> <label for="€€€"></label>
-                    <input type="checkbox" id="€€€€" name="classification" value="€€€€"> <label for="€€€€"></label>
+                    <input type="checkbox" id="€" name="classification" value="€"> 
+                    <label for="€" > <img clickable src="images/€.png" id=  "€" width="47px" height="40px" alt="€"></label>
+                    <input type="checkbox" id="€€" name="classification" value="€€"> 
+                    <label for="€€" > <img clickable src="images/€€.png" id=  "€€" width="50px" height="40px" alt="€€"></label>
+                    <input type="checkbox" id="€€€" name="classification" value="€€€"> 
+                    <label for="€€€" > <img clickable src="images/€€€.png" id=  "€€" width="55px" height="40px" alt="€€€"></label>
             </section>
             
             <br>
@@ -76,23 +78,17 @@ function show_restaurant_category(){ ?>
             <br>
 
             <section class = "classification">
-                <p><h3>Average Score</h3></p>
-                <div slider id="slider-distance">
-                    <div>
-                    <div inverse-left style="width:70%;"></div>
-                    <div inverse-right style="width:70%;"></div>
-                    <div range style="left:0%;right:0%;"></div>
-                    <span thumb style="left:0%;"></span>
-                    <span thumb style="left:100%;"></span>
-                    <div sign style="left:0%;">
-                        <span id="value">0.0</span>
+                    <div class="min-value numberVal">
+                        <input type="number" min="0" max="5" value="0" disabled>
+                    </div>   
+           
+                    <div class="range-slider">
+                        <div class="progress"></div>
+                        <input type="range" class="range-min" min="0" max="5" value="0" step="0.1">
+                        <input type="range" class="range-max" min="0" max="5" value="5" step="0.1">
                     </div>
-                    <div sign style="left:100%;">
-                        <span id="value">5.0</span>
-                    </div>
-                    </div>
-                    <input type="range" value="0" max="5" min="0" step="0.1" id="rangeLeft" oninput="rangeLeft();"/>
-                    <input type="range" value="5" max="5" min="0" step="0.1" id="rangeRight" oninput="rangeRight();"/>
+                    <div class="max-value numberVal">
+                        <input type="number" min="0" max="5" value="5" disabled>
                     </div>
             </section>
 
