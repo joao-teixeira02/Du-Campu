@@ -183,8 +183,6 @@ strong{
 
 /* RESTAURANTS LIST PRICE BAR*/
 
-
-
 .slider{
     position: relative;
     display: flex;
@@ -287,6 +285,7 @@ strong{
     font-family: 'Poppins', sans-serif;
     padding: 0 10px;
     padding-bottom: 20px;
+    margin-left: 0.6em;
 }
 
 .restaurants {
