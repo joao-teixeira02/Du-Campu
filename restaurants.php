@@ -80,8 +80,10 @@ function show_restaurant_category(){ ?>
             <br>
 
             <section class = "classification">
+                <p><h3>Classification</h3></p> 
+                <section class = "slider">
                     <div class="min-value numberVal">
-                        <input type="number" min="0" max="5" value="0" disabled>
+                        <span class="number"  disabled>0</span>
                     </div>   
            
                     <div class="range-slider">
@@ -90,8 +92,9 @@ function show_restaurant_category(){ ?>
                         <input type="range" class="range-max" min="0" max="5" value="5" step="0.1">
                     </div>
                     <div class="max-value numberVal">
-                        <input type="number" min="0" max="5" value="5" disabled>
+                        <span class="number" disabled>5</span>
                     </div>
+                </section>
             </section>
 
             </section>
