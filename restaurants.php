@@ -43,7 +43,7 @@ function show_restaurant_category(){ ?>
     <script type="text/javascript" src="js/range.js" defer></script>
     <script type="text/javascript" src="js/restaurants.js" defer></script>
     <script type="text/javascript" src="js/priceImageChange.js" defer></script>
-    
+    <script type="text/javascript" src="js/arrowChanger.js" defer></script>
 
 
     <title>Du'Campu</title>
@@ -54,9 +54,6 @@ function show_restaurant_category(){ ?>
     <?php show_header_menu(); ?>
 
     <main class = "restaurantsListPage">   
-
-        <h1>Explore the restaurants</h1>   
-         <br>    
 
         <section class = "restaurantsList">                                                                              
             <section class = "filters">
@@ -75,6 +72,7 @@ function show_restaurant_category(){ ?>
                     <label for="treseuro" > <img clickable src="images/3euro.png" id=  "treseuro" width="55px" height="40px" alt="3euro"></label>
             </section>
             
+            <br>
             <br>
             <br>
             <br>
@@ -105,7 +103,8 @@ function show_restaurant_category(){ ?>
                     <option value="rating"> Rating</option>
                     <option value="price"> Price</option>
                 </select>
-                <input type="checkbox" id="asc"> <label for="asc"></label> <br>
+                <input type="checkbox" id="asc"> <label for="asc">
+                <img clickable src="images/down.png" width="15px" height="15px" alt="asc" id="down" > <br>
                 
             </section>
 

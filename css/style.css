@@ -36,6 +36,10 @@ header.menu{
     display: none;  
 }
 
+#asc{
+    display: none;
+}
+
 .price-range [name=classification]{
     display: none;  
 }
