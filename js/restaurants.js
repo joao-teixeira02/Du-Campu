@@ -1,6 +1,6 @@
 const search = document.querySelector('input.search')
-const rangeL = document.querySelector('#rangeLeft')
-const rangeR = document.querySelector('#rangeRight')
+const rangeL = document.querySelector('.range-min')
+const rangeR = document.querySelector('.range-max')
 const categories_input = document.querySelectorAll('.categories input')
 const asc = document.querySelector('#asc')
 const sorter = document.querySelector('#sorter')
@@ -31,10 +31,9 @@ updateRestaurantList();
 
 
 async function updateRestaurantList() {
-  /*
+
     min_rating = rangeL.value
     max_rating = rangeR.value
-    */
     list_categories_str = "";
 
     for(category of categories_input){
