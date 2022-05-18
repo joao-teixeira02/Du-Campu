@@ -96,18 +96,66 @@
         }
 
 
-        static function search(PDO $db, string $name, array $category, array $prices, float $rating_min, float $rating_max, string $orderBy ) : array {
-            /*string $que = 'SELECT * FROM Restaurant WHERE name like \"%:name%\" AND  :rating_min <= (SELECT avg(points) FROM Reviews) <= :rating_max';*/
+        static function search(PDO $db, string $name, array $categories, array $prices, float $rating_min, float $rating_max, string $orderBy, bool $asc ) : array {
+            $query = "";
+
+            $name = trim($name);
+            if(!empty($name)){ 
+                // select a restaurant with a name like $nama, or that has a food with that name
+
+                $name = "%".$name."%";
+                $query .= ' SELECT id FROM Restaurant WHERE name like :name 
+                            UNION SELECT restaurant_id as id FROM Dish WHERE name like :name  INTERSECT ';
+
+            }
+            
+            $nCategories = count($categories)-1;
+
+            if($nCategories > 0){
+                // select restaurants with categories in categories
+                $query .= ' Select id FROM Restaurant join RestaurantCategory on (RestaurantCategory.id_restaurant = Restaurant.id) WHERE ';
+                
+                for($i = 0; $i<$nCategories; $i++){
+                    if($i != 0){
+                        $query .= ' OR ';
+                    }
+                    $query .= ' RestaurantCategory.id_category = :category'.$i;
+                }
+                
+                $query .= ' INTERSECT ';
+            }
+
+
+            // select a restaurant with the avg reviews score between rating_min and rating_max
+            $query .= ' SELECT id FROM Restaurant WHERE ( ( (SELECT avg(points) FROM Reviews Where Reviews.restaurant_id = Restaurant.id) 
+            BETWEEN CAST(:rating_min AS FLOAT) AND CAST(:rating_max AS FLOAT) ) ';
+            
+            // also select  if it doesn't have any reviews and rating_min equal to 0 
+            $query .= ' OR ( (SELECT count(points) FROM Reviews Where Reviews.restaurant_id = Restaurant.id) = 0 AND 0 = CAST(:rating_min AS FLOAT) ) )';
 
             
-            $stmt = $db->prepare('SELECT * FROM Restaurant WHERE name like "%%" AND  0 <= (SELECT avg(points) FROM Reviews) <= 5');
+            // select all columns of restaurant and de avg points of reviews (rating)
+            $query = "SELECT *, (SELECT avg(points) FROM Reviews Where Reviews.restaurant_id = Restaurant.id) as rating FROM Restaurant WHERE id in (".$query.")";
+          
+            if($orderBy === "rating"){
+                $query .= " order by rating " . ($asc?'asc':'desc');
+            }
 
-            /*
-            $stmt->bindParam(":name", $name);
+            $stmt = $db->prepare($query);            
+
+            if(!empty($name)){
+                
+                $name = '%'.$name.'%';
+                $stmt->bindParam(':name', $name);
+            }
             $stmt->bindParam(":rating_min", $rating_min);
             $stmt->bindParam(":rating_max", $rating_max);
-            /*$stmt->bindParam(":category", $category);*/
-            
+
+
+            for($i = 0; $i<$nCategories; $i++){
+                $stmt->bindParam(":category".$i, $categories[$i]);
+            }
+
 
             $stmt->execute();
             $restaurants = array();

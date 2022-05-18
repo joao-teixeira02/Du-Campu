@@ -6,12 +6,12 @@
         public string $name;
         
         public function __construct(int $id, string $name){ 
-        $this->id = $id;
-        $this->name= $name;
+            $this->id = $id;
+            $this->name= $name;
         }
 
         static function getCategories(PDO $db) : ?array {
-            $stmt = $db->prepare('SELECT * FROM Category');
+            $stmt = $db->prepare('SELECT * FROM Category;');
             $stmt->execute();
         
             $category = array();
