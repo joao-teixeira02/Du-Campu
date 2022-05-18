@@ -66,11 +66,11 @@ function show_restaurant_category(){ ?>
             <section class = "price-range">
                 <p><h3>Price range</h3></p> 
                     <input type="checkbox" id="€" name="classification" value="€"> 
-                    <label for="€" > <img clickable src="images/€.png" id=  "€" width="47px" height="40px" alt="€"></label>
+                    <label for="euro" > <img clickable src="images/euro.png" id=  "euro" width="47px" height="40px" alt="euro"></label>
                     <input type="checkbox" id="€€" name="classification" value="€€"> 
-                    <label for="€€" > <img clickable src="images/€€.png" id=  "€€" width="50px" height="40px" alt="€€"></label>
+                    <label for="2euro" > <img clickable src="images/2euro.png" id=  "€€" width="50px" height="40px" alt="2euro"></label>
                     <input type="checkbox" id="€€€" name="classification" value="€€€"> 
-                    <label for="€€€" > <img clickable src="images/€€€.png" id=  "€€" width="55px" height="40px" alt="€€€"></label>
+                    <label for="3euro" > <img clickable src="images/3euro.png" id=  "3euro" width="55px" height="40px" alt="3euro"></label>
             </section>
             
             <br>
