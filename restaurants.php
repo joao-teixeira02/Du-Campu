@@ -42,6 +42,8 @@ function show_restaurant_category(){ ?>
     <link rel="stylesheet" href="css/position.css">
     <script type="text/javascript" src="js/range.js" defer></script>
     <script type="text/javascript" src="js/restaurants.js" defer></script>
+    <script type="text/javascript" src="js/priceImageChange.js" defer></script>
+    
 
 
     <title>Du'Campu</title>
@@ -62,13 +64,13 @@ function show_restaurant_category(){ ?>
                 <?php show_restaurant_category(); ?>
 
             <br>
-
+    
             <section class = "price-range">
                 <p><h3>Price range</h3></p> 
                     <input type="checkbox" id="€" name="classification" value="€"> 
-                    <label for="euro" > <img clickable src="images/euro.png" id=  "euro" width="47px" height="40px" alt="euro"></label>
+                    <label for="euro" > <img clickable src="images/euro.png" id=  "euro" width="47px" height="40px" alt="euro" ></label>
                     <input type="checkbox" id="€€" name="classification" value="€€"> 
-                    <label for="2euro" > <img clickable src="images/2euro.png" id=  "€€" width="50px" height="40px" alt="2euro"></label>
+                    <label for="doiseuro" > <img clickable src="images/2euro.png" id=  "doiseuro" width="50px" height="40px" alt="2euro"></label>
                     <input type="checkbox" id="€€€" name="classification" value="€€€"> 
                     <label for="3euro" > <img clickable src="images/3euro.png" id=  "3euro" width="55px" height="40px" alt="3euro"></label>
             </section>
