@@ -308,6 +308,9 @@ strong{
 .orderBy #sorter{
     margin-left: 0.6em;
     margin-right: 0.4em;
+    border-color:#b6b6b6;
+    font-weight: lighter;
+    color:rgb(123, 123, 123)
 }
 
 .restaurantsList .restaurantContainer{
