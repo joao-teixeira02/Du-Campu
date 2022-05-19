@@ -1,7 +1,6 @@
 function addEventAsPriceImageChange(id_box, img_hoover, img_out, img_click){
     const box = document.querySelector(id_box)
 
-    
     box.addEventListener('click', (e) => {
         const this_box= document.getElementById(e.srcElement.id)
         this_box.toggleAttribute('isSelected')
