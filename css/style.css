@@ -53,9 +53,9 @@ header.menu{
     display: none;
     position: fixed;
     width:  25em;
-    height: 10em;
+    min-height: 20em;
     right: 2em;
-    top: 5em;
+    top: 5.8em;
     z-index: 5;
     background-color: white;
     box-shadow: rgb(0, 0, 0, 0.35) 0px 0px 5px;
@@ -71,8 +71,34 @@ header.menu{
 #cart_box .cross{
     width: 1em;
     height: 1em;
+    padding: 1em;
 }
 
+#empty_cart{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: 1em;
+
+}
+
+#empty_cart{
+    margin: auto;
+    align-items: center;
+    color: #b6b6b6;
+}
+
+#empty_cart_image{
+    width: 3em;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+#cart_box main{
+    height: 20em;
+}
 
 /* MAIN PAGE  */
 
