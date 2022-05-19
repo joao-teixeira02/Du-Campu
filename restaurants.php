@@ -19,7 +19,7 @@ function show_restaurant_category(){ ?>
                 ?>
                 <input type="checkbox" id="<?php echo ($category->id);?>"  
                 name="<?php echo ($category->name);?>" > 
-                <label for="<?php echo ($category->name);?>" >
+                <label for="<?php echo ($category->id);?>" >
                 <?php echo ($category->name);?></label> 
                 <br>
                 <?php 
