@@ -156,8 +156,24 @@
 
         <form>
             <input class="input" type="text" placeholder="Write your review here" name="r" id="review_input">
-            <input class="input" type="float" placeholder="Points from 0 to 5" name="p" id="points_input">
+            <input class="input" type="number" step="0.01" placeholder="Points from 0 to 5" name="p" id="points_input">
             <input formaction="action_review.php" formmethod="get" type="submit" class="white_button" value="Publish">
+        </form>
+
+        <form>
+            <input class="input" type="text" placeholder="Dish name" name="n" id="dish_input">
+            <input class="input" type="number" step="0.01" placeholder="Price" name="p" id="price_input">
+            <input class="input" type="text" placeholder="Dish type" name="t" id="type_input">
+            
+            <input formaction="action_add_dish.php" formmethod="get" type="submit" class="white_button" value="Insert">
+        </form>
+
+        <form>
+            <input class="input" type="text" placeholder="Restaurant name" name="n" id="restaurant_input">
+            <input class="input" type="text" placeholder="Address" name="a" id="address_input">
+            <input class="input" type="text" placeholder="Categories separated by comma" name="c" id="categories_input">
+            
+            <input formaction="action_add_restaurant.php" formmethod="get" type="submit" class="white_button" value="Insert">
         </form>
 
     </main>
