@@ -5,29 +5,7 @@ var aparecerCartTimerON = false
 var id = 0
 
 function close_cart(){
-    if(desaparecerCartTimerON )
-        return
-    console.log(cart_box.hasAttribute("display_block"))
-
-    if(aparecerCartTimerON)  
-        clearInterval(id);
-
-    cart_box.style.opacity = 1;
-    let opacity_value = 1.0;
-    
-    id = window.setInterval(desaparecer, 10);
-    desaparecerCartTimerON = true;
-    function desaparecer() {
-        console.log(cart_box.style.opacity )
-        if (cart_box.style.opacity == 0) {
-            cart_box.removeAttribute("display_block");
-            clearInterval(id);
-            desaparecerCartTimerON = false;
-        } else {
-            opacity_value-=0.1
-            cart_box.style.opacity = opacity_value.toFixed(1)
-        }
-    }
+    cart_box.removeAttribute("display_block");
 } 
 
 function show_cart(){
@@ -60,5 +38,26 @@ function show_cart(){
 } 
 
 document.addEventListener("scroll", close_cart);
+
+/* Minimizing Restaurant Orders*/
+
+const checkbox_list = document.querySelectorAll('#list_cart input[type="checkbox"]');
+
+for(const minimizing_checkbox of checkbox_list){
+    minimizing_checkbox.addEventListener("change", (e) => {
+            const this_checkbox = document.querySelector("#"+e.target.id);
+
+            let lala = "#" + e.target.id +" ~ * .cart_arrow"; 
+            
+            const this_checkbox_img = document.querySelector(lala);
+            console.log(this_checkbox_img + "\n" + lala)
+            if(this_checkbox.checked){
+                this_checkbox_img.src = "images/arrow_up.png"
+            }else{
+                this_checkbox_img.src = "images/arrow_down.png"
+            }
+        });
+
+}
 
 
