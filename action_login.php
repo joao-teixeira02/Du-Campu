@@ -1,10 +1,10 @@
 <?php
     declare(strict_types = 1);
-    session_start();
-
-    require_once('user_session.php');
+    require_once('utils/session.php');
     require_once('database/connection.db.php');
     require_once('database/customer.class.php');
+
+    $session = new Session();
 
     function validateLogin(string $username, string $password) : bool{
         $db = getDatabaseConnection();
@@ -23,7 +23,7 @@
     // validate login
     if (isset($_GET['u']) && isset($_GET['p'])){
         if(validateLogin($_GET['u'], $_GET['p'])){
-            $_SESSION["username"] = $_GET['u']; 
+            $session->setUsername($_GET['u']);
             header('Location: ' . "index.php");
             exit();
         }
