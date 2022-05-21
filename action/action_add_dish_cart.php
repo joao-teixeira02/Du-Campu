@@ -1,8 +1,8 @@
 <?php
     declare(strict_types = 1);
     
-    require_once("../cart.class.php");
-    require_once("../utils/session.php");
+    require_once(__DIR__ . "/../cart.class.php");
+    require_once(__DIR__ . "/../utils/session.php");
 
 
     if(isset($_GET["id_dish"]) && is_numeric($_GET["id_dish"]) && isset($_GET["dish_quantity"]) && is_numeric($_GET["dish_quantity"])){

@@ -1,7 +1,7 @@
 <?php
 
     class Cart{
-        private array $orders;
+        public array $orders;
         
         public function __construct(){ 
             $this->orders = array();

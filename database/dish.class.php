@@ -5,11 +5,13 @@
         public int $id;
         public string $name;
         public float $price;
+        public int $restaurant_id;
         
-        public function __construct(int $id, string $name, float $price){ 
+        public function __construct(int $id, string $name, float $price, int $restaurant_id){ 
             $this->id = $id;
             $this->name = $name;
             $this->price = $price;
+            $this->restaurant_id = $restaurant_id;
         }
 
         function getName() : string {
@@ -33,11 +35,29 @@
 
             $type = null;
             while ($type_data = $stmt->fetch()) {
-                $type = $type_data["name"];
+                $type = $type_data['name'];
                 
                 break;
             }
             return $type;
+        }
+
+        static function getDish(PDO $db, int $dish_id) : ?Dish {
+            
+            $stmt = $db->prepare('SELECT * FROM Dish WHERE id=:dish_id');
+            $stmt->bindParam(':dish_id', $dish_id);
+            $stmt->execute();
+
+            $dish_data = $stmt->fetch();
+            if($dish_data){
+                $dish = new Dish(intval($dish_data['id']), 
+                        $dish_data['name'],
+                        floatval($dish_data['price']), 
+                        intval($dish_data['restaurant_id']));
+                return $dish;
+            }else{
+                return null;
+            }
         }
 
 
