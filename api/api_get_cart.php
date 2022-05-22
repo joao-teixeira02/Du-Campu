@@ -12,11 +12,12 @@
 
     $cart_dishes = array();
 
+    // percorrer as dishes que estao no carrinho
     foreach ($session->cart->orders as $dish_id => $dish_quantity) {
         $dish = Dish::getDish($db, intval($dish_id));
         $restaurant = Restaurant::getRestaurant($db, intval($dish->restaurant_id));
 
-        $cart_dishes[$restaurant->id] = ['restaurant'=>$restaurant,'dish'=>$dish, 'quantity' => $dish_quantity];
+        $cart_dishes[$restaurant->id] = ['restaurant'=>$restaurant, 'orders'=>[['dish'=>$dish, 'quantity' => $dish_quantity]]];
     }
     
 

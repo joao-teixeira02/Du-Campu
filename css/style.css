@@ -78,57 +78,35 @@ header.menu{
 
 
 #cart_box main{
+    display: flex;
     grid-row: 2 span 2;
-    height: 20em;
 }
 
-
-#cart_box main{
-    grid-row: 2 span 2;
-    height: 20em;
-}
 
 /* When cart is empty*/
 
 #empty_cart{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    margin: 1em;
-
-}
-
-#empty_cart{
+    display: block;
     margin: auto;
-    align-items: center;
     color: #b6b6b6;
+    text-align: center;
 }
+
 
 #empty_cart_image{
     width: 3em;
     height: auto;
-    margin-bottom: 1em;
+    margin: auto;
 }
 
-
-
 /* When cart have orders*/
-
 
 #cart_box header{
     grid-row: 1;
 }
 
-
-
-#cart_box main {
-    grid-row: 2;
-    overflow-y: scroll;
-}
-
 #cart_box #check-in{
+    display: none;
     grid-row: 3;
     font-size: 1em;
     font-weight: bold;
@@ -152,6 +130,7 @@ header.menu{
 
 #list_cart{
     font-family: 'Poppins', sans-serif;
+    width: 100%;
     margin-left: 1em;
     margin-right: 1em;
     list-style: none;

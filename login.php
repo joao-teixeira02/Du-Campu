@@ -1,6 +1,5 @@
 <?php
     require_once('template/essentials.tpl.php');
-
 ?>
 
 <!DOCTYPE html>
