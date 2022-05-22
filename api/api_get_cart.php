@@ -16,8 +16,14 @@
     foreach ($session->cart->orders as $dish_id => $dish_quantity) {
         $dish = Dish::getDish($db, intval($dish_id));
         $restaurant = Restaurant::getRestaurant($db, intval($dish->restaurant_id));
+        $orders_list = array();
+        if(isset($cart_dishes[$restaurant->id])){
+            $orders_list  = $cart_dishes[$restaurant->id]['orders'];
+            
+        }
+        $orders_list[] = ['dish'=>$dish, 'quantity' => $dish_quantity];
 
-        $cart_dishes[$restaurant->id] = ['restaurant'=>$restaurant, 'orders'=>[['dish'=>$dish, 'quantity' => $dish_quantity]]];
+        $cart_dishes[$restaurant->id] = ['restaurant'=>$restaurant, 'orders'=>$orders_list];
     }
     
 

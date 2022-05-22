@@ -1,13 +1,11 @@
 <?php 
     declare(strict_types = 1);
-    
     require_once(__DIR__ . '/cart.tpl.php');
     require_once(__DIR__ . '/../utils/session.php');
 
-    
-
     function show_header_menu(){
         $session = new Session();
+    
         ?>
 
     <header class="menu">

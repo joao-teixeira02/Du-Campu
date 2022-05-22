@@ -27,7 +27,6 @@ function show_cart(){
     id = window.setInterval(aparecer, 10);
     aparecerCartTimerON = true;
     function aparecer() {
-        console.log(cart_box.style.opacity )
         if (cart_box.style.opacity != 1) {
             opacity_value+=0.1
             
@@ -54,7 +53,6 @@ for(const minimizing_checkbox of checkbox_list){
             let lala = "#" + e.target.id +" ~ * .cart_arrow"; 
             
             const this_checkbox_img = document.querySelector(lala);
-            console.log(this_checkbox_img + "\n" + lala)
             if(this_checkbox.checked){
                 this_checkbox_img.src = "images/arrow_up.png"
             }else{
@@ -72,28 +70,32 @@ async function update_cart(){
     const cart_info_map = new Map(Object.entries(cart_info));
 
     const check_in = document.querySelector("#check-in");
+    const empty_cart = document.querySelector("#empty_cart");
+    const main = document.querySelector('#cart_box main');
 
+    /* Clear list_cart if exists or create one */
+    let list_cart = document.querySelector('#cart_box main #list_cart');
+    if(list_cart){
+        list_cart.innerHTML = "";
+    }else{
+        list_cart = document.createElement('ul')
+        list_cart.setAttribute("id", "list_cart")
+    }
+    
     if(cart_info_map.size == 0){
         // empty
-        const empty_cart = document.querySelector("#empty_cart");
-        const main = document.querySelector('#cart_box main');
         
-        if(main){
-            main.style.gridRow = "";
-            main.style.overflowY = "";
-        }
+        main.style.gridRow = "";
+        main.style.overflowY = "";
 
         empty_cart.style.display = "block";
         check_in.style.display = "none";
+        list_cart.style.display = "none";
         return
     }
-
-
-    const list_cart = document.createElement('ul')
-    list_cart.setAttribute("id", "list_cart")
+    let total = 0
 
     for (const [restaurant_id, restaurant_orders] of cart_info_map) {
-        console.log(restaurant_orders)
         const restaurant_li = document.createElement('li')
 
         // restaurant checkbox
@@ -105,7 +107,7 @@ async function update_cart(){
         
         // restaurant checkbox label
         const restaurant_label = document.createElement('label')
-        list_cart.setAttribute("for", "restaurant_checkbox"+restaurant_id);
+        restaurant_label.setAttribute("for", "restaurant_checkbox"+restaurant_id);
             
         // img arrow
         const arrow_img = document.createElement('img')
@@ -123,14 +125,22 @@ async function update_cart(){
         // orders_list
         const orders_list = document.createElement('ul')
         orders_list.classList.add("orders_list")
-        
 
         // percorrer orders
         for(const order of  restaurant_orders.orders){
             const dish_li = document.createElement('li')
-            dish_li.innerHTML = '\
-            <img class="red_cross" clickable src="images/red_cross.png" width="10px" height="10px" alt="remove item"/> '
-            
+
+            const dish_cross = document.createElement('img')
+            dish_cross.classList.add("red_cross")
+            dish_cross.setAttribute("clickable", "")
+            dish_cross.setAttribute("src", "images/red_cross.png")
+            dish_cross.setAttribute("alt", "remove item")
+            dish_cross.setAttribute("width", "10px")
+            dish_cross.setAttribute("height", "10px")
+            dish_cross.setAttribute("data-id", order.dish.id)
+            dish_cross.addEventListener("click", removeDishEvent)
+
+            dish_li.appendChild(dish_cross)
             const options_select = document.createElement('select')
             options_select.innerHTML = "";
             for(let i = 1; i <= 99; i++){
@@ -138,6 +148,8 @@ async function update_cart(){
             }
 
             options_select.value = order.quantity
+            options_select.addEventListener("change", changeDishEvent)
+            options_select.setAttribute("data-id", order.dish.id)
             dish_li.appendChild(options_select)
 
             const dish_name = document.createElement('span')
@@ -146,6 +158,7 @@ async function update_cart(){
             const dish_price = document.createElement('span')
             dish_price.classList.add("cost");
             dish_price.innerText = parseFloat(order.dish.price*order.quantity).toFixed(2)
+            total += order.dish.price*order.quantity;
 
             dish_li.appendChild(dish_name);
             dish_li.appendChild(dish_price);
@@ -160,19 +173,32 @@ async function update_cart(){
 
         list_cart.appendChild(restaurant_li)
     }
-    const main = document.querySelector('#cart_box main');
-    
-    if(main){
-        main.innerHTML = ""
-        main.appendChild(list_cart);
-        main.style.gridRow = 2;
-        main.style.overflowY = "scroll";
-    }
 
+    
+    main.appendChild(list_cart);
+    main.style.gridRowStart = 2;
+    main.style.gridRowSpan = 1;  
+    main.style.overflowY = "scroll";  
+    empty_cart.style.display = "none";
     check_in.style.display = "block";
+    check_in.innerText = 'Check-in ' + total.toFixed(2) +'€';
     
 }
 
 
+
+/* remove dishes */
+function removeDishEvent(e){
+    const id = e.target.getAttribute('data-id');
+    fetch('action/action_add_dish_cart.php?id_dish='+id+'&dish_quantity=0').then(update_cart);
+}
+
+
+/* change dish quantity */
+function changeDishEvent(e){
+    const id = e.target.getAttribute('data-id');
+    const selected_value = e.target.value;
+    fetch('action/action_add_dish_cart.php?id_dish='+id+'&dish_quantity='+selected_value).then(update_cart);
+}
 
 

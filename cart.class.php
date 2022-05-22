@@ -8,7 +8,17 @@
         }
 
         public function setDishQuantity(int $idDish, int $quantity){
-            $this->orders[$idDish] = $quantity;
+            if ($quantity===0 && isset($this->orders[$idDish])){
+                unset($this->orders[$idDish]);  
+            }else{
+                $this->orders[$idDish] = $quantity;
+            }
+        }
+
+        public function removeDish(int $idDish){
+            if (isset($this->orders[$idDish])){
+                unset($this->orders[$idDish]);  
+            }
         }
 
 

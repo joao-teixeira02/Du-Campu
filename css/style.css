@@ -54,6 +54,7 @@ header.menu{
     position: fixed;
     width:  25em;
     min-height: 20em;
+    max-height: 25em;
     right: 2em;
     top: 5.8em;
     z-index: 5;
@@ -130,10 +131,16 @@ header.menu{
 
 #list_cart{
     font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin-left: 1em;
     margin-right: 1em;
     list-style: none;
+}
+
+#list_cart li{
+    width: 100%;
 }
 
 #list_cart h3 {
@@ -142,6 +149,7 @@ header.menu{
 }
 
 #list_cart .orders_list li{
+    width: 100%;
     display: grid;
     grid-template-columns: 0.8em 3em 1fr 3em ;
     column-gap: 0.5em;

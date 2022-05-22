@@ -11,7 +11,7 @@
             <main>
                 <div id="empty_cart">
                     <img id = "empty_cart_image" src = "images/cart2.png" width="100px" height="100px" alt="empty cart">
-                    <p>Add items from a restaurant to start a new cart<p>
+                    <p>Add items from a restaurant to start a new cart</p>
                 </div>
             
             </main>
