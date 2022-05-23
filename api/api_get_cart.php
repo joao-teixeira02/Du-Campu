@@ -29,4 +29,6 @@
 
     echo(json_encode($cart_dishes));
 
+    
+
 ?>
