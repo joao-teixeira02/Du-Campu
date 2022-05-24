@@ -1,10 +1,10 @@
 <?php
     declare(strict_types = 1);
-    ini_set("precision", "2");
+    ini_set('precision', '2');
     
-    require_once('database/dish.class.php');
-    require_once('database/connection.db.php');
-
+    require_once(__DIR__ . '/dish.class.php');
+    require_once(__DIR__ . '/connection.db.php');
+    
     class Restaurant{
         public int $id;
         public string $name;
@@ -60,7 +60,8 @@
                 $dishes[] = new Dish(
                     intval($dish['id']),
                     $dish['name'],
-                    floatval($dish['price'])
+                    floatval($dish['price']),
+                    intval($dish['restaurant_id'])
                 );
                 
             }

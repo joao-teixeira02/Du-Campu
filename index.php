@@ -10,14 +10,14 @@
         <header class = "imagesHeader">
             <div class = "nav-links">
             <ul>
-                <li> <a href ="images.html">LOGIN</a></li>
+                <li> <a href ="login.php">LOGIN</a></li>
                 <li> <a href ="restaurants.php">RESTAURANTS</a></li>
             </ul> 
         </div>        
         </header>
 
         <div class="searchContainer">
-            <a href = "images.html"> <img src = "images/logo.png" id = "logo"> </a>
+            <a href = "index.php"> <img src = "images/logo.png" id = "logo"> </a>
             <p> FIND THE BEST VEGETARIAN RESTAURANTS</p>
             <div class = "imagesSearch">
                 <input type="text" placeholder = "Search vegetarian restaurants...." class = "search-box">

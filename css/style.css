@@ -59,6 +59,282 @@ header.menu{
     width: 10em;
 }
 
+/* CART */
+
+#cart_box{
+    display: none;
+    position: fixed;
+    width:  25em;
+    min-height: 20em;
+    max-height: 25em;
+    right: 2em;
+    top: 5.8em;
+    z-index: 5;
+    background-color: white;
+    box-shadow: rgb(0, 0, 0, 0.35) 0px 0px 5px;
+    -webkit-transition: all 0.5s ease-in-out;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+
+    grid-template-rows: auto 1fr 4.5em;
+}
+
+[display_block]#cart_box{
+    display: grid;
+}
+
+#cart_box .cross{
+    width: 2m;
+    height: 2em;
+    padding: 1em;
+}
+
+
+#cart_box main{
+    display: flex;
+    grid-row: 2 span 2;
+}
+
+
+/* When cart is empty*/
+
+#empty_cart{
+    display: block;
+    margin: auto;
+    color: #b6b6b6;
+    text-align: center;
+}
+
+
+#empty_cart_image{
+    width: 3em;
+    height: auto;
+    margin: auto;
+}
+
+/* When cart have orders*/
+
+#cart_box header{
+    grid-row: 1;
+}
+
+#cart_box #check-in{
+    text-decoration: none;
+
+    display: none;
+    grid-row: 3;
+    font-size: 1em;
+    font-weight: bold;
+
+    font-family: 'Poppins', sans-serif;
+    
+    color: white;
+    background-color: rgb(15,20,24);
+
+    margin-bottom: 1em;
+    margin-top: 1em;
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    width: 10em;
+    border-radius: 1em;
+
+    align-items:center;/*Vertical align*/
+    justify-content:center;/*horizontal align*/
+}
+
+#cart_box #check-in:hover{
+    background-color: rgb(69, 69, 69);
+}
+
+#list_cart{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 1em;
+    margin-right: 1em;
+    list-style: none;
+}
+
+#list_cart li{
+    width: 100%;
+}
+
+#list_cart h3 {
+    display: inline-block;
+    margin-bottom: 0.5em;
+}
+
+#list_cart .orders_list li{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.8em 3em 1fr 3em ;
+    column-gap: 0.5em;
+    margin-bottom: 0.4em;
+    margin-left: 0.5em;
+}
+
+#list_cart .orders_list{
+    margin-bottom: 1em;
+}
+
+#list_cart .red_cross{
+    grid-column: 1;
+    width: 1em;
+    height: auto;
+    vertical-align: middle;
+    margin: auto;
+}
+
+#list_cart .orders_list li select{
+    grid-column: 2;
+    width: 3em;
+}
+
+#list_cart .orders_list .dish_name{
+    grid-column: 3;
+}
+
+
+#list_cart .orders_list .cost{
+    grid-column: 4;
+}
+
+#list_cart input[type="checkbox"]{
+    display: none;
+}
+
+.cart_arrow{
+    width: 1em;
+    margin-left: 5px;
+    height: auto;
+}
+
+
+#list_cart input[type="checkbox"]:checked ~ .orders_list{
+    display: none;
+}
+
+/* ADD order popup */
+
+.background_filter{
+    display: none;
+    position: fixed;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #b6b6b6;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+#add_order{
+    display: none;
+    z-index: 3;
+    position: fixed;
+    margin: auto;
+    padding: 0;
+    left:0;
+    right:0;
+    bottom:0;
+    
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+
+    width: 40em;
+    height: 40em;
+
+}
+
+#add_order #dish_price{
+    font-size: 25px;  
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#add_order #dish_price::after{
+    content: ' €';
+}
+
+
+#add_order #dish_name{
+    font-size: 30px;
+    font-weight: bolder;  
+}
+
+#add_order #close{
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 2em;
+    height: auto;
+}
+
+#add_order #img_order{
+    width: 100%;
+    object-fit: contain;
+    height: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#add_order main{
+    margin: 1em;
+}
+
+#pedido_info{
+    position: absolute;
+    height: 3em;
+    width: calc(100% - 2em);
+    bottom: 1em;
+    left: 1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1em;
+}
+
+#pedido_info .select_quantity{
+    display: flex;
+    flex-direction: row;
+    grid-column: 1;
+} 
+
+#pedido_info #minus_dish{
+    width: 3em;
+    height: auto;
+
+}
+
+#pedido_info #minus_dish:hover{
+    width: 3em;
+    height: auto;
+}
+
+#pedido_info #quantity{
+    width: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    font-weight: bolder;
+    font-size: 1.5rem;
+
+    align-self: center;
+    box-sizing: content-box;
+    vertical-align: middle;
+
+}
+
+#pedido_info button#add_cart{
+    grid-column: 2;
+
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    font-size: medium;
+    color: white;
+
+}
+
 /* MAIN PAGE  */
 
 .mainPage img{

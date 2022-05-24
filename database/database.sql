@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS "Order" (
 	"id"	INTEGER,
 	"state_id"	INTEGER NOT NULL,
 	"customer_id"	INTEGER NOT NULL,
+	"date"	DATETIME NOT NULL Default CURRENT_TIMESTAMP ,
 	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("state_id") REFERENCES "State"("id"),
 	FOREIGN KEY("customer_id") REFERENCES "Customer"("id")

@@ -45,6 +45,7 @@ function show_restaurant_category(){ ?>
     <script type="text/javascript" src="js/restaurants.js" defer></script>
     <script type="text/javascript" src="js/priceImageChange.js" defer></script>
     <script type="text/javascript" src="js/arrowChanger.js" defer></script>
+    <script type="text/javascript" src="js/cart.js" defer></script>
 
     <title>Du'Campu</title>
 </head>

@@ -1,10 +1,9 @@
 <?php
     declare(strict_types = 1);
-
-    require_once('template/essentials.tpl.php');
-    require_once('database/restaurant.class.php');
-    require_once('database/dish.class.php');
-    require_once('database/connection.db.php');
+    require_once(__DIR__ . '/template/essentials.tpl.php');
+    require_once(__DIR__ . '/database/restaurant.class.php');
+    require_once(__DIR__ . '/database/dish.class.php');
+    require_once(__DIR__ . '/database/connection.db.php');
     
 
     function show_dishes_types(int $id){ ?>
@@ -81,7 +80,11 @@
                 foreach($dishes as $dish){ 
                     if ($dish->getType($db) === $type) { ?>
                         <li>
-                        <figure class="comida" id="comida1">
+                        <figure class="comida" clickable onclick="open_add_order_popup(this);" 
+                            data-dish_id="<?php echo($dish->id)?>"
+                            data-dish_name="<?php echo($dish->getName())?>"
+                            data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"
+                            data-dish_price="<?php echo($dish->getPrice())?>"   >
                             <img src="<?php echo($dish->getPhoto($db, $id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
                             <figcaption> <?php echo($dish->getName()); ?> </figcaption>
                             <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
@@ -97,7 +100,43 @@
 
             }
 
-    } 
+    }
+
+    
+    function create_add_order(){
+        ?>
+        <div class = "background_filter">
+
+        </div>
+
+        <article id="add_order">
+            <header>
+                <img id="close" clickable width="50px" height="50px" src="images/close.png" />
+                <img id="img_order" width="100px" height="100px" src="" />
+            </header>
+            <main>
+                <h1 id="dish_name">Chicken Nuggets</h1>
+                <h2 id="dish_price">2.94€</h2>
+
+                <form id="pedido_info" action="/action/action_add_dish_cart.php" method="get">
+                    <div class="select_quantity">
+                        <img id="minus_dish" clickable src="images/minus_light.png" width="50px" height="50px" alt="minus one dish" />
+                        <span id="quantity">1</span>
+                        <input id="quantity_input" name="dish_quantity" type = "hidden" value="1" />
+                        <input id="id_dish_input" name="id_dish" type = "hidden" value="1" />
+                        <img id="add_dish" clickable src="images/plus_light.png" width="50px" height="50px" alt="plus one dish" />
+                    </div>
+                    
+                    <button clickable type="submit" id="add_cart" > Add to order</button>
+                </form>
+            </main>
+
+        </article>
+
+        <?php
+
+    }
+
         ?>
 
 <!DOCTYPE html>
@@ -106,6 +145,8 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/position.css">
+        <script type="text/javascript" src="js/cart.js" defer></script>
+
         <title>Du'Campu</title>
     </head>
     <body>
@@ -139,6 +180,10 @@
     </main>
 
 
-    <?php show_footer(); ?>
+    <?php 
+    create_add_order();
+    
+    show_footer(); 
+    ?>
     </body>
 </html>

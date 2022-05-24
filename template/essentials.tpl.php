@@ -1,8 +1,12 @@
 <?php 
-    
-    require_once('user_session.php');
+    declare(strict_types = 1);
+    require_once(__DIR__ . '/cart.tpl.php');
+    require_once(__DIR__ . '/../utils/session.php');
 
-    function show_header_menu(){?>
+    function show_header_menu(){
+        $session = new Session();
+    
+        ?>
 
     <header class="menu">
         <nav>
@@ -12,10 +16,10 @@
                     <li> <a href ="index.php">HOME</a></li>
                     <li> <a href ="restaurants.php">RESTAURANTS</a></li>
                     
-                    <li> <a href ="login.php"><?php echo(isLogged()?"PROFILE": "LOGIN"); ?></a></li>
+                    <li> <a href ="login.php"><?php echo($session->isLogged()?"PROFILE": "LOGIN"); ?></a></li>
                     <li> 
                         <input type="checkbox" id="cart"/>
-                        <label for="cart" > <img clickable src="images/cart1.png" width="20px" height="20px" alt="Cart"
+                        <label for="cart"  onclick="show_cart()" > <img clickable src="images/cart1.png" width="20px" height="20px" alt="Cart"
                         onmouseover="this.src = 'images/cart1Hoover.png'"  onmouseout="this.src = 'images/cart1.png'"></label>
                     </li>
                     <li> 
@@ -31,6 +35,9 @@
 
 
 <?php 
+
+    show_cart();
+
 
 }
 

@@ -108,5 +108,5 @@ async function updateRestaurantList() {
     }
     
     addEventAsLikeButton('.likeIcon', 'images/heartHoover.png', 'images/heartNotSelected.png', 'images/heart.png')
-  }
+}
 
