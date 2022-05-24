@@ -30,6 +30,7 @@ for(category of categories_input){
 updateRestaurantList();
 
 
+
 async function updateRestaurantList() {
 
     min_rating = rangeL.value
@@ -82,38 +83,30 @@ async function updateRestaurantList() {
         if(category.innerHTML == ""){
           category.innerHTML +=  c
         }
-        else category.innerHTML +=  " , " + c
+        else category.innerHTML +=  " • " + c
     
       }
       restaurantInfo.appendChild(category)
 
       const price = document.createElement('span')
       price.setAttribute("id", "price")
-      price.innerHTML = "$"
+      price.innerHTML = "€"
       restaurantInfo.appendChild(price)
 
-      const like_button = document.createElement('button')
-      like_button.setAttribute("id", "like-button")
-      like_button.setAttribute("type", "button")
-      restaurantInfo.appendChild(like_button)
+      const likeIcon = document.createElement('img')
+      likeIcon.src = 'images/heartNotSelected.png'
+      likeIcon.setAttribute("id", "likeIcon"+restaurant.id)
+      likeIcon.classList.add("likeIcon")
+      likeIcon.style.width = "30px"
+      likeIcon.style.height = "30px"
+      restaurantInfo.appendChild(likeIcon)
+
 
       restaurantContainer.appendChild(restaurantInfo)
       section.appendChild(restaurantContainer)
       
     }
-
-    /*
-    <div class = "restaurantContainer" > 
-                    <img src = "https://picsum.photos/150/150?" alt = "">
-                    <article class = "restaurantInfo">
-                        <span id = "name">Restaurante do Zé</span>
-                        <span id = "address">Rua dos martelinhos 304</span>
-                        <span id = "rating">rating</span>
-                        <span id = "category">categoria</span>
-                        <span id = "price">Intervalo de preço: € - €€ </span>
-                        <button type = "button" id = "like-button" ></button>
-                    </article>
-                </div>
-    */
-
+    
+    addEventAsLikeButton('.likeIcon', 'images/heartHoover.png', 'images/heartNotSelected.png', 'images/heart.png')
   }
+

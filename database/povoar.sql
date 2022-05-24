@@ -6,7 +6,7 @@ INSERT INTO Owner(username, name, mail, password, address, phone) VALUES ('adeli
 INSERT INTO Owner(username, name, mail, password, address, phone) VALUES ('sergiocalado', 'Sérgio Calado', 'sergiocalado@gmail.com', '3b7573f0', '', '911816913');
 
 INSERT INTO Restaurant (name, address, owner_id) VALUES ("Bao's - Taiwanese Burger", 'R. de Cedofeita 263, 4050-174 Porto', 1);
-INSERT INTO Restaurant (name, address, owner_id) VALUES ("AM Indiano Restaurant", 'R. do Gen. Torres 1220 piso -1 LJ 24, 4400-164 Vila Nova de Gaia', 2);
+INSERT INTO Restaurant (name, address, owner_id) VALUES ("AM Indiano Restaurant", 'R. do Gen. Torres 1220, 4400-164 Vila Nova de Gaia', 2);
 INSERT INTO Restaurant (name, address, owner_id) VALUES ("Thamel Restaurant", 'Rua da Picaria 25, 4000-407 Porto', 3);
 INSERT INTO Restaurant (name, address, owner_id) VALUES ("Mexcanita", 'Rua da Nené 49, 4050-148 Porto', 1);
 

@@ -19,7 +19,7 @@ function show_restaurant_category(){ ?>
                 ?>
                 <input type="checkbox" id="<?php echo ($category->id);?>"  
                 name="<?php echo ($category->name);?>" > 
-                <label for="<?php echo ($category->name);?>" >
+                <label for="<?php echo ($category->id);?>" >
                 <?php echo ($category->name);?></label> 
                 <br>
                 <?php 
@@ -40,9 +40,11 @@ function show_restaurant_category(){ ?>
 <head>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/position.css">
+    <script type="text/javascript" src="js/likeButton.js"></script>
     <script type="text/javascript" src="js/range.js" defer></script>
     <script type="text/javascript" src="js/restaurants.js" defer></script>
-
+    <script type="text/javascript" src="js/priceImageChange.js" defer></script>
+    <script type="text/javascript" src="js/arrowChanger.js" defer></script>
 
     <title>Du'Campu</title>
 </head>
@@ -53,33 +55,33 @@ function show_restaurant_category(){ ?>
 
     <main class = "restaurantsListPage">   
 
-        <h1>Explore the restaurants</h1>   
-         <br>    
-
         <section class = "restaurantsList">                                                                              
             <section class = "filters">
 
                 <?php show_restaurant_category(); ?>
 
             <br>
-
+    
             <section class = "price-range">
                 <p><h3>Price range</h3></p> 
                     <input type="checkbox" id="€" name="classification" value="€"> 
-                    <label for="€" > <img clickable src="images/€.png" id=  "€" width="47px" height="40px" alt="€"></label>
+                    <label for="euro" > <img clickable src="images/euro.png" id=  "euro" width="47px" height="40px" alt="euro" ></label>
                     <input type="checkbox" id="€€" name="classification" value="€€"> 
-                    <label for="€€" > <img clickable src="images/€€.png" id=  "€€" width="50px" height="40px" alt="€€"></label>
+                    <label for="doiseuro" > <img clickable src="images/2euro.png" id=  "doiseuro" width="50px" height="40px" alt="2euro"></label>
                     <input type="checkbox" id="€€€" name="classification" value="€€€"> 
-                    <label for="€€€" > <img clickable src="images/€€€.png" id=  "€€" width="55px" height="40px" alt="€€€"></label>
+                    <label for="treseuro" > <img clickable src="images/3euro.png" id=  "treseuro" width="55px" height="40px" alt="3euro"></label>
             </section>
             
             <br>
             <br>
             <br>
+            <br>
 
             <section class = "classification">
+                <p><h3>Classification</h3></p> 
+                <section class = "slider">
                     <div class="min-value numberVal">
-                        <input type="number" min="0" max="5" value="0" disabled>
+                        <span class="number"  disabled>0</span>
                     </div>   
            
                     <div class="range-slider">
@@ -88,8 +90,9 @@ function show_restaurant_category(){ ?>
                         <input type="range" class="range-max" min="0" max="5" value="5" step="0.1">
                     </div>
                     <div class="max-value numberVal">
-                        <input type="number" min="0" max="5" value="5" disabled>
+                        <span class="number" disabled>5</span>
                     </div>
+                </section>
             </section>
 
             </section>
@@ -100,7 +103,8 @@ function show_restaurant_category(){ ?>
                     <option value="rating"> Rating</option>
                     <option value="price"> Price</option>
                 </select>
-                <input type="checkbox" id="asc"> <label for="asc"></label> <br>
+                <input type="checkbox" id="asc"> <label for="asc">
+                <img clickable src="images/down.png" width="15px" height="15px" alt="asc" id="down" > <br>
                 
             </section>
 

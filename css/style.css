@@ -24,17 +24,16 @@ header.menu{
 }
 
 .menu .nav-links ul li a:hover{
-    color: rgb(214, 156, 92)
+    color: rgb(214, 156, 92);
 }
 
-
+#asc,
+#cart,
 #lupa{
     display: none;  
 }
 
-#cart{
-    display: none;  
-}
+
 
 .price-range [name=classification]{
     display: none;  
@@ -182,7 +181,8 @@ strong{
 
 
 /* RESTAURANTS LIST PRICE BAR*/
-.classification{
+
+.slider{
     position: relative;
     display: flex;
     justify-content: center;
@@ -193,24 +193,20 @@ strong{
     border-radius: 20px;
 }
 
-
-.classification input[type="number"]{
-    width: 25px;
-    height: 25px;
+.slider .number{
+    display: inline-block;
+    width: 30px;
+    height: 20px;
     background: white;
     border: 1px solid #ddd;
-    font-size: 10px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
     text-align: center;
     border-radius: 5px;
 }
 
-.classification input[type="number"]::webkit-outer-spin-button,
-.classification input[type="number"]::webkit-inner-spin-button{
-    -webkit-appearance: none;
-}
 
-.classification .range-slider{
+.slider .range-slider{
     position: relative;
     width: 800px;
     height: 5px;
@@ -220,7 +216,7 @@ strong{
     margin: 10px;  
 }
 
-.classification .range-slider .progress{
+.slider .range-slider .progress{
     left: 25%;
     right: 25%;
     height: 100%;
@@ -230,7 +226,7 @@ strong{
 }
 
 
-.classification .range-slider input[type="range"]{
+.slider .range-slider input[type="range"]{
     position: absolute;
     top: -8px;
     width: 101%;
@@ -241,7 +237,7 @@ strong{
 }
 
 
-.classification .range-slider input::-webkit-slider-thumb{
+.slider .range-slider input::-webkit-slider-thumb{
     pointer-events: auto;
     -webkit-appearance: none;
     width: 17px;
@@ -259,7 +255,6 @@ strong{
 }
 
 /* restaurant list */
-
 
 .restaurantsListPage{
     font-family: 'Poppins', sans-serif;
@@ -288,6 +283,11 @@ strong{
     font-family: 'Poppins', sans-serif;
     padding: 0 10px;
     padding-bottom: 20px;
+    margin-left: 0.6em;
+}
+
+.filters p{
+    font-weight: 800;
 }
 
 .restaurants {
@@ -308,22 +308,27 @@ strong{
 .orderBy #sorter{
     margin-left: 0.6em;
     margin-right: 0.4em;
+    border-color:#b6b6b6;
+    font-weight: lighter;
+    color:rgb(123, 123, 123)
 }
 
 .restaurantsList .restaurantContainer{
     position: relative;
+    box-shadow: #b6b6b6;
 }
 
-.restaurantsList .restaurantContainer {
+.restaurantsList .restaurantContainer{
     display: flex;
     flex-direction: row;
     margin:0.5em;
-    background-color: rgba(0, 0, 0, 0.152);
+    background-color: rgba(0, 0, 0, 0.09);
     border-radius: 25px;
     padding: 1em;
     width: 35em;
     height: 150px;
     cursor: pointer;
+    box-shadow: rgb(183, 181, 181);
 }
 
 #category ul {
@@ -345,33 +350,48 @@ strong{
     align-self: auto;
     display: block;
     font-size: 1.2em;
-    font-weight: bold;
+    font-weight: 900;
+    color: rgb(214, 156, 92);
+    width:fit-content;
 }
 
 .restaurantsList .restaurantInfo  #address {
     padding-bottom: 3em;
     display: block;
+    font-weight: lighter;
+    font-size: small;
+    width:fit-content;
+    height: fit-content;
+    color:  rgb(91, 90, 90);
+}
+
+.restaurantsList .restaurantInfo  #price::before {
+    content: "Price range: "
 }
 
 .restaurantsList .restaurantInfo  #price {
     align-self:baseline;
     display: block;
+    color:  rgb(91, 90, 90, 0.8);
+    font-weight: 700;
 }
 
 
 .restaurantsList .restaurantInfo  #rating::after {
     content: "\00a0•\00a0";
+    font-weight: bolder;
 }
 
 .restaurantsList .restaurantInfo  #rating::before {
+    color: rgb(214, 156, 92);
     content: "\002605 ";
 }
 
-.restaurantsList .restaurantInfo  #like-button {
+.restaurantsList .restaurantInfo  .likeIcon {
     cursor: pointer;
     position: absolute;
-    top:3em;
-    right:3em;
+    top: 23px;
+    right:2em;
     width:20px;
     height:20px;
 }
@@ -379,20 +399,58 @@ strong{
 .restaurantsList .restaurantInfo  #rating {
     display:inline-flex;
     width:fit-content;
+    color:  rgb(91, 90, 90, 0.8);
+    font-weight: 700;
 } 
-
-
-.restaurantsList .restaurantInfo  #category{
-    display:inline;
-    width:fit-content;
-} 
-
 
 .restaurantsList .restaurants .restaurantContainer:hover{
     box-shadow: 0 0 1em  rgb(183, 181, 181);
     transition: 0.3s ease-in-out;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.205);
 }
+
+/* checkbox pretty */
+.categories input[type=checkbox]{
+    display: block;
+    margin: 0.2em;
+    cursor: pointer;
+    padding: 0.2em;
+  }
+  
+  .categories input[type=checkbox] {
+    display: none;
+  }
+  
+  .categories input[type=checkbox] +label:before {
+    content: "";
+    border: 0.1em solid #000;
+    border-radius: 0.2em;
+    display: inline-flex;
+    flex-direction: row;
+    width: 0.5em;
+    height: 0.5em;
+    padding-top: 0.15em;
+    padding-left: 0.2em;
+    padding-bottom: 0.15em;
+    margin-right: 0.2em;
+    vertical-align: middle;
+    color: transparent;
+    transition: .2s;
+  }
+  
+  .categories input[type=checkbox] + :active:before {
+    transform: scale(2);
+  }
+  
+  .categories input[type=checkbox]:checked + :before {
+    background-color: rgb(214, 156, 92);
+    border-color: rgb(214, 156, 92);
+  }
+  
+  .categories input[type=checkbox]:disabled + :before {
+    transform: scale(3);
+  }
+  
 
 /* LOGIN  */
 

@@ -15,12 +15,14 @@
                     <li> <a href ="login.php"><?php echo(isLogged()?"PROFILE": "LOGIN"); ?></a></li>
                     <li> 
                         <input type="checkbox" id="cart"/>
-                        <label for="cart" > <img clickable src="images/cart1.png" width="20px" height="20px" alt="Cart"></label>
+                        <label for="cart" > <img clickable src="images/cart1.png" width="20px" height="20px" alt="Cart"
+                        onmouseover="this.src = 'images/cart1Hoover.png'"  onmouseout="this.src = 'images/cart1.png'"></label>
                     </li>
                     <li> 
                         <input type="checkbox" id="lupa"/>
                         <input type="search" name="search" class="search" placeholder="Search">
-                        <label for="lupa" > <img clickable src="images/lupa.png" width="20px" height="20px" alt="Lupa"></label>
+                        <label for="lupa" > <img clickable src="images/lupa.png" width="20px" height="20px" alt="Lupa" 
+                        onmouseover="this.src = 'images/lupaHoover.png'"  onmouseout="this.src = 'images/lupa.png'"></label>
                     </li>
                 </ul>
             </div>
