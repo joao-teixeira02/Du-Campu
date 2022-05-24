@@ -16,7 +16,7 @@
             
             </main>
 
-            <button id = "check-in"> Check-in  2000 €</button>
+            <a clickable id = "check-in" href="/action/action_add_order.php" > Check-in  2000 €</a>
 
 
         </article>

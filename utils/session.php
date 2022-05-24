@@ -30,7 +30,7 @@
         }
 
         function getUsername() : string{
-            if(isLogged() === TRUE){
+            if($this->isLogged() === TRUE){
                 return $_SESSION["username"];
             }
             return "";

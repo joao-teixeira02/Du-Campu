@@ -107,10 +107,14 @@ header.menu{
 }
 
 #cart_box #check-in{
+    text-decoration: none;
+
     display: none;
     grid-row: 3;
     font-size: 1em;
     font-weight: bold;
+
+    font-family: 'Poppins', sans-serif;
     
     color: white;
     background-color: rgb(15,20,24);
@@ -123,6 +127,9 @@ header.menu{
     
     width: 10em;
     border-radius: 1em;
+
+    align-items:center;/*Vertical align*/
+    justify-content:center;/*horizontal align*/
 }
 
 #cart_box #check-in:hover{
@@ -244,7 +251,7 @@ header.menu{
     font-weight: bolder;  
 }
 
-#close{
+#add_order #close{
     position: absolute;
     top: 1em;
     left: 1em;

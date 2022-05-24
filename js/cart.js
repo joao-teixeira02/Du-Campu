@@ -180,7 +180,7 @@ async function update_cart(){
     main.style.gridRowSpan = 1;  
     main.style.overflowY = "scroll";  
     empty_cart.style.display = "none";
-    check_in.style.display = "block";
+    check_in.style.display = "flex";
     check_in.innerText = 'Check-in ' + total.toFixed(2) +'€';
     
 }
