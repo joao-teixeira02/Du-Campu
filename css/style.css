@@ -23,11 +23,24 @@ header.menu{
     font-family: 'Poppins', sans-serif;
 }
 
+.menu .nav-links ul li a:hover{
+    color: rgb(214, 156, 92)
+}
+
+
 #lupa{
     display: none;  
 }
 
 #cart{
+    display: none;  
+}
+
+.price-range [name=classification]{
+    display: none;  
+}
+
+.price-range [name=classification]{
     display: none;  
 }
 
@@ -168,151 +181,77 @@ strong{
 }
 
 
-
 /* RESTAURANTS LIST PRICE BAR*/
-
-[slider] {
-    width: 160px;
+.classification{
     position: relative;
-    height: 5px;
-    margin-top: 20px;
-  }
-  
-  [slider] > div {
-    position: absolute;
-    left: 13px;
-    right: 15px;
-    height: 5px;
-  }
-  [slider] > div > [inverse-left] {
-    position: absolute;
-    left: 0;
-    height: 5px;
-    border-radius: 10px;
-    background-color: #CCC;
-    margin: 0 7px;
-  }
-  
-  [slider] > div > [inverse-right] {
-    position: down;
-    right: 0;
-    height: 5px;
-    border-radius: 10px;
-    background-color: #CCC;
-    margin: 0 7px;
-  }
-  
-  
-  [slider] > div > [range] {
-    position: absolute;
-    left: 0;
-    height: 5px;
-    border-radius: 14px;
-    background-color: rgb(24, 31, 36);
-  }
-  
-  [slider] > div > [thumb] {
-    position: absolute;
-    top: -7px;
-    z-index: 2;
-    height: 20px;
-    width: 20px;
-    text-align: left;
-    margin-left: -11px;
-    cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-    background-color: #FFF;
-    border-radius: 50%;
-    outline: none;
-  }
-  
-  [slider] > input[type=range] {
-    position: absolute;
-    pointer-events: none;
-    -webkit-appearance: none;
-    z-index: 3;
-    height: 14px;
-    top: -2px;
-    width: 100%;
-    opacity: 0;
-  }
-  
-  div[slider] > input[type=range]:focus::-webkit-slider-runnable-track {
-    background: transparent;
-    border: transparent;
-  }
-  
-  div[slider] > input[type=range]:focus {
-    outline: none;
-  }
-  
-  div[slider] > input[type=range]::-webkit-slider-thumb {
-    pointer-events: all;
-    width: 28px;
-    height: 28px;
-    border-radius: 0px;
-    border: 0 none;
-    background: rgb(24, 31, 36);
-    -webkit-appearance: none;
-  }
-  
-  div[slider] > input[type=range]::-ms-fill-lower {
-    background: transparent;
-    border: 0 none;
-  }
-  
-  div[slider] > input[type=range]::-ms-fill-upper {
-    background: transparent;
-    border: 0 none;
-  }
-  
-  div[slider] > input[type=range]::-ms-tooltip {
-    display: none;
-  }
-  
-  [slider] > div > [sign] {
-    opacity: 0;
-    position: absolute;
-    margin-left: -11px;
-    top: -39px;
-    z-index:3;
-    background-color: rgb(24, 31, 36);
-    color: #fff;
-    width: 28px;
-    height: 28px;
-    border-radius: 28px;
-    -webkit-border-radius: 28px;
-    align-items: center;
-    -webkit-justify-content: center;
+    display: flex;
     justify-content: center;
-    text-align: center;
-  }
-  
-  [slider] > div > [sign]:after {
-    position: absolute;
-    content: '';
-    left: 0;
-    border-radius: 16px;
-    top: 19px;
-    border-left: 14px solid transparent;
-    border-right: 14px solid transparent;
-    border-top-width: 16px;
-    border-top-style: solid;
-    border-top-color: rgb(24, 31, 36);
-  }
-  
-  [slider] > div > [sign] > span {
-    font-size: 12px;
+    align-items:center;
+    width: 170px;
+    height: 80px;
+    background: white;
+    border-radius: 20px;
+}
+
+
+.classification input[type="number"]{
+    width: 25px;
+    height: 25px;
+    background: white;
+    border: 1px solid #ddd;
+    font-size: 10px;
     font-weight: 700;
-    line-height: 28px;
-  }
-  
-  [slider]:hover > div > [sign] {
-    opacity: 1;
-  }
+    text-align: center;
+    border-radius: 5px;
+}
+
+.classification input[type="number"]::webkit-outer-spin-button,
+.classification input[type="number"]::webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+.classification .range-slider{
+    position: relative;
+    width: 800px;
+    height: 5px;
+    background: #ddd;
+    outline: none;
+    top: 1px;
+    margin: 10px;  
+}
+
+.classification .range-slider .progress{
+    left: 25%;
+    right: 25%;
+    height: 100%;
+    background: rgb(15,20,24);
+    border-radius: 50px;
+    position: absolute;
+}
 
 
-  /* CLASSIFICATION */
+.classification .range-slider input[type="range"]{
+    position: absolute;
+    top: -8px;
+    width: 101%;
+    -webkit-appearance: none;
+    pointer-events: none;
+    background: none;
+    outline: none;
+}
+
+
+.classification .range-slider input::-webkit-slider-thumb{
+    pointer-events: auto;
+    -webkit-appearance: none;
+    width: 17px;
+    height: 17px;
+    background: rgb(15,20,24);
+    border-radius: 50px;
+}
+
+
+  /* PRICE RANGE */
 .price-range {
     float: left;
     height: 40px;
