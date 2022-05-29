@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="css/mainpage.css">
     <script type="text/javascript" src="js/carrosselSlider.js" defer></script>
+    <script type="text/javascript" src="js/home_page_search_bar.js" defer></script>
     <title>Du'Campu</title>
 </head>
 <body>
@@ -19,10 +20,10 @@
         <div class="searchContainer">
             <a href = "index.php"> <img src = "images/logo.png" id = "logo"> </a>
             <p> FIND THE BEST VEGETARIAN RESTAURANTS</p>
-            <div class = "imagesSearch">
-                <input type="text" placeholder = "Search vegetarian restaurants...." class = "search-box">
-                <button class = "search-btn" disabled>Search</button>
-            </div>  
+            <form class = "imagesSearch" action="/restaurants.php" method="get">
+                <input type="text" name="s" placeholder = "Search vegetarian restaurants...." class = "search-box">
+                <button type="submit" class = "search-btn" >Search</button>
+            </form>
         </div>
     </div>
     

@@ -52,7 +52,9 @@ function show_restaurant_category(){ ?>
 
 <body>
 
-    <?php show_header_menu(); ?>
+    <?php 
+        show_header_menu();     
+    ?>
 
     <main class = "restaurantsListPage">   
 

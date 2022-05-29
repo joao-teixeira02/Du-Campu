@@ -5,7 +5,11 @@
 
     function show_header_menu(){
         $session = new Session();
-    
+        $search_text = "";
+        if(isset($_GET["s"])) {
+            $search_text = htmlentities($_GET["s"]);
+        }
+
         ?>
 
     <header class="menu">
@@ -24,7 +28,7 @@
                     </li>
                     <li> 
                         <input type="checkbox" id="lupa"/>
-                        <input type="search" name="search" class="search" placeholder="Search">
+                        <input type="search" name="search" class="search" placeholder="Search" value="<?php  echo($search_text)?>">
                         <label for="lupa" > <img clickable src="images/lupa.png" width="20px" height="20px" alt="Lupa" 
                         onmouseover="this.src = 'images/lupaHoover.png'"  onmouseout="this.src = 'images/lupa.png'"></label>
                     </li>

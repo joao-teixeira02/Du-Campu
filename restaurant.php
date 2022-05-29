@@ -5,6 +5,9 @@
     require_once(__DIR__ . '/database/dish.class.php');
     require_once(__DIR__ . '/database/connection.db.php');
     
+    if($_GET['s']){    
+        $search_text = $_GET['s'];
+    }
 
     function show_dishes_types(int $id){ ?>
 

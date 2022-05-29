@@ -118,6 +118,7 @@ header ul li a:hover{
     height: 40px;
     box-sizing: content-box;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 
