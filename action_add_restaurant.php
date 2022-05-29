@@ -5,11 +5,11 @@
 
 	$db = getDatabaseConnection();
 
-    $name = $_GET['n'];
-    $address = $_GET['a'];
-    $owner_id = 1;
+    $name = $_POST['n'];
+    $address = $_POST['a'];
+    $owner_id = $_POST['id'];
     //$path = $_GET['pa'];
-    $categories = explode(',', $_GET['c']);
+    $categories = explode(',', $_POST['c']);
 
     foreach($categories as $category){
         $query = 'INSERT INTO Category (name) VALUES (:category)';
@@ -75,5 +75,5 @@
         $stmt1->execute();
     }
     
-	header('Location: index.php');
+	header("Location:".$_SERVER['HTTP_REFERER']."");
 ?>

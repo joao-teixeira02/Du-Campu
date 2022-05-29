@@ -12,7 +12,7 @@
                     <li> <a href ="index.php">HOME</a></li>
                     <li> <a href ="restaurants.html">RESTAURANTS</a></li>
                     <li> <a href ="aboutUs.html">ABOUT US</a></li>
-                    <li> <a <?php echo(isLogged()?"href =\"profile.php\"> PROFILE": "href =\"login.php\"> LOGIN"); ?></a></li>
+                    <li> <a <?php echo(isLogged()?"href =\"profile.php?page=account\"> PROFILE": "href =\"login.php\"> LOGIN"); ?></a></li>
                     <li> 
                         <input type="checkbox" id="lupa"/>
                         <input type="search" name="search" class="search" placeholder="Search">

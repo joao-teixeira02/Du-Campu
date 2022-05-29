@@ -5,14 +5,14 @@
 
 	$db = getDatabaseConnection();
 
-	$username = $_GET['u'];
-    $name = $_GET['n'];
-    $mail = $_GET['m'];
-    $password = $_GET['p'];
-    $address = $_GET['a'];
-    $phone = $_GET['ph'];
+	$username = $_POST['u'];
+    $name = $_POST['n'];
+    $mail = $_POST['m'];
+    $password = $_POST['p'];
+    $address = $_POST['a'];
+    $phone = $_POST['ph'];
  
-	$query = 'INSERT INTO Customer (username, name, mail, password, address, phone) VALUES (:username, :name, :mail, :password, :address, :phone)';
+	$query = 'INSERT INTO User (username, name, mail, password, address, phone) VALUES (:username, :name, :mail, :password, :address, :phone)';
  
 	$stmt = $db->prepare($query);
  

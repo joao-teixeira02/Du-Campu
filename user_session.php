@@ -11,6 +11,14 @@
         return isset($_SESSION["username"]);
     }
 
+    function getUserId() : ?int {
+        $db = getDatabaseConnection();
+
+        $stmt = $db->prepare('SELECT id FROM User WHERE User.username=?');
+        $stmt->execute(array($_SESSION["username"]));
+        return intval($stmt->fetch()['id']);
+    }
+
     function getUsername() : ?string{
         if(isLogged() === TRUE){
             return $_SESSION["username"];
@@ -21,7 +29,7 @@
     function getName() : ?string{
         if(isLogged() === TRUE){
             $db = getDatabaseConnection();
-            $stmt = $db->prepare('SELECT name FROM Customer WHERE Customer.username=?');
+            $stmt = $db->prepare('SELECT name FROM User WHERE User.username=?');
             $stmt->execute(array($_SESSION["username"]));
             return $stmt->fetch()['name'];
         }
@@ -31,7 +39,7 @@
     function getEmail() : ?string{
         if(isLogged() === TRUE){
             $db = getDatabaseConnection();
-            $stmt = $db->prepare('SELECT mail FROM Customer WHERE Customer.username=?');
+            $stmt = $db->prepare('SELECT mail FROM User WHERE User.username=?');
             $stmt->execute(array($_SESSION["username"]));
             return $stmt->fetch()['mail'];
         }
@@ -41,7 +49,7 @@
     function getPassword() : ?string{
         if(isLogged() === TRUE){
             $db = getDatabaseConnection();
-            $stmt = $db->prepare('SELECT password FROM Customer WHERE Customer.username=?');
+            $stmt = $db->prepare('SELECT password FROM User WHERE User.username=?');
             $stmt->execute(array($_SESSION["username"]));
             return $stmt->fetch()['password'];
         }
@@ -51,7 +59,7 @@
     function getPhone() : ?string{
         if(isLogged() === TRUE){
             $db = getDatabaseConnection();
-            $stmt = $db->prepare('SELECT phone FROM Customer WHERE Customer.username=?');
+            $stmt = $db->prepare('SELECT phone FROM User WHERE User.username=?');
             $stmt->execute(array($_SESSION["username"]));
             return $stmt->fetch()['phone'];
         }
@@ -61,7 +69,7 @@
     function getAddress() : ?string{
         if(isLogged() === TRUE){
             $db = getDatabaseConnection();
-            $stmt = $db->prepare('SELECT address FROM Customer WHERE Customer.username=?');
+            $stmt = $db->prepare('SELECT address FROM User WHERE User.username=?');
             $stmt->execute(array($_SESSION["username"]));
             return $stmt->fetch()['address'];
         }

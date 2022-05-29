@@ -2,16 +2,24 @@
 	declare(strict_types = 1);
 
 	require_once('database/connection.db.php');
+	require_once('user_session.php');
  
  
-	if(ISSET($_GET['r']) && ISSET($_GET['p'])){
+	if(ISSET($_POST['r']) && ISSET($_POST['p'])){
 
 		$db = getDatabaseConnection();
 
-		$review = $_GET['r'];
-		$points = $_GET['p'];
+		$review = $_POST['r'];
+		$points = $_POST['p'];
 		$restaurant_id = 1;
-		$customer_id = 1;
+
+		$query = 'SELECT id FROM User WHERE User.username=?';
+
+		$stmt = $db->prepare($query);
+
+		$stmt->execute(array($_SESSION["username"]));
+
+		$customer_id = $stmt->fetch()['id'];
  
 		$query = 'INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES (:review, :customer_id, :points, :restaurant_id)';
  

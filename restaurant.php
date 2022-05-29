@@ -5,6 +5,7 @@
     require_once('database/restaurant.class.php');
     require_once('database/dish.class.php');
     require_once('database/connection.db.php');
+    require_once('database/user.class.php');
     
 
     function show_dishes_types(int $id){ ?>
@@ -104,11 +105,36 @@
 
         foreach($reviews as $review){ ?>
             <section class = "review">
-            <p class="reviewUsername"><?php echo($review->getUsername($db)); ?></p>
-            <p class="review"><?php echo($review->review); ?></p>
-            <p class="points"><?php echo($review->points); ?></p>
+                <p class="reviewUsername"><?php echo($review->getUsername($db)); ?></p>
+                <p class="review"><?php echo($review->review); ?></p>
+                <p class="points"><?php echo($review->points); ?></p>
+                <?php
+                if(isLogged()) {
+                    if (!User::isCustomer($db, $_SESSION['username'])) {?>
+                        <form>
+                            <input class="input" type="text-area" placeholder="Write your reply here" name="t" id="reply_input">
+                            <input type="hidden" name="r" value="<?php echo($review->id); ?>">
+                            <input formaction="action_reply.php" formmethod="post" type="submit" class="white_button" value="Reply">
+                        </form>
+                <?php
+                    }
+                }
+                ?>
             </section>
         <?php
+        }
+    }
+
+    function add_review(){
+
+        if(isLogged()) {
+    ?>
+        <form>
+            <input class="input" type="text-area" placeholder="Write your review here" name="r" id="review_input">
+            <input class="input" type="number" step="0.1" min="0" max="5" placeholder="0 to 5" name="p" id="points_input">
+            <input formaction="action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
+        </form>
+    <?php
         }
     }
     ?>
@@ -125,56 +151,35 @@
 
     <?php show_header_menu(); ?>
 
-    
     <main>
-        
 
         <article class="restaurant-page">
 
-        <?php show_restaurant_header(1); ?>
+        <?php 
+        
+        $restaurant_id = intval($_GET['id']);
+        
+        show_restaurant_header($restaurant_id);
+        
+        ?>
             
             <main>
-
                 <nav class="menuRestaurante">
-                    <?php show_dishes_types(1); ?>
-
+                    <?php show_dishes_types($restaurant_id); ?>
                 </nav>
 
                 <section id="listaPratos">
-
-                    <?php show_dishes(1); ?>
-
+                    <?php show_dishes($restaurant_id); ?>
                 </section>
-
             </main>
 
             <section class="reviews">
-                <?php show_reviews(1); ?>
+                <?php show_reviews($restaurant_id); ?>
             </section>
 
         </article>
 
-        <form>
-            <input class="input" type="text" placeholder="Write your review here" name="r" id="review_input">
-            <input class="input" type="number" step="0.01" placeholder="Points from 0 to 5" name="p" id="points_input">
-            <input formaction="action_review.php" formmethod="get" type="submit" class="white_button" value="Publish">
-        </form>
-
-        <form>
-            <input class="input" type="text" placeholder="Dish name" name="n" id="dish_input">
-            <input class="input" type="number" step="0.01" placeholder="Price" name="p" id="price_input">
-            <input class="input" type="text" placeholder="Dish type" name="t" id="type_input">
-            
-            <input formaction="action_add_dish.php" formmethod="get" type="submit" class="white_button" value="Insert">
-        </form>
-
-        <form>
-            <input class="input" type="text" placeholder="Restaurant name" name="n" id="restaurant_input">
-            <input class="input" type="text" placeholder="Address" name="a" id="address_input">
-            <input class="input" type="text" placeholder="Categories separated by comma" name="c" id="categories_input">
-            
-            <input formaction="action_add_restaurant.php" formmethod="get" type="submit" class="white_button" value="Insert">
-        </form>
+        <?php add_review(); ?>
 
     </main>
 

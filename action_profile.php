@@ -6,14 +6,14 @@
 
     $db = getDatabaseConnection();
 
-    $username = $_GET['u'];
-    $name = $_GET['n'];
-    $mail = $_GET['m'];
-    $password = $_GET['p'];
-    $address = $_GET['a'];
-    $phone = $_GET['ph'];
+    $username = $_POST['u'];
+    $name = $_POST['n'];
+    $mail = $_POST['m'];
+    $password = $_POST['p'];
+    $address = $_POST['a'];
+    $phone = $_POST['ph'];
     
-    $query = 'UPDATE Customer 
+    $query = 'UPDATE User 
     SET username = :username, name = :name, mail = :mail, password = :password, address = :address, phone = :phone
     WHERE username = :oldusername';
 

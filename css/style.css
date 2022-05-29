@@ -524,13 +524,32 @@ strong{
 * Profile
 */
 
-#profile {
+#profile_page {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    grid-template-areas: "aside profile";
     font-family: 'Poppins', sans-serif;
 }
 
+#profile_page #profile {
+    grid-area: profile;
+    margin-left: 2em;
+}
+
+#profile_page #aside {
+    grid-area: aside;
+    background-color: #f6f5f3;
+    width: 100%;
+    border-right: 0.1em solid #948f8c;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
 #account {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: "fields photo";
   }
@@ -621,4 +640,32 @@ strong{
     background-color: rgba(0, 0, 0, 0.08);
     border-color: rgba(0, 0, 0, 0);
   }
+
+  .menu_option {
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-auto-rows: auto;
+    grid-template-areas: "icon text";
+    align-items: center;
+    color: #3d3d3b;
+    width: 100%;
+  }
+  
+  .menu_option:hover {
+    background-color: white;
+    color: #3d3d3b;
+  }
+  
+  .menu_option p {
+    grid-area: text;
+    font-size: 1.2em;
+  }
+  
+  .menu_option span {
+    grid-area: icon;
+    font-size: 1.5em;
+    margin: 1em 0.4em 1em 0.5em;
+  }
+  
   

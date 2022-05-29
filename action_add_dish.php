@@ -5,11 +5,11 @@
 
 	$db = getDatabaseConnection();
 
-    $name = $_GET['n'];
-    $price = $_GET['p'];
-    $type = $_GET['t'];
+    $name = $_POST['n'];
+    $price = $_POST['p'];
+    $type = $_POST['t'];
     //$path = $_GET['pa'];
-    $restaurant_id = 1;
+    $restaurant_id = $_POST['id'];
 
     /*$query = 'INSERT INTO Photo (path) VALUES (:path)';
 
@@ -63,8 +63,6 @@
 
     $id_dish = $stmt->fetch()['id'];
 
-    print($id_dish);
-
     $query = 'INSERT INTO DishType(id_dish, id_type) VALUES (:id_dish, :id_type)';
 
     $stmt = $db->prepare($query);
@@ -74,5 +72,5 @@
 
     $stmt->execute();
     
-	header('Location: restaurant.php');
+	header("Location:".$_SERVER['HTTP_REFERER']."");
 ?>

@@ -17,10 +17,12 @@
         }
 
         function getUsername(PDO $db) : string{
-            $stmt = $db->prepare('SELECT username FROM Customer WHERE Customer.id=?');
+            $stmt = $db->prepare('SELECT username FROM User WHERE User.id=?');
             $stmt->execute(array($this->customer_id));
             $username = $stmt->fetch();
             return $username['username'];
         }
 
     }
+
+?>

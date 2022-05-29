@@ -34,7 +34,7 @@
 
                 <br>
 
-                <input formaction="action_login.php" formmethod="get" type="submit" class="white_button" value="Login">
+                <input formaction="action_login.php" formmethod="post" type="submit" class="white_button" value="Login">
 
             </form>
 

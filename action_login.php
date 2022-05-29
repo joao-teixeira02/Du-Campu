@@ -4,26 +4,25 @@
 
     require_once('user_session.php');
     require_once('database/connection.db.php');
-    require_once('database/customer.class.php');
+    require_once('database/user.class.php');
 
     function validateLogin(string $username, string $password) : bool{
         $db = getDatabaseConnection();
 
-        $customer = Customer::getCustomer($db, $username);
+        $user = User::getUser($db, $username);
 
-        print_r($customer);
-        if($customer === null){
+        if($user === null){
             return false;
         }
 
-        return $customer->password === $password;
+        return $user->password === $password;
     }
 
 
     // validate login
-    if (isset($_GET['u']) && isset($_GET['p'])){
-        if(validateLogin($_GET['u'], $_GET['p'])){
-            $_SESSION["username"] = $_GET['u']; 
+    if (isset($_POST['u']) && isset($_POST['p'])){
+        if(validateLogin($_POST['u'], $_POST['p'])){
+            $_SESSION["username"] = $_POST['u']; 
             header('Location: ' . "index.php");
             exit();
         }
