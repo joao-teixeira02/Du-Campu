@@ -19,8 +19,17 @@
                 <ul>
                     <li> <a href ="index.php">HOME</a></li>
                     <li> <a href ="restaurants.php">RESTAURANTS</a></li>
-                    
-                    <li> <a href ="login.php"><?php echo($session->isLogged()?"PROFILE": "LOGIN"); ?></a></li>
+                    <li> 
+                        <?php if ($session->isLogged()) { ?>
+                            <a href ="profile.php?page=account">PROFILE</a>
+                            <?php
+                        }
+                        else { ?>
+                            <a href ="login.php">LOGIN</a>
+                            <?php
+                        }
+                        ?>
+                    </li>
                     <li> 
                         <input type="checkbox" id="cart"/>
                         <label for="cart"  onclick="show_cart()" > <img clickable src="images/cart1.png" width="20px" height="20px" alt="Cart"

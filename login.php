@@ -1,5 +1,6 @@
 <?php
-    require_once('template/essentials.tpl.php');
+    require_once(__DIR__ . '/template/essentials.tpl.php');
+    require_once(__DIR__ . '/utils/session.php');
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +35,15 @@
 
                 <br>
 
-                <input formaction="action_login.php" formmethod="get" type="submit" class="white_button" value="Login">
+                <input formaction="action_login.php" formmethod="post" type="submit" class="white_button" value="Login">
 
-                
-                <p class="black_button">Register</p>
-            </from>
+            </form>
+
+            <form>
+                <p>Don't have an account yet?</p>
+                <input formaction="register.php" type="submit" class="black_button" value="Register">
+            </form>
+
         </div>
 
     </section>

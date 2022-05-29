@@ -4,6 +4,7 @@
     
     require_once(__DIR__ . '/dish.class.php');
     require_once(__DIR__ . '/connection.db.php');
+    require_once(__DIR__ . '/review.class.php');
     
     class Restaurant{
         public int $id;
@@ -84,6 +85,23 @@
             }
             if(count($a)===0) return 0.0;
             return (float)((array_sum($a))/count($a));
+        }
+
+        static function getReviews(PDO $db, int $id) : array {
+            $stmt = $db->prepare('SELECT * FROM Reviews WHERE Reviews.restaurant_id=?');
+            $stmt->execute(array($id));
+            $reviews = array();
+            
+            while($review = $stmt->fetch()){
+                $reviews[] = new Review(
+                    intval($review['id']),
+                    $review['review'],
+                    intval($review['customer_id']),
+                    floatval($review['points']),
+                    intval($reviews['restaurant_id'])
+                );
+            }
+            return $reviews;
         }
 
         static function getCategory(PDO $db, int $id) : array {

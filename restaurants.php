@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-require_once('template/essentials.tpl.php');
-require_once('database/category.class.php');
-require_once('database/connection.db.php');
+require_once(__DIR__ . '/template/essentials.tpl.php');
+require_once(__DIR__ . '/database/category.class.php');
+require_once(__DIR__ . '/database/connection.db.php');
 
 
 function show_restaurant_category(){ ?>

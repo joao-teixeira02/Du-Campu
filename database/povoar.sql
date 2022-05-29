@@ -1,9 +1,27 @@
 INSERT INTO Photo (path) VALUES ('https://www.altoastral.com.br/media/_versions/legacy/2016/09/bebe-comendo-papinha-inteligencia_widexl.jpg');
 INSERT INTO Photo (path) VALUES ('https://institutopensi.org.br/wp-content/uploads/2020/04/shutterstock_631322687-890x420.jpg');
 
-INSERT INTO Owner(username, name, mail, password, address, phone) VALUES ('osvaldoteixeira', 'Osvaldo Teixeira', 'osvaldoteixeira@gmail.com', '25w774a858ag94u', '', '932368189');
-INSERT INTO Owner(username, name, mail, password, address, phone) VALUES ('adelinobaldo', 'Adelino Baldo', 'adelinobaldo@gmail.com', '73673233k210e5', '', '963592065');
-INSERT INTO Owner(username, name, mail, password, address, phone) VALUES ('sergiocalado', 'Sérgio Calado', 'sergiocalado@gmail.com', '3b7573f0', '', '911816913');
+--OWNERS
+
+INSERT INTO User(username, name, mail, password, address, phone) VALUES ('osvaldoteixeira', 'Osvaldo Teixeira', 'osvaldoteixeira@gmail.com', '25w774a858ag94u', '', '932368189');
+INSERT INTO User(username, name, mail, password, address, phone) VALUES ('adelinobaldo', 'Adelino Baldo', 'adelinobaldo@gmail.com', '73673233k210e5', '', '963592065');
+INSERT INTO User(username, name, mail, password, address, phone) VALUES ('sergiocalado', 'Sérgio Calado', 'sergiocalado@gmail.com', '3b7573f0', '', '911816913');
+
+--CUSTOMERS
+
+INSERT INTO User (username, name, mail, password, address, phone) VALUES ('joaoteixeira', 'João Teixeira', 'joaoteixeira@gmail.com', 't73indfm9nc205c', '', '935497249');
+INSERT INTO User (username, name, mail, password, address, phone) VALUES ('afonsobaldo', 'Afonso Baldo', 'afonsobaldo@gmail.com', 'ola123', '', '914352559');
+INSERT INTO User (username, name, mail, password, address, phone) VALUES ('inescardoso', 'Inês Cardoso', 'inescardoso@gmail.com', '424s6784', '', '962643176');
+INSERT INTO User (username, name, mail, password, address, phone) VALUES ('andrerestivo', 'André Restivo', 'andrerestivo@gmail.com', '0l3394ov13rtc5', '', '910546926');
+
+INSERT INTO Owner (id) VALUES (1);
+INSERT INTO Owner (id) VALUES (2);
+INSERT INTO Owner (id) VALUES (3);
+
+INSERT INTO Customer (id) VALUES (4);
+INSERT INTO Customer (id) VALUES (5);
+INSERT INTO Customer (id) VALUES (6);
+INSERT INTO Customer (id) VALUES (7);
 
 INSERT INTO Restaurant (name, address, owner_id) VALUES ("Bao's - Taiwanese Burger", 'R. de Cedofeita 263, 4050-174 Porto', 1);
 INSERT INTO Restaurant (name, address, owner_id) VALUES ("AM Indiano Restaurant", 'R. do Gen. Torres 1220, 4400-164 Vila Nova de Gaia', 2);
@@ -90,31 +108,26 @@ INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (2, 2);
 INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (3, 2);
 INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (4, 2);
 
-INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('joaoteixeira', 'João Teixeira', 'joaoteixeira@gmail.com', 't73indfm9nc205c', '', '935497249');
-INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('afonsobaldo', 'Afonso Baldo', 'afonsobaldo@gmail.com', 'ola123', '', '914352559');
-INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('inescardoso', 'Inês Cardoso', 'inescardoso@gmail.com', '424s6784', '', '962643176');
-INSERT INTO Customer (username, name, mail, password, address, phone) VALUES ('andrerestivo', 'André Restivo', 'andrerestivo@gmail.com', '0l3394ov13rtc5', '', '910546926');
+INSERT INTO FavoriteRestaurant (id_customer, id_restaurant) VALUES (4, 1);
+INSERT INTO FavoriteRestaurant (id_customer, id_restaurant) VALUES (5, 2);
+INSERT INTO FavoriteRestaurant (id_customer, id_restaurant) VALUES (6, 3);
 
-INSERT INTO FavoriteRestaurant (id_customer, id_restaurant) VALUES (1, 1);
-INSERT INTO FavoriteRestaurant (id_customer, id_restaurant) VALUES (2, 2);
-INSERT INTO FavoriteRestaurant (id_customer, id_restaurant) VALUES (3, 3);
+INSERT INTO FavoriteDish (id_customer, id_dish) VALUES (4, 27);
+INSERT INTO FavoriteDish (id_customer, id_dish) VALUES (5, 40);
+INSERT INTO FavoriteDish (id_customer, id_dish) VALUES (6, 56);
 
-INSERT INTO FavoriteDish (id_customer, id_dish) VALUES (1, 27);
-INSERT INTO FavoriteDish (id_customer, id_dish) VALUES (2, 40);
-INSERT INTO FavoriteDish (id_customer, id_dish) VALUES (3, 56);
-
-INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 1, 5, 1);
-INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 2, 4, 2);
-INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 3, 3, 3);
+INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 4, 5, 1);
+INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 5, 4, 2);
+INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 6, 3, 3);
 
 INSERT INTO State ("state") VALUES ('Being prepared');
 INSERT INTO State ("state") VALUES ('Picked up');
 INSERT INTO State ("state") VALUES ('Arrived');
 INSERT INTO State ("state") VALUES ('Delivered');
 
-INSERT INTO "Order" (state_id, customer_id) VALUES (1, 1);
-INSERT INTO "Order" (state_id, customer_id) VALUES (2, 2);
-INSERT INTO "Order" (state_id, customer_id) VALUES (3, 3);
+INSERT INTO "Order" (state_id, customer_id) VALUES (1, 4);
+INSERT INTO "Order" (state_id, customer_id) VALUES (2, 5);
+INSERT INTO "Order" (state_id, customer_id) VALUES (3, 6);
 
 INSERT INTO OrderDishQuantity (id_order, id_dish, quantity) VALUES (1, 27, 1);
 INSERT INTO OrderDishQuantity (id_order, id_dish, quantity) VALUES (2, 40, 2);

@@ -4,6 +4,10 @@
     require_once(__DIR__ . '/database/restaurant.class.php');
     require_once(__DIR__ . '/database/dish.class.php');
     require_once(__DIR__ . '/database/connection.db.php');
+    require_once(__DIR__ . '/database/user.class.php');
+    require_once(__DIR__ . '/utils/session.php');
+
+    $session = new Session();
     
     if($_GET['s']){    
         $search_text = $_GET['s'];
@@ -64,9 +68,7 @@
         <?php
     }
 
-    function show_dishes(int $id) {?>
-
-        <?php
+    function show_dishes(int $id) {
 
             $types = array();
             $db = getDatabaseConnection();
@@ -140,7 +142,51 @@
 
     }
 
-        ?>
+        
+    function show_reviews(int $id){
+
+        global $session;
+
+        $db = getDatabaseConnection();
+        $reviews = Restaurant::getReviews($db, $id);
+
+        foreach($reviews as $review){ ?>
+            <section class = "review">
+                <p class="reviewUsername"><?php echo($review->getUsername($db)); ?></p>
+                <p class="review"><?php echo($review->review); ?></p>
+                <p class="points"><?php echo($review->points); ?></p>
+                <?php
+                if($session->isLogged()) {
+                    if (!User::isCustomer($db, $_SESSION['username'])) {?>
+                        <form>
+                            <input class="input" type="text-area" placeholder="Write your reply here" name="t" id="reply_input">
+                            <input type="hidden" name="r" value="<?php echo($review->id); ?>">
+                            <input formaction="action_reply.php" formmethod="post" type="submit" class="white_button" value="Reply">
+                        </form>
+                <?php
+                    }
+                }
+                ?>
+            </section>
+        <?php
+        }
+    }
+
+    function add_review(){
+
+        global $session;
+
+        if($session->isLogged()) {
+    ?>
+        <form>
+            <input class="input" type="text-area" placeholder="Write your review here" name="r" id="review_input">
+            <input class="input" type="number" step="0.1" min="0" max="5" placeholder="0 to 5" name="p" id="points_input">
+            <input formaction="action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
+        </form>
+    <?php
+        }
+    }
+    ?>
 
 <!DOCTYPE html>
 <html>
@@ -156,30 +202,36 @@
 
     <?php show_header_menu(); ?>
 
-    
     <main>
-        
 
         <article class="restaurant-page">
 
-        <?php show_restaurant_header(1); ?>
+        <?php 
+        
+        $restaurant_id = intval($_GET['id']);
+        
+        show_restaurant_header($restaurant_id);
+        
+        ?>
             
             <main>
-
-            <nav class="menuRestaurante">
-                    <?php show_dishes_types(1); ?>
-
+                <nav class="menuRestaurante">
+                    <?php show_dishes_types($restaurant_id); ?>
                 </nav>
 
                 <section id="listaPratos">
-
-                    <?php show_dishes(1); ?>
-
+                    <?php show_dishes($restaurant_id); ?>
                 </section>
-
             </main>
 
+            <section class="reviews">
+                <?php show_reviews($restaurant_id); ?>
+            </section>
+
         </article>
+
+        <?php add_review(); ?>
+
     </main>
 
 
