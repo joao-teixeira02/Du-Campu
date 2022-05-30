@@ -1,7 +1,7 @@
 <?php
     declare(strict_types = 1);
 
-    require_once(__DIR__ . "/../cart.class.php");
+    require_once(__DIR__ . "/../database/cart.class.php");
 
     class Session{
         public Cart $cart;
