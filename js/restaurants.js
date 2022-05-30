@@ -43,7 +43,7 @@ async function updateRestaurantList() {
       }
     }
 
-    const response = await fetch('api_restaurants.php?name=' + search.value + '&category='+ list_categories_str
+    const response = await fetch('/api/api_restaurants.php?name=' + search.value + '&category='+ list_categories_str
                                   + "&rating_min="+min_rating+"&rating_max=" + max_rating+ "&order=" + sorter.value + "&asc=" + (asc.checked?1:0) );
     const restaurants = await response.json()
 

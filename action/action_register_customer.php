@@ -32,5 +32,13 @@
 
     $session->setUsername($username);
 
+    $query = 'INSERT INTO Customer (id) VALUES (:id)';
+
+    $stmt = $db->prepare($query);
+
+    $stmt->bindParam(':id', $session->getUserId());
+
+    $stmt->execute();
+
 	header('Location: /index.php');
 ?>
