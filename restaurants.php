@@ -61,42 +61,49 @@ function show_restaurant_category(){ ?>
         <section class = "restaurantsList">                                                                              
             <section class = "filters">
 
+                <section class = "searchBox">
+                    <input type="checkbox" id="lupa"/>
+                    <input type="search" name="search" class="searchy" placeholder="Search">
+                </section>    
+                
+                <br>
+
                 <?php show_restaurant_category(); ?>
 
-            <br>
+                <br>
     
-            <section class = "price-range">
-                <p><h3>Price range</h3></p> 
-                    <input type="checkbox" id="€" name="classification" value="€"> 
-                    <label for="euro" > <img clickable src="images/euro.png" id=  "euro" width="47px" height="40px" alt="euro" ></label>
-                    <input type="checkbox" id="€€" name="classification" value="€€"> 
-                    <label for="doiseuro" > <img clickable src="images/2euro.png" id=  "doiseuro" width="50px" height="40px" alt="2euro"></label>
-                    <input type="checkbox" id="€€€" name="classification" value="€€€"> 
-                    <label for="treseuro" > <img clickable src="images/3euro.png" id=  "treseuro" width="55px" height="40px" alt="3euro"></label>
-            </section>
-            
-            <br>
-            <br>
-            <br>
-            <br>
-
-            <section class = "classification">
-                <p><h3>Classification</h3></p> 
-                <section class = "slider">
-                    <div class="min-value numberVal">
-                        <span class="number"  disabled>0</span>
-                    </div>   
-           
-                    <div class="range-slider">
-                        <div class="progress"></div>
-                        <input type="range" class="range-min" min="0" max="5" value="0" step="0.1">
-                        <input type="range" class="range-max" min="0" max="5" value="5" step="0.1">
-                    </div>
-                    <div class="max-value numberVal">
-                        <span class="number" disabled>5</span>
-                    </div>
+                <section class = "price-range">
+                    <p><h3>Price range</h3></p> 
+                        <input type="checkbox" id="€" name="classification" value="€"> 
+                        <label for="euro" > <img clickable src="images/euro.png" id=  "euro" width="47px" height="40px" alt="euro" ></label>
+                        <input type="checkbox" id="€€" name="classification" value="€€"> 
+                        <label for="doiseuro" > <img clickable src="images/2euro.png" id=  "doiseuro" width="50px" height="40px" alt="2euro"></label>
+                        <input type="checkbox" id="€€€" name="classification" value="€€€"> 
+                        <label for="treseuro" > <img clickable src="images/3euro.png" id=  "treseuro" width="55px" height="40px" alt="3euro"></label>
                 </section>
-            </section>
+                
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <section class = "classification">
+                    <p><h3>Classification</h3></p> 
+                    <section class = "slider">
+                        <div class="min-value numberVal">
+                            <span class="number"  disabled>0</span>
+                        </div>   
+            
+                        <div class="range-slider">
+                            <div class="progress"></div>
+                            <input type="range" class="range-min" min="0" max="5" value="0" step="0.1">
+                            <input type="range" class="range-max" min="0" max="5" value="5" step="0.1">
+                        </div>
+                        <div class="max-value numberVal">
+                            <span class="number" disabled>5</span>
+                        </div>
+                    </section>
+                </section>
 
             </section>
 
