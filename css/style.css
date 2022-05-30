@@ -589,22 +589,21 @@ strong{
     color:rgb(123, 123, 123)
 }
 
+
+
 .restaurantsList .restaurantContainer{
     position: relative;
     box-shadow: #b6b6b6;
-}
-
-.restaurantsList .restaurantContainer{
     display: flex;
     flex-direction: row;
     margin:0.5em;
-    background-color: rgba(0, 0, 0, 0.09);
-    border-radius: 25px;
     padding: 1em;
     width: 35em;
     height: 150px;
     cursor: pointer;
-    box-shadow: rgb(183, 181, 181);
+    box-shadow: rgb(0, 0, 0, 0.3) 0px 0px 5px;
+    margin-right: 1.5em;
+
 }
 
 #category ul {
