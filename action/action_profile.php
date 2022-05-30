@@ -1,10 +1,8 @@
 <?php
 	declare(strict_types = 1);
 
-    require_once(__DIR__ . '/database/connection.db.php');
-    require_once(__DIR__ . '/utils/session.php');
-
-    $session = new Session();
+    require_once(__DIR__ . '/../database/connection.db.php');
+    require_once(__DIR__ . '/../utils/session.php');
 
     $session = new Session();
 
@@ -31,9 +29,10 @@
     $stmt->bindParam(':phone', $phone);
     $stmt->bindParam(':oldusername', $session->getUsername());
 
-    $session->setUsername($username)
-    
     $session->setUsername($username);
-    header('Location: profile.php');
+
+    $stmt->execute();
+
+    header('Location: /profile.php');
 
 ?>

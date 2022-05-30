@@ -21,7 +21,7 @@
     <main>
         <section id="profile">
             <div id="fields">
-                <form action="action_register.php" method="post" class="profile_form">
+                <form action="/action/action_register.php" method="post" class="profile_form">
                     <label>Name</label>
                     <input name="n" class="attr" type="text" placeholder="Name" value="<?php echo $session->getName(); ?>" required="required">
                     <label>Username</label>

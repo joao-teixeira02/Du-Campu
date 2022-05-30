@@ -96,7 +96,7 @@
                 <input class="input" type="text" placeholder="Categories separated by comma" name="c" id="categories_input">
                 <input type="hidden" name="id" value="<?php echo($id); ?>">
                 
-                <input formaction="action_add_restaurant.php" formmethod="post" type="submit" class="white_button" value="Insert">
+                <input formaction="/action/action_add_restaurant.php" formmethod="post" type="submit" class="white_button" value="Insert">
             </form>
         </section>
 
@@ -142,7 +142,7 @@
                     <input class="input" type="text" placeholder="Dish type" name="t" id="type_input">
                     <input type="hidden" name="id" value="<?php echo($restaurant->id); ?>"> 
                     
-                    <input formaction="action_add_dish.php" formmethod="post" type="submit" class="white_button" value="Insert">
+                    <input formaction="/action/action_add_dish.php" formmethod="post" type="submit" class="white_button" value="Insert">
                 </form>
 
             </li>
@@ -166,7 +166,7 @@
         <h1>Personal Information</h1>
             <section id="account">
                 <section id="fields">
-                    <form action="action_profile.php" method="post" class="profile_form">
+                    <form action="/action/action_profile.php" method="post" class="profile_form">
                         <label>Name</label>
                         <input name="n" class="attr" type="text" placeholder="Name" value="<?php echo $session->getName(); ?>" required="required">
                         <label>Username</label>
@@ -182,11 +182,11 @@
                         <input type="submit" name="Submit" value="Update">
                     </form>
                     <form>
-                        <input formaction="action_logout.php" type="submit" value="Logout">
+                        <input formaction="/action/action_logout.php" type="submit" value="Logout">
                     </form>
-                    <hr>
-                    <input onclick="openDialog('Delete Account')" type="submit" value="Delete Account">
-
+                    <form>
+                        <input formaction="/action/action_delete_account.php" type="submit" value="Delete Account">
+                    </form>
                 </section>
                 <div id="photo_field">
                     <form action="" method="post" enctype="multipart/form-data">
