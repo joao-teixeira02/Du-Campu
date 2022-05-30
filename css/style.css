@@ -711,6 +711,7 @@ strong{
     vertical-align: middle;
     color: transparent;
     transition: .2s;
+    border-radius: 35px;
   }
   
   .categories input[type=checkbox] + :active:before {
