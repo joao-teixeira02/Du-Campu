@@ -596,13 +596,14 @@ strong{
     box-shadow: #b6b6b6;
     display: flex;
     flex-direction: row;
-    margin-left:0.5em;
+    margin:0.5em;
     padding: 1em;
     width: 35em;
-    height: 150px;
+    height: 160px;
     cursor: pointer;
     box-shadow: rgb(0, 0, 0, 0.3) 0px 0px 5px;
     margin-right: 1.5em;
+    margin-bottom: 1em;
 
 }
 
@@ -639,6 +640,8 @@ strong{
     height: fit-content;
     color:  rgb(91, 90, 90);
 }
+
+
 
 .restaurantsList .restaurantInfo  #price::before {
     content: "Price range: "
@@ -877,3 +880,18 @@ strong{
   }
   
   
+
+
+  .restaurantsList .searchBox{
+    display: block;
+    width:fit-content;
+    height: fit-content;
+    margin-top: 0.4em;
+}
+
+.restaurantsList .searchRestaurant{
+    border-radius: 15px;
+    color:  rgb(91, 90, 90);
+    width:fit-content;
+    height: 25px;
+}
