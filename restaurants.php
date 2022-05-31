@@ -58,15 +58,17 @@ function show_restaurant_category(){ ?>
 
     <main class = "restaurantsListPage">   
 
-        <section class = "restaurantsList">                                                                              
+        <section class = "restaurantsList">                                                                       
             <section class = "filters">
 
+            
                 <section class = "searchBox">
                     <input type="checkbox" id="lupa"/>
                     <input type="search" name="search" class="searchRestaurant" placeholder="Search">
                 </section>    
                 
                 <br>
+            
 
                 <?php show_restaurant_category(); ?>
 

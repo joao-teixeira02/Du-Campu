@@ -555,7 +555,6 @@ strong{
     grid-row: 1 / span 2;
     position: sticky;
     top:0;
-    height:fit-content;
     font-family: 'Poppins', sans-serif;
     padding: 0 10px;
     padding-bottom: 20px;
@@ -571,6 +570,7 @@ strong{
     flex-direction: row;
     flex-wrap: wrap;
     grid-column-start: 2;
+    align-content: flex-start;
 }
 
 .orderBy {
