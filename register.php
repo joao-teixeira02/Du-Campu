@@ -11,17 +11,16 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/position.css">
+        <link rel="stylesheet" href="registerInes.css">
         <title>Du'Campu</title>
     </head>
     <body>
 
-    <?php show_header_menu(); ?>
-    <main>
-        <section id="profile">
-            <div id="fields">
-                <form action="/action/action_register_customer.php" method="post" class="profile_form">
+    <main class = "register">
+
+        <section id="registerContainer">
+            <div id="registerFields">
+                <form action="/action/action_register_customer.php" method="post" class="register_form">
                     <label>Name</label>
                     <input name="n" class="attr" type="text" placeholder="Name" value="<?php echo $session->getName(); ?>" required="required">
                     <label>Username</label>
@@ -38,8 +37,12 @@
                 </form>
             </div>
         </section>
+
+        <div class = "animationRegister">
+            <img src="images/registerAnimation.svg" class="registerAnimation" alt="registerAnimation">
+        </div>   
+
     </main>
-    <?php show_footer(); ?>
 
 </body>
 </html>
