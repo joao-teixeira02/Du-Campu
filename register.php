@@ -29,9 +29,9 @@
                     <label>Email</label>
                     <input name="m" class="attr" type="text" placeholder="Email" value="<?php echo $session->getEmail(); ?>" required="required">
                     <label>Phone</label>
-                    <input name="ph" class="attr" type="text" placeholder="Phone Number" value="<?php echo $session->getPhone(); ?>" required="">
+                    <input name="ph" class="attr" type="text" placeholder="Phone Number" value="<?php echo $session->getPhone(); ?>" >
                     <label>Address</label>
-                    <input name="a" class="attr" type="text" placeholder="Address" value="<?php echo $session->getAddress(); ?>" required="">
+                    <input name="a" class="attr" type="text" placeholder="Address" value="<?php echo $session->getAddress(); ?>" >
                     <label>Password</label>
                     <input name="p" class="attr" type="password" placeholder="Password" value="<?php echo $session->getPassword(); ?>" required="required">
                     <input type="submit" name="Submit" value="Register">

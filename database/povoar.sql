@@ -108,13 +108,13 @@ INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (2, 2);
 INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (3, 2);
 INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (4, 2);
 
-INSERT INTO FavoriteRestaurant (id_customer, id_restaurant) VALUES (4, 1);
-INSERT INTO FavoriteRestaurant (id_customer, id_restaurant) VALUES (5, 2);
-INSERT INTO FavoriteRestaurant (id_customer, id_restaurant) VALUES (6, 3);
+INSERT INTO FavoriteRestaurant (id_user, id_restaurant) VALUES (4, 1);
+INSERT INTO FavoriteRestaurant (id_user, id_restaurant) VALUES (5, 2);
+INSERT INTO FavoriteRestaurant (id_user, id_restaurant) VALUES (6, 3);
 
-INSERT INTO FavoriteDish (id_customer, id_dish) VALUES (4, 27);
-INSERT INTO FavoriteDish (id_customer, id_dish) VALUES (5, 40);
-INSERT INTO FavoriteDish (id_customer, id_dish) VALUES (6, 56);
+INSERT INTO FavoriteDish (id_user, id_dish) VALUES (4, 27);
+INSERT INTO FavoriteDish (id_user, id_dish) VALUES (5, 40);
+INSERT INTO FavoriteDish (id_user, id_dish) VALUES (6, 56);
 
 INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 4, 5, 1);
 INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 5, 4, 2);

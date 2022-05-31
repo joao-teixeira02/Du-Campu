@@ -12,7 +12,6 @@ function show_restaurant_category(){ ?>
         <section class= "categories" >
         <p><h3>Category</h3></p>
         <?php 
-            $types = array();
             $db = getDatabaseConnection();
 
             foreach(Category::getCategories($db) as $category ){
