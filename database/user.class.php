@@ -33,7 +33,7 @@
         }
 
         static function getFavRestaurants(PDO $db, int $id) : array {
-            $stmt = $db->prepare('SELECT id_restaurant FROM FavoriteRestaurant WHERE FavoriteRestaurant.id_customer=?');
+            $stmt = $db->prepare('SELECT id_restaurant FROM FavoriteRestaurant WHERE FavoriteRestaurant.id_user=?');
             $stmt->execute(array($id));
 
             $idRestaurants = $stmt->fetchAll();
@@ -55,7 +55,7 @@
         }
 
         static function getFavDishes(PDO $db, int $id) : array {
-            $stmt = $db->prepare('SELECT id_dish FROM FavoriteDish WHERE FavoriteDish.id_customer=?');
+            $stmt = $db->prepare('SELECT id_dish FROM FavoriteDish WHERE FavoriteDish.id_user=?');
             $stmt->execute(array($id));
 
             $idDishes = $stmt->fetchAll();
