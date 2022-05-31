@@ -1,0 +1,47 @@
+*{
+    margin:0;
+}
+
+.register{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.animationRegister{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.animationRegister img{
+    width: 50vw;
+}
+
+#registerContainer{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(15,20,24,0.97);
+    box-shadow: 0 0 1.24em  rgb(93, 93, 93);
+}
+
+
+.input{
+    padding: 0.2em;
+    padding-left: 0.5em;
+}
+
+.input{
+    background-color: rgb(15,20,24);
+    border: 3px solid white;
+    color: white;
+}
