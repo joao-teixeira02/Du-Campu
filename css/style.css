@@ -522,6 +522,18 @@ strong{
     border-radius: 50px;
 }
 
+/*profile*/
+
+#add-restaurant [name=pr]{
+    display: none;
+}
+
+#add-restaurant {
+    float: left;
+    height: 40px;
+    display:block;
+}
+
 
   /* PRICE RANGE */
 .price-range {

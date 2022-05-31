@@ -159,7 +159,7 @@
                 if($session->isLogged()) {
                     if (!User::isCustomer($db, $_SESSION['username'])) {?>
                         <form>
-                            <input class="input" type="text-area" placeholder="Write your reply here" name="t" id="reply_input">
+                            <input class="input" type="text-area" placeholder="Write your reply here" name="t" id="reply_input" required="required">
                             <input type="hidden" name="r" value="<?php echo($review->id); ?>">
                             <input formaction="/action/action_reply.php" formmethod="post" type="submit" class="white_button" value="Reply">
                         </form>
@@ -179,8 +179,8 @@
         if($session->isLogged()) {
     ?>
         <form>
-            <input class="input" type="text-area" placeholder="Write your review here" name="r" id="review_input">
-            <input class="input" type="number" step="0.1" min="0" max="5" placeholder="0 to 5" name="p" id="points_input">
+            <input class="input" type="text-area" placeholder="Write your review here" name="r" id="review_input" required="required">
+            <input class="input" type="number" step="0.1" min="0" max="5" placeholder="0 to 5" name="p" id="points_input" required="required">
             <input formaction="/action/action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
         </form>
     <?php

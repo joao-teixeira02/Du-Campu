@@ -75,18 +75,18 @@ CREATE TABLE IF NOT EXISTS "Reply" (
 );
 
 CREATE TABLE IF NOT EXISTS "FavoriteRestaurant" (
-	"id_customer"	INTEGER,
+	"id_user"	INTEGER,
 	"id_restaurant"	INTEGER,
-	PRIMARY KEY("id_customer","id_restaurant"),
+	PRIMARY KEY("id_user","id_restaurant"),
 	FOREIGN KEY("id_restaurant") REFERENCES "Restaurant"("id"),
-	FOREIGN KEY("id_customer") REFERENCES "Customer"("id")
+	FOREIGN KEY("id_user") REFERENCES "User"("id")
 );
 
 CREATE TABLE IF NOT EXISTS "FavoriteDish" (
-	"id_customer"	INTEGER,
+	"id_user"	INTEGER,
 	"id_dish"	INTEGER,
-	PRIMARY KEY("id_customer","id_dish"),
-	FOREIGN KEY("id_customer") REFERENCES "Customer"("id"),
+	PRIMARY KEY("id_user","id_dish"),
+	FOREIGN KEY("id_user") REFERENCES "User"("id"),
 	FOREIGN KEY("id_dish") REFERENCES "Dish"("id")
 );
 
@@ -114,13 +114,7 @@ CREATE TABLE IF NOT EXISTS "OrderDishQuantity" (
 	FOREIGN KEY("id_dish") REFERENCES "Dish"("id"),
 	FOREIGN KEY("id_order") REFERENCES "Order"("id")
 );
-CREATE TABLE IF NOT EXISTS "FavoriteRestaurant" (
-	"id_customer"	INTEGER,
-	"id_restaurant"	INTEGER,
-	PRIMARY KEY("id_customer","id_restaurant"),
-	FOREIGN KEY("id_restaurant") REFERENCES "Restaurant"("id"),
-	FOREIGN KEY("id_customer") REFERENCES "Customer"("id")
-);
+
 CREATE TABLE IF NOT EXISTS "Dish" (
 	"id"	INTEGER,
 	"name"	TEXT NOT NULL,
@@ -142,11 +136,4 @@ CREATE TABLE IF NOT EXISTS "DishType" (
 	PRIMARY KEY("id_dish","id_type"),
 	FOREIGN KEY("id_dish") REFERENCES "Dish"("id"),
 	FOREIGN KEY("id_type") REFERENCES "Type"("id")
-);
-CREATE TABLE IF NOT EXISTS "FavoriteDish" (
-	"id_customer"	INTEGER,
-	"id_dish"	INTEGER,
-	PRIMARY KEY("id_customer","id_dish"),
-	FOREIGN KEY("id_customer") REFERENCES "Customer"("id"),
-	FOREIGN KEY("id_dish") REFERENCES "Dish"("id")
 );

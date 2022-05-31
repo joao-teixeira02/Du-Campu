@@ -47,6 +47,10 @@ async function updateRestaurantList() {
                                   + "&rating_min="+min_rating+"&rating_max=" + max_rating+ "&order=" + sorter.value + "&asc=" + (asc.checked?1:0) );
     const restaurants = await response.json()
 
+    const response1 =  await fetch('/api/api_get_favorites.php')
+    const favorites = await response1.json()
+    console.log(favorites)
+
 
     const section = document.querySelector('.restaurants')
     section.innerHTML = ''
@@ -94,8 +98,14 @@ async function updateRestaurantList() {
       restaurantInfo.appendChild(price)
 
       const likeIcon = document.createElement('img')
-      likeIcon.src = 'images/heartNotSelected.png'
       likeIcon.setAttribute("id", "likeIcon"+restaurant.id)
+      likeIcon.setAttribute("data-id", restaurant.id)
+      if (favorites.includes(restaurant.id)){
+        likeIcon.setAttribute('isSelected', '')
+        likeIcon.src = 'images/heart.png'
+      }
+      else
+        likeIcon.src = 'images/heartNotSelected.png'
       likeIcon.classList.add("likeIcon")
       likeIcon.style.width = "30px"
       likeIcon.style.height = "30px"
