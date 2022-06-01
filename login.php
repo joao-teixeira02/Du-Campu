@@ -24,9 +24,9 @@
         <div class = "loginContainer">
 
             <div class = "login_box">
-                <div class = "logo">
-                <img src="images/logo.png" class="logo" alt="logo">
-                </div> 
+            <div class = "logo">
+                <a href = "index.php"> <img src = "images/logo.png"> </a>
+            </div> 
 
                 <h2> Login</h2>
                 <form >

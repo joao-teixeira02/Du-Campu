@@ -69,8 +69,8 @@
     right: 0; 
     bottom: 0;
     top: 0;
-    width: 20em;
-    height: auto;
+    width: 25em;
+    height: 25em;
     padding-top: 1em;
     border: 2px solid white;
     border-radius: 15px;
@@ -89,18 +89,6 @@
 .login h2{
     margin-top: 2em;
     text-align: center;
-}
-
-.white_button{
-    width: 10em;
-    margin: auto;
-    padding: 0.2em;
-}
-
-.black_button{
-    width: 100%;
-    text-align: center;
-    padding: 0.2em;
 }
 
 
@@ -129,12 +117,20 @@
     background-color: rgb(15,20,24);
 }
 
+.login_box .logo img{
+    width: 260px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+
 .login_box .logo{
     width: 260px;
     height: 70px;
     justify-content: center;
     align-items: center;
-
+    margin-top: 1em;
 }
 
 .white_button{
@@ -149,16 +145,6 @@
 }
 
 
-.black_button{
-    background-color: rgb(15,20,24);
-    color: white;
-    border-radius: 5px;
-}
-
-.black_button:hover{
-    text-decoration: underline;
-}
-
 
 .registerPageBtn{
     border:none;
@@ -167,5 +153,9 @@
     cursor: pointer;
     margin-bottom: 0.25em;
     font-family: "Poppins";
-    font-size: smaller;
+    font-size: medium;
 }
+
+
+/* register */ 
+
