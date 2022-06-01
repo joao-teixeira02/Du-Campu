@@ -63,8 +63,7 @@ function show_restaurant_category(){ ?>
 
             
                 <section class = "searchBox">
-                    <input type="checkbox" id="lupa"/>
-                    <input type="search" name="search" class="searchRestaurant" placeholder="Search">
+                    <input type="search" name="search" class="searchRestaurant" placeholder= "Search...">
                 </section>    
                 
                 <br>

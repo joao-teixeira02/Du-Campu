@@ -24,6 +24,10 @@
         <div class = "loginContainer">
 
             <div class = "login_box">
+                <div class = "logo">
+                <img src="images/logo.png" class="logo" alt="logo">
+                </div> 
+
                 <h2> Login</h2>
                 <form >
                     <br>
@@ -47,8 +51,12 @@
                 </form>
 
                 <form>
-                    <p>Don't have an account yet?</p>
-                    <input formaction="register.php" type="submit" class="black_button" value="Register">
+                    <input type="hidden" name="flag" value="0"> 
+                    <input formaction="register.php" formmethod="post" type="submit" class="" value="Don't have an account yet? Register">
+                </form>
+                <form>
+                    <input type="hidden" name="flag" value="1"> 
+                    <input formaction="register.php" formmethod="post" type="submit" class="" value="Create a business account">
                 </form>
 
             </div>
