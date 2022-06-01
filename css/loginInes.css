@@ -141,6 +141,7 @@
     background-color: white;
     color: rgb(15,20,24);
     border-radius: 5px;
+    margin-bottom: 1em;
 }
 
 .white_button:hover{
@@ -158,3 +159,13 @@
     text-decoration: underline;
 }
 
+
+.registerPageBtn{
+    border:none;
+    background-color: rgb(15,20,24);
+    color: white;
+    cursor: pointer;
+    margin-bottom: 0.25em;
+    font-family: "Poppins";
+    font-size: smaller;
+}

@@ -52,11 +52,11 @@
 
                 <form>
                     <input type="hidden" name="flag" value="0"> 
-                    <input formaction="register.php" formmethod="post" type="submit" class="" value="Don't have an account yet? Register">
+                    <input formaction="register.php" formmethod="post" type="submit" class="registerPageBtn" value="Don't have an account yet? Register">
                 </form>
                 <form>
                     <input type="hidden" name="flag" value="1"> 
-                    <input formaction="register.php" formmethod="post" type="submit" class="" value="Create a business account">
+                    <input formaction="register.php" formmethod="post" type="submit" class="registerPageBtn" value="Create a business account">
                 </form>
 
             </div>
