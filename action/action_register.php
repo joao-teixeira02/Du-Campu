@@ -29,8 +29,6 @@
 
     $stmt->execute();
 
-    session_start();
-
     $session->setUsername($username);
 
     if ($flag === 0) {

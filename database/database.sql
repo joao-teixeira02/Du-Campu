@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS "User" (
 	"password"	VARCHAR NOT NULL,
 	"address"	TEXT,
 	"phone"	TEXT UNIQUE,
-	"photo"	INTEGER REFERENCES "Photo"("id"),
+	"photo"	INTEGER REFERENCES "Photo"("id") Default 1,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
 

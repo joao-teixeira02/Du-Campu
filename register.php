@@ -33,7 +33,7 @@
                     <br>
 
                      <div class="input_div">
-                        <input class="input" type="text" placeholder=" " name="u" id="name_input" value="<?php echo $session->getName(); ?>" required="required"/> 
+                        <input class="input" type="text" placeholder=" " name="n" id="name_input" value="<?php echo $session->getName(); ?>" required="required"/> 
                         <label for="name_input" class="input_label">Name</label>
                     </div>   
                     
@@ -47,21 +47,21 @@
                     <br>
 
                     <div class="input_div">
-                        <input class="input" type="text" placeholder=" " name="u" id="mail_input" value="<?php echo $session->getEmail(); ?>" required="required"/>
+                        <input class="input" type="text" placeholder=" " name="m" id="mail_input" value="<?php echo $session->getEmail(); ?>" required="required"/>
                         <label for="mail_input" class="input_label">Email</label>
                     </div> 
                         
                     <br>
 
                     <div class="input_div">
-                        <input class="input" type="text" placeholder=" " name="u" id="phone_input" value="<?php echo $session->getPhone(); ?>" required=""/>
+                        <input class="input" type="text" placeholder=" " name="ph" id="phone_input" value="<?php echo $session->getPhone(); ?>" required=""/>
                         <label for="phone_input" class="input_label">Phone Number</label>
                     </div> 
 
                     <br>
 
                     <div class="input_div">
-                        <input class="input" type="text" placeholder=" " name="u" id="address_input" value="<?php echo $session->getAddress(); ?>" required=""/>
+                        <input class="input" type="text" placeholder=" " name="a" id="address_input" value="<?php echo $session->getAddress(); ?>" required=""/>
                         <label for="address_input" class="input_label">Address</label>
                     </div> 
 

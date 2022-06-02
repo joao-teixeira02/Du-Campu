@@ -14,7 +14,7 @@
             if (!is_dir('../images')) mkdir('../images');
             if (!is_dir('../images/photos')) mkdir('../images/photos');
             
-            $photo_path = '../images/photos/'.$photo_name;
+            $photo_path = 'images/photos/'.$photo_name;
             
 
             $stmt = $db->prepare('Select *  from Photo where path = ?');
@@ -22,16 +22,15 @@
             
             $id = $stmt->fetch()['id'];
 
-            move_uploaded_file($file['tmp_name'], $photo_path);
+            move_uploaded_file($file['tmp_name'], __DIR__.'/../'.$photo_path);
             
-            if($id == null){
+            if($id === null){
                 $stmt = $db->prepare('INSERT INTO Photo(path) Values (?)');
                 $stmt->execute(array($photo_path));
 
-                return $db->lastInsertId();
+                return intval($db->lastInsertId());
             }
 
-            
 
             return intval($id);
         }

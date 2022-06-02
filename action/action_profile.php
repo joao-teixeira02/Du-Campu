@@ -12,14 +12,17 @@
 
     /* CRIAR IMAGEM */
     if(isset($_FILES['fileToUpload'])){
-        $originalFileName = $username.'_photo.png';
+        $originalFileName = $session->getUsername() . '_photo.png';
 
         $id_photo = Photo::insertPhoto($db, $_FILES['fileToUpload'], $originalFileName);
 
-        $query = 'UPDATE User SET photo = ?';
+        $query = 'UPDATE User SET photo = :photo_id WHERE id = :id_u';
         $stmt = $db->prepare($query);
-        $stmt->execute(array($id_photo));
+        $stmt->bindParam(':photo_id', $id_photo);
+        $stmt->bindParam(':id_u', $session->getUserId());
+        $stmt->execute();
     }
+
 
     if(isset($_POST['u']) && isset($_POST['n']) && isset($_POST['m']) && isset($_POST['p']) && isset($_POST['a']) && isset($_POST['ph'])){
 
@@ -29,9 +32,6 @@
         $password = $_POST['p'];
         $address = $_POST['a'];
         $phone = $_POST['ph'];
-
-        
-
 
         
         $query = 'UPDATE User 

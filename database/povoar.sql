@@ -1,3 +1,4 @@
+INSERT INTO Photo (path) VALUES ('images/photos/profile.jpg');
 INSERT INTO Photo (path) VALUES ('https://www.altoastral.com.br/media/_versions/legacy/2016/09/bebe-comendo-papinha-inteligencia_widexl.jpg');
 INSERT INTO Photo (path) VALUES ('https://institutopensi.org.br/wp-content/uploads/2020/04/shutterstock_631322687-890x420.jpg');
 
