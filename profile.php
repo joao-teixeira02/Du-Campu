@@ -6,6 +6,8 @@
     require_once(__DIR__ . '/database/user.class.php');
     require_once(__DIR__ . '/database/owner.class.php');
     require_once(__DIR__ . '/database/restaurant.class.php');
+    require_once(__DIR__ . '/database/state.class.php');
+    require_once(__DIR__ . '/database/order.class.php');
 
     $session = new Session();
 
@@ -202,49 +204,101 @@
 
     }
 
-
-    function show_orders(){
+    function print_order(Order $order){
+        $db = getDatabaseConnection();
+        $dish_and_quantity_list = $order->getDishesAndQuantities($db);
+        if(empty($dish_and_quantity_list))
+            return;
+        $restaurant = Restaurant::getRestaurant($db, $dish_and_quantity_list[0][0]->restaurant_id);
+        $total = 0;
         ?>
         
-        <article class="page">
-
+        <li id = 'Order_<?php echo($order->id);?>'>
+                
+            <input type='checkbox' id='order_checkbox_<?php echo($order->id);?>'>
+            <label for='order_checkbox_<?php echo($order->id);?>'>
+                <img src='images/arrow_down.png' clickable class='cart_arrow'>    
+                <h2>Order <?php echo($order->id);?></h2>
+                <span><?php echo($total);?> €</span>
+            </label>
             
-            <ul>
-
-                <li id = "Order_1">
-                    
-                    <input type="checkbox" id="order_checkbox1">
-                    <label for='order_checkbox1'>
+            <ul class = "restaurantlist">
+                <li class = "restaurant">
+                    <input type="checkbox" id="order_restaurant_checkbox<?php echo($restaurant->id);?>">
+                    <label for='order_restaurant_checkbox<?php echo($restaurant->id);?>'>
                         <img src="images/arrow_down.png" clickable class="cart_arrow">    
-                        <h2>Order 1</h2>
-                        <span>6 €</span>
+                        <h3><?php echo($restaurant->name);?></h3>
                     </label>
                     
-                    <ul class = "restaurantlist">
-                        <li class = "restaurant">
-                            <input type="checkbox" id="order_restaurant_checkbox1">
-                            <label for='order_restaurant_checkbox1'>
-                                <img src="images/arrow_down.png" clickable class="cart_arrow">    
-                                <h3>Restaurant 1</h3>
-                            </label>
-                            
-                            
-                            <ul class="dishes">
-                                <li><span class=number> 2 </span> <span class=dish_name>Fried Veggue Rice</span> <span class=dish_price> 2€ </span></li>
-                                <li><span class=number> 2 </span> <span class=dish_name>Fried Veggue Rice</span> <span class=dish_price> 2€ </span></li>
-                                <li><span class=number> 2 </span> <span class=dish_name>Fried Veggue Rice</span> <span class=dish_price> 2€ </span></li>
-                            </ul>
+                    
+                    <ul class="dishes">
 
-                        </li>
+                    <?php
+                        foreach($dish_and_quantity_list as $dish_quantity){
+                            $dish = $dish_quantity[0];
+                            $quantity = $dish_quantity[1];
+                            ?>
 
+                            <li><span class=number>   <?php echo($quantity);?> </span> 
+                                <span class=dish_name><?php echo($dish->name);?></span> 
+                                <span class=dish_price><?php echo($dish->price * $quantity);?> </span></li>
+                        
+                        <?php
+                        }
+                        ?>  
+                    
                     </ul>
-
 
                 </li>
 
-                
-
             </ul>
+
+
+        </li>
+
+
+
+        <?php
+    }
+
+    function show_orders(){
+        global $session;
+
+        $db = getDatabaseConnection();
+        $states = State::getStatus($db); 
+        ?>
+
+        <article class="page">
+
+            <?php
+
+                foreach($states as $state){
+                    ?>
+
+                    <section id="state_<?php echo($state->name);?>">
+                        <h2><?php echo($state->name);?></h2>
+                        <?php
+
+                        $orders = Order::getOrderWithState($db, $state->id, $session->getUserId());
+                        
+                        ?> <ul> <?php
+
+                        foreach($orders as $order){
+                            print_order($order);
+                        }
+
+                        ?>
+
+                        </u>
+                        
+
+                    </section>
+
+                    <?php
+                }
+
+            ?>
+
 
 
         </article>
@@ -252,6 +306,8 @@
 
         <?php
     }
+
+    
 
 ?>
 
