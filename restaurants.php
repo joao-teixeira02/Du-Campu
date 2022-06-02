@@ -56,7 +56,6 @@ function show_restaurant_category(){ ?>
     ?>
 
     <main class = "restaurantsListPage">   
-
         <section class = "restaurantsList">                                                                       
             <section class = "filters">
 
