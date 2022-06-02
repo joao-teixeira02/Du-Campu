@@ -9,7 +9,7 @@
 
     $session = new Session();
     
-    if($_GET['s']){    
+    if(isset($_GET['s'])){    
         $search_text = $_GET['s'];
     }
 
@@ -49,6 +49,13 @@
         ?>
 
         <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo ($restaurant->getPhoto($db, $id)); ?>">
+        <?php
+            global $session;
+            if ($session->isLogged()) { ?>
+                <img id="likeRestaurant" width="10px" height="10px" src="" data-restaurant_id="<?php echo($id); ?>"/>
+            <?php
+            }
+        ?>
         
         <header>
             <h1>
@@ -70,6 +77,8 @@
 
     function show_dishes(int $id) {
 
+            global $session;
+
             $types = array();
             $db = getDatabaseConnection();
             $dishes = Restaurant::getDishes($db, $id);
@@ -85,7 +94,8 @@
                 foreach($dishes as $dish){ 
                     if ($dish->getType($db) === $type) { ?>
                         <li>
-                        <figure class="comida" clickable onclick="open_add_order_popup(this);" 
+                        <?php if ($session->isLogged()) { ?>
+                            <figure class="comida" clickable onclick="open_add_order_popup_favorite(this);" 
                             data-dish_id="<?php echo($dish->id)?>"
                             data-dish_name="<?php echo($dish->getName())?>"
                             data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"
@@ -94,6 +104,21 @@
                             <figcaption> <?php echo($dish->getName()); ?> </figcaption>
                             <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
                         </figure>
+                        <?php 
+                        }
+                        else { ?>
+                            <figure class="comida" clickable onclick="open_add_order_popup(this);" 
+                            data-dish_id="<?php echo($dish->id)?>"
+                            data-dish_name="<?php echo($dish->getName())?>"
+                            data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"
+                            data-dish_price="<?php echo($dish->getPrice())?>"   >
+                            <img src="<?php echo($dish->getPhoto($db, $id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
+                            <figcaption> <?php echo($dish->getName()); ?> </figcaption>
+                            <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
+                        </figure>
+                        <?php 
+                        }
+                        ?>
                         </li>
                 <?php
                 }
@@ -118,10 +143,19 @@
             <header>
                 <img id="close" clickable width="50px" height="50px" src="images/close.png" />
                 <img id="img_order" width="100px" height="100px" src="" />
+                <?php 
+                global $session;
+                if ($session->isLogged()) { ?>
+                    <img id="heart_favorite" width="10px" height="10px" src="" />
+                <?php
+                }
+                ?>
+                
             </header>
             <main>
-                <h1 id="dish_name">Chicken Nuggets</h1>
-                <h2 id="dish_price">2.94€</h2>
+                <h1 id="dish_name"></h1>
+                <h2 id="dish_price"></h2>
+
 
                 <form id="pedido_info" action="/action/action_add_dish_cart.php" method="get">
                     <div class="select_quantity">
@@ -196,6 +230,8 @@
         <link rel="stylesheet" href="css/restaurantPage.css">
         <link rel="stylesheet" href="css/position.css">
         <script type="text/javascript" src="js/cart.js" defer></script>
+        <script type="text/javascript" src="js/likeButtonDish.js" defer></script>
+        <script type="text/javascript" src="js/likeButtonHeader.js" defer></script>
 
         <title>Du'Campu</title>
     </head>
