@@ -10,6 +10,7 @@ header.menu{
     width:100%;
     background-color: rgb(15,20,24);
     background-size: 100vw 100vh;
+    box-shadow: rgba(121, 120, 120, 0.35) 0px 0px 5px;
 }
 
 .menu .nav-links ul li{
@@ -22,6 +23,7 @@ header.menu{
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
 }
+
 
 .menu .nav-links ul li a:hover{
     color: rgb(214, 156, 92);
@@ -567,11 +569,10 @@ strong{
     grid-row: 1 / span 2;
     position: sticky;
     top:0;
-    height:fit-content;
     font-family: 'Poppins', sans-serif;
     padding: 0 10px;
     padding-bottom: 20px;
-    margin-left: 0.6em;
+    margin-left: 0.6em;;
 }
 
 .filters p{
@@ -583,6 +584,7 @@ strong{
     flex-direction: row;
     flex-wrap: wrap;
     grid-column-start: 2;
+    align-content: flex-start;
 }
 
 .orderBy {
@@ -611,10 +613,11 @@ strong{
     margin:0.5em;
     padding: 1em;
     width: 35em;
-    height: 150px;
+    height: 160px;
     cursor: pointer;
-    box-shadow: rgb(0, 0, 0, 0.3) 0px 0px 5px;
+
     margin-right: 1.5em;
+    margin-bottom: 1em;
 
 }
 
@@ -627,7 +630,6 @@ strong{
 
 
 .restaurantsList .restaurantContainer  img {
-    border-radius: 10px;
     margin-right: 1em;
     height: 100%;
     width: 10em;
@@ -652,6 +654,8 @@ strong{
     color:  rgb(91, 90, 90);
 }
 
+
+
 .restaurantsList .restaurantInfo  #price::before {
     content: "Price range: "
 }
@@ -666,7 +670,6 @@ strong{
 
 .restaurantsList .restaurantInfo  #rating::after {
     content: "\00a0•\00a0";
-    font-weight: bolder;
 }
 
 .restaurantsList .restaurantInfo  #rating::before {
@@ -693,7 +696,6 @@ strong{
 .restaurantsList .restaurants .restaurantContainer:hover{
     box-shadow: 0 0 1em  rgb(183, 181, 181);
     transition: 0.3s ease-in-out;
-    background-color: rgba(0, 0, 0, 0.205);
 }
 
 /* checkbox pretty */
@@ -739,58 +741,6 @@ strong{
     transform: scale(3);
   }
   
-
-/* LOGIN  */
-
-
-.input{
-    background-color: rgb(15,20,24);
-    border: 3px solid white;
-    color: white;
-}
-
-.input_label{
-    color: white;
-    cursor: text;    
-}
-
-.input:focus ~ .input_label , .input:not(:placeholder-shown) ~ .input_label{
-    cursor: default; 
-    background-color: rgb(15,20,24);
-}
-
-.login{
-    background-image: url("../images/DuCampua.jpg"); 
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.login_box{
-    font-family: "Poppins";
-    color: white;
-    background-color: rgb(15,20,24);
-}
-
-.white_button{
-    background-color: white;
-    color: rgb(15,20,24);
-    border-radius: 5px;
-}
-
-.white_button:hover{
-    background-color: rgb(231, 231, 231);
-}
-
-
-.black_button{
-    background-color: rgb(15,20,24);
-    color: white;
-    border-radius: 5px;
-}
-
-.black_button:hover{
-    text-decoration: underline;
-}
 
 /*
 * Profile
@@ -941,3 +891,64 @@ strong{
   }
   
   
+
+
+  .restaurantsList .searchBox{
+    display: block;
+    width:fit-content;
+    height: fit-content;
+    margin-top: 0.4em;
+}
+
+.restaurantsList .searchRestaurant{
+    border-radius: 15px;
+    color:  rgb(91, 90, 90);
+    width: 165px;
+    height: 30px;
+    background-color: rgb(15,20,24, 0.1);
+    border:none;
+}
+
+.searchBoxContainer{
+    width: 120px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.search-bar{
+    width: 120px;
+    height: 15px;
+    background-color: rgb(15,20,24, 0.08);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+}
+
+.search-bar input{
+    width: 110px;
+    background: transparent;
+    flex:1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding-left: 0.25em;
+}
+
+.search-bar button img{
+    width: 25px;
+    height: 25px;
+    bottom: 5px;
+    margin-bottom: 5px;
+    margin-left: -8px;
+}
+
+.search-bar button{
+    border:0;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: block;
+}

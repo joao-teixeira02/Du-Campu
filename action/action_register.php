@@ -8,6 +8,7 @@
 
 	$db = getDatabaseConnection();
 
+    $flag = $_POST['flag'];
 	$username = $_POST['u'];
     $name = $_POST['n'];
     $mail = $_POST['m'];
@@ -32,13 +33,24 @@
 
     $session->setUsername($username);
 
-    $query = 'INSERT INTO Customer (id) VALUES (:id)';
+    if ($flag === 0) {
+        $query = 'INSERT INTO Customer (id) VALUES (:id)';
 
-    $stmt = $db->prepare($query);
+        $stmt = $db->prepare($query);
 
-    $stmt->bindParam(':id', $session->getUserId());
+        $stmt->bindParam(':id', $session->getUserId());
 
-    $stmt->execute();
+        $stmt->execute();
+    }
+    else if ($flag === 1) {
+        $query = 'INSERT INTO Owner (id) VALUES (:id)';
+
+        $stmt = $db->prepare($query);
+
+        $stmt->bindParam(':id', $session->getUserId());
+
+        $stmt->execute();
+    }
 
 	header('Location: /index.php');
 ?>
