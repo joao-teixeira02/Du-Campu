@@ -205,60 +205,21 @@
     }
 
     function print_order(Order $order){
-        $db = getDatabaseConnection();
-        $dish_and_quantity_list = $order->getDishesAndQuantities($db);
-        if(empty($dish_and_quantity_list))
-            return;
-        $restaurant = Restaurant::getRestaurant($db, $dish_and_quantity_list[0][0]->restaurant_id);
-        $total = 0;
         ?>
-        
-        <li id = 'Order_<?php echo($order->id);?>'>
-                
-            <input type='checkbox' id='order_checkbox_<?php echo($order->id);?>'>
-            <label for='order_checkbox_<?php echo($order->id);?>'>
-                <img src='images/arrow_down.png' clickable class='cart_arrow'>    
-                <h2>Order <?php echo($order->id);?></h2>
-                <span><?php echo($total);?> €</span>
-            </label>
-            
-            <ul class = "restaurantlist">
-                <li class = "restaurant">
-                    <input type="checkbox" id="order_restaurant_checkbox<?php echo($restaurant->id);?>">
-                    <label for='order_restaurant_checkbox<?php echo($restaurant->id);?>'>
-                        <img src="images/arrow_down.png" clickable class="cart_arrow">    
-                        <h3><?php echo($restaurant->name);?></h3>
-                    </label>
-                    
-                    
-                    <ul class="dishes">
-
-                    <?php
-                        foreach($dish_and_quantity_list as $dish_quantity){
-                            $dish = $dish_quantity[0];
-                            $quantity = $dish_quantity[1];
-                            ?>
-
-                            <li><span class=number>   <?php echo($quantity);?> </span> 
-                                <span class=dish_name><?php echo($dish->name);?></span> 
-                                <span class=dish_price><?php echo($dish->price * $quantity);?> </span></li>
-                        
-                        <?php
-                        }
-                        ?>  
-                    
-                    </ul>
-
-                </li>
-
-            </ul>
-
-
-        </li>
-
-
+        <article class="order">
+            <header>
+                <h2>Bao's - Taiwanese Burger</h2>
+            </header>
+            <main>
+                <span class="date">Date: 10/2/2020 10:30</span>
+                <span class="price">Total Check: 10€</span>
+                <span class="state">State: Delivered</span>
+                <span class="details">See details</span>
+            <main>
+        </article>
 
         <?php
+
     }
 
     function show_orders(){
@@ -270,7 +231,7 @@
 
         <article class="page">
             
-        <article class="active_orders">
+        <article class="active_orders" >
                 <header>
                     <h1>Active Orders</h1>
                 </header>
@@ -300,6 +261,7 @@
                 </header>
 
                 <main>
+
                         <?php
                         $delivered_state = 4;
                         $orders = Order::getOrderWithState($db, $delivered_state, $session->getUserId());

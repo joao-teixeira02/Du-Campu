@@ -160,11 +160,17 @@
 .page{
   grid-area: page;
   width: fit-content;
+  margin: 1em;
 
 }
 
+.page h1{
+  font-size: 1.5em;
+}
 
-.page > ul{
+
+.page h2{
+  font-size: 1em;
 }
 
 .page li{
@@ -172,50 +178,38 @@
 
 }
 
-.page li > input[type=checkbox]{
-  display: none;
+.page .order{
+  border-style: solid;
+  border-width: 1px;
+  padding: 1em;
 }
 
-.page li label > h2{
-  display: inline;
-
+.page .order .date{
+  display: block;
 }
 
-.page li label > h3{
-  display: inline;
-
+.page .order .price{
+  display: block;
 }
 
-.page li > input[type=checkbox]:checked ~ ul {
-  display: none;
+.page .order .state{
+  display: block;
 }
 
-
-.page li{
-  margin: 1em;
+.page .order .details{
+  display: block;
+  color: rgb(214, 156, 92);
+  cursor: pointer;
+  text-decoration: underline rgb(214, 156, 92);
 }
 
+/* Orders Page popup */
 
-.page .dishes li * {
-  margin-right: 1.5em;
 
-}
 
-.page .dishes li :last-child {
-  margin-right: 0;
 
-}
 
-/* order checkbox label*/
-.page > ul > li > label[for='order_checkbox1']{
-  display: grid;
-  grid-template-columns: auto 1fr auto ;
-  align-items: center;
-  margin-right: 1.5em;
-}
 
-.page > ul > li > label[for='order_checkbox1'] *{
-  display: inline;
-}
+
 
 
