@@ -558,7 +558,7 @@ strong{
     font-family: 'Poppins', sans-serif;
     padding: 0 10px;
     padding-bottom: 20px;
-    margin-left: 0.6em;
+    margin-left: 0.6em;;
 }
 
 .filters p{
@@ -682,7 +682,6 @@ strong{
 .restaurantsList .restaurants .restaurantContainer:hover{
     box-shadow: 0 0 1em  rgb(183, 181, 181);
     transition: 0.3s ease-in-out;
-    background-color: rgba(0, 0, 0, 0.205);
 }
 
 /* checkbox pretty */
@@ -894,4 +893,48 @@ strong{
     height: 30px;
     background-color: rgb(15,20,24, 0.1);
     border:none;
+}
+
+.searchBoxContainer{
+    width: 120px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.search-bar{
+    width: 120px;
+    height: 15px;
+    background-color: rgb(15,20,24, 0.08);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+}
+
+.search-bar input{
+    width: 110px;
+    background: transparent;
+    flex:1;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding-left: 0.25em;
+}
+
+.search-bar button img{
+    width: 25px;
+    height: 25px;
+    bottom: 5px;
+    margin-bottom: 5px;
+    margin-left: -8px;
+}
+
+.search-bar button{
+    border:0;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: block;
 }

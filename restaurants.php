@@ -61,9 +61,11 @@ function show_restaurant_category(){ ?>
         <section class = "restaurantsList">                                                                       
             <section class = "filters">
 
-            
-                <section class = "searchBox">
-                    <input type="search" name="search" class="searchRestaurant" placeholder= "Search...">
+                <section class = "searchBoxContainer">
+                    <form action="" class ="search-bar">
+                        <button type="submit"><img src="images/search.png"></button>
+                        <input type="search" name="search" placeholder= "Search...">
+                    </form>
                 </section>    
                 
                 <br>
