@@ -6,7 +6,6 @@
     require_once(__DIR__ . '/database/user.class.php');
     require_once(__DIR__ . '/database/owner.class.php');
     require_once(__DIR__ . '/database/restaurant.class.php');
-    require_once(__DIR__ . '/database/state.class.php');
 
     $session = new Session();
 
@@ -205,28 +204,47 @@
 
 
     function show_orders(){
-        $db = getDatabaseConnection();
-        $states = State::getStatus($db); 
         ?>
         
         <article class="page">
 
-            <?php
-
-                foreach($states as $state){
-                    ?>
-
-                    <section id="state_<?php echo($state->name);?>">
-                        <h2><?php echo($state->name);?></h2>
-
-
-                    </section>
-                    
-                    <?php
-                }
-
-            ?>
             
+            <ul>
+
+                <li id = "Order_1">
+                    
+                    <input type="checkbox" id="order_checkbox1">
+                    <label for='order_checkbox1'>
+                        <img src="images/arrow_down.png" clickable class="cart_arrow">    
+                        <h2>Order 1</h2>
+                        <span>6 €</span>
+                    </label>
+                    
+                    <ul class = "restaurantlist">
+                        <li class = "restaurant">
+                            <input type="checkbox" id="order_restaurant_checkbox1">
+                            <label for='order_restaurant_checkbox1'>
+                                <img src="images/arrow_down.png" clickable class="cart_arrow">    
+                                <h3>Restaurant 1</h3>
+                            </label>
+                            
+                            
+                            <ul class="dishes">
+                                <li><span class=number> 2 </span> <span class=dish_name>Fried Veggue Rice</span> <span class=dish_price> 2€ </span></li>
+                                <li><span class=number> 2 </span> <span class=dish_name>Fried Veggue Rice</span> <span class=dish_price> 2€ </span></li>
+                                <li><span class=number> 2 </span> <span class=dish_name>Fried Veggue Rice</span> <span class=dish_price> 2€ </span></li>
+                            </ul>
+
+                        </li>
+
+                    </ul>
+
+
+                </li>
+
+                
+
+            </ul>
 
 
         </article>
