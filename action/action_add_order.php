@@ -22,12 +22,13 @@
             $order = new Order(0, 1, $this_user->id);
             $order->insertIntoDatabase($db);
             $id = $db->lastInsertId();
+            
             $order = Order::getFromDatabase($db, intval($id));
+            
     
             foreach( $dishes as $id_dish => $quantity ){
-                if($order_id){
-                    $order->addDishInDatabase($db, $id_dish, $quantity);
-                }
+                $order->addDishInDatabase($db, $id_dish, $quantity);
+                
             }
         }
 
