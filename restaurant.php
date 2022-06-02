@@ -227,12 +227,15 @@
             
             </main>
 
-            <section class="reviews">
-                <?php add_review(); ?>
+            <div id = "reviewsContainer">
+                <section class="reviews">
+                    <h1> Reviews (1) </h1>
+                    <br>
+                    <?php add_review(); ?>
 
-                <?php show_reviews($restaurant_id); ?>
-            </section>
-            
+                    <?php show_reviews($restaurant_id); ?>
+                </section>
+            </div>
 
         </article>
     

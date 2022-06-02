@@ -116,6 +116,11 @@
 
 /* reviews */
 
-.restaurant-page section.reviews > *{
+.restaurant-page section.reviews {
     margin-left: 20em;
+}
+
+.restaurant-page h1{
+    margin-top: 2em;
+    font-weight: bold;
 }
