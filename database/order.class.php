@@ -48,6 +48,22 @@
         
         }
 
+        public static function getOrderActive(PDO $db, int $customer_id) : ?array{
+            $stmt = $db->prepare('SELECT * FROM "Order" WHERE state_id<>4 AND customer_id=:customer_id order by date');
+            $stmt->bindParam(':customer_id', $customer_id);
+            $stmt->execute();
+
+
+            $orders = array();
+            while ($order_data = $stmt->fetch()) {
+                $orders[] = new Order(intval($order_data['id']), 
+                                    intval($order_data['state_id']),
+                                    intval($order_data['customer_id']));
+            }
+            return $orders;
+        
+        }
+
         public function getDishesAndQuantities(PDO $db) : ?array{
             $stmt = $db->prepare('SELECT * FROM "OrderDishQuantity" WHERE id_order=:id_order');
             $stmt->bindParam(':id_order', $this->id);

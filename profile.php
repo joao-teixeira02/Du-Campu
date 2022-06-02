@@ -269,20 +269,20 @@
         ?>
 
         <article class="page">
+            
+        <article class="active_orders">
+                <header>
+                    <h1>Active Orders</h1>
+                </header>
 
-            <?php
-
-                foreach($states as $state){
-                    ?>
-
-                    <section id="state_<?php echo($state->name);?>">
-                        <h2><?php echo($state->name);?></h2>
+                <main>
                         <?php
+                        $orders = Order::getOrderActive($db, $session->getUserId());
+                        ?> 
 
-                        $orders = Order::getOrderWithState($db, $state->id, $session->getUserId());
-                        
-                        ?> <ul> <?php
+                        <ul> 
 
+                        <?php
                         foreach($orders as $order){
                             print_order($order);
                         }
@@ -291,15 +291,33 @@
 
                         </u>
                         
+                </main>
+            </article>
 
-                    </section>
+            <article class="historico">
+                <header>
+                    <h1>Order History</h1>
+                </header>
 
-                    <?php
-                }
+                <main>
+                        <?php
+                        $delivered_state = 4;
+                        $orders = Order::getOrderWithState($db, $delivered_state, $session->getUserId());
+                        ?> 
 
-            ?>
+                        <ul> 
 
+                        <?php
+                        foreach($orders as $order){
+                            print_order($order);
+                        }
 
+                        ?>
+
+                        </u>
+                        
+                </main>
+            </article>
 
         </article>
 
