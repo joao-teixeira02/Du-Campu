@@ -193,6 +193,7 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/restaurantPage.css">
         <link rel="stylesheet" href="css/position.css">
         <script type="text/javascript" src="js/cart.js" defer></script>
 
@@ -222,15 +223,20 @@
                 <section id="listaPratos">
                     <?php show_dishes($restaurant_id); ?>
                 </section>
+            
+            
             </main>
 
             <section class="reviews">
+                <?php add_review(); ?>
+
                 <?php show_reviews($restaurant_id); ?>
             </section>
+            
 
         </article>
-
-        <?php add_review(); ?>
+    
+        
 
     </main>
 

@@ -1,0 +1,121 @@
+/* Restaurant */
+
+.restaurant-page .menuRestaurante li{
+    padding: 1em;
+}
+
+
+.restaurant-page > :not(#capaRestaurante){
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.restaurant-page .menuRestaurante{
+    width: 100%;
+    height: fit-content;
+    position: sticky;
+    position: -webkit-sticky;
+    background-color: white;
+    top: 0px;
+    
+    grid-column-start: 1;
+}
+
+.restaurant-page .menuRestaurante ul{
+    list-style: none;
+
+}
+
+.restaurant-page #listaPratos{
+    grid-column-start: 2;
+}
+
+.restaurant-page #listaPratos ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.restaurant-page  main{
+    display: grid;
+    grid-template: 100% / 20em 1fr;
+
+    margin-top: 2em;
+
+}
+
+.restaurant-page .comida {
+    max-width: 100%;
+    width: 15em;
+    margin: 1em;
+    padding: 5px;
+    text-align: center;
+}
+
+
+.restaurant-page .comida figcaption, .comida p{
+    text-align: left;
+}
+
+/* Restaurant Page */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+
+.restaurant-page{
+    font-family: 'Poppins', sans-serif;
+}
+
+.restaurant-page img#capaRestaurante {
+    width: 100%;
+    object-fit: cover;
+    height: 10em;
+}
+
+.restaurant-page h1{
+    font-size: 2em;
+}
+
+.restaurant-page h3{
+    font-size: 1.7em;
+}
+
+.restaurant-page #classificao::before{
+    content: "\002605 ";
+}
+
+.restaurant-page #tempo{
+    color:  rgb(120, 120, 120);
+}
+
+
+.restaurant-page .menuRestaurante a{
+    color: black;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+
+
+.restaurant-page .comida:hover{
+    box-shadow: 0 0 1em  rgb(183, 181, 181);
+    transition: 0.5s ease-in-out;
+}
+
+.restaurant-page #listaPratos{
+    width: 100%;
+
+}
+
+.restaurant-page .comida figcaption{
+    font-weight: bold;
+}
+
+.restaurant-page .filters{
+    padding: 0 10px;
+    padding-bottom: 20px;
+}
+
+/* reviews */
+
+.restaurant-page section.reviews > *{
+    margin-left: 20em;
+}
