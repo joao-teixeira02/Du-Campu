@@ -230,6 +230,14 @@ header.menu{
     z-index: 2;
 }
 
+#add_order #heart_favorite {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    width: 3em;
+    height: auto;
+}
+
 #add_order{
     display: none;
     z-index: 3;
@@ -404,12 +412,21 @@ strong{
 
 .restaurant-page{
     font-family: 'Poppins', sans-serif;
+    position: relative;
 }
 
 .restaurant-page img#capaRestaurante {
     width: 100%;
     object-fit: cover;
     height: 10em;
+}
+
+.restaurant-page #likeRestaurant {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 2.5em;
+    height: auto;
 }
 
 .restaurant-page h1{
