@@ -9,10 +9,10 @@ INSERT INTO User(username, name, mail, password, address, phone) VALUES ('sergio
 
 --CUSTOMERS
 
-INSERT INTO User (username, name, mail, password, address, phone) VALUES ('joaoteixeira', 'João Teixeira', 'joaoteixeira@gmail.com', 't73indfm9nc205c', '', '935497249');
-INSERT INTO User (username, name, mail, password, address, phone) VALUES ('afonsobaldo', 'Afonso Baldo', 'afonsobaldo@gmail.com', 'ola123', '', '914352559');
-INSERT INTO User (username, name, mail, password, address, phone) VALUES ('inescardoso', 'Inês Cardoso', 'inescardoso@gmail.com', '424s6784', '', '962643176');
-INSERT INTO User (username, name, mail, password, address, phone) VALUES ('andrerestivo', 'André Restivo', 'andrerestivo@gmail.com', '0l3394ov13rtc5', '', '910546926');
+INSERT INTO User (username, name, mail, password, address, phone, photo) VALUES ('joaoteixeira', 'João Teixeira', 'joaoteixeira@gmail.com', 't73indfm9nc205c', '', '935497249', 1);
+INSERT INTO User (username, name, mail, password, address, phone, photo) VALUES ('afonsobaldo', 'Afonso Baldo', 'afonsobaldo@gmail.com', 'ola123', '', '914352559', 1);
+INSERT INTO User (username, name, mail, password, address, phone, photo) VALUES ('inescardoso', 'Inês Cardoso', 'inescardoso@gmail.com', '424s6784', '', '962643176', 1);
+INSERT INTO User (username, name, mail, password, address, phone, photo) VALUES ('andrerestivo', 'André Restivo', 'andrerestivo@gmail.com', '0l3394ov13rtc5', '', '910546926', 1);
 
 INSERT INTO Owner (id) VALUES (1);
 INSERT INTO Owner (id) VALUES (2);

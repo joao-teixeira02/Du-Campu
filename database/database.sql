@@ -1,3 +1,8 @@
+CREATE TABLE IF NOT EXISTS "Photo" (
+	"id"	INTEGER,
+	"path"	TEXT NOT NULL UNIQUE,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
 
 CREATE TABLE IF NOT EXISTS "User" (
 	"id"	INTEGER,
@@ -7,6 +12,7 @@ CREATE TABLE IF NOT EXISTS "User" (
 	"password"	VARCHAR NOT NULL,
 	"address"	TEXT,
 	"phone"	TEXT UNIQUE,
+	"photo"	INTEGER REFERENCES "Photo"("id"),
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
 
@@ -42,11 +48,8 @@ CREATE TABLE IF NOT EXISTS "RestaurantCategory" (
 	FOREIGN KEY("id_restaurant") REFERENCES "Restaurant"("id"),
 	FOREIGN KEY("id_category") REFERENCES "Category"("id")
 );
-CREATE TABLE IF NOT EXISTS "Photo" (
-	"id"	INTEGER,
-	"path"	TEXT NOT NULL UNIQUE,
-	PRIMARY KEY("id" AUTOINCREMENT)
-);
+
+
 CREATE TABLE IF NOT EXISTS "RestaurantPhoto" (
 	"id_restaurant"	INTEGER,
 	"id_photo"	INTEGER PRIMARY KEY,

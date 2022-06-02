@@ -166,6 +166,8 @@
 
     
         global $session;
+        $db = getDatabaseConnection();
+        $user_photo =  User::getUser($db, $session->getUsername())->getPhoto($db);
 
         ?>
 
@@ -196,9 +198,9 @@
                     </form>
                 </section>
                 <div id="photo_field">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="/action/action_profile.php" method="post" enctype="multipart/form-data">
                         <label>Photo</label>
-                        <img id="photo" src="<?php echo 'https://www.altoastral.com.br/media/_versions/legacy/2016/09/bebe-comendo-papinha-inteligencia_widexl.jpg' ?>" alt="Profile Picture">
+                        <img id="photo" src="<?php echo $user_photo; ?>" alt="Profile Picture">
                         <input type="file" name="fileToUpload" id="fileToUpload">
                         <input type="submit" name="Submit" value="Upload">
                     </form>
@@ -252,8 +254,10 @@
             ?>
         </nav>
         
-        <?php $page = $_GET['page'];
-        if ($page === 'account') {
+        <?php 
+        
+        $page = $_GET['page'];
+        if ( !isset($_GET['page']) || $page === 'account') {
             show_profile();
         }
         else if ($page === 'myRestaurants' && !User::isCustomer($db, $session->getUsername())) {

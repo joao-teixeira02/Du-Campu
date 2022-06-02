@@ -7,11 +7,13 @@
         public int $id;
         public string $username;
         public string $password;
+        public int $photo;
         
-        public function __construct(int $id, string $username, string $password){ 
+        public function __construct(int $id, string $username, string $password, int $photo){ 
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;
+        $this->photo = $photo;
         }
 
         static function getUser(PDO $db, string $username) : ?User {
@@ -23,7 +25,8 @@
                 $user = new User(
                 intval($user_data['id']),
                 $user_data['username'],
-                $user_data['password']
+                $user_data['password'],
+                intval($user_data['photo'])
                 );
                 
                 break;
@@ -84,6 +87,17 @@
             $id = $stmt->fetch()['id'];
 
             return $id === null;
+
+        }
+
+        function getPhoto(PDO $db) : string {
+
+            $stmt = $db->prepare('SELECT path FROM Photo where id=?');
+            $stmt->execute(array($this->photo));
+
+            $path = $stmt->fetch()['path'];
+
+            return $path;
 
         }
     }
