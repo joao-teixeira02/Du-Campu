@@ -10,6 +10,7 @@ header.menu{
     width:100%;
     background-color: rgb(15,20,24);
     background-size: 100vw 100vh;
+    box-shadow: rgba(121, 120, 120, 0.35) 0px 0px 5px;
 }
 
 .menu .nav-links ul li{
@@ -22,6 +23,7 @@ header.menu{
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
 }
+
 
 .menu .nav-links ul li a:hover{
     color: rgb(214, 156, 92);

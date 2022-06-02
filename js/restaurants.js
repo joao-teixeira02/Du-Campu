@@ -1,4 +1,4 @@
-const search = document.querySelector('input.search')
+const search = document.querySelector('.search-bar input[type=search]')
 const rangeL = document.querySelector('.range-min')
 const rangeR = document.querySelector('.range-max')
 const categories_input = document.querySelectorAll('.categories input')

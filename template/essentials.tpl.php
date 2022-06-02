@@ -14,7 +14,7 @@
 
     <header class="menu">
         <nav>
-            <a href = "index.php"> <img src = "images/logo.png"> </a>
+            <a href = "index.php"> <img src = "images/logo.png" id= "logo"> </a>
             <div class = "nav-links">
                 <ul>
                     <li> <a href ="index.php">HOME</a></li>
