@@ -4,6 +4,7 @@ function addEventAsLikeButton(id_box, img_hoover, img_out, img_click){
     for (const box of boxes){
     box.addEventListener('click', (e) => {
         const this_box= document.getElementById(e.srcElement.id)
+        console.log(this_box.getAttribute('data-id'));
         this_box.toggleAttribute('isSelected')
         if(this_box.hasAttribute('isSelected'))
             this_box.src = img_click;

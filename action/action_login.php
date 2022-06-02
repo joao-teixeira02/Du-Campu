@@ -23,7 +23,7 @@
     if (isset($_POST['u']) && isset($_POST['p'])){
         if(validateLogin($_POST['u'], $_POST['p'])){
             $session->setUsername($_POST['u']);
-            header('Location: ' . "index.php");
+            header('Location: ' . "/index.php");
             exit();
         }
     }

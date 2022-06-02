@@ -6,6 +6,7 @@
     require_once(__DIR__ . '/database/user.class.php');
     require_once(__DIR__ . '/database/owner.class.php');
     require_once(__DIR__ . '/database/restaurant.class.php');
+    require_once(__DIR__ . '/database/state.class.php');
 
     $session = new Session();
 
@@ -202,6 +203,38 @@
 
     }
 
+
+    function show_orders(){
+        $db = getDatabaseConnection();
+        $states = State::getStatus($db); 
+        ?>
+        
+        <article class="page">
+
+            <?php
+
+                foreach($states as $state){
+                    ?>
+
+                    <section id="state_<?php echo($state->name);?>">
+                        <h2><?php echo($state->name);?></h2>
+
+
+                    </section>
+                    
+                    <?php
+                }
+
+            ?>
+            
+
+
+        </article>
+
+
+        <?php
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -211,6 +244,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,1,0"/>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/position.css">
+        <link rel="stylesheet" href="css/profile.css">
+        <script type="text/javascript" src="js/cart.js" defer></script> 
         <title>Du'Campu</title>
     </head>
     <body>
@@ -233,6 +268,12 @@
             <span class="material-symbols-outlined">favorite</span>
                 <p>Favorites</p>
             </a>
+            
+            <a class="menu_option" href="profile.php?page=orders">
+                <span class="material-symbols-outlined">list_alt</span>
+                <p>Orders</p>
+            </a>
+            
             <?php $db = getDatabaseConnection();
             
             if(!User::isCustomer($db, $session->getUsername())) { ?>
@@ -254,6 +295,8 @@
         }
         else if ($page === 'favorites') {
             show_favorites();
+        }else if ($page === 'orders') {
+            show_orders();
         }
         ?>
 

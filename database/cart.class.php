@@ -1,4 +1,6 @@
 <?php
+    require_once(__DIR__ . "/../database/connection.db.php");
+    require_once(__DIR__ . "/../database/dish.class.php");
 
     class Cart{
         public array $orders;
@@ -8,16 +10,28 @@
         }
 
         public function setDishQuantity(int $idDish, int $quantity){
-            if ($quantity===0 && isset($this->orders[$idDish])){
-                unset($this->orders[$idDish]);  
-            }else{
-                $this->orders[$idDish] = $quantity;
-            }
+            
+            $db = getDatabaseConnection();
+            $dish = Dish::getDish($db, $idDish);
+            
+            if ($quantity===0 ){
+                $this->removeDish($idDish);
+                return;
+            }                
+
+            $this->orders[$dish->restaurant_id][$idDish] = $quantity;
         }
 
         public function removeDish(int $idDish){
-            if (isset($this->orders[$idDish])){
-                unset($this->orders[$idDish]);  
+            $db = getDatabaseConnection();
+            $dish = Dish::getDish($db, $idDish);
+
+            if (isset($this->orders[$dish->restaurant_id][$idDish])){
+                unset($this->orders[$dish->restaurant_id][$idDish]);  
+            }
+
+            if (empty($this->orders[$dish->restaurant_id])){
+                unset($this->orders[$dish->restaurant_id]);  
             }
         }
 

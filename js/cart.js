@@ -67,6 +67,8 @@ async function update_cart(){
     const response = await fetch('api/api_get_cart.php')
     const cart_info = await response.json()
 
+    console.log(cart_info)
+
     const cart_info_map = new Map(Object.entries(cart_info));
 
     const check_in = document.querySelector("#check-in");

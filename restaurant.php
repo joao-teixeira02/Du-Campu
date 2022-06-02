@@ -9,6 +9,11 @@
 
     $session = new Session();
     
+    if(!isset($_GET['id'])){
+        echo "Error restaurante id not found";
+        exit(0);
+    }
+
     if($_GET['s']){    
         $search_text = $_GET['s'];
     }

@@ -96,6 +96,7 @@ async function updateRestaurantList() {
       const likeIcon = document.createElement('img')
       likeIcon.src = 'images/heartNotSelected.png'
       likeIcon.setAttribute("id", "likeIcon"+restaurant.id)
+      likeIcon.setAttribute("data-id", restaurant.id)
       likeIcon.classList.add("likeIcon")
       likeIcon.style.width = "30px"
       likeIcon.style.height = "30px"

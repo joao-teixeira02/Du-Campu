@@ -28,7 +28,9 @@
             }else{
                 return null;
             }
+        
         }
+        
 
         public function insertIntoDatabase(PDO $db){
             $stmt = $db->prepare('INSERT INTO "Order" (state_id, customer_id) VALUES (?, ?)');
