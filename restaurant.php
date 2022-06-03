@@ -184,11 +184,11 @@
             $db = getDatabaseConnection();
             $photo = User::getUser($db, $session->getUsername())->getPhoto($db);
     ?>
-        <form>
+        <form class = "addReviewContainer">
+            <h2>Add a review</h2>
+            <input class= "addReview" type="text-area" placeholder="Write your review here" name="r" id="review_input" required="required">
             
-            <input class="addReview" type="text-area" placeholder="Write your review here" name="r" id="review_input" required="required">
-            
-            <img id="add_review_photo" width="50px" height="50px" alt="profile image" src="<?php echo $photo; ?>" />
+            <img id="add_review_photo" alt="profile image" src="<?php echo $photo; ?>" />
             
                 <div class = "classification">
                 <input type="radio" id="star5" name="p" value="5"> <label for="star5" required="required"></label>
@@ -197,7 +197,7 @@
                 <input type="radio" id="star2" name="p" value="2"> <label for="star2"></label>
                 <input type="radio" id="star1" name="p" value="1"> <label for="star1" ></label>
                 </div>
-            <input formaction="/action/action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
+                <input formaction="/action/action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
         </form>
     <?php
         }

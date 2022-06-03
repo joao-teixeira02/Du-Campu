@@ -76,7 +76,7 @@
 }
 
 .restaurant-page h3{
-    font-size: 1.7em;
+    font-size: 1.5em;
 }
 
 .restaurant-page #classificao::before{
@@ -117,16 +117,16 @@
 /* reviews */
 
 .restaurant-page section.reviews {
+    margin-top: 6em;
     margin-left: 20em;
 }
 
 .restaurant-page h1{
-    margin-top: 2em;
     font-weight: bold;
 }
 
 .restaurant-page section.reviews .addReview{
-    width: 40em;
+    width: 55em;
     height: 5em;
     
 }
@@ -164,5 +164,83 @@
 .classification:not(:checked) > label:hover,
 .classification:not(:checked) > label:hover ~ label {
     color: #c59c08e8;
+}
+
+.addReviewContainer{
+    display: grid;
+    grid-template: auto auto auto / auto auto auto;
+    width: 30em;
+}
+
+#add_review_photo{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin-right: 1.5em;
+}
+
+.addReviewContainer h4{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.addReviewContainer .classification{
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.addReviewContainer .addReview{
+    grid-column: 2 / span 2;
+    grid-row: 2;
+}
+
+.addReviewContainer .white_button{
+    grid-column: 3;
+    grid-row: 3;
+    margin-top: 0.5em;
+    width: 60px;
+    justify-self: end;
+}
+
+
+/*REVIEW*/
+.review{
+    padding-top: 0.5em;
+    margin-bottom: 1em;
+    display: grid;
+    grid-template: auto auto auto / auto auto auto;
+    width: 30em;
+}
+
+.review .reviewPhoto{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin-right: 1.5em;
+}
+
+
+.addReviewContainer .reviewUsername{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.addReviewContainer .reviewUsername p{
+    font-size: larger;
+}
+
+
+.addReviewContainer .points{
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.addReviewContainer .review{
+    grid-column: 2 / span 2;
+    grid-row: 2;
 }
 
