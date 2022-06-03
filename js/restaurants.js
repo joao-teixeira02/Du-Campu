@@ -112,6 +112,8 @@ async function updateRestaurantList() {
 
       restaurantContainer.appendChild(restaurantInfo)
       section.appendChild(restaurantContainer)
+
+      restaurantContainer.addEventListener("click",()=>{location.href='restaurant.php?id=' + restaurant.id})
       
     }
     

@@ -70,7 +70,6 @@
                 }
             ?>
             </p>
-            <p id="tempo">5 - 15 min</p>
         </header>
         <?php
     }
