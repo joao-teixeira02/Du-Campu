@@ -124,3 +124,45 @@
     margin-top: 2em;
     font-weight: bold;
 }
+
+.restaurant-page section.reviews .addReview{
+    width: 40em;
+    height: 5em;
+    
+}
+
+
+  /* CLASSIFICATION */
+  .classification {
+    float: left;
+    height: 40px
+}
+
+.classification:not(:checked) > input {
+    display: none;  
+}
+
+.classification:not(:checked) > label {
+    float:right;
+    width:1em;
+    cursor:pointer;
+    font-size:30px;
+    color:#b6b6b6;
+}
+.classification:not(:checked) > label:before {
+    content: '★';
+}
+.classification > input:checked ~ label {
+    color: #ffc800ea;    
+}
+
+.classification > input:checked + label:hover,
+.classification > input:checked ~ label:hover,
+.classification > input:checked ~ label:hover ~ label,
+.classification > label:hover ~ input:checked ~ label,
+.classification > input:checked + label:hover ~ label,
+.classification:not(:checked) > label:hover,
+.classification:not(:checked) > label:hover ~ label {
+    color: #c59c08e8;
+}
+

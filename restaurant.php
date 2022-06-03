@@ -149,17 +149,20 @@
 
         $db = getDatabaseConnection();
         $reviews = Restaurant::getReviews($db, $id);
-
-        foreach($reviews as $review){ ?>
+        foreach($reviews as $review){ 
+            
+            $photo = User::getUser($db, $review->getUsername($db))->getPhoto($db);
+            ?>
             <section class = "review">
+                <img class="reviewPhoto" src = "<?php echo($photo); ?>"/>
                 <p class="reviewUsername"><?php echo($review->getUsername($db)); ?></p>
                 <p class="review"><?php echo($review->review); ?></p>
                 <p class="points"><?php echo($review->points); ?></p>
                 <?php
                 if($session->isLogged()) {
                     if (!User::isCustomer($db, $_SESSION['username'])) {?>
-                        <form>
-                            <input class="input" type="text-area" placeholder="Write your reply here" name="t" id="reply_input" required="required">
+                        <form class = "addReply">
+                            <input class="reply" type="text-area" placeholder="Write your reply here" name="t" id="reply_input" required="required">
                             <input type="hidden" name="r" value="<?php echo($review->id); ?>">
                             <input formaction="/action/action_reply.php" formmethod="post" type="submit" class="white_button" value="Reply">
                         </form>
@@ -177,10 +180,23 @@
         global $session;
 
         if($session->isLogged()) {
+            
+            $db = getDatabaseConnection();
+            $photo = User::getUser($db, $session->getUsername())->getPhoto($db);
     ?>
         <form>
-            <input class="input" type="text-area" placeholder="Write your review here" name="r" id="review_input" required="required">
-            <input class="input" type="number" step="0.1" min="0" max="5" placeholder="0 to 5" name="p" id="points_input" required="required">
+            
+            <input class="addReview" type="text-area" placeholder="Write your review here" name="r" id="review_input" required="required">
+            
+            <img id="add_review_photo" width="50px" height="50px" alt="profile image" src="<?php echo $photo; ?>" />
+            
+                <div class = "classification">
+                <input type="radio" id="star5" name="p" value="5"> <label for="star5" required="required"></label>
+                <input type="radio" id="star4" name="p" value="4"> <label for="star4"></label>
+                <input type="radio" id="star3" name="p" value="3"> <label for="star3"></label>
+                <input type="radio" id="star2" name="p" value="2"> <label for="star2"></label>
+                <input type="radio" id="star1" name="p" value="1"> <label for="star1" ></label>
+                </div>
             <input formaction="/action/action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
         </form>
     <?php

@@ -23,12 +23,7 @@
             return $username['username'];
         }
 
-        function getPhoto(PDO $db) : string{
-            $stmt = $db->prepare('SELECT username FROM User WHERE User.id=?');
-            $stmt->execute(array($this->customer_id));
-            $photo = $stmt->fetch();
-            return $photo['photo'];
-        }
+        
 
     }
 
