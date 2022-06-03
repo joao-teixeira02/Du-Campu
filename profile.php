@@ -231,7 +231,7 @@
 
         <article class="page">
             
-        <article class="active_orders" >
+        <article id="active_orders" >
                 <header>
                     <h1>Active Orders</h1>
                 </header>
@@ -255,7 +255,7 @@
                 </main>
             </article>
 
-            <article class="historico">
+            <article id="historico">
                 <header>
                     <h1>Order History</h1>
                 </header>

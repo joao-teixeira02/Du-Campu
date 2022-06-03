@@ -168,6 +168,17 @@
   font-size: 1.5em;
 }
 
+.page #active_orders ul, .page #historico ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.page #active_orders{
+  margin-bottom: 2em;
+}
+
 
 .page h2{
   font-size: 1em;
