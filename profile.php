@@ -287,6 +287,37 @@
         <?php
     }
 
+    function show_order_details_popup(){
+        ?>
+
+        <div class = "background_filter">
+
+        </div>
+
+        <article id="popup_order_details" class="full_window_popup">
+
+            <header>
+                <h1> Restaurant name</h1>
+                <h2> 20 €</h2>
+            </header>
+
+            <main>
+                <ul>
+                    <li>
+                        <span class="dish_quantity"> 4 </span>
+                        <span class="dish_name"> Prato </span>
+                        <span class="dish_name"> Prato </span>
+                    </li>
+                </ul>
+
+            </main>
+
+        </article>
+
+        <?php
+
+    }
+
     
 
 ?>
@@ -357,6 +388,13 @@
     </article>
 
     </main>
+
+    <?php 
+        if ($page === 'orders') {
+            show_order_details_popup();
+        }
+
+    ?>
 
     <?php show_footer(); ?>
 

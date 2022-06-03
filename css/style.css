@@ -217,10 +217,10 @@ header.menu{
     display: none;
 }
 
-/* ADD order popup */
+/* popup */
 
 .background_filter{
-    display: none;
+    display: block;
     position: fixed;
     margin: 0;
     width: 100vw;
@@ -230,8 +230,8 @@ header.menu{
     z-index: 2;
 }
 
-#add_order{
-    display: none;
+.full_window_popup{
+    display: block;
     z-index: 3;
     position: fixed;
     margin: auto;
@@ -239,6 +239,7 @@ header.menu{
     left:0;
     right:0;
     bottom:0;
+    top:0;
     
     background-color: white;
     font-family: 'Poppins', sans-serif;
@@ -247,6 +248,9 @@ header.menu{
     height: 40em;
 
 }
+
+
+/* ADD order popup */
 
 #add_order #dish_price{
     font-size: 25px;  

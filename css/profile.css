@@ -173,6 +173,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1em;
+
 }
 
 .page #active_orders{
@@ -215,7 +216,6 @@
 }
 
 /* Orders Page popup */
-
 
 
 
