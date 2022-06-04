@@ -60,6 +60,16 @@
             }
         }
 
+        function isFavDish(PDO $db, int $user_id) : bool {
+            $stmt = $db->prepare('SELECT * FROM FavoriteDish WHERE FavoriteDish.id_user=? AND FavoriteDish.id_dish=?');
+            $stmt->execute(array($user_id, $this->id));
+
+            if($stmt->fetch()){
+                return true;
+            }
+            return false;
+        }
+
 
     }
 
