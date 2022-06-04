@@ -47,10 +47,8 @@ async function updateRestaurantList() {
                                   + "&rating_min="+min_rating+"&rating_max=" + max_rating+ "&order=" + sorter.value + "&asc=" + (asc.checked?1:0) );
     const restaurants = await response.json()
 
-    const response1 =  await fetch('/api/api_get_favorites.php')
+    const response1 =  await fetch('/api/api_get_favorite_restaurants.php')
     const favorites = await response1.json()
-    console.log(favorites)
-
 
     const section = document.querySelector('.restaurants')
     section.innerHTML = ''
@@ -114,6 +112,8 @@ async function updateRestaurantList() {
 
       restaurantContainer.appendChild(restaurantInfo)
       section.appendChild(restaurantContainer)
+
+      restaurantContainer.addEventListener("click",()=>{location.href='restaurant.php?id=' + restaurant.id})
       
     }
     

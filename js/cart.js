@@ -259,9 +259,10 @@ if(add_order_popup){
     const dish_photo_element = document.querySelector("#add_order #img_order");
     const dish_name_element = document.querySelector("#add_order #dish_name");
     const dish_price_element = document.querySelector("#add_order #dish_price");
-    
+    const dish_favorite_heart = document.querySelector("#add_order #heart_favorite");
 
     function open_add_order_popup(e){
+
         const dish_id = e.getAttribute('data-dish_id')
         id_dish_input.value = dish_id;
 
@@ -273,7 +274,7 @@ if(add_order_popup){
 
         const dish_price = e.getAttribute('data-dish_price')
         dish_price_element.innerText = dish_price;
-        
+
         quantity_input.value = 1;
         span_quantity.innerText = 1;
 
@@ -281,7 +282,49 @@ if(add_order_popup){
         
         add_order_popup.style.display = "block"
         background_filter.style.display = "block"
+
+    }
+
+    function open_add_order_popup_favorite(e){
+        async function load_popup() {
+
+            const response =  await fetch('/api/api_get_favorite_dishes.php')
+            const favorites = await response.json()
+
+            const dish_id = e.getAttribute('data-dish_id')
+            id_dish_input.value = dish_id;
+
+            const dish_name = e.getAttribute('data-dish_name')
+            dish_name_element.innerText = dish_name;
+
+            const dish_photo = e.getAttribute('data-dish_photo')
+            dish_photo_element.src = dish_photo;
+
+            const dish_price = e.getAttribute('data-dish_price')
+            dish_price_element.innerText = dish_price;
+
+            //select button if in favorites
+
+            if(favorites.includes(parseInt(dish_id))) {
+                dish_favorite_heart.src = 'images/heart.png'
+                dish_favorite_heart.setAttribute('isSelected', '')
+            }
+            else {
+                dish_favorite_heart.removeAttribute('isSelected')
+                dish_favorite_heart.src = 'images/heartNotSelected.png'
+            }
         
+            quantity_input.value = 1;
+            span_quantity.innerText = 1;
+
+
+            
+            add_order_popup.style.display = "block"
+            background_filter.style.display = "block"
+            
+        }
+
+        load_popup()
     }
 
 }
