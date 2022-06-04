@@ -20,7 +20,6 @@
 
             $order_data = $stmt->fetch();
             if($order_data){
-                print_r($order_data['date']);
                 $order = new Order(intval($order_data['id']), 
                         intval($order_data['state_id']),
                         intval($order_data['customer_id']));

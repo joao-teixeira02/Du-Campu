@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS "User" (
 	"password"	VARCHAR NOT NULL,
 	"address"	TEXT,
 	"phone"	TEXT UNIQUE,
-	"photo"	INTEGER REFERENCES "Photo"("id") Default,
+	"photo"	INTEGER REFERENCES "Photo"("id") Default 1,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
 
@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS "Reviews" (
 	"customer_id"	INTEGER NOT NULL,
 	"points"	INTEGER NOT NULL CHECK("points" <= 5 AND "points" >= 0),
 	"restaurant_id"	INTEGER NOT NULL,
+	"date"	DATETIME NOT NULL Default CURRENT_TIMESTAMP,
 	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("customer_id") REFERENCES "Customer"("id"),
 	FOREIGN KEY("restaurant_id") REFERENCES "Restaurant"("id")

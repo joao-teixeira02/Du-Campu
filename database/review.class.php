@@ -7,13 +7,15 @@
         public int $customer_id;
         public float $points;
         public int $restaurant_id;
+        public string $date;
 
-        public function __construct(int $id, string $review, int $customer_id, float $points, int $restaurant_id){ 
+        public function __construct(int $id, string $review, int $customer_id, float $points, int $restaurant_id, string $date){ 
         $this->id = $id;
         $this->review = $review;
         $this->customer_id = $customer_id;
         $this->points = $points;
         $this->restaurant_id = $restaurant_id;
+        $this->date = $date;
         }
 
         function getUsername(PDO $db) : string{
@@ -23,7 +25,12 @@
             return $username['username'];
         }
 
-        
+        function getPhoto(PDO $db) : string{
+            $stmt = $db->prepare('SELECT username FROM User WHERE User.id=?');
+            $stmt->execute(array($this->customer_id));
+            $photo = $stmt->fetch();
+            return $photo['photo'];
+        }
 
     }
 

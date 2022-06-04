@@ -158,6 +158,7 @@
                 <p class="reviewUsername"><?php echo($review->getUsername($db)); ?></p>
                 <p class="review"><?php echo($review->review); ?></p>
                 <p class="points"><?php echo($review->points); ?></p>
+                <p class="date"><?php echo($review->date); ?></p>
                 <?php
                 if($session->isLogged()) {
                     if (!User::isCustomer($db, $_SESSION['username'])) {?>

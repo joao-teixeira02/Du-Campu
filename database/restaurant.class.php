@@ -92,14 +92,16 @@
             $stmt->execute(array($id));
             $reviews = array();
             
-            while($review = $stmt->fetch()){
+            while($review_data = $stmt->fetch()){
+                
                 $reviews[] = new Review(
-                    intval($review['id']),
-                    $review['review'],
-                    intval($review['customer_id']),
-                    floatval($review['points']),
-                    intval($reviews['restaurant_id'])
-                );
+                    intval($review_data['id']),
+                    $review_data['review'],
+                    intval($review_data['customer_id']),
+                    floatval($review_data['points']),
+                    intval($review_data['restaurant_id']),
+                    $review_data['date']
+                );  
             }
             return $reviews;
         }
