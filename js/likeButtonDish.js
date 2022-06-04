@@ -1,32 +1,39 @@
 function addEventAsLikeButton(id_box, img_hoover, img_out, img_click){
-    const boxes = document.querySelectorAll(id_box)
+    const popupHeart = document.querySelectorAll(id_box)
 
-    for (const box of boxes){
-    box.addEventListener('click', async (e) => {
-        const this_box= document.getElementById(e.srcElement.id)
-        this_box.toggleAttribute('isSelected')
-        if(this_box.hasAttribute('isSelected')) {
-            this_box.src = img_click; 
-            await fetch('/action/action_add_favorite_dish.php?d_id=' + this_box.getAttribute('data-id_id'));
+    popupHeart.addEventListener('click', async (e) => {
+        popupHeart.toggleAttribute('isSelected')
+        const heart = document.querySelector(".comida[data-dish_id=" + popupHeart.getAttribute('data-id_id') + "] #heart_favorite")
+
+
+        console.log(".comida[data-dish_id=" + this_box.getAttribute('data-dish_id') + "] #heart_favorite")
+        if(popupHeart.hasAttribute('isSelected')) {
+            console.log(img_click)
+            heart.setAttribute('isSelected', "")
+            popupHeart.src = img_click; 
+            await fetch('/action/action_add_favorite_dish.php?d_id=' + popupHeart.getAttribute('data-id_id'));
         }
         else {
-            this_box.src = img_out;
-            await fetch('/action/action_remove_favorite_dish.php?d_id=' + this_box.getAttribute('data-id_id'));
+            heart.removeAttribute('isSelected')
+            popupHeart.src = img_out;
+            await fetch('/action/action_remove_favorite_dish.php?d_id=' + popupHeart.getAttribute('data-id_id'));
         }
+        heart.src = this_box.src;
+
     })
 
-    box.addEventListener('mouseover', (e) => {
-        const this_box= document.getElementById(e.srcElement.id)
-        if(!this_box.hasAttribute('isSelected'))
-            box.src = img_hoover;
+
+    popupHeart.addEventListener('mouseover', (e) => {
+        if(!popupHeart.hasAttribute('isSelected'))
+            popupHeart.src = img_hoover;
         })
-    box.addEventListener('mouseout', (e) => {
-        const this_box= document.getElementById(e.srcElement.id)
-        if(!this_box.hasAttribute('isSelected'))
-            box.src = img_out;
+    popupHeart.addEventListener('mouseout', (e) => {
+        if(!popupHeart.hasAttribute('isSelected'))
+            popupHeart.src = img_out;
         }
         )
-  }
+  
 }
 
 addEventAsLikeButton("#add_order #heart_favorite", 'images/heartHoover.png', 'images/heartNotSelected.png', 'images/heart.png')
+

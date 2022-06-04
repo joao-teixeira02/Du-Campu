@@ -99,7 +99,10 @@
                             data-dish_name="<?php echo($dish->getName())?>"
                             data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"
                             data-dish_price="<?php echo($dish->getPrice())?>"   >
+                            <div class = "photoContainer">
                             <img src="<?php echo($dish->getPhoto($db, $id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
+                            <img id="heart_favorite" src="images/heartNotSelected.png" />
+                             </div>
                             <figcaption> <?php echo($dish->getName()); ?> </figcaption>
                             <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
                         </figure>

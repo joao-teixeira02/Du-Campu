@@ -53,6 +53,19 @@
     text-align: center;
 }
 
+.comida .photoContainer{
+    position: relative;
+}
+
+.comida #heart_favorite{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top:1em;
+    right: 2em;
+}
+
+
 
 .restaurant-page .comida figcaption, .comida p{
     text-align: left;
