@@ -219,13 +219,21 @@
 
 #popup_order_details{
   width: fit-content;
+  height: fit-content;
+  max-height: 100%;
   max-width: 30em;
   padding: 1em;
 }
 
+#popup_order_details table td:not(:last-child) {
+  padding-right: 1em;
+}
+
+
+
 #popup_order_details header{
   display: grid;
-  grid-template: auto auto / 1fr 5em;
+  grid-template: auto auto / 1fr 4em;
 }
 
 #popup_order_details .cross{
@@ -262,7 +270,7 @@
 }
 
 #popup_order_details table tr > :last-child{
-  width: 5em;
+  width: 4em;
   text-align: left;
 }
 

@@ -205,16 +205,18 @@
     }
 
     function print_order(Order $order){
+        $db = getDatabaseConnection();
+
         ?>
         <article class="order">
             <header>
                 <h2>Bao's - Taiwanese Burger</h2>
             </header>
             <main>
-                <span class="date">Date: 10/2/2020 10:30</span>
-                <span class="price">Total Check: 10€</span>
-                <span class="state">State: Delivered</span>
-                <span class="details">See details</span>
+                <span class="date"><?php echo '12/2';?></span>
+                <span class="price">Total Check: <?php echo 'price';?></span>
+                <span class="state">State: <?php echo State::getStatebyId( $db, $order->id)->name;?></span>
+                <span class="details" onclick="open_details_popup()" >See details</span>
             <main>
         </article>
 
@@ -239,6 +241,7 @@
                 <main>
                         <?php
                         $orders = Order::getOrderActive($db, $session->getUserId());
+                        
                         ?> 
 
                         <ul> 
@@ -351,6 +354,7 @@
         <link rel="stylesheet" href="css/position.css">
         <link rel="stylesheet" href="css/profile.css">
         <script type="text/javascript" src="js/cart.js" defer></script> 
+        <script type="text/javascript" src="js/orders_list.js" defer></script> 
         <title>Du'Campu</title>
     </head>
     <body>
