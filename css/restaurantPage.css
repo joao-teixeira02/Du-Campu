@@ -170,6 +170,7 @@
     display: grid;
     grid-template: auto auto auto / auto auto auto;
     width: 30em;
+    margin-bottom: 2em;
 }
 
 #add_review_photo{
@@ -210,9 +211,18 @@
     padding-top: 0.5em;
     margin-bottom: 1em;
     display: grid;
-    grid-template: auto auto auto / auto auto auto;
-    width: 30em;
+    grid-template: auto auto auto / auto 1fr 3em;
+    width: 52.5em;
+    box-shadow: 0 0 1em  rgb(183, 181, 181);
+    padding: 1em;
+    
 }
+
+.review:hover{
+    box-shadow: 0 0 1em  rgb(83, 82, 82);
+    transition: 0.3s ease-in-out;
+}
+
 
 .review .reviewPhoto{
     width: 100px;
@@ -224,26 +234,41 @@
 }
 
 
-.review .reviewUsername{
+.review .basicInfo{
     grid-column: 2;
     grid-row: 1;
 }
 
-.review .reviewUsername p{
+.review .reviewUsername{
     font-size: larger;
+    font-weight: bolder;
 }
 
+.review .date{
+    font-size: smaller;
+    font-weight: lighter;
+    color:rgb(120, 120, 120);
+}
 
 .review .points{
     grid-column: 3;
     grid-row: 1;
+    background-color: rgb(232, 229, 229);
+    border-radius: 50%;
+    height: 32px;
+    width: 30px;
 }
 
-.review .review{
+.review .reviewText{
     grid-column: 2 / span 2;
     grid-row: 2;
+    width: fit-content;
 }
 
-
+.review .points::before {
+    color: rgb(214, 156, 92);
+    content: "\002605 ";
+    font-size: larger;
+}
 
 
