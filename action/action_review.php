@@ -13,7 +13,7 @@
 
 		$review = $_POST['r'];
 		$points = $_POST['p'];
-		$restaurant_id = 1;
+		$restaurant_id = $_POST['r_id'];
 
 		$query = 'SELECT id FROM User WHERE User.username=?';
 
@@ -35,5 +35,5 @@
 		$stmt->execute();
  
 	}
-	header('Location: /restaurant.php');
+	header("Location:".$_SERVER['HTTP_REFERER']."");
 ?>

@@ -211,7 +211,7 @@
         }
     }
 
-    function add_review(){
+    function add_review(int $id){
 
         global $session;
 
@@ -233,7 +233,8 @@
                 <input type="radio" id="star2" name="p" value="2"> <label for="star2"></label>
                 <input type="radio" id="star1" name="p" value="1"> <label for="star1" ></label>
                 </div>
-                <input formaction="/action/action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
+                <input type="hidden" name="r_id" value="<?php echo($id); ?>">
+            <input formaction="/action/action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
         </form>
     <?php
         }
@@ -288,7 +289,7 @@
                     $reviews = Restaurant::getReviews($db, $restaurant_id);
                     echo sizeof($reviews);?>)</h1>
                     <br>
-                    <?php add_review(); ?>
+                    <?php add_review($restaurant_id); ?>
 
                     <?php show_reviews($restaurant_id); ?>
                 </section>
