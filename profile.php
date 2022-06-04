@@ -70,7 +70,7 @@
                 <div class="dish-cont">
                     <div class="dish_img">
                         <img class="thumb" alt="Imagem do Prato" src="<?php echo ($favDish->getPhoto($db, $favDish->id)); ?>">
-                        <input type="button" class="card-btn" value="See Dish" onclick="location.href='restaurant.php?id=<?php echo($favDish->restaurant_id); ?>'"/>
+                        <input type="button" class="card-btn" value="See Dish" onclick="location.href='restaurant.php?id=<?php echo($favDish->restaurant_id); ?>#<?php echo($favDish->getType($db)); ?>'"/>
 
                     </div>
                     <h3>

@@ -6,7 +6,16 @@
  .favorites {
     position: relative;
     overflow: hidden;
-    margin-left: 2em;
+  }
+
+  .favorites h2 {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    text-align: center;
+  }
+
+  .favRestaurants {
+    margin-bottom: 5em;
   }
 
   #noFavs {
@@ -83,7 +92,7 @@
     transition: 0.5s;
   }
   
-  li:hover .card-btn {
+  .restaurant-cont:hover .card-btn, .dish-cont:hover .card-btn {
     opacity: 1;
   }
   
