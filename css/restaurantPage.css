@@ -224,23 +224,26 @@
 }
 
 
-.addReviewContainer .reviewUsername{
+.review .reviewUsername{
     grid-column: 2;
     grid-row: 1;
 }
 
-.addReviewContainer .reviewUsername p{
+.review .reviewUsername p{
     font-size: larger;
 }
 
 
-.addReviewContainer .points{
+.review .points{
     grid-column: 3;
     grid-row: 1;
 }
 
-.addReviewContainer .review{
+.review .review{
     grid-column: 2 / span 2;
     grid-row: 2;
 }
+
+
+
 
