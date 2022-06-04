@@ -262,6 +262,8 @@
         <article class="restaurant-page">
 
         <?php 
+
+        $db = getDatabaseConnection();
         
         $restaurant_id = intval($_GET['id']);
         
@@ -283,7 +285,9 @@
 
             <div id = "reviewsContainer">
                 <section class="reviews">
-                    <h1> Reviews (1) </h1>
+                    <h1> Reviews (<?php 
+                    $reviews = Restaurant::getReviews($db, $restaurant_id);
+                    echo sizeof($reviews);?>)</h1>
                     <br>
                     <?php add_review(); ?>
 
