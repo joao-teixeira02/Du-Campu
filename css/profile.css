@@ -217,8 +217,54 @@
 
 /* Orders Page popup */
 
+#popup_order_details{
+  width: fit-content;
+  max-width: 30em;
+  padding: 1em;
+}
+
+#popup_order_details header{
+  display: grid;
+  grid-template: auto auto / 1fr 5em;
+}
+
+#popup_order_details .cross{
+  grid-row: 1;
+
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+#popup_order_details h1{
+  grid-row: 2;
+  grid-column: 1;
+
+  display: inline;
+  font-size: large;
+}
+#popup_order_details #TotalPrice{
+  grid-row: 2;
+  grid-column: 2;
+  
+  display: inline;
+  font-size: medium;
+}
 
 
+#popup_order_details table{
+  width: 100%;
+  text-align: left;
+}
+
+#popup_order_details table tr > :first-child{
+  width: 4em;
+  text-align: left;
+}
+
+#popup_order_details table tr > :last-child{
+  width: 5em;
+  text-align: left;
+}
 
 
 

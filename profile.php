@@ -297,18 +297,38 @@
         <article id="popup_order_details" class="full_window_popup">
 
             <header>
+                <img clickable class="cross" src="images/close.png" onclick="close_details_popup()">
                 <h1> Restaurant name</h1>
-                <h2> 20 €</h2>
+                <span id="TotalPrice">20 €</span>
             </header>
 
             <main>
-                <ul>
-                    <li>
-                        <span class="dish_quantity"> 4 </span>
-                        <span class="dish_name"> Prato </span>
-                        <span class="dish_name"> Prato </span>
-                    </li>
-                </ul>
+                
+                
+                <table>
+                <tr>
+                    <th>Quantity</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Prato Muita Bom</td>
+                    <td>10 €</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Prato Muita MAU</td>
+                    <td>10 €</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Prato Muita d</td>
+                    <td>10 €</td>
+                </tr>
+                </table>
+                
 
             </main>
 
