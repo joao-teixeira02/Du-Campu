@@ -81,6 +81,12 @@
             $types = array();
             $db = getDatabaseConnection();
             $dishes = Restaurant::getDishes($db, $id);
+            
+            $user = null;
+            if ($session->isLogged()) {
+                $user = User::getUser($db, $session->getUsername());
+                
+            }
 
             foreach($dishes as $dish){
                 $types[] = $dish->getType($db);
@@ -93,7 +99,8 @@
                 foreach($dishes as $dish){ 
                     if ($dish->getType($db) === $type) { ?>
                         <li>
-                        <?php if ($session->isLogged()) { ?>
+                        <?php if ($session->isLogged()) { 
+                            ?>
                             <figure class="comida" clickable onclick="open_add_order_popup_favorite(this);" 
                             data-dish_id="<?php echo($dish->id)?>"
                             data-dish_name="<?php echo($dish->getName())?>"
@@ -101,7 +108,14 @@
                             data-dish_price="<?php echo($dish->getPrice())?>"   >
                             <div class = "photoContainer">
                             <img src="<?php echo($dish->getPhoto($db, $id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
-                            <img id="heart_favorite" src="images/heartNotSelected.png" />
+                            <img id="heart_favorite" src="<?php 
+                                
+                                if ($dish->isFavDish($db, $user->id)) {
+                                    echo "images/heart.png";
+                                }else{
+                                    echo "images/heartNotSelected.png";
+                                }
+                            ?>"  />
                              </div>
                             <figcaption> <?php echo($dish->getName()); ?> </figcaption>
                             <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
