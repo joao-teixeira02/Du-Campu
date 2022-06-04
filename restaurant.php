@@ -229,7 +229,6 @@
         <link rel="stylesheet" href="css/restaurantPage.css">
         <link rel="stylesheet" href="css/position.css">
         <script type="text/javascript" src="js/cart.js" defer></script>
-        <script type="text/javascript" src="js/likeButtonDish.js" defer></script>
         <script type="text/javascript" src="js/likeButtonHeader.js" defer></script>
 
         <title>Du'Campu</title>

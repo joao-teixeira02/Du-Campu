@@ -242,7 +242,6 @@ if(add_order_popup){
     img_plus.addEventListener('mouseover', ()=>{img_plus.src = 'images/plus.png'})
     img_plus.addEventListener('mouseout', ()=>{ img_plus.src = 'images/plus_light.png'})
     img_plus.addEventListener('click', ()=>{ 
-        console.log(span_quantity.innerText)
         let v = parseInt(span_quantity.innerText)
 
         if(v < 99)
@@ -306,8 +305,8 @@ if(add_order_popup){
             //select button if in favorites
 
             if(favorites.includes(parseInt(dish_id))) {
-                dish_favorite_heart.src = 'images/heart.png'
                 dish_favorite_heart.setAttribute('isSelected', '')
+                dish_favorite_heart.src = 'images/heart.png'
             }
             else {
                 dish_favorite_heart.removeAttribute('isSelected')
@@ -317,8 +316,6 @@ if(add_order_popup){
             quantity_input.value = 1;
             span_quantity.innerText = 1;
 
-
-            
             add_order_popup.style.display = "block"
             background_filter.style.display = "block"
             
@@ -326,5 +323,35 @@ if(add_order_popup){
 
         load_popup()
     }
+
+    function addEventAsLikeButton(img_hoover, img_out, img_click){
+
+        dish_favorite_heart.addEventListener('mouseover', () => {
+            if(!dish_favorite_heart.hasAttribute('isSelected'))
+            dish_favorite_heart.src = img_hoover;
+            })
+        dish_favorite_heart.addEventListener('mouseout', () => {
+            if(!dish_favorite_heart.hasAttribute('isSelected'))
+            dish_favorite_heart.src = img_out;
+            }
+            )
+    
+        dish_favorite_heart.addEventListener('click', async ()=> {
+            const heart = document.querySelector('#heart_favorite')
+            const id_dish = id_dish_input.value
+            heart.toggleAttribute('isSelected')
+            console.log(id_dish)
+            if(heart.hasAttribute('isSelected')) {
+                heart.src = img_click; 
+                await fetch('/action/action_add_favorite_dish.php?d_id=' + id_dish);
+            }
+            else {
+                heart.src = img_out;
+                await fetch('/action/action_remove_favorite_dish.php?d_id=' + id_dish);
+            }
+        });
+      }
+    
+      addEventAsLikeButton('images/heartHoover.png', 'images/heartNotSelected.png', 'images/heart.png')
 
 }

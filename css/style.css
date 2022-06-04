@@ -773,6 +773,10 @@ strong{
     margin-left: 2em;
 }
 
+#profile h1 {
+    margin-left: 1em;
+}
+
 #profile_page #aside {
     grid-area: aside;
     background-color: #f6f5f3;
