@@ -2,9 +2,7 @@ async function showLikeIcon() {
     const likeRestaurant = document.querySelector('#likeRestaurant')
     const response1 =  await fetch('/api/api_get_favorite_restaurants.php')
     const favorites = await response1.json()
-    console.log(favorites)
     if (favorites.includes(parseInt(likeRestaurant.getAttribute('data-restaurant_id')))){
-        console.log(likeRestaurant.getAttribute('data-restaurant_id'))
         likeRestaurant.setAttribute('isSelected', '')
         likeRestaurant.src = 'images/heart.png'
     }
@@ -17,7 +15,7 @@ async function showLikeIcon() {
 
 function createEventLikeRestaurantButton(img_hoover, img_out, img_click) {
     const likeRestaurant = document.querySelector('#likeRestaurant')
-    likeRestaurant.addEventListener('click', async (e) => {
+    likeRestaurant.addEventListener('click', async () => {
         likeRestaurant.toggleAttribute('isSelected')
         if(likeRestaurant.hasAttribute('isSelected')) {
             likeRestaurant.src = img_click; 
@@ -29,11 +27,11 @@ function createEventLikeRestaurantButton(img_hoover, img_out, img_click) {
         }
     })
     
-    likeRestaurant.addEventListener('mouseover', (e) => {
+    likeRestaurant.addEventListener('mouseover', () => {
         if(!likeRestaurant.hasAttribute('isSelected'))
             likeRestaurant.src = img_hoover;
         })
-    likeRestaurant.addEventListener('mouseout', (e) => {
+    likeRestaurant.addEventListener('mouseout', () => {
         if(!likeRestaurant.hasAttribute('isSelected'))
             likeRestaurant.src = img_out;
         }

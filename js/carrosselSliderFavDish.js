@@ -1,13 +1,13 @@
-const restaurantContainers = [...document.querySelectorAll('.restaurant-container')]
-const nxtBtn = [...document.querySelectorAll('.nxt-btn')]
-const preBtn = [...document.querySelectorAll('.pre-btn')]
+const favDishes = [...document.querySelectorAll('.favDishes')]
+const nxtBtn2 = [...document.querySelectorAll('.nxt-btn2')]
+const preBtn2 = [...document.querySelectorAll('.pre-btn2')]
 
- restaurantContainers.forEach((item, i) => {
+ favDishes.forEach((item, i) => {
     let containerDimensions = item.getBoundingClientRect()
     let containerWidth = containerDimensions.width/2
     const velocity = 5;
 
-    nxtBtn[i].addEventListener('click', (e) => {
+    nxtBtn2[i].addEventListener('click', () => {
         let scroll = 0;
         let id = window.setInterval(() => {
                             if(scroll+velocity >= containerWidth){
@@ -21,7 +21,7 @@ const preBtn = [...document.querySelectorAll('.pre-btn')]
                         } , 0.1)
     })
 
-    preBtn[i].addEventListener('click', (e) => {
+    preBtn2[i].addEventListener('click', () => {
         let scroll = 0;
         let id = window.setInterval(() => {
                             if(scroll+velocity >= containerWidth){

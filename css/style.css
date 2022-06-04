@@ -774,6 +774,10 @@ strong{
     margin-top: 1em;
 }
 
+#profile h1 {
+    margin-left: 1em;
+}
+
 #profile_page #aside {
     grid-area: aside;
     background-color: rgba(190, 189, 189, 0.1);

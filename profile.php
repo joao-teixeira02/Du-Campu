@@ -16,60 +16,75 @@
         $id = $session->getUserId();
 
         $db = getDatabaseConnection();
+        ?>
 
-        if ($session->isLogged()) { ?>
-            <ul>
-            <h2>Restaurants</h2>
-            <?php 
+    <article class="favorites">
+
+    <h2>Restaurants</h2>
+
+    <?php
+
+        if ($session->isLogged()) { 
             $favRestaurants = User::getFavRestaurants($db, $id);
-            $favDishes = User::getFavDishes($db, $id);
-            foreach($favRestaurants as $favRestaurant) { ?>
-            <li>
-
-                <img id="restaurant_img" alt="Imagem do Restaurante" src="<?php echo ($favRestaurant->getPhoto($db, $favRestaurant->id)); ?>">
-            
-                <h3>
-                    <?php echo($favRestaurant->getName()); ?>
-                </h3>
-                <p id="classificao"><?php echo ($favRestaurant->calcRating($db, $favRestaurant->id));?>
+            $favDishes = User::getFavDishes($db, $id);?>
+        <section class="favRestaurants">
+            <?php 
+            if (sizeof($favRestaurants) === 0) { ?>
+                <!--<img id="noFavs" src="images/noFavs.png">-->
+                <input type="button" class="goTo" value="Seems like you have no favorite restaurants yet. Click here to visit our restaurants page to find some!" onclick="location.href='restaurants.php'"/>
                 <?php
-                    $categories = $favRestaurant->getCategory($db, $favRestaurant->id);
-                    foreach($categories as $category){
-                        echo (" • ");
-                        echo ($category);
-                    }
-                ?>
-                </p>
+            }
+            else { ?>
+                <button class="pre-btn1"><img src="images/arrow.png" alt=""></button>
+                <button class="nxt-btn1"><img src="images/arrow.png" alt=""></button>
+                <?php
+                foreach($favRestaurants as $favRestaurant) { ?>
+                    <div class="restaurant-cont">
+                        <div class="restaurant_img">
+                            <img class="thumb" alt="Imagem do Restaurante" src="<?php echo ($favRestaurant->getPhoto($db, $favRestaurant->id)); ?>">
+                            <input type="button" class="card-btn" value="See Restaurant" onclick="location.href='restaurant.php?id=<?php echo($favRestaurant->id); ?>'"/>
+                        </div>
+                        <h3>
+                            <?php echo($favRestaurant->getName()); ?>
+                        </h3>
 
-            </li>
-            <?php
+                    </div>
+                    <?php
+                }
             }
             ?>
-            </ul>
-            <ul>
-            <h2>Dishes</h2>
+        </section>
+        <h2>Dishes</h2>
+        <section class="favDishes">
             <?php
-            foreach($favDishes as $favDish) { ?>
-            <li>
-                <img id="dish_img" alt="Imagem do Prato" src="<?php echo ($favDish->getPhoto($db, $favDish->id)); ?>">
-                <h3>
-                    <?php echo($favDish->name); ?>
-                </h3>
-                <p>
+            if (sizeof($favDishes) === 0) { ?>
+                <!--<img id="noFavs" src="images/noFavs.png">-->
+                <input type="button" class="goTo" value="Seems like you have no favorite dishes yet. Click here to visit our restaurants page to find some!" onclick="location.href='restaurants.php'"/>
                 <?php
-                    echo ($favDish->price . "€");
-                    echo (" • ");
-                    echo($favDish->getType($db));
-                ?>
-                </p>
-            </li>
+            }
+            else { ?>
+                <button class="pre-btn2"><img src="images/arrow.png" alt=""></button>
+                <button class="nxt-btn2"><img src="images/arrow.png" alt=""></button>
+                <?php
+                foreach($favDishes as $favDish) { ?>
+                <div class="dish-cont">
+                    <div class="dish_img">
+                        <img class="thumb" alt="Imagem do Prato" src="<?php echo ($favDish->getPhoto($db, $favDish->id)); ?>">
+                        <input type="button" class="card-btn" value="See Dish" onclick="location.href='restaurant.php?id=<?php echo($favDish->restaurant_id); ?>#<?php echo($favDish->getType($db)); ?>'"/>
 
+                    </div>
+                    <h3>
+                        <?php echo($favDish->name); ?>
+                    </h3>
+                </div>
             <?php
+                }
 
             }
 
             ?>
-            </ul>
+        </section>
+    </article>
     <?php
         }
     }
@@ -220,6 +235,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,1,0"/>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/position.css">
+        <link rel="stylesheet" href="css/favoritesJoao.css">
+        <script type="text/javascript" src="js/carrosselSliderFavRest.js" defer></script>
+        <script type="text/javascript" src="js/carrosselSliderFavDish.js" defer></script>
         <title>Du'Campu</title>
     </head>
     <body>

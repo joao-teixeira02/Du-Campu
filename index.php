@@ -39,7 +39,7 @@
 
 <head>
     <link rel="stylesheet" href="css/mainpage.css">
-    <script type="text/javascript" src="js/carrosselSlider.js" defer></script>
+    <script type="text/javascript" src="js/carrosselSliderHome.js" defer></script>
     <script type="text/javascript" src="js/home_page_search_bar.js" defer></script>
     <title>Du'Campu</title>
 </head>

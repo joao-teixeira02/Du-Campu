@@ -36,45 +36,37 @@
         }
 
         static function getFavRestaurants(PDO $db, int $id) : array {
-            $stmt = $db->prepare('SELECT id_restaurant FROM FavoriteRestaurant WHERE FavoriteRestaurant.id_user=?');
-            $stmt->execute(array($id));
 
-            $idRestaurants = $stmt->fetchAll();
-
-            $stmt = $db->prepare('SELECT * FROM Restaurant WHERE Restaurant.id=?');
+            $stmt = $db->prepare(
+                'SELECT Restaurant.id, Restaurant.name, Restaurant.address, Restaurant.owner_id FROM Restaurant JOIN FavoriteRestaurant
+             ON Restaurant.id=FavoriteRestaurant.id_restaurant AND FavoriteRestaurant.id_user=?');
+             $stmt->execute(array($id));
             $restaurants = array();
-            foreach($idRestaurants as $idRestaurant) {
-                $stmt->execute(array(intval($idRestaurant)));
-                while($restaurant_data = $stmt->fetch()) {
-                    $restaurants[] = new Restaurant(
-                        intval($restaurant_data['id']),
-                        $restaurant_data['name'],
-                        $restaurant_data['address'],
-                        intval($restaurant_data['owner_id'])
-                    );
-                }
+            while($restaurant_data = $stmt->fetch()) {
+                $restaurants[] = new Restaurant(
+                    intval($restaurant_data['id']),
+                    $restaurant_data['name'],
+                    $restaurant_data['address'],
+                    intval($restaurant_data['owner_id'])
+                );
             }
             return $restaurants;
         }
 
         static function getFavDishes(PDO $db, int $id) : array {
-            $stmt = $db->prepare('SELECT id_dish FROM FavoriteDish WHERE FavoriteDish.id_user=?');
+            $stmt = $db->prepare(
+                'SELECT Dish.id, Dish.name, Dish.price, Dish.restaurant_id FROM Dish JOIN FavoriteDish
+             ON Dish.id=FavoriteDish.id_dish AND FavoriteDish.id_user=?');
             $stmt->execute(array($id));
 
-            $idDishes = $stmt->fetchAll();
-
-            $stmt = $db->prepare('SELECT * FROM Dish WHERE Dish.id=?');
             $dishes = array();
-            foreach($idDishes as $idDish) {
-                $stmt->execute(array(intval($idDish)));
-                while($dish_data = $stmt->fetch()) {
-                    $dishes[] = new Dish(
-                        intval($dish_data['id']),
-                        $dish_data['name'],
-                        floatval($dish_data['price']),
-                        intval($dish_data['restaurant_id'])
-                    );
-                }
+            while($dish_data = $stmt->fetch()) {
+                $dishes[] = new Dish(
+                    intval($dish_data['id']),
+                    $dish_data['name'],
+                    floatval($dish_data['price']),
+                    intval($dish_data['restaurant_id'])
+                );
             }
             return $dishes;
         }
@@ -82,6 +74,7 @@
         static function isCustomer(PDO $db, string $username) : bool {
 
             $stmt = $db->prepare('SELECT Owner.id FROM Owner INNER JOIN User ON (Owner.id=User.id AND User.username=?)');
+
             $stmt->execute(array($username));
 
             $id = $stmt->fetch()['id'];
