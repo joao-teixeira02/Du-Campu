@@ -20,7 +20,7 @@
                     <li> 
                         <a href ="profile.php" id="profile"></a>
                         <label for="profile"> <img clickable src="images/profile.png" id = "profileIcon"
-                        ></label>
+                        onmouseover="this.src = 'images/profileHoover.png'"  onmouseout="this.src = 'images/profile.png'"></label>></label>
                     </li>
                     <li> 
                         <input type="checkbox" id="cart"/>
