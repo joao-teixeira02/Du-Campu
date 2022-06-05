@@ -12,15 +12,16 @@
         public string $address;
         public array $categories;
         public float $rating;
-        public string $price;
+        public int $price;
         public ?string $photo;
         public int $owner_id;
 
-        public function __construct(int $id, string $name, string $address, int $owner_id){ 
+        public function __construct(int $id, string $name, string $address, int $owner_id, int $price){ 
             $this->id = $id;
             $this->name = $name;
             $this->address = $address;
             $this->owner_id = $owner_id;
+            $this->price = $price;
             
             $db = getDatabaseConnection();
 
@@ -39,7 +40,8 @@
                 intval($restaurant_data['id']),
                 $restaurant_data['name'],
                 $restaurant_data['address'],
-                intval($restaurant_data['owner_id'])
+                intval($restaurant_data['owner_id']),
+                intval($restaurant_data['price'])
                 );
                 
                 break;
@@ -129,6 +131,20 @@
                             UNION SELECT restaurant_id as id FROM Dish WHERE name like :name  INTERSECT ';
 
             }
+
+            $nPrices = count($prices) -1;
+
+            if($nPrices > 0) {
+                $query .='SELECT id FROM Restaurant WHERE ';
+                for ($i = 0; $i<$nPrices; $i++) {
+                    if($i != 0) {
+                        $query .= ' OR ';
+                    }
+                    $query .= 'Restaurant.price = :price'.$i;
+                }
+
+                $query .= ' INTERSECT ';
+            }
             
             $nCategories = count($categories)-1;
 
@@ -177,6 +193,10 @@
                 $stmt->bindParam(":category".$i, $categories[$i]);
             }
 
+            for($i = 0; $i<$nPrices; $i++) {
+                $stmt->bindParam(":price".$i, intval($prices[$i]));
+            }
+
 
             $stmt->execute();
             $restaurants = array();
@@ -184,7 +204,9 @@
                 $restaurants[] = new Restaurant(intval($restaurant_data['id']),
                                                 $restaurant_data['name'],
                                                 $restaurant_data['address'],
-                                                intval($restaurant_data['owner_id']));
+                                                intval($restaurant_data['owner_id']),
+                                                intval($restaurant_data['price'])
+                                                );
             }
             return $restaurants;
         }

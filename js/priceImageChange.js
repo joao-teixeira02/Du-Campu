@@ -20,6 +20,6 @@ function addEventAsPriceImageChange(id_box, img_hoover, img_out, img_click){
         })
   }
 
-  addEventAsPriceImageChange('#euro', 'images/euro2.png', 'images/euro.png', 'images/euro3.png')
-  addEventAsPriceImageChange('#doiseuro', 'images/2euro2.png', 'images/2euro.png', 'images/2euro3.png')
-  addEventAsPriceImageChange('#treseuro', 'images/3euro2.png', 'images/3euro.png', 'images/3euro3.png')
+  addEventAsPriceImageChange('#euroo', 'images/euro2.png', 'images/euro.png', 'images/euro3.png')
+  addEventAsPriceImageChange('#doiseuroo', 'images/2euro2.png', 'images/2euro.png', 'images/2euro3.png')
+  addEventAsPriceImageChange('#treseuroo', 'images/3euro2.png', 'images/3euro.png', 'images/3euro3.png')

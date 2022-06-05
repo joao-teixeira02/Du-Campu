@@ -61,12 +61,15 @@
             <h1>
                 <?php echo($restaurant->getName()); ?>
             </h1>
-            <p id="classificao"><?php echo ($restaurant->calcRating($db, $id));?>
-            <?php
+            <p id="classificao"><?php echo ($restaurant->calcRating($db, $id));
                 $categories = Restaurant::getCategory($db, $id);
                 foreach($categories as $category){
                     echo (" • ");
                     echo ($category);
+                }
+                echo (" • ");
+                for($i = 0; $i < $restaurant->price; $i++) {
+                    echo('€');
                 }
             ?>
             </p>
@@ -202,29 +205,44 @@
         foreach($reviews as $review){ 
             
             $photo = User::getUser($db, $review->getUsername($db))->getPhoto($db);
+            $reply = $review->getReply($db);
             ?>
             <section class = "review">
                 <img class="reviewPhoto" src = "<?php echo($photo); ?>"/>
                 <div class = "basicInfo">
-                <p class="reviewUsername"><?php echo($review->getUsername($db)); ?></p>
-                <p class="date"><?php echo($review->date); ?></p>
+                    <p class="reviewUsername"><?php echo($review->getUsername($db)); ?></p>
+                    <p class="date"><?php echo($review->date); ?></p>
                 </div>
                 <p class="reviewText"><?php echo($review->review); ?></p>
                 <p class="points"><?php echo($review->points); ?></p>
                 <?php
                 if($session->isLogged()) {
-                    if (!User::isCustomer($db, $_SESSION['username'])) {?>
+                    if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === Restaurant::getRestaurant($db, $id)->owner_id) {
+                        if ($review->getReply($db) === null) { ?>
                         <form class = "addReply">
                             <input class="reply" type="text-area" placeholder="Write your reply here" name="t" id="reply_input" required="required">
                             <input type="hidden" name="r" value="<?php echo($review->id); ?>">
                             <input formaction="/action/action_reply.php" formmethod="post" type="submit" class="white_button" value="Reply">
                         </form>
                 <?php
+                        }
+                        else { 
+                            $owner_photo = User::getUser($db, $reply->getUsername($db))->getPhoto($db);?>
+                        <section class="reply">
+                            <img class="replyPhoto" src="<?php echo($owner_photo) ?>"/>
+                            <div class="basicInfo">
+                            <p class="replyUsername"><?php echo($reply->getUsername($db)); ?></p>
+                            <p class="date"><?php echo($reply->date); ?></p>
+                            </div>
+                            <p class="replyText"><?php echo($reply->text); ?></p>
+                        </section>
+                <?php
+                        }
                     }
-                }
                 ?>
             </section>
         <?php
+                }
         }
     }
 
@@ -307,7 +325,11 @@
                     $reviews = Restaurant::getReviews($db, $restaurant_id);
                     echo sizeof($reviews);?>)</h1>
                     <br>
-                    <?php add_review($restaurant_id); ?>
+                    <?php 
+                    if ($session->getUserId() !== Restaurant::getRestaurant($db, $restaurant_id)->owner_id) {
+                        add_review($restaurant_id); 
+                    }
+                    ?>
 
                     <?php show_reviews($restaurant_id); ?>
                 </section>

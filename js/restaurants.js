@@ -4,6 +4,7 @@ const rangeR = document.querySelector('.range-max')
 const categories_input = document.querySelectorAll('.categories input')
 const asc = document.querySelector('#asc')
 const sorter = document.querySelector('#sorter')
+const price_input = document.querySelectorAll('.price-range input')
 
 if (rangeL) {
   rangeL.addEventListener('input', updateRestaurantList)
@@ -27,6 +28,12 @@ for(category of categories_input){
     }
 }
 
+for(price of price_input) {
+  if(price) {
+    price.addEventListener('input', updateRestaurantList)
+  }
+}
+
 updateRestaurantList();
 
 
@@ -36,15 +43,27 @@ async function updateRestaurantList() {
     min_rating = rangeL.value
     max_rating = rangeR.value
     list_categories_str = "";
+    list_price_str = "";
 
     for(category of categories_input){
       if(category.checked){
         list_categories_str += category.id + ",";
       }
     }
+    for(price of price_input) {
+      if(price.checked) {
+        list_price_str += price.value + ",";
+      }
+    }
+
+    console.log('/api/api_restaurants.php?name=' + search.value + '&category='+ list_categories_str
+    + "&rating_min="+min_rating+"&rating_max=" + max_rating+ "&order=" + sorter.value +
+    "&price=" + list_price_str + "&asc=" + (asc.checked?1:0))
 
     const response = await fetch('/api/api_restaurants.php?name=' + search.value + '&category='+ list_categories_str
-                                  + "&rating_min="+min_rating+"&rating_max=" + max_rating+ "&order=" + sorter.value + "&asc=" + (asc.checked?1:0) );
+                                  + "&rating_min="+min_rating+"&rating_max=" + max_rating+ "&order=" + sorter.value +
+                                  "&price=" + list_price_str + "&asc=" + (asc.checked?1:0)
+                                );
     const restaurants = await response.json()
 
     const response1 =  await fetch('/api/api_get_favorite_restaurants.php')
@@ -92,7 +111,11 @@ async function updateRestaurantList() {
 
       const price = document.createElement('span')
       price.setAttribute("id", "price")
-      price.innerHTML = "€"
+      let price_str = '';
+      for (let i = 0; i < restaurant.price; i++) {
+        price_str += '€';
+      }
+      price.innerHTML = price_str
       restaurantInfo.appendChild(price)
 
       const likeIcon = document.createElement('img')

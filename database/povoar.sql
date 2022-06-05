@@ -24,10 +24,10 @@ INSERT INTO Customer (id) VALUES (5);
 INSERT INTO Customer (id) VALUES (6);
 INSERT INTO Customer (id) VALUES (7);
 
-INSERT INTO Restaurant (name, address, owner_id) VALUES ("Bao's - Taiwanese Burger", 'R. de Cedofeita 263, 4050-174 Porto', 1);
-INSERT INTO Restaurant (name, address, owner_id) VALUES ("AM Indiano Restaurant", 'R. do Gen. Torres 1220, 4400-164 Vila Nova de Gaia', 2);
-INSERT INTO Restaurant (name, address, owner_id) VALUES ("Thamel Restaurant", 'Rua da Picaria 25, 4000-407 Porto', 3);
-INSERT INTO Restaurant (name, address, owner_id) VALUES ("Mexcanita", 'Rua da Nené 49, 4050-148 Porto', 1);
+INSERT INTO Restaurant (name, address, owner_id, price) VALUES ("Bao's - Taiwanese Burger", 'R. de Cedofeita 263, 4050-174 Porto', 1, 3);
+INSERT INTO Restaurant (name, address, owner_id, price) VALUES ("AM Indiano Restaurant", 'R. do Gen. Torres 1220, 4400-164 Vila Nova de Gaia', 2, 2);
+INSERT INTO Restaurant (name, address, owner_id, price) VALUES ("Thamel Restaurant", 'Rua da Picaria 25, 4000-407 Porto', 3, 2);
+INSERT INTO Restaurant (name, address, owner_id, price) VALUES ("Mexcanita", 'Rua da Nené 49, 4050-148 Porto', 1, 1);
 
 INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES ('Lu Rou Fan', 11.50, 1, 1);
 INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES ('Fried Veggue Rice', 11.50, 1, 1);
@@ -140,6 +140,8 @@ INSERT INTO FavoriteDish (id_user, id_dish) VALUES (6, 65);
 INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 4, 5, 1);
 INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 5, 4, 2);
 INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 6, 3, 3);
+
+INSERT INTO Reply (text, owner_id, review_id) VALUES ('TANK IU BERI MUSH', 1, 1);
 
 INSERT INTO State ("state") VALUES ('Being prepared');
 INSERT INTO State ("state") VALUES ('Picked up');

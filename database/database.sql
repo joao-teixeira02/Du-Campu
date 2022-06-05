@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS "Restaurant" (
 	"name"	VARCHAR NOT NULL,
 	"address"	VARCHAR NOT NULL UNIQUE,
 	"owner_id"	INTEGER NOT NULL,
+	"price" INTEGER NOT NULL,
 	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("owner_id") REFERENCES "Owner"("id")
 );
@@ -73,6 +74,7 @@ CREATE TABLE IF NOT EXISTS "Reply" (
 	"text" TEXT,
 	"owner_id" INTEGER NOT NULL,
 	"review_id" INTEGER NOT NULL,
+	"date"	DATETIME NOT NULL Default CURRENT_TIMESTAMP,
 	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("owner_id") REFERENCES "Owner"("id"),
 	FOREIGN KEY("review_id") REFERENCES "Review"("id")
