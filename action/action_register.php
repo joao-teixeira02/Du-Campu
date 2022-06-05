@@ -8,7 +8,7 @@
 
 	$db = getDatabaseConnection();
 
-    $flag = $_POST['flag'];
+    $flag = intval($_POST['flag']);
 	$username = $_POST['u'];
     $name = $_POST['n'];
     $mail = $_POST['m'];

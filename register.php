@@ -5,6 +5,8 @@
     require_once(__DIR__ . '/utils/session.php');
 
     $session = new Session();
+
+    $flag = $_POST['flag'];
 ?>
 
 <!DOCTYPE html>
@@ -73,6 +75,8 @@
                     </div>  
 
                     <br>   
+
+                    <input type="hidden" name="flag" value="<?php echo ($flag); ?>"/>
 
                     <input formaction="/action/action_register.php" formmethod="post" type="submit" class="white_button" value="Register">
                     
