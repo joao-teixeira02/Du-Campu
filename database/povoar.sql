@@ -141,6 +141,8 @@ INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM N
 INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 5, 4, 2);
 INSERT INTO Reviews (review, customer_id, points, restaurant_id) VALUES ('NHOM NHOM NHOM', 6, 3, 3);
 
+INSERT INTO Reply (text, owner_id, review_id) VALUES ('TANK IU BERI MUSH', 1, 1);
+
 INSERT INTO State ("state") VALUES ('Being prepared');
 INSERT INTO State ("state") VALUES ('Picked up');
 INSERT INTO State ("state") VALUES ('Arrived');

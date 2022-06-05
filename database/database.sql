@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS "Reply" (
 	"text" TEXT,
 	"owner_id" INTEGER NOT NULL,
 	"review_id" INTEGER NOT NULL,
+	"date"	DATETIME NOT NULL Default CURRENT_TIMESTAMP,
 	PRIMARY KEY("id" AUTOINCREMENT),
 	FOREIGN KEY("owner_id") REFERENCES "Owner"("id"),
 	FOREIGN KEY("review_id") REFERENCES "Review"("id")
