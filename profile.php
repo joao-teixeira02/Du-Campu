@@ -8,6 +8,7 @@
     require_once(__DIR__ . '/database/restaurant.class.php');
     require_once(__DIR__ . '/database/state.class.php');
     require_once(__DIR__ . '/database/order.class.php');
+    require_once(__DIR__ . '/connection.db.php');
 
     $session = new Session();
 
@@ -206,16 +207,16 @@
 
     function print_order(Order $order){
         $db = getDatabaseConnection();
-
+        $restaurant = $order->getRestaurant($db);
         ?>
         <article class="order">
             <header>
-                <h2>Bao's - Taiwanese Burger</h2>
+                <h2><?php echo $restaurant->name ?></h2>
             </header>
             <main>
-                <span class="date"><?php echo '12/2';?></span>
-                <span class="price">Total Check: <?php echo 'price';?></span>
-                <span class="state">State: <?php echo State::getStatebyId( $db, $order->id)->name;?></span>
+                <span class="date"><?php echo $order->date;?></span>
+                <span class="price">Total Check: <?php echo number_format($order->getTotalPrice($db),2);?>€</span>
+                <span class="state">State: <?php echo State::getStatebyId( $db, $order->state_id)->name;?></span>
                 <span class="details" onclick="open_details_popup()" >See details</span>
             <main>
         </article>
@@ -301,7 +302,7 @@
 
             <header>
                 <img clickable class="cross" src="images/close.png" onclick="close_details_popup()">
-                <h1> Restaurant name</h1>
+                <h1 id="restaurant_name"> Restaurant name</h1>
                 <span id="TotalPrice">20 €</span>
             </header>
 

@@ -30,8 +30,9 @@
             $stmt = $db->prepare('SELECT * FROM State Where id = ? ');
             $stmt->execute(array($id));
         
-            if($state_data = $stmt->fetch()) 
+            if($state_data = $stmt->fetch()) {
                 return new State( intval($state_data['id']), $state_data['state']);
+            }
     
             return null;
         }

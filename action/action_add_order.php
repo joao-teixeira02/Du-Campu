@@ -19,7 +19,7 @@
 
 
         foreach( $session->cart->orders as $id_restaurant => $dishes ){
-            $order = new Order(0, 1, $this_user->id);
+            $order = new Order(0, 1, $this_user->id, "");
             $order->insertIntoDatabase($db);
             $id = $db->lastInsertId();
             
