@@ -32,7 +32,7 @@
                     </li>
                     <li> 
                         <input type="checkbox" id="cart"/>
-                        <label for="cart"  onclick="show_cart()" > <img clickable src="images/cart1.png" width="20px" height="20px" alt="Cart"
+                        <label for="cart"  onclick="show_cart()" > <img clickable src="images/cart1.png" alt="Cart" id = "cartIcon"
                         onmouseover="this.src = 'images/cart1Hoover.png'"  onmouseout="this.src = 'images/cart1.png'"></label>
                     </li>
                 </ul>
