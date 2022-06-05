@@ -11,12 +11,12 @@ header.menu{
     background-color: rgb(24, 31, 36);
     background-size: 100vw 100vh;
     box-shadow: rgb(0, 0, 0) 0px 0px 5px;
-    height: 80px;
 }
 
 .menu .nav-links ul li{
     list-style: none;
-
+    align-items:center;/*Vertical align*/
+    justify-content:center;/*horizontal align*/
 }
 
 .menu .nav-links ul li a{
@@ -27,19 +27,29 @@ header.menu{
 }
 
 
-.menu .nav-links ul li a:hover{
-    color: rgb(214, 156, 92);
+.menu #restaurantIcon{
+    background-color:rgb(214, 156, 92);
+    padding: 0.3em;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
 }
 
+.menu #profileIcon{
+    width: 28px;
+    height: 28px;
+}
 
 .menu #logo{
-    width: 10em;
-    height: 3em;
+    width: 15em;
+    height: 4em;
 }
 
 .menu #cartIcon{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
 }
 
 

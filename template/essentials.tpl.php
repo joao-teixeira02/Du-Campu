@@ -17,24 +17,17 @@
             <a href = "index.php"> <img src = "images/logo.png" id= "logo"> </a>
             <div class = "nav-links">
                 <ul>
-                    <li> <a href ="index.php">HOME</a></li>
-                    <li> <a href ="restaurants.php">RESTAURANTS</a></li>
                     <li> 
-                        <?php if ($session->isLogged()) { ?>
-                            <a href ="profile.php?page=account">PROFILE</a>
-                            <?php
-                        }
-                        else { ?>
-                            <a href ="login.php">LOGIN</a>
-                            <?php
-                        }
-                        ?>
+                        <a href ="profile.php" id="profile"></a>
+                        <label for="profile"> <img clickable src="images/profile.png" id = "profileIcon"
+                        ></label>
                     </li>
                     <li> 
                         <input type="checkbox" id="cart"/>
                         <label for="cart"  onclick="show_cart()" > <img clickable src="images/cart1.png" alt="Cart" id = "cartIcon"
                         onmouseover="this.src = 'images/cart1Hoover.png'"  onmouseout="this.src = 'images/cart1.png'"></label>
                     </li>
+                    <li> <a href ="restaurants.php" id = "restaurantIcon" >RESTAURANTS</a></li>
                 </ul>
             </div>
         </nav>

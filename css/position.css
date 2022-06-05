@@ -21,13 +21,10 @@ body{
 }
 
 .menu .nav-links ul li{
-    padding: 8px 12px;
+    padding: 10px 12px;
     position: relative;
     display: inline-block;
-}
-
-.menu #logo{
-    padding-left: 0em;
+    vertical-align: middle;
 }
 
 
