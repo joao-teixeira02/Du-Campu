@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="teste.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <header class="menu">
+        <nav>
+            <a href = "index.php"> <img src = "images/logo.png" id= "logo"> </a>
+            <label for="drop" class="toggle" id='main-toggle'><span class="nav-icon"></span></label>
+            <input type="checkbox" id="drop">
+
+            <ul class="acountDropdown">
+                
+              <li> 
+                <label for="drop-1" class="toggle"></label>
+                <a>Account</a>
+                <input type="checkbox" id="drop-1">
+                <ul>
+                  <li><a href="login.php">Login</a></li>
+                  <li><a href="register.php">Register</a></li>
+                </ul>
+              </li>
+
+              <li> 
+                <input type="checkbox" id="cart"/>
+                <label for="cart"  onclick="show_cart()" > <img clickable src="images/cart1.png" alt="Cart" id = "cartIcon"
+                onmouseover="this.src = 'images/cart1Hoover.png'"  onmouseout="this.src = 'images/cart1.png'"></label>
+            </li>
+
+            <li> <a href ="restaurants.php" id = "restaurantIcon" >RESTAURANTS</a></li>
+
+            </ul>
+
+        </nav>   
+    </header>
+</body>
+</html>
