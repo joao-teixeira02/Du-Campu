@@ -8,13 +8,15 @@
 /* HEADER */
 header.menu{
     width:100%;
-    background-color: rgb(254, 255, 255);
+    background-color: rgb(24, 31, 36);
     background-size: 100vw 100vh;
-    box-shadow: rgba(96, 96, 96, 0.35) 0px 0px 5px;
+    box-shadow: rgb(0, 0, 0) 0px 0px 5px;
+    height: 80px;
 }
 
 .menu .nav-links ul li{
     list-style: none;
+
 }
 
 .menu .nav-links ul li a{
