@@ -17,11 +17,55 @@
     position: -webkit-sticky;
     background-color: white;
     top: 0px;
-    
     grid-column-start: 1;
 }
 
+.restaurant-page .addDish #addDishImage {
+    margin:2.5em;
+}
 
+.restaurant-page .addDish figcaption{
+    font-weight: bold;
+}
+
+.restaurant-page .addType {
+    max-width: 100%;
+    width: auto;
+    text-align: center;
+    border: 0.1em solid;
+    opacity: 0.6;
+    border-radius: 1em;
+    margin-top: 3em;
+    transition: 0.5s ease-in-out;
+}
+
+.restaurant-page .addType figcaption{
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.restaurant-page .addType #addTypeImage {
+    margin: 1em;
+}
+
+.restaurant-page .addType:hover{
+    box-shadow: 0 0 2em  rgb(183, 181, 181);
+}
+
+.restaurant-page .addDish {
+    max-width: 100%;
+    width: 15em;
+    height: 15.9em;
+    margin: 1em;
+    padding: 5px;
+    text-align: center;
+    opacity: 0.4;
+    transition: 0.5s ease-in-out;
+}
+
+.restaurant-page .addDish:hover{
+    box-shadow: 0 0 1em  rgb(183, 181, 181);
+}
 
 .restaurant-page .menuRestaurante ul{
     list-style: none;
@@ -53,6 +97,8 @@
     margin: 1em;
     padding: 5px;
     text-align: center;
+    position: relative;
+    transition: 0.5s ease-in-out;
 }
 
 .comida .photoContainer{
@@ -98,10 +144,18 @@
     content: "\002605 ";
 }
 
-.restaurant-page #tempo{
-    color:  rgb(120, 120, 120);
+
+.restaurant-page header .editButton {
+    float: right;
+    width: 7em;
+    height: auto;
+    transition: width 1s, height 1s;
 }
 
+.restaurant-page header .editButton:hover {
+    width: 8em;
+    height: auto;
+}
 
 .restaurant-page .menuRestaurante a{
     color: black;
@@ -112,7 +166,6 @@
 
 .restaurant-page .comida:hover{
     box-shadow: 0 0 1em  rgb(183, 181, 181);
-    transition: 0.5s ease-in-out;
 }
 
 .restaurant-page #listaPratos{
@@ -127,6 +180,20 @@
 .restaurant-page .filters{
     padding: 0 10px;
     padding-bottom: 20px;
+}
+
+.restaurant-page .comida .editDishButton:hover {
+    width: 4em;
+    height: auto;
+}
+
+.restaurant-page .comida .editDishButton {
+    width: 3em;
+    height: auto;
+    position: absolute;
+    top: 16.5em;
+    right: 0;
+    transition: width 0.5s, height 0.5s;
 }
 
 /* reviews */
@@ -230,12 +297,11 @@
     width: 52.5em;
     box-shadow: 0 0 1em  rgb(183, 181, 181);
     padding: 1em;
-    
+    transition: 0.3s ease-in-out;
 }
 
 .review:hover{
     box-shadow: 0 0 1em  rgb(83, 82, 82);
-    transition: 0.3s ease-in-out;
 }
 
 

@@ -238,6 +238,12 @@ header.menu{
     right: 0.5em;
     width: 3em;
     height: auto;
+    transition: width 1s, height 1s;
+}
+
+#add_order #heart_favorite:hover {
+    width: 4em;
+    height: auto;
 }
 
 #add_order{
@@ -425,6 +431,12 @@ strong{
     top: 1em;
     right: 1em;
     width: 2.5em;
+    height: auto;
+    transition: width 1s, height 1s;
+}
+
+.restaurant-page #likeRestaurant:hover {
+    width: 4em;
     height: auto;
 }
 
@@ -698,6 +710,12 @@ strong{
     right:2em;
     width:20px;
     height:20px;
+    transition: width 2s, height 2s;
+}
+
+.restaurantsList .restaurantInfo  .likeIcon:hover {
+    width: 4em;
+    height: auto;
 }
 
 .restaurantsList .restaurantInfo  #rating {
@@ -707,9 +725,12 @@ strong{
     font-weight: 700;
 } 
 
+.restaurantsList .restaurants .restaurantContainer {
+    transition: 0.3s ease-in-out;
+}
+
 .restaurantsList .restaurants .restaurantContainer:hover{
     box-shadow: 0 0 1em  rgb(183, 181, 181);
-    transition: 0.3s ease-in-out;
 }
 
 /* checkbox pretty */

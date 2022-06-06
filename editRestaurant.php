@@ -41,18 +41,21 @@
 
     }
 
-    function show_restaurant_header(int $id){ ?>
+    function show_restaurant_header(int $id){
 
-        <?php 
-            $db = getDatabaseConnection();
-            $restaurant = Restaurant::getRestaurant($db, $id);
+        global $session;
+
+         
+        $db = getDatabaseConnection();
+        $restaurant = Restaurant::getRestaurant($db, $id);
+        
         ?>
 
         <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo ($restaurant->getPhoto($db, $id)); ?>">
         
         <header>
             <h1>
-                <?php echo($restaurant->getName()); ?>
+                <input name="n" class="attr" type="text" placeholder="Name" value="<?php echo $session->getName(); ?>" required="required">
             </h1>
             <p id="classificao"><?php echo ($restaurant->calcRating($db, $id));?>
             <?php
