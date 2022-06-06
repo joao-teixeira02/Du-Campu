@@ -112,15 +112,18 @@
                 foreach($dishes as $dish){ 
                     if ($dish->getType($db) === $type) { ?>
                         <li>
-                        <?php if ($session->isLogged()) { 
-                            ?>
-                            <figure class="comida" clickable onclick="open_add_order_popup_favorite(this);" 
+                        <?php 
+                            if ($session->isLogged()) { 
+                        ?>
+                            <figure class="comida" clickable onclick="<?php if ($session->getUserId() !== $restaurant->owner_id && $session->isLogged()) {
+                                    echo ('open_add_order_popup_favorite(this)');
+                            }?>" 
                             data-dish_id="<?php echo($dish->id)?>"
                             data-dish_name="<?php echo($dish->getName())?>"
                             data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"
-                            data-dish_price="<?php echo($dish->getPrice())?>"   >
+                            data-dish_price="<?php echo($dish->getPrice())?>"  >
                             <div class = "photoContainer">
-                            <img src="<?php echo($dish->getPhoto($db, $id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
+                            <img src="<?php echo($dish->getPhoto($db, $dish->id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
                             <?php 
                             if ($session->getUserId() !== $restaurant->owner_id) {
                             ?>
@@ -142,6 +145,7 @@
                             <?php 
                             if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
                             ?>
+                            <input type="image" class="redCross" src="images/red_cross.png" onclick="location.href='/action/action_remove_dish.php?id=<?php echo($dish->id); ?>'" />
                             <input type="image" class="editDishButton" src="images/editIcon.png" onclick="open_edit_restaurant_popup(this)"/>
                             <?php
                             }
@@ -151,7 +155,9 @@
                         <?php 
                         }
                         else { ?>
-                            <figure class="comida" clickable onclick="open_add_order_popup(this);" 
+                            <figure class="comida" clickable onclick="<?php if ($session->getUserId() !== $restaurant->owner_id) {
+                                echo('open_add_order_popup(this)');
+                            } ?>" 
                             data-dish_id="<?php echo($dish->id)?>"
                             data-dish_name="<?php echo($dish->getName())?>"
                             data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"

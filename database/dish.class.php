@@ -25,7 +25,8 @@
         static function getPhoto(PDO $db, int $id) : ?string {
             $stmt = $db->prepare('SELECT path FROM Photo WHERE Photo.id=(SELECT id_photo FROM Dish WHERE Dish.id=?)');
             $stmt->execute(array($id));
-            return $stmt->fetch()['path'];
+            $path = $stmt->fetch()['path'];
+            return $path;
         }
 
         function getType(PDO $db) : ?string {

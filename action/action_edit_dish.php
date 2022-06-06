@@ -5,19 +5,17 @@
     require_once(__DIR__ . '/../utils/session.php');
 
     $name = $_POST['n'];
-    $address = $_POST['a'];
     $price = $_POST['p'];
 
     $session = new Session();
 
     $db = getDatabaseConnection();
 
-    $query = 'UPDATE Restaurant SET name = :name, address = :address, price = :price';
+    $query = 'UPDATE Dish SET name = :name, price = :price';
 
     $stmt = $db->prepare($query);
 
     $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':address', $address);
     $stmt->bindParam(':price', $price);
 
     $stmt->execute();
