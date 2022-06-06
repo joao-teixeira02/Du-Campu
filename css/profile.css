@@ -229,7 +229,9 @@
   padding-right: 1em;
 }
 
-
+#popup_order_details #restaurant_name{
+  padding-right: 1em;
+}
 
 #popup_order_details header{
   display: grid;

@@ -8,7 +8,7 @@
     require_once(__DIR__ . '/database/restaurant.class.php');
     require_once(__DIR__ . '/database/state.class.php');
     require_once(__DIR__ . '/database/order.class.php');
-    require_once(__DIR__ . '/connection.db.php');
+    require_once(__DIR__ . '/database/connection.db.php');
 
     $session = new Session();
 
@@ -217,7 +217,7 @@
                 <span class="date"><?php echo $order->date;?></span>
                 <span class="price">Total Check: <?php echo number_format($order->getTotalPrice($db),2);?>€</span>
                 <span class="state">State: <?php echo State::getStatebyId( $db, $order->state_id)->name;?></span>
-                <span class="details" onclick="open_details_popup()" >See details</span>
+                <span class="details" data-id_order='<?php echo $order->id;?>' onclick="open_details_popup(this)" >See details</span>
             <main>
         </article>
 

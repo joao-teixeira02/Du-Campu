@@ -220,7 +220,7 @@ header.menu{
 /* popup */
 
 .background_filter{
-    display: block;
+    display: none;
     position: fixed;
     margin: 0;
     width: 100vw;
@@ -231,7 +231,7 @@ header.menu{
 }
 
 .full_window_popup{
-    display: block;
+    display: none;
     z-index: 3;
     position: fixed;
     margin: auto;
