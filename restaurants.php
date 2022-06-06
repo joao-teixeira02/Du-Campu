@@ -6,6 +6,10 @@ require_once(__DIR__ . '/template/essentials.tpl.php');
 require_once(__DIR__ . '/database/category.class.php');
 require_once(__DIR__ . '/database/connection.db.php');
 
+if($_GET['s']){    
+    $search_text = $_GET['s'];
+}
+
 
 function show_restaurant_category(){ ?>
 
@@ -27,7 +31,9 @@ function show_restaurant_category(){ ?>
         </section>
 
     <?php 
-}?>
+}
+?>
+
 
 
 

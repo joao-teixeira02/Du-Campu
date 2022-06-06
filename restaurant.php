@@ -9,9 +9,11 @@
 
     $session = new Session();
     
-    if(isset($_GET['s'])){    
-        $search_text = $_GET['s'];
+    if(!isset($_GET['id'])){
+        echo "Error restaurante id not found";
+        exit(0);
     }
+
 
     function show_dishes_types(int $id){ ?>
 
@@ -158,7 +160,7 @@
 
         </div>
 
-        <article id="add_order">
+        <article id="add_order" class="full_window_popup">
             <header>
                 <img id="close" clickable width="50px" height="50px" src="images/close.png" />
                 <img id="img_order" width="100px" height="100px" src="" />

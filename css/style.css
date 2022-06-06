@@ -219,7 +219,7 @@ header.menu{
     display: none;
 }
 
-/* ADD order popup */
+/* popup */
 
 .background_filter{
     display: none;
@@ -241,6 +241,11 @@ header.menu{
 }
 
 #add_order{
+    width: 40em;
+    height: 40em;
+}
+
+.full_window_popup{
     display: none;
     z-index: 3;
     position: fixed;
@@ -249,6 +254,7 @@ header.menu{
     left:0;
     right:0;
     bottom:0;
+    top:0;
     
     background-color: white;
     font-family: 'Poppins', sans-serif;
@@ -257,6 +263,9 @@ header.menu{
     height: 40em;
 
 }
+
+
+/* ADD order popup */
 
 #add_order #dish_price{
     font-size: 25px;  
@@ -756,6 +765,7 @@ strong{
   }
   
 
+<<<<<<< HEAD
 /*
 * Profile
 */
@@ -980,3 +990,57 @@ strong{
     cursor: pointer;
     display: block;
 }
+=======
+/* LOGIN  */
+
+
+.input{
+    background-color: rgb(15,20,24);
+    border: 3px solid white;
+    color: white;
+}
+
+.input_label{
+    color: white;
+    cursor: text;    
+}
+
+.input:focus ~ .input_label , .input:not(:placeholder-shown) ~ .input_label{
+    cursor: default; 
+    background-color: rgb(15,20,24);
+}
+
+.login{
+    background-image: url("../images/DuCampua.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login_box{
+    font-family: "Poppins";
+    color: white;
+    background-color: rgb(15,20,24);
+}
+
+.white_button{
+    background-color: white;
+    color: rgb(15,20,24);
+    border-radius: 5px;
+}
+
+.white_button:hover{
+    background-color: rgb(231, 231, 231);
+}
+
+
+.black_button{
+    background-color: rgb(15,20,24);
+    color: white;
+    border-radius: 5px;
+}
+
+.black_button:hover{
+    text-decoration: underline;
+}
+
+>>>>>>> orders
