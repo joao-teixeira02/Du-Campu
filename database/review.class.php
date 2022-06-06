@@ -2,6 +2,8 @@
     declare(strict_types = 1);
     require_once(__DIR__ . '/../database/reply.class.php');
 
+    require_once(__DIR__ . '/reply.class.php');
+
     class Review{
         public int $id;
         public string $review;
@@ -24,6 +26,25 @@
             $stmt->execute(array($this->customer_id));
             $username = $stmt->fetch();
             return $username['username'];
+        }
+
+        function getReply(PDO $db) : ?Reply {
+            $stmt = $db->prepare('SELECT * FROM Reply WHERE Reply.review_id=?');
+            $stmt->execute(array($this->id));
+
+            $reply = null;
+
+            while ($reply_data = $stmt->fetch()) {
+                $reply = new Reply(
+                    intval($reply_data['id']),
+                    $reply_data['text'],
+                    intval($reply_data['owner_id']),
+                    intval($reply_data['review_id']),
+                    $reply_data['date']
+                );
+            }
+
+            return $reply;
         }
 
 
