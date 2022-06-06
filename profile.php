@@ -106,7 +106,7 @@
 
             <?php show_restaurant_list(); ?>
 
-            <form id="add-restaurant">
+            <!-- <form id="add-restaurant">
                 <input class="input" type="text" placeholder="Restaurant name" name="n" id="restaurant_input" required="required">
                 <input class="input" type="text" placeholder="Address" name="a" id="address_input" required="required">
                 <input class="input" type="text" placeholder="Categories separated by comma" name="c" id="categories_input" required="required">
@@ -116,10 +116,16 @@
                 <label for="doiseuro" > <img clickable src="images/2euro.png" id="doiseuro" width="50px" height="40px" alt="2euro"></label>
                 <input type="radio" id="€€€" name="pr" value="€€€"> 
                 <label for="treseuro" > <img clickable src="images/3euro.png" id="treseuro" width="55px" height="40px" alt="3euro"></label>
-                <input type="hidden" name="id" value="<?php echo($id); ?>">
+                <input type="hidden" name="id" value="</*?phpecho($id); ?>*/">
                 
                 <input formaction="/action/action_add_restaurant.php" formmethod="post" type="submit" class="white_button" value="Insert">
-            </form>
+            </form>-->
+                
+            <a class="addButton" href="index.php">
+                <img src="images/plus.png"/>
+                <p>Add Restaurant</p>
+            </a>
+
         </section>
 
     <?php
@@ -136,38 +142,30 @@
         $id = $session->getUserId();
         ?>
 
-        <ul>
 
         <?php $restaurants = Owner::getRestaurants($db, $id);
         foreach($restaurants as $restaurant) {?>
 
-            <li>
+            <div class="restaurant-container">
 
-            <img id="restaurant_img" alt="Imagem do Restaurante" src="<?php echo ($restaurant->getPhoto($db, $id)); ?>">
-            
-                <h3>
+                <img id="restaurant-img" alt="Imagem do Restaurante" src="<?php echo ($restaurant->getPhoto($db, $id)); ?>">
+                
+                <div class="restaurant-info">
                     <?php echo($restaurant->getName()); ?>
-                </h3>
-                <p id="classificao"><?php echo ($restaurant->calcRating($db, $id));?>
-                <?php
-                    $categories = Restaurant::getCategory($db, $id);
-                    foreach($categories as $category){
-                        echo (" • ");
-                        echo ($category);
-                    }
-                ?>
-                </p>
+                </div>
 
-                <form>
+                <input type="image" class="editButton" src="images/editIcon.png" onclick="location.href='editRestaurant.php?id=<?php echo($restaurant->id); ?>'"/>
+
+                <!-- <form>
                     <input class="input" type="text" placeholder="Dish name" name="n" id="dish_input" required="required">
                     <input class="input" type="number" step="0.01" placeholder="Price" name="p" id="price_input" required="required">
                     <input class="input" type="text" placeholder="Dish type" name="t" id="type_input" required="required">
-                    <input type="hidden" name="id" value="<?php echo($restaurant->id); ?>"> 
+                    <input type="hidden" name="id" value="</*?php echo($restaurant->id); ?*/>"> 
                     
                     <input formaction="/action/action_add_dish.php" formmethod="post" type="submit" class="white_button" value="Insert">
-                </form>
+                </form> -->
 
-            </li>
+        </div>
 
         <?php
         }

@@ -760,6 +760,11 @@ strong{
 * Profile
 */
 
+.editButton {
+    height: 8em;
+    width: auto;
+}
+
 #profile_page {
     display: grid;
     grid-template-columns: 20% 80%;
