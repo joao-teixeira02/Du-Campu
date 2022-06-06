@@ -53,7 +53,7 @@
         <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo ($restaurant->getPhoto($db, $id)); ?>">
         <?php
             global $session;
-            if ($session->isLogged()) { ?>
+            if ($session->isLogged() && $session->getUserId() !== $restaurant->owner_id) { ?>
                 <img id="likeRestaurant" width="10px" height="10px" src="" data-restaurant_id="<?php echo($id); ?>"/>
             <?php
             }
@@ -61,7 +61,13 @@
         
         <header>
             <h1>
-                <?php echo($restaurant->getName()); ?>
+                <?php echo($restaurant->getName()); 
+                if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
+                ?>
+                <input type="image" class="editButton" src="images/editIcon.png" onclick="open_edit_restaurant_popup(this)"/>
+                <?php
+                }
+                ?>
             </h1>
             <p id="classificao"><?php echo ($restaurant->calcRating($db, $id));
                 $categories = Restaurant::getCategory($db, $id);
@@ -75,6 +81,7 @@
                 }
             ?>
             </p>
+            
         </header>
         <?php
     }
@@ -86,6 +93,7 @@
             $types = array();
             $db = getDatabaseConnection();
             $dishes = Restaurant::getDishes($db, $id);
+            $restaurant = Restaurant::getRestaurant($db, $id);
             
             $user = null;
             if ($session->isLogged()) {
@@ -113,6 +121,9 @@
                             data-dish_price="<?php echo($dish->getPrice())?>"   >
                             <div class = "photoContainer">
                             <img src="<?php echo($dish->getPhoto($db, $id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
+                            <?php 
+                            if ($session->getUserId() !== $restaurant->owner_id) {
+                            ?>
                             <img id="heart_favorite" src="<?php 
                                 
                                 if ($dish->isFavDish($db, $user->id)) {
@@ -121,9 +132,21 @@
                                     echo "images/heartNotSelected.png";
                                 }
                             ?>"  />
+                            <?php
+                            }
+                            ?>
                              </div>
                             <figcaption> <?php echo($dish->getName()); ?> </figcaption>
                             <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
+
+                            <?php 
+                            if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
+                            ?>
+                            <input type="image" class="editDishButton" src="images/editIcon.png" onclick="open_edit_restaurant_popup(this)"/>
+                            <?php
+                            }
+                            ?>
+                            
                         </figure>
                         <?php 
                         }
@@ -145,12 +168,35 @@
                 }
             }
             ?>
+                <li>
+                <?php 
+                if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
+                ?>
+                <figure class="addDish" clickable onclick="open_add_dish_popup(this);">
+                    <img src="images/plusJoao1.png" id="addDishImage" width="100px" height="100px" />
+                <figcaption>Add New Dish</figcaption>
+                </figure>
+                <?php
+                }
+                ?>
+                </li>
                 </ul>
+
             </section>
             <?php
 
             }
 
+            if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
+            ?>
+
+            <figure class="addType" clickable onclick="">
+                <img src="images/plusJoao1.png" id="addTypeImage" width="100px" height="100px" />
+                <figcaption>Add New Type</figcaption>
+            </figure>
+
+            <?php
+            }
     }
 
     

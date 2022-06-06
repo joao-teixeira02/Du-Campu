@@ -56,10 +56,6 @@ async function updateRestaurantList() {
       }
     }
 
-    console.log('/api/api_restaurants.php?name=' + search.value + '&category='+ list_categories_str
-    + "&rating_min="+min_rating+"&rating_max=" + max_rating+ "&order=" + sorter.value +
-    "&price=" + list_price_str + "&asc=" + (asc.checked?1:0))
-
     const response = await fetch('/api/api_restaurants.php?name=' + search.value + '&category='+ list_categories_str
                                   + "&rating_min="+min_rating+"&rating_max=" + max_rating+ "&order=" + sorter.value +
                                   "&price=" + list_price_str + "&asc=" + (asc.checked?1:0)
@@ -69,10 +65,18 @@ async function updateRestaurantList() {
     const response1 =  await fetch('/api/api_get_favorite_restaurants.php')
     const favorites = await response1.json()
 
+    const response2 = await fetch('/api/api_get_session_id.php')
+    const user_id = await response2.json()
+
+    console.log(user_id)
+
     const section = document.querySelector('.restaurants')
     section.innerHTML = ''
 
     for (const restaurant of restaurants) {
+
+      console.log(restaurant.owner_id)
+
       const restaurantContainer = document.createElement('div')
       restaurantContainer.classList.add("restaurantContainer")
 
@@ -118,19 +122,26 @@ async function updateRestaurantList() {
       price.innerHTML = price_str
       restaurantInfo.appendChild(price)
 
-      const likeIcon = document.createElement('img')
-      likeIcon.setAttribute("id", "likeIcon"+restaurant.id)
-      likeIcon.setAttribute("data-id", restaurant.id)
-      if (favorites.includes(restaurant.id)){
-        likeIcon.setAttribute('isSelected', '')
-        likeIcon.src = 'images/heart.png'
+      console.log(user_id)
+
+      if (user_id == 0) {
+
       }
-      else
-        likeIcon.src = 'images/heartNotSelected.png'
-      likeIcon.classList.add("likeIcon")
-      likeIcon.style.width = "30px"
-      likeIcon.style.height = "30px"
-      restaurantInfo.appendChild(likeIcon)
+      else if (restaurant.owner_id != user_id) {
+        const likeIcon = document.createElement('img')
+        likeIcon.setAttribute("id", "likeIcon"+restaurant.id)
+        likeIcon.setAttribute("data-id", restaurant.id)
+        if (favorites.includes(restaurant.id)){
+          likeIcon.setAttribute('isSelected', '')
+          likeIcon.src = 'images/heart.png'
+        }
+        else
+          likeIcon.src = 'images/heartNotSelected.png'
+          likeIcon.classList.add("likeIcon")
+          likeIcon.style.width = "30px"
+          likeIcon.style.height = "30px"
+          restaurantInfo.appendChild(likeIcon)
+      }
 
 
       restaurantContainer.appendChild(restaurantInfo)

@@ -157,8 +157,6 @@
                     <?php echo($restaurant->getName()); ?>
                 </div>
 
-                <input type="image" class="editButton" src="images/editIcon.png" onclick="location.href='editRestaurant.php?id=<?php echo($restaurant->id); ?>'"/>
-
                 <!-- <form>
                     <input class="input" type="text" placeholder="Dish name" name="n" id="dish_input" required="required">
                     <input class="input" type="number" step="0.01" placeholder="Price" name="p" id="price_input" required="required">
