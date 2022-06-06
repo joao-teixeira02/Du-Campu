@@ -205,8 +205,7 @@
                                                 $restaurant_data['name'],
                                                 $restaurant_data['address'],
                                                 intval($restaurant_data['owner_id']),
-                                                intval($restaurant_data['price'])
-                                                );
+                                                intval($restaurant_data['price']) );
             }
             return $restaurants;
         }

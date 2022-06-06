@@ -41,7 +41,8 @@
                     intval($restaurant['id']),
                     $restaurant['name'],
                     $restaurant['address'],
-                    intval($restaurant['owner_id'])
+                    intval($restaurant['owner_id']),
+                    intval($restaurant_data['price'])
                 );
                 
             }

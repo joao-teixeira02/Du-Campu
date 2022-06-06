@@ -38,7 +38,7 @@
         static function getFavRestaurants(PDO $db, int $id) : array {
 
             $stmt = $db->prepare(
-                'SELECT Restaurant.id, Restaurant.name, Restaurant.address, Restaurant.owner_id FROM Restaurant JOIN FavoriteRestaurant
+                'SELECT Restaurant.id, Restaurant.name, Restaurant.address, Restaurant.owner_id, Restaurant.price FROM Restaurant JOIN FavoriteRestaurant
              ON Restaurant.id=FavoriteRestaurant.id_restaurant AND FavoriteRestaurant.id_user=?');
              $stmt->execute(array($id));
             $restaurants = array();
@@ -47,7 +47,9 @@
                     intval($restaurant_data['id']),
                     $restaurant_data['name'],
                     $restaurant_data['address'],
-                    intval($restaurant_data['owner_id'])
+                    intval($restaurant_data['owner_id']),
+                    intval($restaurant_data['owner_id']),
+                    intval($restaurant_data['price'])
                 );
             }
             return $restaurants;
