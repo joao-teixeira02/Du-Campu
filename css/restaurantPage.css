@@ -91,6 +91,21 @@
 
 }
 
+.restaurant-page .comida .redCross:hover {
+    width: 4em;
+    height: auto;
+}
+
+.restaurant-page .comida .redCross {
+    width: 3em;
+    height: auto;
+    position: absolute;
+    top: 0.3em;
+    left: 2em;
+    opacity: 0.8;
+    transition: width 0.5s, height 0.5s;
+}
+
 .restaurant-page .comida {
     max-width: 100%;
     width: 15em;
@@ -144,12 +159,11 @@
     content: "\002605 ";
 }
 
-
 .restaurant-page header .editButton {
     float: right;
     width: 7em;
     height: auto;
-    transition: width 1s, height 1s;
+    transition: width 0.5s, height 0.5s;
 }
 
 .restaurant-page header .editButton:hover {
@@ -193,7 +207,7 @@
     position: absolute;
     top: 16.5em;
     right: 0;
-    transition: width 0.5s, height 0.5s;
+    transition: width 0.3s, height 0.3s;
 }
 
 /* reviews */
