@@ -24,6 +24,43 @@ function print_order(Order $order){
 
 }
 
+function print_order_for_owner(Order $order){
+    $db = getDatabaseConnection();
+    $restaurant = $order->getRestaurant($db);
+    ?>
+    <article class="order">
+        <header>
+            <h2><?php echo $restaurant->name ?></h2>
+        </header>
+        <main>
+            <form action="/action/action_change_order_state.php" method="POST">
+                <input type="hidden" name="order_id" value = "<?php echo $order->id; ?>">
+
+                <span class="date"><?php echo $order->date;?></span>
+                <span class="price">Total Check: <?php echo number_format($order->getTotalPrice($db),2);?>€</span>
+                <span class="state">State: <select onChange="this.form.submit()"  name= "state_id" >
+                    <?php
+                        foreach(State::getStatus($db) as $state ){
+                            echo '<option value="'.$state->id.'"';
+                            print_r($order->state_id);
+                            if($order->state_id === $state->id){
+                                echo ' selected ';
+                            }
+
+                            echo  '>'. $state->name . '</option>';
+                        }
+                        ?>
+                        </select >
+                        </span>
+                <span class="details" data-id_order='<?php echo $order->id;?>' onclick="open_details_popup(this)" >See details</span>
+            </form>
+        <main>
+    </article>
+
+    <?php
+
+}
+
 function show_orders(){
     global $session;
 
@@ -149,9 +186,11 @@ function show_owner_orders(){
         }
         
     }
+    print_r($orders_by_state);
 
     foreach($states as $state){
         if(isset($orders_by_state[$state->id])){
+            // ordernar por datas
             usort($orders_by_state[$state->id], 
                 function(Order $first, Order $second){
                     return strtolower($first->date) < strtolower($second->date);
@@ -200,7 +239,7 @@ function show_owner_orders(){
                                         $order = $orders_by_state[$state->id][$row_id];
                                         echo '<td>';
                                         if($order!==null){
-                                            print_order($order);
+                                            print_order_for_owner($order);
                                             $adicionou = true;
                                         }
                                         echo '</td>';
@@ -218,6 +257,33 @@ function show_owner_orders(){
                         </table>
                         
                 </main>
+        </article>
+
+
+        <article id="historico">
+            <header>
+                <h1>Order History</h1>
+            </header>
+
+            <main>
+
+                    <?php
+                    
+                    $orders = $orders_by_state[4];
+                    ?> 
+
+                    <ul> 
+
+                    <?php
+                    foreach($orders as $order){
+                        print_order($order);
+                    }
+
+                    ?>
+
+                    </u>
+                    
+            </main>
         </article>
 
     </article>

@@ -56,7 +56,7 @@
         public static function getOrdersFromRestaurantWithState(PDO $db, int $state_id, int $restaurant_id) : ?array{
             
             
-            $stmt = $db->prepare('SELECT * 
+            $stmt = $db->prepare('SELECT "Order".id, "Order".state_id, "Order".customer_id, "Order".date
                             FROM "OrderDishQuantity" JOIN "Order" ON (OrderDishQuantity.id_order = "Order".id) 
                             JOIN "Dish" ON (Dish.id = OrderDishQuantity.id_dish) 
                             WHERE Dish.restaurant_id = :restaurant_id and "Order".state_id = :state_id 
@@ -68,15 +68,14 @@
 
             $orders = array();
             while ($order_data = $stmt->fetch()) {
-                print_r($order_data );
-                print_r('<br>');
                 
                 $orders[] = new Order(intval($order_data['id']), 
                                     intval($order_data['state_id']),
                                     intval($order_data['customer_id']),
                                     $order_data['date']);
+
             }
-            
+
             return $orders;
         
         }
@@ -154,6 +153,14 @@
         public function addDishInDatabase(PDO $db, int $id_dish, int $quantity){
             $stmt = $db->prepare('INSERT INTO "OrderDishQuantity" (id_order, id_dish, quantity) VALUES (?, ?, ?)');
             $stmt->execute(array($this->id, $id_dish, $quantity));
+        }
+
+        public function updateInDatabase(PDO $db){
+            $stmt = $db->prepare('UPDATE "Order" SET state_id = ? WHERE id = ?');
+            print_r($this->state_id);
+            print_r("Update");
+            print_r($this->id);
+            $stmt->execute(array($this->state_id ,$this->id));
         }
 
     }
