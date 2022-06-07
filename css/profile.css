@@ -298,8 +298,7 @@
 
 /* orders */
 .order{
-  width: fit-content;
-  padding: auto;
+  width: 13em;
   margin-bottom: 0.5em;
 }
 

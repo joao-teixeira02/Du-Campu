@@ -170,13 +170,28 @@ function show_owner_orders(){
 
     
     $orders_by_state = array();
+    
+    $restaurants_selected = Owner::getRestaurants($db,  $session->getUserId());
+    $restaurants_selected_name = 'all';
+    $restaurants_owner = $restaurants_selected;
 
-    $restaurants_owner = Owner::getRestaurants($db,  $session->getUserId());
+    if(isset($_GET['restaurant']) && is_numeric($_GET['restaurant'])){
+        $restaurant_id = intval($_GET['restaurant']);
+        foreach($restaurants_owner as $restaurant){
+            if($restaurant->id === $restaurant_id){
+                $restaurants_selected = array();
+                $restaurants_selected[] = $restaurant;
+                $restaurants_selected_name = $restaurant_id;
+                break;
+            }
+        }
+    }
+
 
     
     
     foreach($states as $state){
-        foreach($restaurants_owner as $restaurant){
+        foreach($restaurants_selected as $restaurant){
             $this_orders = Order::getOrdersFromRestaurantWithState($db, $state->id, $restaurant->id);
             if(isset($orders_by_state[$state->id]))
                 $orders_by_state[$state->id] = array_merge($orders_by_state[$state->id], $this_orders );
@@ -201,10 +216,29 @@ function show_owner_orders(){
 ?>
 
     <article class="page">
-        
+        <form action="" type="GET">
+            <input type="hidden" name="page" value="restaurantOrders">
+            Restaurant: 
+            <select onChange="this.form.submit()" name='restaurant'>
+                <option value="all" <?php 
+                        if(restaurants_selected_name==="all"){
+                            echo 'selected';
+                        } ?> >All</option>
+                <?php
+                foreach($restaurants_owner as $restaurant){
+                    if($restaurants_selected_name === $restaurant->id){
+                        echo '<option selected value="'.$restaurant->id.'"> '.$restaurant->name.'</option>';
+                    }else{
+                        echo '<option value="'.$restaurant->id.'"> '.$restaurant->name.'</option>';
+                    }
+                }
+                ?>
+            </select>
+        </form>
         <article id="active_orders_owner" >
                 <header>
                     <h1>Active Orders</h1>
+                    
                 </header>
 
                 <main>
