@@ -157,9 +157,7 @@
 
         public function updateInDatabase(PDO $db){
             $stmt = $db->prepare('UPDATE "Order" SET state_id = ? WHERE id = ?');
-            print_r($this->state_id);
-            print_r("Update");
-            print_r($this->id);
+            
             $stmt->execute(array($this->state_id ,$this->id));
         }
 

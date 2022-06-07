@@ -296,6 +296,11 @@
 }
 
 
-
+/* orders */
+.order{
+  width: fit-content;
+  padding: auto;
+  margin-bottom: 0.5em;
+}
 
 

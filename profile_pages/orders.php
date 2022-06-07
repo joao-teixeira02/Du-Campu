@@ -42,7 +42,6 @@ function print_order_for_owner(Order $order){
                     <?php
                         foreach(State::getStatus($db) as $state ){
                             echo '<option value="'.$state->id.'"';
-                            print_r($order->state_id);
                             if($order->state_id === $state->id){
                                 echo ' selected ';
                             }
@@ -186,7 +185,6 @@ function show_owner_orders(){
         }
         
     }
-    print_r($orders_by_state);
 
     foreach($states as $state){
         if(isset($orders_by_state[$state->id])){

@@ -15,11 +15,6 @@
         $session = new Session();
         $db = getDatabaseConnection();
 
-        print_r($_POST['order_id']);
-        print_r('<br>');
-        print_r($_POST['state_id']);
-        print_r('<br>');
-
         $order = Order::getFromDatabase($db, intval($_POST['order_id']));
         
         $state = State::getStatebyId($db, intval($_POST['state_id']));
