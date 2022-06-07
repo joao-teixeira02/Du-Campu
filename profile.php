@@ -129,6 +129,11 @@
                 <p>Add Restaurant</p>
             </a>
 
+            <a class="addButton" href="index.php">
+                <img src="images/orders.png"/>
+                <p>See Restaurant's orders</p>
+            </a>
+
         </section>
 
     <?php
