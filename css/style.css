@@ -921,34 +921,9 @@ strong{
     border-color: rgba(0, 0, 0, 0);
   }
 
-  .menu_option {
-    text-decoration: none;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-auto-rows: auto;
-    grid-template-areas: "icon text";
-    align-items: center;
-    color: #3d3d3b;
-    width: 100%;
-  }
-  
-  .menu_option:hover {
-    background-color: white;
-    color: #3d3d3b;
-  }
-  
-  .menu_option p {
-    grid-area: text;
-    font-size: 1.2em;
-  }
-  
-  .menu_option span {
-    grid-area: icon;
-    font-size: 1.5em;
-    margin: 1em 0.4em 1em 0.5em;
-  }
   
   
+  /* search box */
 
 
   .restaurantsList .searchBox{

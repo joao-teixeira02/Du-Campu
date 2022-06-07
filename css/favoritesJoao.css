@@ -1,19 +1,22 @@
   #profile_page .favorites ul {
-    list-style-type:none
-    
+    list-style-type:none; 
   }
 
+.myRestaurants,
  .favorites {
     position: relative;
     overflow: hidden;
   }
 
+  .addRestaurant h2,
+  .myRestaurants h2,
   .favorites h2 {
     margin-bottom: 1em;
     margin-top: 1em;
     text-align: center;
   }
 
+  .myRestaurantsList,
   .favRestaurants {
     margin-bottom: 5em;
   }
@@ -36,7 +39,9 @@
     width: 50em;
   }
   
-  .favorites .favDishes h3, .favorites .favRestaurants h3 {
+  .myRestaurantsList h3,
+  .favorites .favDishes h3, 
+  .favorites .favRestaurants h3 {
     font-size: larger;
     font-weight:  bold;
     margin-top: 0.5em;
@@ -44,15 +49,20 @@
     width: fit-content;
     font-family: 'Poppins', sans-serif;
     color:rgb(214, 156, 92);
+    overflow-x: hidden;
   }
   
-  .favRestaurants , .favDishes {
+  .myRestaurantsList,
+  .favRestaurants,
+   .favDishes {
     padding: 0 12vw;
     display: flex;
     overflow-x: hidden;
   }
   
-  .favRestaurants .restaurant-cont, .favDishes .dish-cont {
+  .myRestaurantsList .restaurant-cont,
+  .favRestaurants .restaurant-cont, 
+  .favDishes .dish-cont {
     flex: 0 0 auto;
     width: 250px;
     padding-right: 5em;
@@ -132,40 +142,51 @@
     background: #fff;
   }
   
+  .pre-btn3,
+  .nxt-btn3 {
+    border: none;
+    width: 10vw;
+    height: 45%;
+    cursor: pointer;
+    z-index: 8;
+    position: absolute;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    background: #fff;
+  }
+
+
+  .pre-btn3,
+  .pre-btn2,
   .pre-btn1 {
     left: 0;
     transform: rotate(180deg);
   }
-
-  .pre-btn2 {
-    left: 0;
-    transform: rotate(180deg);
-  }
   
+  .nxt-btn3,
+  .nxt-btn2,
   .nxt-btn1 {
     right: 0;
   }
 
-  .nxt-btn2 {
-      right: 0;
-  }
-  
+  .pre-btn3 img,
+  .nxt-btn3 img,
+  .pre-btn2 img,
+  .nxt-btn2 img,
   .pre-btn1 img,
   .nxt-btn1 img {
     opacity: 0.2;
   }
 
-  .pre-btn2 img,
-  .nxt-btn2 img {
-    opacity: 0.2;
-  }
-  
+  .pre-btn3:hover img,
+  .nxt-btn3:hover img,
+  .pre-btn2:hover img,
+  .nxt-btn2:hover img,
   .pre-btn1:hover img,
   .nxt-btn1:hover img {
     opacity: 1;
   }
 
-  .pre-btn2:hover img,
-  .nxt-btn2:hover img {
-    opacity: 1;
-  }
+
+  /**  ADD RESTAURANT  **/
