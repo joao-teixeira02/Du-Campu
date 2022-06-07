@@ -1,6 +1,8 @@
 
 <?php
 
+require_once(__DIR__ . '/../database/owner.class.php');
+
 
 function print_order(Order $order){
     $db = getDatabaseConnection();
@@ -107,33 +109,120 @@ function show_order_details_popup(){
             
             
             <table>
-            <tr>
-                <th>Quantity</th>
-                <th>Name</th>
-                <th>Price</th>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Prato Muita Bom</td>
-                <td>10 €</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Prato Muita MAU</td>
-                <td>10 €</td>
-            </tr>
-
-            <tr>
-                <td>4</td>
-                <td>Prato Muita d</td>
-                <td>10 €</td>
-            </tr>
+            
+            
             </table>
             
 
         </main>
 
     </article>
+
+    <?php
+
+}
+
+
+function show_owner_orders(){
+
+
+    global $session;
+
+    $db = getDatabaseConnection();
+    $states = State::getStatus($db); 
+    $nStates = count($states)-1; 
+
+    
+    $orders_by_state = array();
+
+    $restaurants_owner = Owner::getRestaurants($db,  $session->getUserId());
+
+    
+    
+    foreach($states as $state){
+        foreach($restaurants_owner as $restaurant){
+            $this_orders = Order::getOrdersFromRestaurantWithState($db, $state->id, $restaurant->id);
+            if(isset($orders_by_state[$state->id]))
+                $orders_by_state[$state->id] = array_merge($orders_by_state[$state->id], $this_orders );
+            else
+                $orders_by_state[$state->id] = $this_orders ;
+        }
+        
+    }
+
+    foreach($states as $state){
+        if(isset($orders_by_state[$state->id])){
+            usort($orders_by_state[$state->id], 
+                function(Order $first, Order $second){
+                    return strtolower($first->date) < strtolower($second->date);
+                });
+        }
+    
+    }
+
+    
+?>
+
+    <article class="page">
+        
+        <article id="active_orders_owner" >
+                <header>
+                    <h1>Active Orders</h1>
+                </header>
+
+                <main>
+                        <table>
+                            <colgroup> 
+                                <col <?php echo 'span="' . $nStates .'"  width="' . 100.0/$nStates .'%"' ?> >
+
+                            </colgroup>
+                            <tr>
+                                <?php
+                                
+                                foreach($states as $state){
+                                    if($state->name !== "Delivered" ){
+                                        echo '<th>'. $state->name . '</th>';
+                                    }
+                                }
+                                ?>
+                            </tr>
+                            
+                            <?php
+                            $adicionou = true;
+                            $row_id = 0;
+                            while($adicionou){
+                                $adicionou = false;
+                                
+                                echo '<tr>';
+
+                                foreach($states as $state){
+                                    if($state->name !== "Delivered" ){
+                                        $order = $orders_by_state[$state->id][$row_id];
+                                        echo '<td>';
+                                        if($order!==null){
+                                            print_order($order);
+                                            $adicionou = true;
+                                        }
+                                        echo '</td>';
+                                    }
+                                }
+                                
+                                echo '</tr>';
+                                $row_id++;
+
+                            }
+
+
+                            ?>
+                            
+                        </table>
+                        
+                </main>
+        </article>
+
+    </article>
+
+
 
     <?php
 

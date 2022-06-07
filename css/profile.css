@@ -156,18 +156,22 @@
 /* Orders Page*/
 
 
-.page{
+#profile_page .page{
   grid-area: page;
-  width: fit-content;
+  width: 100%;
+
+}
+
+#profile_page .page > *{
   margin: 1em;
 
 }
 
-.page h1{
+#profile_page .page h1{
   font-size: 1.5em;
 }
 
-.page #active_orders ul, .page #historico ul{
+#profile_page .page #active_orders ul, .page #historico ul{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -175,44 +179,60 @@
 
 }
 
-.page #active_orders{
+#profile_page .page #active_orders{
   margin-bottom: 2em;
 }
 
 
-.page h2{
+#profile_page .page h2{
   font-size: 1em;
 }
 
-.page li{
+#profile_page .page li{
   list-style: none;
 
 }
 
-.page .order{
+#profile_page .page .order{
   border-style: solid;
   border-width: 1px;
   padding: 1em;
 }
 
-.page .order .date{
+#profile_page .page .order .date{
   display: block;
 }
 
-.page .order .price{
+#profile_page .page .order .price{
   display: block;
 }
 
-.page .order .state{
+#profile_page .page .order .state{
   display: block;
 }
 
-.page .order .details{
+#profile_page .page .order .details{
   display: block;
   color: rgb(214, 156, 92);
   cursor: pointer;
   text-decoration: underline rgb(214, 156, 92);
 }
+
+
+/* Restaurant Owner Orders*/
+.page {
+  width: 100%;
+}
+
+.page #active_orders_owner table{
+  width: 100%;
+  text-align: left;
+}
+
+.page #active_orders_owner table th{
+  width: 33.33%;
+}
+
 
 /* Orders Page popup */
 
