@@ -280,6 +280,11 @@
 }
 
 
+#popup_order_details #userName, .order #address{
+  display: block;
+}
+
+
 #popup_order_details table{
   width: 100%;
   text-align: left;
@@ -301,5 +306,6 @@
   width: 13em;
   margin-bottom: 0.5em;
 }
+
 
 

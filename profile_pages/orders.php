@@ -142,6 +142,8 @@ function show_order_details_popup(){
         </header>
 
         <main>
+            <span id="userName">Customer: Joao Maria</span>
+            <span id="address">Address: Rua dos pintainhos</span>
             
             
             <table>
