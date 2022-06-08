@@ -3,7 +3,7 @@
 /* add order popup*/
 
 const add_order_popup = document.querySelector("#add_order");
-const background_filter = document.querySelector(".background_filter");
+const background_filter2 = document.querySelector(".background_filter");
 
 if(add_order_popup){
 
@@ -15,7 +15,7 @@ if(add_order_popup){
 
     close.addEventListener('click', ()=>{
         add_order_popup.style.display = "none"
-        background_filter.style.display = "none"
+        background_filter2.style.display = "none"
         
     })
     
@@ -77,7 +77,7 @@ if(add_order_popup){
 
         
         add_order_popup.style.display = "block"
-        background_filter.style.display = "block"
+        background_filter2.style.display = "block"
 
     }
 
@@ -116,7 +116,7 @@ if(add_order_popup){
 
             
             add_order_popup.style.display = "block"
-            background_filter.style.display = "block"
+            background_filter2.style.display = "block"
             
         }
 
