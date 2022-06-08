@@ -1,0 +1,36 @@
+
+.addRestaurant fieldset{
+    padding: 0.5em;
+    display: grid;
+    grid-template-columns:  auto 1fr;
+
+    column-gap: 1em;
+
+}
+
+
+.addRestaurant :not(.categories){
+    grid-column: 2;
+}
+
+.addRestaurant .categories{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.addRestaurant .price-range{
+    display: block;
+    float: none;
+}
+
+.addRestaurant{
+    padding: 1em;
+}
+
+.addRestaurant #photo_field label{
+    display: block;
+}
+
+
+
+
