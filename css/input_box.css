@@ -1,11 +1,8 @@
 
-  input[type="button"]:hover,
-  input[type="submit"]:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  input[type="text"],
-  input[type="password"] {
+  .addRestaurant input[type="text"],
+  .addRestaurant input[type="password"]
+  #profile_pageinput[type="text"],
+  #profile_page input[type="password"] {
     font-size: 0.8em;
     font-weight: 500;
     padding: 0.5em;
@@ -17,13 +14,16 @@
     border-color: rgba(0, 0, 0, 0);
   }
 
-
-  input {
+  #profile_page  input,
+  .addRestaurant input {
     font-family: 'Poppins', sans-serif;
   }
 
-  input[type="button"],
-  input[type="submit"] {
+
+  #profile_page input[type="button"],
+  #profile_page input[type="submit"]
+  .addRestaurant input[type="button"],
+  .addRestaurant input[type="submit"] {
     font-size: 0.7em;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -35,6 +35,11 @@
     border-radius: 1em;
   }
 
+  
+  .addRestaurant input[type="button"]:hover,
+  .addRestaurant input[type="submit"]:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 
   #photo_field #photo {
     width: 10em;
@@ -51,7 +56,7 @@
     font-weight: 300;
     color: #666666;
     margin: 1em 0;
-    width: 100%;
+    width: fit-content;
   }
   
   #photo_field input[type="submit"] {
