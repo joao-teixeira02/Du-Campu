@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="css/profile.css">
 
         <script type="text/javascript" src="js/carrosselSliderFavRest.js" defer></script>
+        <script type="text/javascript" src="js/carrosselSliderMyRest.js" defer></script>
         <script type="text/javascript" src="js/carrosselSliderFavDish.js" defer></script>
         <script type="text/javascript" src="js/cart.js" defer></script> 
         <script type="text/javascript" src="js/orders_list.js" defer></script>
