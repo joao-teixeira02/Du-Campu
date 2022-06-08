@@ -77,6 +77,28 @@
     grid-template-areas: "img file";
 }
 
+/* EDIT RESTAURANT BUTTON */
+
+/* HIDE RADIO */
+.r-price { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* IMAGE STYLES */
+  .r-price + img {
+    cursor: pointer;
+    width: 2em;
+    height: auto;
+  }
+  
+  /* CHECKED STYLES */
+  .r-price:checked + img {
+    outline: 2px solid #f00;
+  }
+
 /* Restaurant */
 
 .restaurant-page .menuRestaurante li{

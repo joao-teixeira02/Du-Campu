@@ -10,7 +10,7 @@
     $session = new Session();
     
     if(!isset($_GET['id'])){
-        echo "Error restaurante id not found";
+        echo "Error restaurant id not found";
         exit(0);
     }
 
@@ -64,7 +64,14 @@
                 <?php echo($restaurant->getName()); 
                 if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
                 ?>
-                <input type="image" class="editButton" src="images/editIcon.png" onclick="open_edit_restaurant_popup(this)"/>
+                <input type="image" class="editButton" src="images/editIcon.png" onclick="open_edit_restaurant_popup(this)"
+                data-restaurant_id="<?php echo($restaurant->id); ?>"
+                data-restaurant_name="<?php echo($restaurant->name); ?>"
+                data-restaurant_address="<?php echo($restaurant->address); ?>"
+                data-restaurant_price="<?php echo($restaurant->price); ?>"
+                data-restaurant_photo="<?php echo($restaurant->getPhoto($db, $restaurant->id)); ?>"
+                data-restaurant_categories="<?php echo($restaurant->getCategory($db, $restaurant->id)); ?>"
+                />
                 <?php
                 }
                 ?>
@@ -211,6 +218,54 @@
 
             <?php
             }
+    }
+
+    function create_edit_restaurant_popup(int $id) { 
+
+        $db = getDatabaseConnection();
+
+        $restaurant = Restaurant::getRestaurant($db, $id); 
+        $price = intval($restaurant->price);
+        print_r($restaurant->price);
+        ?>
+
+        <article id="editRestaurant" class="full_window_popup">
+            <div class="UseInputStyle">
+            <header>
+                <img id="close" clickable width="50px" height="50px" src="images/close.png" />
+            </header>
+            <main>
+                <form id="restaurant_info" action="/action/action_edit_restaurant.php" method="post">
+                    <input id="id_restaurant_input" name="id_restaurant" type = "hidden" value="" />
+                    <div id="restaurant-image-container">
+                        <img id="img_restaurant" width="100px" height="100px" src="" />
+                        <input type="file" name="f" id="restaurant_image_upload">
+                    </div>
+                    <h3 id="name">Restaurant Name</h3>
+                    <input name="n" class="attr" id="restaurant_name" type="text" placeholder="" required="required" />
+                    <label for="price1">
+                    <input class="r-price" id="price1" type="radio" name="p" value="1" <?php if ($price === 1){ echo('checked = "checked"'); } ?>>
+                    <img src="images/euro.png">
+                    </label>
+                    <label for="price2">
+                    <input class="r-price" id="price2" type="radio" name="p" value="2" <?php if ($price === 2){ echo('checked = "checked"'); } ?>>
+                    <img src="images/2euro.png">
+                    </label>
+                    <label for="price3">
+                    <input class="r-price" id="price3" type="radio" name="p" value="3" <?php if ($price === 3){ echo('checked = "checked"'); } ?>>
+                    <img src="images/3euro.png">
+                    </label>
+                    <h3 id="address">Address</h3>
+                    <input name="a" class="attr" id="restaurant_address" type="text" placeholder="" required="required" />
+                    <h3 id="categories">Categories</h3>
+                    <input name="c" class="attr" id="restaurant_categories" type="text" placeholder="" required="required" />
+                    <button clickable type="submit" id="edit_restaurant" >Edit Restaurant</button>
+                </form>
+            </main>
+            </div>
+        </article>
+
+    <?php
     }
 
     function create_edit_dish_popup(){ ?>
@@ -374,6 +429,7 @@
         <script type="text/javascript" src="js/likeButtonHeader.js" defer></script>
         <script type="text/javascript" src="js/likeButtonDish.js" defer></script>
         <script type="text/javascript" src="js/editButtonDish.js" defer></script>
+        <script type="text/javascript" src="js/editButtonRestaurant.js" defer></script>
 
         <title>Du'Campu</title>
     </head>
@@ -434,6 +490,8 @@
     </div>
     <?php 
     create_add_order();
+
+    create_edit_restaurant_popup($restaurant_id);
 
     create_edit_dish_popup();
     
