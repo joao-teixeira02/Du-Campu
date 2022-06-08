@@ -10,7 +10,7 @@ function show_profile() {
 
     ?>
 
-    <section id="profile">
+    <section id="profile" class="UseInputStyle" >
     <h1>Personal Information</h1>
         <section id="account">
             <section id="fields">

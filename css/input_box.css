@@ -1,8 +1,6 @@
 
-  .addRestaurant input[type="text"],
-  .addRestaurant input[type="password"]
-  #profile_pageinput[type="text"],
-  #profile_page input[type="password"] {
+.UseInputStyle input[type="text"],
+.UseInputStyle input[type="password"]{
     font-size: 0.8em;
     font-weight: 500;
     padding: 0.5em;
@@ -14,16 +12,12 @@
     border-color: rgba(0, 0, 0, 0);
   }
 
-  #profile_page  input,
-  .addRestaurant input {
+.UseInputStyle input {
     font-family: 'Poppins', sans-serif;
   }
 
-
-  #profile_page input[type="button"],
-  #profile_page input[type="submit"]
-  .addRestaurant input[type="button"],
-  .addRestaurant input[type="submit"] {
+.UseInputStyle input[type="button"],
+.UseInputStyle input[type="submit"] {
     font-size: 0.7em;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -36,12 +30,12 @@
   }
 
   
-  .addRestaurant input[type="button"]:hover,
-  .addRestaurant input[type="submit"]:hover {
+.UseInputStyle input[type="button"]:hover,
+.UseInputStyle input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 0.5);
   }
 
-  #photo_field #photo {
+.UseInputStyle  #photo_field #photo {
     width: 10em;
     height: 10em;
     object-fit: cover;
@@ -50,7 +44,8 @@
     margin: 1em 0;
   }
   
-  #photo_field input[type="file"] {
+.UseInputStyle  #photo_field input[type="file"] {
+    display: block;
     font-family: 'Poppins', sans-serif;
     font-size: 0.8em;
     font-weight: 300;
@@ -59,14 +54,11 @@
     width: fit-content;
   }
   
-  #photo_field input[type="submit"] {
+.UseInputStyle  #photo_field input[type="submit"] {
+    display: block;
     background-color: rgba(0, 0, 0, 0.7);
   }
   
-  #photo_field input[type="submit"]:hover {
+.UseInputStyle  #photo_field input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  #profile form input[value=Update]{
-    display: block;
   }

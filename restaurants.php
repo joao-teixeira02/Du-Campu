@@ -10,34 +10,7 @@ if($_GET['s']){
     $search_text = $_GET['s'];
 }
 
-
-function show_restaurant_category(){ ?>
-
-        <section class= "categories" >
-        <p><h3>Category</h3></p>
-        <?php 
-            $db = getDatabaseConnection();
-
-            foreach(Category::getCategories($db) as $category ){
-                ?>
-                <input type="checkbox" id="<?php echo ($category->id);?>"  
-                name="<?php echo ($category->name);?>" > 
-                <label for="<?php echo ($category->id);?>" >
-                <?php echo ($category->name);?></label> 
-                <br>
-                <?php 
-            }
-        ?>
-        </section>
-
-    <?php 
-}
 ?>
-
-
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -79,15 +52,9 @@ function show_restaurant_category(){ ?>
 
                 <br>
     
-                <section class = "price-range">
-                    <p><h3>Price range</h3></p> 
-                        <input type="checkbox" id="euro" name="classification" value="1"> 
-                        <label for="euro" > <img clickable src="images/euro.png" id= "euroo" width="47px" height="40px" alt="euro" ></label>
-                        <input type="checkbox" id="doiseuro" name="classification" value="2"> 
-                        <label for="doiseuro" > <img clickable src="images/2euro.png" id= "doiseuroo" width="50px" height="40px" alt="2euro"></label>
-                        <input type="checkbox" id="treseuro" name="classification" value="3"> 
-                        <label for="treseuro" > <img clickable src="images/3euro.png" id= "treseuroo" width="55px" height="40px" alt="3euro"></label>
-                </section>
+                <?php
+                    show_price_range();
+                ?>
                 
                 <br>
                 <br>
