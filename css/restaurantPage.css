@@ -1,6 +1,6 @@
-/* EDIT DISH POPUP */
+/* EDIT AND ADD DISH POPUP */
 
-#editDish #close {
+.popups #close {
     position: absolute;
     top: 1em;
     left: 1em;
@@ -8,7 +8,7 @@
     height: auto;
 }
 
-#editDish #image-container #img_dish {
+.popups #image-container #img_dish {
     width: 12em;
     height: auto;
     grid-area: img;
@@ -17,33 +17,33 @@
     margin-left: 4em;
 }
 
-#editDish #image-container #dish_image_upload {
+.popups #image-container #dish_image_upload {
     grid-area: file;
     height: fit-content;
 }
 
-#editDish #dish_name {
+.popups #dish_name {
     width: 80%;
     margin: 1em;
     margin-left: 2em;
 }
 
-#editDish #dish_type {
+.popups #dish_type {
     width: 80%;
     margin: 1em;
     margin-left: 2em;
 }
 
-#editDish #price, #editDish #type {
+.popups #price, .popups #type {
     margin-left: 1em;
 }
 
-#editDish #name {
+.popups #name {
     margin-left: 1em;
     margin-top: 1em;
 }
 
-#editDish .attr {
+.popups .attr {
     font-family: 'Poppins', sans-serif;
     font-size: 1em;
     font-weight: 500;
@@ -56,13 +56,13 @@
     border-color: rgba(0, 0, 0, 0);
 }
 
-#editDish #dish_price {
+.popups #dish_price {
     width: 80%;
     margin: 1em;
     margin-left: 2em;
 }
 
-#editDish #edit_dish {
+.popups #edit_dish, .popups #add_new_dish {
     width: 100%;
     height: 4em;
     background-color: black;
@@ -71,7 +71,7 @@
     font-size: 1em;
 }
 
-#editDish #image-container {
+.popups #image-container {
     align-items: center;
     display: grid;
     grid-template-areas: "img file";

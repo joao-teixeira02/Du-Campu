@@ -11,11 +11,11 @@ if (edit_dish_popup) {
         
     })
 
-    const id_dish_input1 = document.querySelector("#dish_info #id_dish_input");
-    const dish_photo_element1 = document.querySelector("#img_dish");
-    const dish_name_element1 = document.querySelector("#dish_info #dish_name");
-    const dish_price_element1 = document.querySelector("#dish_info #dish_price");
-    const dish_type_element1 = document.querySelector("#dish_info #dish_type");
+    const id_dish_input1 = document.querySelector("#editDish #dish_info #id_dish_input");
+    const dish_photo_element1 = document.querySelector("#editDish #img_dish");
+    const dish_name_element1 = document.querySelector("#editDish #dish_info #dish_name");
+    const dish_price_element1 = document.querySelector("#editDish #dish_info #dish_price");
+    const dish_type_element1 = document.querySelector("#editDish #dish_info #dish_type");
 
     function open_edit_dish_popup(e) {
 
@@ -34,7 +34,6 @@ if (edit_dish_popup) {
         dish_price_element1.placehoder = dish_price;
 
         const dish_type = e.getAttribute('data-dish_type')
-        console.log(dish_type)
         dish_type_element1.value = dish_type;
         dish_type_element1.placehoder = dish_type;
         
