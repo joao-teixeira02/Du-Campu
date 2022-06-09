@@ -1,11 +1,97 @@
 /* EDIT AND ADD DISH POPUP */
 
+#editRestaurant {
+    max-height: 100vh;
+    height: fit-content;
+    overflow-y: scroll;
+    overflow-x: hidden ;
+}
+
+#editRestaurant > div{
+    height: fit-content;
+}
+
+#editRestaurant .categories{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+#editRestaurant .categories label{
+    font-weight: lighter;
+    font-size: medium;
+}
+
+#editRestaurant .categories h3{
+    display: block;
+    flex-basis: 100%;
+}
+
+
+
+#editRestaurant .categories label{
+    display: block;
+    position:relative;
+    width: 8em;
+    height: auto;
+    padding-right: 0.25em;
+}
+
+
+#editRestaurant form{
+    height: 100%;
+}
+
+#editRestaurant fieldset{
+    height: 100%;
+    padding: 0.5em;
+
+    border: none;
+
+}
+
+#editRestaurant fieldset > div label{
+    font-size: 1.17em;
+    font-weight: bolder;
+}
+
+
+#editRestaurant :not(.categories){
+    grid-column: 1;
+}
+
+#editRestaurant .categories{
+    margin-right: 1em;
+}
+
+#editRestaurant .price-range{
+    display: block;
+    float: none;
+}
+
+#editRestaurant{
+    padding: 1em;
+}
+
+#editRestaurant #photo_field label{
+    font-size: 1.17em;
+    font-weight: bolder;
+    display: block;
+}
+
+
+
+.addRestaurant fieldset > div label{
+    font-size: 1.17em;
+    font-weight: bolder;
+}
+
 .popups #close {
-    position: absolute;
-    top: 1em;
-    left: 1em;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
     width: 2em;
     height: auto;
+    display: block;
 }
 
 .popups #image-container #img_dish {
@@ -43,18 +129,7 @@
     margin-top: 1em;
 }
 
-.popups .attr {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1em;
-    font-weight: 500;
-    padding: 0.5em;
-    margin: 0.5em 0;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 2em;
-    background-color: rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 0, 0, 0);
-}
+
 
 .popups #dish_price {
     width: 80%;

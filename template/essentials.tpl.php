@@ -2,6 +2,7 @@
     declare(strict_types = 1);
     require_once(__DIR__ . '/cart.tpl.php');
     require_once(__DIR__ . '/../utils/session.php');
+    require_once(__DIR__ . '/../database/category.class.php');
 
     function show_header_menu(){
         $session = new Session();
@@ -88,17 +89,22 @@ function show_footer(){?>
 
 
 
-function show_restaurant_category(){ ?>
+function show_restaurant_category($selected = array()){ ?>
 
     <section class= "categories" >
     <p><h3>Category</h3></p>
+
+    <br>
     <?php 
         $db = getDatabaseConnection();
 
         foreach(Category::getCategories($db) as $category ){
+            if(in_array($category->name, $selected)){
+                echo '<input type="checkbox" checked id="'.$category->id.'" name="'.$category->name.'" > ';
+            }else{
+                echo '<input type="checkbox" id="'.$category->id.'" name="'.$category->name.'" > ';
+            }
             ?>
-            <input type="checkbox" id="<?php echo ($category->id);?>"  
-            name="<?php echo ($category->name);?>" > 
             <label for="<?php echo ($category->id);?>" >
             <?php echo ($category->name);?></label> 
             <br>
@@ -111,7 +117,7 @@ function show_restaurant_category(){ ?>
 }
 
 
-function show_price_range(){
+function show_price_range_checkbox(){
     ?>
 
         <section class = "price-range">
@@ -121,6 +127,24 @@ function show_price_range(){
             <input type="checkbox" id="doiseuro" name="classification" value="2"> 
             <label for="doiseuro" > <img clickable src="images/2euro.png" id= "doiseuroo" width="50px" height="40px" alt="2euro"></label>
             <input type="checkbox" id="treseuro" name="classification" value="3"> 
+            <label for="treseuro" > <img clickable src="images/3euro.png" id= "treseuroo" width="55px" height="40px" alt="3euro"></label>
+        </section>
+    
+    <?php
+
+}
+
+
+function show_price_range_radio(){
+    ?>
+
+        <section class = "price-range">
+            <p><h3>Price range</h3></p> 
+            <input type="radio" id="euro" name="classification" value="1"> 
+            <label for="euro" > <img clickable src="images/euro.png" id= "euroo" width="47px" height="40px" alt="euro" ></label>
+            <input type="radio" id="doiseuro" name="classification" value="2"> 
+            <label for="doiseuro" > <img clickable src="images/2euro.png" id= "doiseuroo" width="50px" height="40px" alt="2euro"></label>
+            <input type="radio" id="treseuro" name="classification" value="3"> 
             <label for="treseuro" > <img clickable src="images/3euro.png" id= "treseuroo" width="55px" height="40px" alt="3euro"></label>
         </section>
     
