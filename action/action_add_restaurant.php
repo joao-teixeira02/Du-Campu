@@ -2,81 +2,79 @@
 	declare(strict_types = 1);
 
 	require_once(__DIR__ .'/../database/connection.db.php');
+	require_once(__DIR__ .'/../database/category.class.php');
+	require_once(__DIR__ .'/../database/photo.class.php');
     require_once(__DIR__ .'/../utils/session.php');
 
     //TODO NAO DEIXAR Q UM ATRASADO ADICIONE RESTAURANTE SEM ESTAR LOGIN
+    $session = new Session();
     
 	$db = getDatabaseConnection();
 
-    $name = $_POST['n'];
-    $address = $_POST['a'];
-    $owner_id = $_POST['id'];
-    //$path = $_GET['pa'];
-    $categories = explode(',', $_POST['c']);
-
-    foreach($categories as $category){
-        $query = 'INSERT INTO Category (name) VALUES (:category)';
-        $stmt = $db->prepare($query);
-        $stmt->bindParam(':category', $category);
-        $stmt->execute();
+    if(! ( isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']) && isset($_FILES['fileToUpload']) )){
+        print_r($_POST);
+        die;
     }
 
-    /*$query = 'INSERT INTO Photo (path) VALUES (:path)';
+    $name = $_POST['n'];
+    $address = $_POST['a'];
+    $classification = $_POST['classification'];
+    print_r($classification);
+    
+    $owner_id = $session->getUserId();
 
-    $stmt = $db->prepare($query);
+    $categories = Category::getCategories($db);
+    
+    $categories_idlist = [];
 
-    $stmt->bindParam(':path', $path);
+    foreach($categories as $category){
+        if(isset($_POST[$category->name]) && $_POST[$category->name] === 'on'){
+            $categories_idlist[] = $category->id;
+        }
+        
+    }
 
-    $stmt->execute();
-
-    $query = 'SELECT id FROM Photo WHERE Photo.path=?';
-
-    $stmt->execute(array($path));*/
-
-    $id_photo = 1; //$stmt->fetch()['id'];
+    if(empty($categories_idlist)){
+        
+	    header("Location: ".$_SERVER['HTTP_REFERER']);
+        die;
+    }
  
-	$query = 'INSERT INTO Restaurant (name, address, owner_id) VALUES (:name, :address, :owner_id)';
  
-	$stmt = $db->prepare($query);
+	$stmt = $db->prepare('INSERT INTO Restaurant (name, address, owner_id, price) VALUES (:name, :address, :owner_id, :price)');
 
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':address', $address);
-    $stmt->bindParam(':owner_id', $owner_id);;
+    $stmt->bindParam(':owner_id', $owner_id);
+    $stmt->bindParam(':price', $classification);
 
-    $stmt->execute();
+    $success = $stmt->execute();
 
-    $query = 'SELECT id FROM Restaurant WHERE Restaurant.name=?';
+    if(! $success){
+        header("Location: ".$_SERVER['HTTP_REFERER']);
+        die;
+    }
+    $id_restaurant = $db->lastInsertId();
 
-    $stmt = $db->prepare($query);
+    /* CRIAR IMAGEM */
+    if(isset($_FILES['fileToUpload'])){
+        $originalFileName = 'restaurant_'. $id_restaurant . '_photo.png';
 
-    $stmt->execute(array($name));
+        $id_photo = Photo::insertPhoto($db, $_FILES['fileToUpload'], $originalFileName);
 
-    $id_restaurant = $stmt->fetch()['id'];
+        $stmt = $db->prepare('INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (:id_restaurant, :id_photo)');
+        $stmt->bindParam(':id_restaurant', $id_restaurant);
+        $stmt->bindParam(':id_photo',$id_photo);
+        $stmt->execute();
+    }
 
-    $query = 'INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (:id_restaurant, :id_photo)';
-
-    $stmt = $db->prepare($query);
-
-    $stmt->bindParam(':id_restaurant', $id_restaurant);
-    $stmt->bindParam(':id_photo',$id_photo);
-
-    $stmt->execute();
-
-    $query1 = 'INSERT INTO RestaurantCategory (id_restaurant, id_category) VALUES (:id_restaurant, :id_category)';
-    $query2 = 'SELECT id FROM Category WHERE Category.name=?';
-
-    foreach($categories as $category) {
-        $stmt1 = $db->prepare($query1);
-        $stmt2 = $db->prepare($query2);
-
-        $stmt2->execute(array($category));
-        $id_category = $stmt2->fetch()['id'];
-
-        $stmt1->bindParam(':id_restaurant', $id_restaurant);
+    foreach($categories_idlist as $id_category) {
+        $stmt1 = $db->prepare('INSERT INTO RestaurantCategory (id_restaurant, id_category) VALUES (:id_restaurant, :id_category)');
         $stmt1->bindParam(':id_category', $id_category);
+        $stmt1->bindParam(':id_restaurant', $id_restaurant);
 
         $stmt1->execute();
     }
     
-	header("Location:".$_SERVER['HTTP_REFERER']."");
+	header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>

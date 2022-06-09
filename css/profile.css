@@ -3,6 +3,11 @@
 * Profile
 */
 
+.editButton {
+  height: 8em;
+  width: auto;
+}
+
 #profile_page {
     display: grid;
     grid-template-columns: 20% 80%;
@@ -52,9 +57,13 @@
 
 
 /* Account Page*/
+
+
+
 #profile_page #profile {
     grid-area: page;
     margin-left: 2em;
+    margin-top: 1em;
 }
 
 #account {
@@ -86,72 +95,7 @@
     margin-left: 3em;
   }
   
-  #photo_field #photo {
-    width: 10em;
-    height: 10em;
-    object-fit: cover;
-    border: 0.1em solid rgba(0, 0, 0, 0.3);
-    border-radius: 5%;
-    margin: 1em 0;
-  }
-  
-  #photo_field input[type="file"] {
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.8em;
-    font-weight: 300;
-    color: #666666;
-    margin: 1em 0;
-    width: 100%;
-  }
-  
-  #photo_field input[type="submit"] {
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  
-  #photo_field input[type="submit"]:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  #profile form input[value=Update]{
-    display: block;
-  }
 
-  #profile input {
-    font-family: 'Poppins', sans-serif;
-  }
-
-  #profile input[type="button"],
-  #profile input[type="submit"] {
-    font-size: 0.7em;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    margin: 1em 0;
-    padding: 0.5em 1.5em;
-    border-radius: 1em;
-  }
-
-  #profile input[type="button"]:hover,
-  #profile input[type="submit"]:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  #profile input[type="text"],
-  #profile input[type="password"] {
-    font-size: 0.8em;
-    font-weight: 500;
-    padding: 0.5em;
-    margin: 0.5em 0;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 2em;
-    background-color: rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 0, 0, 0);
-  }
-
-  
   
 /* Orders Page*/
 
@@ -274,8 +218,3 @@
   width: 4em;
   text-align: left;
 }
-
-
-
-
-

@@ -1,0 +1,50 @@
+
+.addRestaurant fieldset{
+    padding: 0.5em;
+    display: grid;
+    grid-template:  auto 1fr;
+
+    column-gap: 1em;
+
+}
+
+
+.addRestaurant :not(.categories){
+    grid-column: 2;
+}
+
+.addRestaurant .categories{
+    grid-column: 1;
+    grid-row: 1;
+    margin-right: 1em;
+}
+
+.addRestaurant .price-range{
+    display: block;
+    float: none;
+}
+
+.addRestaurant{
+    padding: 1em;
+}
+
+.addRestaurant #photo_field label{
+    font-size: 1.17em;
+    font-weight: bolder;
+    display: block;
+}
+
+.addrestaurants{
+    width: 30em;
+}
+
+.addRestaurant{
+    width: fit-content;
+    margin: auto;
+}
+
+
+.addRestaurant fieldset > div label{
+    font-size: 1.17em;
+    font-weight: bolder;
+}

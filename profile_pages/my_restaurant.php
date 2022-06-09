@@ -1,6 +1,11 @@
 
 <?php
 
+require_once(__DIR__ . '/../database/category.class.php');
+require_once(__DIR__ . '/../database/connection.db.php');
+require_once(__DIR__ .  '/../template/essentials.tpl.php');
+
+
 function show_restaurants() {
 
     global $session;
@@ -17,27 +22,7 @@ function show_restaurants() {
     <section id="restaurant_list">
 
         <?php show_restaurant_list(); ?>
-
-        <!-- <form id="add-restaurant">
-            <input class="input" type="text" placeholder="Restaurant name" name="n" id="restaurant_input" required="required">
-            <input class="input" type="text" placeholder="Address" name="a" id="address_input" required="required">
-            <input class="input" type="text" placeholder="Categories separated by comma" name="c" id="categories_input" required="required">
-            <input type="radio" id="€" name="pr" value="€"> 
-            <label for="euro" > <img clickable src="images/euro.png" id="euro" width="47px" height="40px" alt="euro" ></label>
-            <input type="radio" id="€€" name="pr" value="€€"> 
-            <label for="doiseuro" > <img clickable src="images/2euro.png" id="doiseuro" width="50px" height="40px" alt="2euro"></label>
-            <input type="radio" id="€€€" name="pr" value="€€€"> 
-            <label for="treseuro" > <img clickable src="images/3euro.png" id="treseuro" width="55px" height="40px" alt="3euro"></label>
-            <input type="hidden" name="id" value="</*?phpecho($id); ?>*/">
-            
-            <input formaction="/action/action_add_restaurant.php" formmethod="post" type="submit" class="white_button" value="Insert">
-        </form>-->
-            
-        <a class="addButton" href="index.php">
-            <img src="images/plus.png"/>
-            <p>Add Restaurant</p>
-        </a>
-
+    
     </section>
 
     <?php
@@ -54,36 +39,72 @@ function show_restaurants() {
     $id = $session->getUserId();
     ?>
 
+    <article class="myRestaurants">
 
-    <?php $restaurants = Owner::getRestaurants($db, $id);
-    foreach($restaurants as $restaurant) {?>
+    <h2> My restaurants </h2>
 
-        <div class="restaurant-container">
+       <section class="myRestaurantsList"> 
+        <button class="pre-btn3"><img src="images/arrow.png" alt=""></button>
+        <button class="nxt-btn3"><img src="images/arrow.png" alt=""></button>
 
-            <img id="restaurant-img" alt="Imagem do Restaurante" src="<?php echo ($restaurant->getPhoto($db, $id)); ?>">
-            
-            <div class="restaurant-info">
-                <?php echo($restaurant->getName()); ?>
-            </div>
+        <?php $restaurants = Owner::getRestaurants($db, $id);
+        foreach($restaurants as $restaurant) {?>
 
-            <!-- <form>
-                <input class="input" type="text" placeholder="Dish name" name="n" id="dish_input" required="required">
-                <input class="input" type="number" step="0.01" placeholder="Price" name="p" id="price_input" required="required">
-                <input class="input" type="text" placeholder="Dish type" name="t" id="type_input" required="required">
-                <input type="hidden" name="id" value="</*?php echo($restaurant->id); ?*/>"> 
-                
-                <input formaction="/action/action_add_dish.php" formmethod="post" type="submit" class="white_button" value="Insert">
-            </form> -->
-
-    </div>
-
-    <?php
+            <div class="restaurant-cont">
+                <div class="restaurant_img">
+                        <img class="thumb" alt="Imagem do Restaurante" src="<?php echo ($restaurant->getPhoto($db, $id)); ?>">
+                        <input type="button" class="card-btn" value="Edit Restaurant" onclick="location.href='restaurant.php?id=<?php echo($restaurant->id); ?>'"/>
+                </div>
+                    <h3>
+                        <?php echo($restaurant->getName()); ?>
+                    </h3>
+                </div>
+            </div> 
+        <?php
     }
     ?>
-    </ul>
+    </section> 
+    </article>
 
+    <article class= "addRestaurant UseInputStyle">
+        <h2> Add a restaurant </h2>
+
+        <form action="/action/action_add_restaurant.php" method="POST" enctype="multipart/form-data">
+            <fieldset>
+                
+                <?php
+                    show_restaurant_category();
+                ?>
+            
+                <div>
+
+                    <div id="photo_field">
+                        <label>Photo</label>
+                        <img src="/images/restaurant1/capa.jpg" id="photo" alt="Restaurante image" width="100%" height="200px"/>
+                        <input type="file" name="fileToUpload" require id="fileToUpload">
+                    </div>
+            
+
+                    <label for="newRestaurantName" > Restaurant Name </label>
+                    <input type="text" class="attr" name="n" require id="newRestaurantName" placeholder="Restaurant Name"/>
+
+                    <label for="address" > Address </label>
+                    <input type="text" class="attr" name="a" require id="address" placeholder="Address"/>
+
+                    <?php 
+                    show_price_range();
+                    ?>
+
+                    <input type="submit" value="Add Restaurant"/>
+                </div>
+            </fieldset>
+        </form>
+            <br>
+            <br>
+            <br>
+
+    </article>
     <?php
 }
-
 
 ?>

@@ -26,11 +26,17 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/position.css">
         <link rel="stylesheet" href="css/favoritesJoao.css">
-        <script type="text/javascript" src="js/carrosselSliderFavRest.js" defer></script>
-        <script type="text/javascript" src="js/carrosselSliderFavDish.js" defer></script>
+        <link rel="stylesheet" href="css/myrestaurant.css">
+        <link rel="stylesheet" href="css/input_box.css">
         <link rel="stylesheet" href="css/profile.css">
+
+        <script type="text/javascript" src="js/carrosselSliderFavRest.js" defer></script>
+        <script type="text/javascript" src="js/carrosselSliderMyRest.js" defer></script>
+        <script type="text/javascript" src="js/carrosselSliderFavDish.js" defer></script>
         <script type="text/javascript" src="js/cart.js" defer></script> 
-        <script type="text/javascript" src="js/orders_list.js" defer></script> 
+        <script type="text/javascript" src="js/orders_list.js" defer></script>
+        <script type="text/javascript" src="js/myRestaurant.js" defer></script>
+         
         <title>Du'Campu</title>
     </head>
     <body>
