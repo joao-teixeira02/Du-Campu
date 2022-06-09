@@ -22,17 +22,18 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgb(214, 156, 92);
     color: white;
     margin: 1em 0;
     padding: 0.5em 1.5em;
     border-radius: 1em;
+    border-color: rgba(0,0,0,0);
   }
 
   
 .UseInputStyle input[type="button"]:hover,
 .UseInputStyle input[type="submit"]:hover {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(214, 156, 92, 0.7);
   }
 
 .UseInputStyle  #photo_field #photo {
@@ -57,11 +58,11 @@
   
 .UseInputStyle  #photo_field input[type="submit"] {
     display: block;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgb(214, 156, 92);
   }
   
 .UseInputStyle  #photo_field input[type="submit"]:hover {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(214, 156, 92, 0.5);
   }
 
 
