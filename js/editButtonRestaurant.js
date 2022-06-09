@@ -62,6 +62,7 @@ if (edit_restaurant_popup) {
         }
 
         function addEventsToPrice(checkbox, imagem, img_hoover, img_out){
+            update_checkboxes();
             imagem.addEventListener('mouseover', () => {
                 if(!checkbox.checked)
                     imagem.src = img_hoover;

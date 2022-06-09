@@ -92,7 +92,7 @@ function show_restaurants() {
                     <input type="text" class="attr" name="a" require id="address" placeholder="Address"/>
 
                     <?php 
-                    show_price_range();
+                    show_price_range_radio();
                     ?>
 
                     <input type="submit" value="Add Restaurant"/>

@@ -284,7 +284,7 @@
 
                             <?php 
                         
-                                show_price_range_radio();
+                                show_price_range_radio($price);
                                 show_restaurant_category(Restaurant::getCategory($db, $restaurant->id));
 
                             ?>

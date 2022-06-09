@@ -53,7 +53,7 @@ if($_GET['s']){
                 <br>
     
                 <?php
-                    show_price_range();
+                    show_price_range_checkbox();
                 ?>
                 
                 <br>

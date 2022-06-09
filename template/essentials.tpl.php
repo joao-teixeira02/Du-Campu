@@ -135,16 +135,15 @@ function show_price_range_checkbox(){
 }
 
 
-function show_price_range_radio(){
+function show_price_range_radio(int $price = 0){
     ?>
-
         <section class = "price-range">
             <p><h3>Price range</h3></p> 
-            <input type="radio" id="euro" name="classification" value="1"> 
+            <input type="radio" id="euro" name="classification" value="1" <?php if ($price === 1) {echo('checked = "checked"');} ?>> 
             <label for="euro" > <img clickable src="images/euro.png" id= "euroo" width="47px" height="40px" alt="euro" ></label>
-            <input type="radio" id="doiseuro" name="classification" value="2"> 
+            <input type="radio" id="doiseuro" name="classification" value="2" <?php if ($price === 2) {echo('checked = "checked"');} ?>> 
             <label for="doiseuro" > <img clickable src="images/2euro.png" id= "doiseuroo" width="50px" height="40px" alt="2euro"></label>
-            <input type="radio" id="treseuro" name="classification" value="3"> 
+            <input type="radio" id="treseuro" name="classification" value="3" <?php if ($price === 3) {echo('checked = "checked"');} ?>> 
             <label for="treseuro" > <img clickable src="images/3euro.png" id= "treseuroo" width="55px" height="40px" alt="3euro"></label>
         </section>
     
