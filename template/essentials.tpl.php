@@ -94,7 +94,6 @@ function show_restaurant_category($selected = array()){ ?>
     <section class= "categories" >
     <p><h3>Category</h3></p>
 
-    <br>
     <?php 
         $db = getDatabaseConnection();
 

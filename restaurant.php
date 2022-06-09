@@ -213,13 +213,41 @@
             if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
             ?>
 
-            <figure class="addType" clickable onclick="open_add_type_popup(this);">
+            <figure class="addType" clickable onclick="open_add_type_popup(this);"
+            data-dish_restaurant_id="<?php echo($id); ?>">
                 <img src="images/plusJoao1.png" id="addTypeImage" width="100px" height="100px" />
-                <figcaption>Add New Type</figcaption>
+                <figcaption>Add New Dish</figcaption>
             </figure>
 
             <?php
             }
+    }
+
+    function create_add_dish_and_type_popup() { ?>
+
+    <article id="addDishType" class="full_window_popup">
+            <header>
+                <img id="close" clickable width="50px" height="50px" src="images/close.png" />
+            </header>
+            <main>
+                <form id="dish_info" action="/action/action_add_dish_type.php" method="post">
+                    <input id="id" name="dish_restaurant_id" type = "hidden" value="" />
+                    <div id="image-container">
+                        <img id="img_dish" width="100px" height="100px" src="images/photos/profile.jpg" />
+                        <input type="file" name="f" id="dish_image_upload">
+                    </div>
+                    <h3 id="name">Dish Name</h3>
+                    <input name="n" class="attr" id="dish_name" type="text" placeholder="" required="required" />
+                    <h3 id="price">Price</h3>
+                    <input name="p" class="attr" id="dish_price" type="text" placeholder="" required="required" />
+                    <h3 id="type">Dish Type</h3>
+                    <input name="t" class="attr" id="dish_type" type="text" placeholder="" required="required" />
+                    <button clickable type="submit" id="edit_dish" >Add Dish</button>
+                </form>
+            </main>
+        </article>
+
+    <?php
     }
 
     function create_add_dish_popup() { ?>
@@ -464,6 +492,7 @@
         <script type="text/javascript" src="js/editButtonDish.js" defer></script>
         <script type="text/javascript" src="js/editButtonRestaurant.js" defer></script>
         <script type="text/javascript" src="js/addButtonDish.js" defer></script>
+        <script type="text/javascript" src="js/addButtonType.js" defer></script>
         <script type="text/javascript" src="js/myRestaurant.js" defer></script>
 
         <title>Du'Campu</title>
@@ -526,6 +555,8 @@
     <div class="popups">
     <?php 
     create_add_order();
+
+    create_add_dish_and_type_popup();
 
     create_add_dish_popup();
 
