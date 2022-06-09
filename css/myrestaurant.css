@@ -2,7 +2,7 @@
 .addRestaurant fieldset{
     padding: 0.5em;
     display: grid;
-    grid-template-columns:  auto 1fr;
+    grid-template:  auto 1fr;
 
     column-gap: 1em;
 
@@ -29,9 +29,22 @@
 }
 
 .addRestaurant #photo_field label{
+    font-size: 1.17em;
+    font-weight: bolder;
     display: block;
 }
 
 .addrestaurants{
     width: 30em;
+}
+
+.addRestaurant{
+    width: fit-content;
+    margin: auto;
+}
+
+
+.addRestaurant fieldset > div label{
+    font-size: 1.17em;
+    font-weight: bolder;
 }

@@ -43,7 +43,8 @@
     border-radius: 5%;
     margin: 1em 0;
   }
-  
+
+
 .UseInputStyle  #photo_field input[type="file"] {
     display: block;
     font-family: 'Poppins', sans-serif;
@@ -62,3 +63,5 @@
 .UseInputStyle  #photo_field input[type="submit"]:hover {
     background-color: rgba(0, 0, 0, 0.5);
   }
+
+

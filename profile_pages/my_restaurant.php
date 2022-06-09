@@ -67,9 +67,9 @@ function show_restaurants() {
     </article>
 
     <article class= "addRestaurant UseInputStyle">
-        <h2> Add restaurants </h2>
+        <h2> Add a restaurant </h2>
 
-        <form>
+        <form action="/action/action_add_restaurant.php" method="POST" enctype="multipart/form-data">
             <fieldset>
                 
                 <?php
@@ -79,19 +79,17 @@ function show_restaurants() {
                 <div>
 
                     <div id="photo_field">
-                        <form action="/action/action_profile.php" method="post" enctype="multipart/form-data">
-                            <label>Photo</label>
-                            <img src="" id="photo" alt="Restaurante image" width="100%" height="200px"/>
-                            <input type="file" name="fileToUpload" id="fileToUpload">
-                        </form>
+                        <label>Photo</label>
+                        <img src="/images/restaurant1/capa.jpg" id="photo" alt="Restaurante image" width="100%" height="200px"/>
+                        <input type="file" name="fileToUpload" require id="fileToUpload">
                     </div>
             
 
                     <label for="newRestaurantName" > Restaurant Name </label>
-                    <input type="text" class="attr" name="n" id="newRestaurantName" placeholder="Restaurant Name"/>
+                    <input type="text" class="attr" name="n" require id="newRestaurantName" placeholder="Restaurant Name"/>
 
                     <label for="address" > Address </label>
-                    <input type="text" class="attr" id="address" placeholder="Address"/>
+                    <input type="text" class="attr" name="a" require id="address" placeholder="Address"/>
 
                     <?php 
                     show_price_range();
