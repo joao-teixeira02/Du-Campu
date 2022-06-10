@@ -1,3 +1,208 @@
+/* EDIT AND ADD DISH POPUP */
+
+#editRestaurant {
+    max-height: 100vh;
+    height: fit-content;
+    overflow-y: scroll;
+    overflow-x: hidden ;
+    padding: 0;
+}
+
+
+
+.restaurantForm  #photo_field{
+    display: grid;
+    grid-column: auto 1fr;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.restaurantForm  #photo_field > img{
+    display: inline;
+    margin: auto;
+    grid-column: 1;
+}
+
+.restaurantForm  #photo_field > input[type="file"]{
+    display: inline;
+    grid-column: 2;
+}
+
+
+.restaurantForm .categories{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.restaurantForm .categories label{
+    font-weight: lighter;
+    font-size: medium;
+}
+
+.restaurantForm .categories h3{
+    display: block;
+    flex-basis: 100%;
+}
+
+
+
+.restaurantForm .categories label{
+    display: block;
+    position:relative;
+    width: 8em;
+    height: auto;
+    padding-right: 0.25em;
+}
+
+
+#editRestaurant form{
+    height: 100%;
+}
+
+.restaurantForm fieldset{
+    height: 100%;
+    border: none;
+}
+.restaurantForm fieldset *{
+    padding-bottom: 0.5em;
+}
+
+.restaurantForm fieldset > div{
+    padding: 1em;
+}
+
+.restaurantForm fieldset > div label{
+    font-size: 1.17em;
+    font-weight: bolder;
+}
+
+.restaurantForm .categories{
+    margin-right: 1em;
+}
+
+.restaurantForm .price-range{
+    display: block;
+    float: none;
+}
+
+
+.restaurantForm #photo_field label{
+    font-size: 1.17em;
+    font-weight: bolder;
+    display: block;
+}
+
+.restaurantForm  fieldset > input[type="submit"]{
+    width: 100%;
+    height: 4em;
+    
+    margin-top: 1em;
+    bottom: 0px;
+    display: block;
+    background-color: black;
+    border-radius: 0;
+    margin: 0;
+}
+
+.restaurantForm div > input[type="text"]{
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+
+.addRestaurant fieldset > div label{
+    font-size: 1.17em;
+    font-weight: bolder;
+}
+
+.popups #close {
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    width: 2em;
+    height: auto;
+    display: block;
+}
+
+.popups #image-container #img_dish {
+    width: 12em;
+    height: auto;
+    grid-area: img;
+    border-radius: 1em;
+    margin: auto;
+}
+
+.popups #image-container #dish_image_upload {
+    grid-area: file;
+    height: fit-content;
+}
+
+.popups #dish_name {
+    width: 90%;
+    margin: 1em;
+    margin-left: 2em;
+}
+
+.popups #dish_type {
+    width: 90%;
+    margin: 1em;
+    margin-left: 2em;
+}
+
+.popups #price, .popups #type {
+    margin-left: 1em;
+}
+
+.popups #name {
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+
+
+.popups #dish_price {
+    width: 90%;
+    margin: 1em;
+    margin-left: 2em;
+}
+
+.popups #edit_dish, .popups #add_new_dish {
+    width: 100%;
+    height: 4em;
+    background-color: black;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+}
+
+.popups #image-container {
+    align-items: center;
+    display: grid;
+    grid-template-areas: "img file";
+}
+
+/* EDIT RESTAURANT BUTTON */
+
+/* HIDE RADIO */
+.r-price { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* IMAGE STYLES */
+  .r-price + img {
+    cursor: pointer;
+    width: 2em;
+    height: auto;
+  }
+  
+  /* CHECKED STYLES */
+  .r-price:checked + img {
+    outline: 2px solid #f00;
+  }
+
 /* Restaurant */
 
 .restaurant-page .menuRestaurante li{
@@ -367,3 +572,35 @@
 }
 
 
+
+/* Popup Add New Dish*/
+
+#addDish{
+    height: fit-content;
+}
+
+#add_new_dish{
+    display: block;
+    margin-top: 1em;
+}
+
+
+#editDish{
+    height: fit-content;
+
+}
+
+
+#editDish #edit_dish{
+    margin-top: 1em;
+
+}
+
+#addDishType {
+    height: fit-content;
+}
+
+
+#addDishType #edit_dish{
+    margin-top: 1em;
+}

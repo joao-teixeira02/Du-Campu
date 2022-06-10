@@ -18,12 +18,14 @@ if($_GET['s']){
 <head>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/position.css">
+    <link rel="stylesheet" href="css/drawler.css">
     <script type="text/javascript" src="js/likeButtonRestaurant.js"></script>
     <script type="text/javascript" src="js/range.js" defer></script>
     <script type="text/javascript" src="js/restaurants.js" defer></script>
     <script type="text/javascript" src="js/priceImageChange.js" defer></script>
     <script type="text/javascript" src="js/arrowChanger.js" defer></script>
     <script type="text/javascript" src="js/cart.js" defer></script>
+    <script type="text/javascript" src="js/drawler.js" defer></script>
 
     <title>Du'Campu</title>
 </head>
@@ -35,7 +37,9 @@ if($_GET['s']){
     ?>
 
     <main class = "restaurantsListPage">   
-        <section class = "restaurantsList">                                                                       
+        <section class = "restaurantsList">     
+                
+            <input type="checkbox" class="drawler" id = "drawler_button"/>                                                                   
             <section class = "filters">
 
                 <section class = "searchBoxContainer">
@@ -53,7 +57,7 @@ if($_GET['s']){
                 <br>
     
                 <?php
-                    show_price_range();
+                    show_price_range_checkbox();
                 ?>
                 
                 <br>
@@ -79,7 +83,13 @@ if($_GET['s']){
                     </section>
                 </section>
 
+                <label for="drawler_button" class="drawler">
+                <img src="/images/2euro.png"/>
+            </label>
+            
             </section>
+            
+            
 
             <section class = "orderBy">
                 <h5>ORDER BY:</h5>

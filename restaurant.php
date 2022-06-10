@@ -6,11 +6,13 @@
     require_once(__DIR__ . '/database/connection.db.php');
     require_once(__DIR__ . '/database/user.class.php');
     require_once(__DIR__ . '/utils/session.php');
+    require_once(__DIR__ . '/template/restaurant.tpl.php');
+
 
     $session = new Session();
     
     if(!isset($_GET['id'])){
-        echo "Error restaurante id not found";
+        echo "Error restaurant id not found";
         exit(0);
     }
 
@@ -64,7 +66,14 @@
                 <?php echo($restaurant->getName()); 
                 if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
                 ?>
-                <input type="image" class="editButton" src="images/editIcon.png" onclick="open_edit_restaurant_popup(this)"/>
+                <input type="image" class="editButton" src="images/editIcon.png" onclick="open_edit_restaurant_popup(this)"
+                data-restaurant_id="<?php echo($restaurant->id); ?>"
+                data-restaurant_name="<?php echo($restaurant->name); ?>"
+                data-restaurant_address="<?php echo($restaurant->address); ?>"
+                data-restaurant_price="<?php echo($restaurant->price); ?>"
+                data-restaurant_photo="<?php echo($restaurant->getPhoto($db, $restaurant->id)); ?>"
+                data-restaurant_categories="<?php echo($restaurant->getCategory($db, $restaurant->id)); ?>"
+                />
                 <?php
                 }
                 ?>
@@ -146,7 +155,12 @@
                             if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
                             ?>
                             <input type="image" class="redCross" src="images/red_cross.png" onclick="location.href='/action/action_remove_dish.php?id=<?php echo($dish->id); ?>'" />
-                            <input type="image" class="editDishButton" src="images/editIcon.png" onclick="open_edit_restaurant_popup(this)"/>
+                            <input type="image" class="editDishButton" src="images/editIcon.png" clickable onclick="open_edit_dish_popup(this)"
+                            data-dish_id="<?php echo($dish->id)?>"
+                            data-dish_name="<?php echo($dish->getName())?>"
+                            data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"
+                            data-dish_price="<?php echo($dish->getPrice())?>"
+                            data-dish_type="<?php echo ($type); ?>">
                             <?php
                             }
                             ?>
@@ -155,13 +169,16 @@
                         <?php 
                         }
                         else { ?>
-                            <figure class="comida" clickable onclick="<?php if ($session->getUserId() !== $restaurant->owner_id) {
+                            <figure class="comida" clickable onclick=
+                            <?php 
+                            if ($session->getUserId() !== $restaurant->owner_id) {
                                 echo('open_add_order_popup(this)');
-                            } ?>" 
-                            data-dish_id="<?php echo($dish->id)?>"
-                            data-dish_name="<?php echo($dish->getName())?>"
-                            data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"
-                            data-dish_price="<?php echo($dish->getPrice())?>"   >
+                            }
+                            ?>
+                            data-dish_id="<?php echo($dish->id); ?>"
+                            data-dish_name="<?php echo($dish->getName()); ?>"
+                            data-dish_photo="<?php echo($dish->getPhoto($db, $id)); ?>"
+                            data-dish_price="<?php echo($dish->getPrice()); ?>" >
                             <img src="<?php echo($dish->getPhoto($db, $id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
                             <figcaption> <?php echo($dish->getName()); ?> </figcaption>
                             <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
@@ -178,7 +195,9 @@
                 <?php 
                 if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
                 ?>
-                <figure class="addDish" clickable onclick="open_add_dish_popup(this);">
+                <figure class="addDish" clickable onclick="open_add_dish_popup(this);"
+                    data-dish_type="<?php echo($type); ?>"
+                    data-dish_restaurant_id="<?php echo($id); ?>">
                     <img src="images/plusJoao1.png" id="addDishImage" width="100px" height="100px" />
                 <figcaption>Add New Dish</figcaption>
                 </figure>
@@ -196,21 +215,122 @@
             if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
             ?>
 
-            <figure class="addType" clickable onclick="">
+            <figure class="addType" clickable onclick="open_add_type_popup(this);"
+            data-dish_restaurant_id="<?php echo($id); ?>">
                 <img src="images/plusJoao1.png" id="addTypeImage" width="100px" height="100px" />
-                <figcaption>Add New Type</figcaption>
+                <figcaption>Add New Dish</figcaption>
             </figure>
 
             <?php
             }
     }
 
+    function create_add_dish_and_type_popup() { ?>
+
+    <article id="addDishType" class="UseInputStyle full_window_popup">
+            <header>
+                <img id="close" clickable width="50px" height="50px" src="images/close.png" />
+            </header>
+            <main>
+                <form id="dish_info" action="/action/action_add_dish_type.php" method="post">
+                    <input id="id" name="dish_restaurant_id" type = "hidden" value="" />
+                    <div id="image-container">
+                        <img id="img_dish" width="100px" height="100px" src="images/photos/profile.jpg" />
+                        <input type="file" name="f" id="dish_image_upload">
+                    </div>
+                    <h3 id="name">Dish Name</h3>
+                    <input name="n" class="attr" id="dish_name" type="text" placeholder="Dish Name" required="required" />
+                    <h3 id="price">Price</h3>
+                    <input name="p" class="attr" id="dish_price" type="text" placeholder="Dish Price" required="required" />
+                    <h3 id="type">Dish Type</h3>
+                    <input name="t" class="attr" id="dish_type" type="text" placeholder="Dish Type" required="required" />
+                    <button clickable type="submit" id="edit_dish" >Add Dish</button>
+                </form>
+            </main>
+        </article>
+
+    <?php
+    }
+
+    function create_add_dish_popup() { ?>
+
+        <article id="addDish" class="UseInputStyle full_window_popup">
+            <header>
+                <img id="close" clickable width="50px" height="50px" src="images/close.png" />
+            </header>
+            <main>
+                <form id="dish_info" action="/action/action_add_dish.php" method="post">
+                    <input name="id" id="dish_restaurant_id" type="hidden" value=""/>
+                    <div id="image-container">
+                        <img id="img_dish" width="100px" height="100px" src="images/photos/profile.jpg" />
+                        <input type="file" name="f" id="dish_image_upload">
+                    </div>
+                    <h3 id="name">Dish Name</h3>
+                    <input name="n" class="attr" id="dish_name" type="text" placeholder="Dish Name" required="required" />
+                    <h3 id="price">Price</h3>
+                    <input name="p" class="attr" id="dish_price" type="text" placeholder="Dish Proce" required="required" />
+                    <input name="t" id="dish_type" type="hidden" value=""/>
+                    <button clickable type="submit" id="add_new_dish" >Add Dish</button>
+                </form>
+            </main>
+        </article>
+
+    <?php
+    }
+
+    function create_edit_restaurant_popup(int $id) { 
+
+        $db = getDatabaseConnection();
+
+        $restaurant = Restaurant::getRestaurant($db, $id); 
+        $price = intval($restaurant->price)
+        ?>
+
+        <article id="editRestaurant" class="full_window_popup UseInputStyle">
+            <header>
+                <img id="close" clickable width="50px" height="50px" src="images/close.png" />
+            </header>
+            <main>
+                <?php
+                    restaurant_form('/action/action_edit_restaurant.php', $restaurant);
+                ?>
+            </main>
+        </article>
+
+    <?php
+    }
+
+    function create_edit_dish_popup(){ ?>
+
+        <article id="editDish" class="UseInputStyle  full_window_popup">
+            <header>
+                <img id="close" clickable width="50px" height="50px" src="images/close.png" />
+            </header>
+            <main>
+                <form id="dish_info" action="/action/action_edit_dish.php" method="post">
+                    <input id="id_dish_input" name="id_dish" type = "hidden" value="" />
+                    <div id="image-container">
+                        <img id="img_dish" width="100px" height="100px" src="" />
+                        <input type="file" name="f" id="dish_image_upload">
+                    </div>
+                    <h3 id="name">Dish Name</h3>
+                    <input name="n" class="attr" id="dish_name" type="text" placeholder="" required="required" />
+                    <h3 id="price">Price</h3>
+                    <input name="p" class="attr" id="dish_price" type="text" placeholder="" required="required" />
+                    <h3 id="type">Dish Type</h3>
+                    <input name="t" class="attr" id="dish_type" type="text" placeholder="" required="required" />
+                    <button clickable type="submit" id="edit_dish" >Edit Dish</button>
+                </form>
+            </main>
+        </article>
+
+
+    <?php
+    }
+ 
     
     function create_add_order(){
         ?>
-        <div class = "background_filter">
-
-        </div>
 
         <article id="add_order" class="full_window_popup">
             <header>
@@ -337,9 +457,15 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/restaurantPage.css">
         <link rel="stylesheet" href="css/position.css">
+        <link rel="stylesheet" href="css/input_box.css">
         <script type="text/javascript" src="js/cart.js" defer></script>
         <script type="text/javascript" src="js/likeButtonHeader.js" defer></script>
         <script type="text/javascript" src="js/likeButtonDish.js" defer></script>
+        <script type="text/javascript" src="js/editButtonDish.js" defer></script>
+        <script type="text/javascript" src="js/editButtonRestaurant.js" defer></script>
+        <script type="text/javascript" src="js/addButtonDish.js" defer></script>
+        <script type="text/javascript" src="js/addButtonType.js" defer></script>
+        <script type="text/javascript" src="js/myRestaurant.js" defer></script>
 
         <title>Du'Campu</title>
     </head>
@@ -395,11 +521,23 @@
 
     </main>
 
+    <div class = "background_filter">
 
+    </div>
+    <div class="popups">
     <?php 
     create_add_order();
+
+    create_add_dish_and_type_popup();
+
+    create_add_dish_popup();
+
+    create_edit_restaurant_popup($restaurant_id);
+
+    create_edit_dish_popup();
     
     show_footer(); 
     ?>
+    </div>
     </body>
 </html>

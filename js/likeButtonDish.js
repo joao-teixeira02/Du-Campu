@@ -3,7 +3,7 @@
 /* add order popup*/
 
 const add_order_popup = document.querySelector("#add_order");
-const background_filter = document.querySelector(".background_filter");
+const background_filter2 = document.querySelector(".background_filter");
 
 if(add_order_popup){
 
@@ -15,7 +15,7 @@ if(add_order_popup){
 
     close.addEventListener('click', ()=>{
         add_order_popup.style.display = "none"
-        background_filter.style.display = "none"
+        background_filter2.style.display = "none"
         
     })
     
@@ -38,7 +38,6 @@ if(add_order_popup){
     img_plus.addEventListener('mouseover', ()=>{img_plus.src = 'images/plus.png'})
     img_plus.addEventListener('mouseout', ()=>{ img_plus.src = 'images/plus_light.png'})
     img_plus.addEventListener('click', ()=>{ 
-        console.log(span_quantity.innerText)
         let v = parseInt(span_quantity.innerText)
 
         if(v < 99)
@@ -77,7 +76,7 @@ if(add_order_popup){
 
         
         add_order_popup.style.display = "block"
-        background_filter.style.display = "block"
+        background_filter2.style.display = "block"
 
     }
 
@@ -116,7 +115,7 @@ if(add_order_popup){
 
             
             add_order_popup.style.display = "block"
-            background_filter.style.display = "block"
+            background_filter2.style.display = "block"
             
         }
 
@@ -125,7 +124,6 @@ if(add_order_popup){
 
     function addEventAsLikeButton(id_box, img_hoover, img_out, img_click){
         const popupHeart = document.querySelector(id_box)
-        console.log(popupHeart)
     
         popupHeart.addEventListener('click', async (e) => {
             popupHeart.toggleAttribute('isSelected')
