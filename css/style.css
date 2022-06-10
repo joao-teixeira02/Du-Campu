@@ -640,6 +640,7 @@ strong{
     cursor: pointer;
     margin-right: 1.5em;
     margin-bottom: 1em;
+    z-index: 8;
 
 }
 
@@ -699,7 +700,7 @@ strong{
     content: "\002605 ";
 }
 
-.restaurantsList .restaurantInfo  .likeIcon {
+.restaurantsList .restaurantLikeIcon  .likeIcon {
     cursor: pointer;
     position: absolute;
     top: 23px;
@@ -707,9 +708,10 @@ strong{
     width:20px;
     height:20px;
     transition: width 2s, height 2s;
+    z-index: 1;
 }
 
-.restaurantsList .restaurantInfo  .likeIcon:hover {
+.restaurantsList .restaurantLikeIcon  .likeIcon:hover {
     width: 4em;
     height: auto;
 }
