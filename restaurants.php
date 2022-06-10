@@ -25,6 +25,7 @@ if($_GET['s']){
     <script type="text/javascript" src="js/priceImageChange.js" defer></script>
     <script type="text/javascript" src="js/arrowChanger.js" defer></script>
     <script type="text/javascript" src="js/cart.js" defer></script>
+    <script type="text/javascript" src="js/drawler.js" defer></script>
 
     <title>Du'Campu</title>
 </head>
