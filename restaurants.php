@@ -18,6 +18,7 @@ if($_GET['s']){
 <head>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/position.css">
+    <link rel="stylesheet" href="css/drawler.css">
     <script type="text/javascript" src="js/likeButtonRestaurant.js"></script>
     <script type="text/javascript" src="js/range.js" defer></script>
     <script type="text/javascript" src="js/restaurants.js" defer></script>
@@ -35,7 +36,9 @@ if($_GET['s']){
     ?>
 
     <main class = "restaurantsListPage">   
-        <section class = "restaurantsList">                                                                       
+        <section class = "restaurantsList">     
+                
+            <input type="checkbox" class="drawler" id = "drawler_button"/>                                                                   
             <section class = "filters">
 
                 <section class = "searchBoxContainer">
@@ -79,7 +82,13 @@ if($_GET['s']){
                     </section>
                 </section>
 
+                <label for="drawler_button" class="drawler">
+                <img src="/images/2euro.png"/>
+            </label>
+            
             </section>
+            
+            
 
             <section class = "orderBy">
                 <h5>ORDER BY:</h5>
