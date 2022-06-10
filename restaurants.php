@@ -84,7 +84,7 @@ if($_GET['s']){
                 </section>
 
                 <label for="drawler_button" class="drawler">
-                <img src="/images/2euro.png"/>
+                <img src="/images/drawler.png"/>
             </label>
             
             </section>

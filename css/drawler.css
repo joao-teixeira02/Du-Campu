@@ -21,6 +21,7 @@
 @media (max-width: 60em){
     .drawler{
         display: block;
+        top:0;
     }
 
     .restaurantsList{
@@ -35,18 +36,21 @@
         z-index: 100;
         margin: 0;
         left: 0;
+        box-shadow: 0 0 1em  rgb(112, 112, 112);
+        border-top-right-radius:  15px;
+        border-bottom-right-radius:  15px;
     }
 
     label[for="drawler_button"] {
         width:fit-content;
         height: fit-content;
         position: absolute;
-        right: -2em;
+        right: -2.5em;
         top: 0;
     }
     label[for="drawler_button"] img{
-        width: 2em;
-        height: auto;
+        width: 40px;
+        height: 70px;
     }
     
     label[for="drawler_button"] {

@@ -663,7 +663,8 @@ strong{
     font-size: 1.2em;
     font-weight: 900;
     color: rgb(214, 156, 92);
-    width:fit-content;
+    width: fit-content;
+    overflow: hidden;
 }
 
 .restaurantsList .restaurantInfo  #address {
@@ -773,6 +774,11 @@ strong{
   }
   
 
+  @media (max-width: 60em){
+
+
+
+  }
   
   
   /* search box */
