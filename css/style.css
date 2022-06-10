@@ -37,6 +37,12 @@ header.menu{
     padding-left: 0.5em;
 }
 
+.menu #restaurantIcon:hover{
+    background-color:white;
+    color:rgb(214, 156, 92);
+}
+
+
 .menu #profileIcon{
     width: 32px;
     height: 32px;
@@ -59,6 +65,37 @@ header.menu{
 #lupa{
     display: none;  
 }
+
+
+@media (max-width: 60em){
+
+    .menu #logo{
+        width: 10em;
+        height: 3em;
+    }
+
+    .menu #cartIcon{
+        width: 20px;
+        height: 20px;
+    }
+
+    .menu #profileIcon{
+        width: 24px;
+        height: 24px;
+    }
+
+    .menu #restaurantIcon{
+        background-color:rgb(214, 156, 92);
+        padding: 0.3em;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+        padding-right: 0.5em;
+        padding-left: 0.5em;
+    }
+    
+}
+
 
 
 

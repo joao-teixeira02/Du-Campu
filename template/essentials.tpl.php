@@ -14,6 +14,8 @@
 
     <header class="menu">
         <nav>
+            <label for="drop" class="toggle" id='main-toggle'><span class="nav-icon"></span></label>
+            <input type="checkbox" id="drop">
             <a href = "index.php"> <img src = "images/logo.png" id= "logo"> </a>
             <div class = "nav-links">
                 <ul>
