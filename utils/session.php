@@ -6,6 +6,7 @@
 
     class Session{
         public Cart $cart;
+        private array $messages;
 
         public function __construct(){
             session_start();
@@ -14,6 +15,8 @@
                 $this->saveCart();
             }
             $this->loadCart();
+            $this->messages = isset($_SESSION['messages']) ? $_SESSION['messages'] : array();
+            unset($_SESSION['messages']);
         }
 
         function getUserId() : ?int {
@@ -101,6 +104,14 @@
 
         function logout(){
             session_destroy();
+        }
+
+        public function addMessage(string $type, string $text) {
+            $_SESSION['messages'][] = array('type' => $type, 'text' => $text);
+        }
+      
+        public function getMessages() {
+            return $this->messages;
         }
 
     }

@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins:wght@200&display=swap");
+
+#messages article {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    animation-name: warnings;
+    animation-duration: 0.6s;
+    height: 3em;
+  }
+
+  @keyframes warnings {
+    from {height: 1em;}
+    to {height: 3em;}
+  }
+
+  @keyframes text {
+    from {font-size: 0.5em;}
+    to {font-size: 1.2em;}
+  }
+
+  #messages article #message {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    text-align: center;
+    animation-name: text;
+    animation-duration: 0.6s;
+    font-weight: bold;
+  }
+  
+  #messages article.success {
+    background-color: #DFF2BF;
+  }
+  
+  #messages article.warning {
+    background-color: #FEEFB3;
+  }
+  
+  #messages article.error {
+    background-color: #FFD2D2;
+  }
+  
+  #messages article.info {
+    background-color: #BDE5F8;
+  }
+
+  form .hint {
+    font-size: 0.6em;
+    padding: 0.5em;
+    align-self: center;
+    display: none;
+  }
+  
+  form input.invalid {
+    border: 3px solid rgba(255, 0, 0, 0.7);
+    box-shadow: rgba(255, 0, 0, 0.7) 0 0 2px 2px;
+  }
+  
+  form input.invalid ~ .hint {
+    display:block;
+  }
+  
+  form input[value=Update]{
+    display: block;
+  }
+  

@@ -9,9 +9,12 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/position.css">
         <link rel="stylesheet" href="css/loginInes.css">
+        <link rel="stylesheet" href="css/warnings.css">
         <title>Du'Campu</title>
     </head>
     <body>
+
+    <?php show_warnings(); ?>
 
     <section class="login">
 

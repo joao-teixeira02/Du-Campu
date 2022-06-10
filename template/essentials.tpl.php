@@ -41,13 +41,26 @@
         </nav>
     </header>
 
-
 <?php 
 
     show_cart();
 
 
 }
+
+function show_warnings() { 
+    $session = new Session(); ?>
+    <section id="messages">
+      <?php foreach ($session->getMessages() as $message) { ?>
+        <article class="<?=$message['type']?>">
+          <p id="message"><?=$message['text']?></p>
+        </article>
+      <?php } ?>
+    </section>
+
+<?php
+}
+
 
 function show_footer(){?>
 

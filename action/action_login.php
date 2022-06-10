@@ -26,6 +26,9 @@
             header('Location: /index.php');
             exit();
         }
+        else {
+            $session->addMessage('error', 'Wrong password!');
+        }
     }
 
     header('Location: ' . $_SERVER['HTTP_REFERER']);
