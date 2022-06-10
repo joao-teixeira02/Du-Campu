@@ -6,6 +6,8 @@
     require_once(__DIR__ . '/database/connection.db.php');
     require_once(__DIR__ . '/database/user.class.php');
     require_once(__DIR__ . '/utils/session.php');
+    require_once(__DIR__ . '/template/restaurant.tpl.php');
+
 
     $session = new Session();
     
@@ -225,7 +227,7 @@
 
     function create_add_dish_and_type_popup() { ?>
 
-    <article id="addDishType" class="full_window_popup">
+    <article id="addDishType" class="UseInputStyle full_window_popup">
             <header>
                 <img id="close" clickable width="50px" height="50px" src="images/close.png" />
             </header>
@@ -237,11 +239,11 @@
                         <input type="file" name="f" id="dish_image_upload">
                     </div>
                     <h3 id="name">Dish Name</h3>
-                    <input name="n" class="attr" id="dish_name" type="text" placeholder="" required="required" />
+                    <input name="n" class="attr" id="dish_name" type="text" placeholder="Dish Name" required="required" />
                     <h3 id="price">Price</h3>
-                    <input name="p" class="attr" id="dish_price" type="text" placeholder="" required="required" />
+                    <input name="p" class="attr" id="dish_price" type="text" placeholder="Dish Price" required="required" />
                     <h3 id="type">Dish Type</h3>
-                    <input name="t" class="attr" id="dish_type" type="text" placeholder="" required="required" />
+                    <input name="t" class="attr" id="dish_type" type="text" placeholder="Dish Type" required="required" />
                     <button clickable type="submit" id="edit_dish" >Add Dish</button>
                 </form>
             </main>
@@ -252,7 +254,7 @@
 
     function create_add_dish_popup() { ?>
 
-        <article id="addDish" class="full_window_popup">
+        <article id="addDish" class="UseInputStyle full_window_popup">
             <header>
                 <img id="close" clickable width="50px" height="50px" src="images/close.png" />
             </header>
@@ -264,9 +266,9 @@
                         <input type="file" name="f" id="dish_image_upload">
                     </div>
                     <h3 id="name">Dish Name</h3>
-                    <input name="n" class="attr" id="dish_name" type="text" placeholder="" required="required" />
+                    <input name="n" class="attr" id="dish_name" type="text" placeholder="Dish Name" required="required" />
                     <h3 id="price">Price</h3>
-                    <input name="p" class="attr" id="dish_price" type="text" placeholder="" required="required" />
+                    <input name="p" class="attr" id="dish_price" type="text" placeholder="Dish Proce" required="required" />
                     <input name="t" id="dish_type" type="hidden" value=""/>
                     <button clickable type="submit" id="add_new_dish" >Add Dish</button>
                 </form>
@@ -285,44 +287,14 @@
         ?>
 
         <article id="editRestaurant" class="full_window_popup UseInputStyle">
-            <div>
             <header>
                 <img id="close" clickable width="50px" height="50px" src="images/close.png" />
             </header>
             <main>
-                    <form action="/action/action_edit_restaurant.php" method="POST" enctype="multipart/form-data">
-                    <fieldset>
-                        
-
-                        <div>   
-                            <input name="id_restaurant" value="<?php echo $restaurant->id; ?>" type="hidden"/>
-
-                            <div id="photo_field">
-                                <label>Photo</label>
-                                <img src="<?php echo $restaurant->photo;?>" id="photo" alt="Restaurante image" width="100%" height="200px"/>
-                                <input type="file" name="fileToUpload" require id="fileToUpload">
-                            </div>
-                    
-
-                            <label for="newRestaurantName" > Restaurant Name </label>
-                            <input type="text" class="attr" name="n" require id="newRestaurantName" value ="<?php echo $restaurant->name;?>" placeholder="<?php echo $restaurant->name;?>"/>
-
-                            <label for="address" > Address </label>
-                            <input type="text" class="attr" name="a" require id="address" value="<?php echo $restaurant->address;?>" placeholder="<?php echo $restaurant->address;?>"/>
-
-                            <?php 
-                        
-                                show_price_range_radio($price);
-                                show_restaurant_category(Restaurant::getCategory($db, $restaurant->id));
-
-                            ?>
-
-                            <input type="submit" value="Edit Restaurant"/>
-                        </div>
-                    </fieldset>
-                </form>
+                <?php
+                    restaurant_form('/action/action_edit_restaurant.php', $restaurant);
+                ?>
             </main>
-            </div>
         </article>
 
     <?php
@@ -330,7 +302,7 @@
 
     function create_edit_dish_popup(){ ?>
 
-        <article id="editDish" class="full_window_popup">
+        <article id="editDish" class="UseInputStyle  full_window_popup">
             <header>
                 <img id="close" clickable width="50px" height="50px" src="images/close.png" />
             </header>

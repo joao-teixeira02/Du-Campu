@@ -29,6 +29,8 @@
         <link rel="stylesheet" href="css/myrestaurant.css">
         <link rel="stylesheet" href="css/input_box.css">
         <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="css/restaurantPage.css">
+
 
         <script type="text/javascript" src="js/carrosselSliderFavRest.js" defer></script>
         <script type="text/javascript" src="js/carrosselSliderMyRest.js" defer></script>

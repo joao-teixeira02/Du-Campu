@@ -5,31 +5,49 @@
     height: fit-content;
     overflow-y: scroll;
     overflow-x: hidden ;
+    padding: 0;
 }
 
-#editRestaurant > div{
-    height: fit-content;
+
+
+.restaurantForm  #photo_field{
+    display: grid;
+    grid-column: auto 1fr;
+    align-items: center;
+    margin-bottom: 2em;
 }
 
-#editRestaurant .categories{
+.restaurantForm  #photo_field > img{
+    display: inline;
+    margin: auto;
+    grid-column: 1;
+}
+
+.restaurantForm  #photo_field > input[type="file"]{
+    display: inline;
+    grid-column: 2;
+}
+
+
+.restaurantForm .categories{
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
 }
 
-#editRestaurant .categories label{
+.restaurantForm .categories label{
     font-weight: lighter;
     font-size: medium;
 }
 
-#editRestaurant .categories h3{
+.restaurantForm .categories h3{
     display: block;
     flex-basis: 100%;
 }
 
 
 
-#editRestaurant .categories label{
+.restaurantForm .categories label{
     display: block;
     position:relative;
     width: 8em;
@@ -42,43 +60,55 @@
     height: 100%;
 }
 
-#editRestaurant fieldset{
+.restaurantForm fieldset{
     height: 100%;
-    padding: 0.5em;
-
     border: none;
-
+}
+.restaurantForm fieldset *{
+    padding-bottom: 0.5em;
 }
 
-#editRestaurant fieldset > div label{
+.restaurantForm fieldset > div{
+    padding: 1em;
+}
+
+.restaurantForm fieldset > div label{
     font-size: 1.17em;
     font-weight: bolder;
 }
 
-
-#editRestaurant :not(.categories){
-    grid-column: 1;
-}
-
-#editRestaurant .categories{
+.restaurantForm .categories{
     margin-right: 1em;
 }
 
-#editRestaurant .price-range{
+.restaurantForm .price-range{
     display: block;
     float: none;
 }
 
-#editRestaurant{
-    padding: 1em;
-}
 
-#editRestaurant #photo_field label{
+.restaurantForm #photo_field label{
     font-size: 1.17em;
     font-weight: bolder;
     display: block;
 }
 
+.restaurantForm  fieldset > input[type="submit"]{
+    width: 100%;
+    height: 4em;
+    
+    margin-top: 1em;
+    bottom: 0px;
+    display: block;
+    background-color: black;
+    border-radius: 0;
+    margin: 0;
+}
+
+.restaurantForm div > input[type="text"]{
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
 
 
 .addRestaurant fieldset > div label{
@@ -99,8 +129,7 @@
     height: auto;
     grid-area: img;
     border-radius: 1em;
-    margin-top: 4em;
-    margin-left: 4em;
+    margin: auto;
 }
 
 .popups #image-container #dish_image_upload {
@@ -109,13 +138,13 @@
 }
 
 .popups #dish_name {
-    width: 80%;
+    width: 90%;
     margin: 1em;
     margin-left: 2em;
 }
 
 .popups #dish_type {
-    width: 80%;
+    width: 90%;
     margin: 1em;
     margin-left: 2em;
 }
@@ -132,7 +161,7 @@
 
 
 .popups #dish_price {
-    width: 80%;
+    width: 90%;
     margin: 1em;
     margin-left: 2em;
 }
@@ -543,3 +572,35 @@
 }
 
 
+
+/* Popup Add New Dish*/
+
+#addDish{
+    height: fit-content;
+}
+
+#add_new_dish{
+    display: block;
+    margin-top: 1em;
+}
+
+
+#editDish{
+    height: fit-content;
+
+}
+
+
+#editDish #edit_dish{
+    margin-top: 1em;
+
+}
+
+#addDishType {
+    height: fit-content;
+}
+
+
+#addDishType #edit_dish{
+    margin-top: 1em;
+}
