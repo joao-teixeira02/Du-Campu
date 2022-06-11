@@ -725,7 +725,8 @@ strong{
     font-size: 1.2em;
     font-weight: 900;
     color: rgb(214, 156, 92);
-    width:fit-content;
+    width: fit-content;
+    overflow: hidden;
 }
 
 .restaurantsList .restaurantInfo  #address {
@@ -835,6 +836,30 @@ strong{
   }
   
 
+  @media (max-width: 60em){
+    .restaurantsList .restaurantInfo #name {
+        width: 9em;
+        height: 1.25em;
+        overflow: hidden;
+    }
+
+    .restaurantsList .restaurantInfo  #address {
+        margin-bottom: 2em;
+        width: 8em;
+        height: 0.5px;
+        overflow: hidden;
+    }
+
+    .restaurantsList .restaurantInfo  .likeIcon {
+        top: 23px;
+        right:0;
+        width:10px;
+        height:10px;
+    }
+    
+    
+
+  }
   
   
   /* search box */
