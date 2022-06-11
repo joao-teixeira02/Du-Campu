@@ -775,8 +775,27 @@ strong{
   
 
   @media (max-width: 60em){
+    .restaurantsList .restaurantInfo #name {
+        width: 9em;
+        height: 1.25em;
+        overflow: hidden;
+    }
 
+    .restaurantsList .restaurantInfo  #address {
+        margin-bottom: 2em;
+        width: 8em;
+        height: 0.5px;
+        overflow: hidden;
+    }
 
+    .restaurantsList .restaurantInfo  .likeIcon {
+        top: 23px;
+        right:0;
+        width:10px;
+        height:10px;
+    }
+    
+    
 
   }
   
