@@ -1037,3 +1037,84 @@ strong{
     cursor: pointer;
     display: block;
 }
+
+
+
+/* DROP BUTTON*/
+
+.menu .material-symbols-outlined{
+    color: white;
+}
+
+.toggle{
+    display: none;
+    position: absolute;
+    left: 1em;
+    top: 1.2em;
+}
+
+#drop{
+    display: none;
+
+}
+
+.nav-links-devices{
+    display: none;
+}
+
+
+@media (max-width: 60em){
+    .toggle{
+        display: block;
+        width: 3em;
+        height: auto;
+    }
+    
+    header.menu .nav-links > ul > li{
+        display: none;
+    }
+
+    .nav-links #cart_list{
+        display: block;
+        position: absolute;
+        top: 0.7em;
+        right: 0;
+    }
+
+    #drop:checked ~ .nav-links-devices{
+        display: block;
+    }
+
+    .nav-links-devices{
+        width: 100vw;
+    }
+
+    .nav-links-devices ul{
+        list-style: none;
+        display: block;
+        text-align: center;
+    }
+
+    .nav-links-devices ul li{
+        font-family: 'Poppins', sans-serif;
+        padding: 1em;
+        width: 100%;
+    }
+
+    .nav-links-devices ul li:hover{
+        background-color: #3d3d3b;
+    }
+
+    .nav-links-devices ul li a{
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    .menu nav{
+        flex-direction: column;
+    }
+
+}
+
+

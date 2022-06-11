@@ -14,17 +14,17 @@
 
     <header class="menu">
         <nav>
-            <label for="drop" class="toggle" id='main-toggle'><span class="nav-icon"></span></label>
-            <input type="checkbox" id="drop">
+            <input type="checkbox" class="toggle" id="drop">
+            
             <a href = "index.php"> <img src = "images/logo.png" id= "logo"> </a>
             <div class = "nav-links">
                 <ul>
                     <li> 
                         <a href ="profile.php" id="profile"></a>
                         <label for="profile"> <img clickable src="images/profile.png" id = "profileIcon"
-                        onmouseover="this.src = 'images/profileHoover.png'"  onmouseout="this.src = 'images/profile.png'"></label>></label>
+                        onmouseover="this.src = 'images/profileHoover.png'"  onmouseout="this.src = 'images/profile.png'"></label></label>
                     </li>
-                    <li> 
+                    <li id="cart_list"> 
                         <input type="checkbox" id="cart"/>
                         <label for="cart"  onclick="show_cart()" > <img clickable src="images/cart1.png" alt="Cart" id = "cartIcon"
                         onmouseover="this.src = 'images/cart1Hoover.png'"  onmouseout="this.src = 'images/cart1.png'"></label>
@@ -32,6 +32,20 @@
                     <li> <a href ="restaurants.php" id = "restaurantIcon" >RESTAURANTS</a></li>
                 </ul>
             </div>
+
+            <div class = "nav-links-devices">
+                <ul>
+                    <li> 
+                        <a href ="profile.php" >PROFILE</a>
+                    </li>
+                    <li> <a href ="restaurants.php" >RESTAURANTS</a></li>
+                </ul>
+            </div>
+            
+            
+            <label for="drop" class="toggle" id='main-toggle'>
+                
+            <span class="material-symbols-outlined">menu</span></label>
         </nav>
     </header>
 
