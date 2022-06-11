@@ -15,29 +15,38 @@
 
     <header class="menu">
         <nav>
+            <input type="checkbox" class="toggle" id="drop">
+            
             <a href = "index.php"> <img src = "images/logo.png" id= "logo"> </a>
             <div class = "nav-links">
                 <ul>
-                    <li> <a href ="index.php">HOME</a></li>
-                    <li> <a href ="restaurants.php">RESTAURANTS</a></li>
                     <li> 
-                        <?php if ($session->isLogged()) { ?>
-                            <a href ="profile.php?page=account">PROFILE</a>
-                            <?php
-                        }
-                        else { ?>
-                            <a href ="login.php">LOGIN</a>
-                            <?php
-                        }
-                        ?>
+                        <a href ="profile.php" id="profile"></a>
+                        <label for="profile"> <img clickable src="images/profile.png" id = "profileIcon"
+                        onmouseover="this.src = 'images/profileHoover.png'"  onmouseout="this.src = 'images/profile.png'"></label></label>
                     </li>
-                    <li> 
+                    <li id="cart_list"> 
                         <input type="checkbox" id="cart"/>
-                        <label for="cart"  onclick="show_cart()" > <img clickable src="images/cart1.png" width="20px" height="20px" alt="Cart"
+                        <label for="cart"  onclick="show_cart()" > <img clickable src="images/cart1.png" alt="Cart" id = "cartIcon"
                         onmouseover="this.src = 'images/cart1Hoover.png'"  onmouseout="this.src = 'images/cart1.png'"></label>
                     </li>
+                    <li> <a href ="restaurants.php" id = "restaurantIcon" >RESTAURANTS</a></li>
                 </ul>
             </div>
+
+            <div class = "nav-links-devices">
+                <ul>
+                    <li> 
+                        <a href ="profile.php" >PROFILE</a>
+                    </li>
+                    <li> <a href ="restaurants.php" >RESTAURANTS</a></li>
+                </ul>
+            </div>
+            
+            
+            <label for="drop" class="toggle" id='main-toggle'>
+                
+            <span class="material-symbols-outlined">menu</span></label>
         </nav>
     </header>
 
