@@ -22,3 +22,6 @@ function loadImagePreview(query_image, query_input){
 }
 
 loadImagePreview('#photo', '#fileToUpload');
+
+
+loadImagePreview('#image-container #img_dish', '#image-container #dish_image_upload');

@@ -2,6 +2,7 @@
 	declare(strict_types = 1);
 
     require_once(__DIR__ . '/../database/connection.db.php');
+    require_once(__DIR__ . '/../database/photo.class.php');
     require_once(__DIR__ . '/../utils/session.php');
 
 
@@ -13,6 +14,16 @@
     $session = new Session();
 
     $db = getDatabaseConnection();
+
+
+    /* CRIAR IMAGEM */
+    if(isset($_FILES['fileToUpload'])){
+        $originalFileName = 'dish_'. $id_dish . '_photo.png';
+
+        $id_photo = Photo::insertPhoto($db, $_FILES['fileToUpload'], $originalFileName);
+
+    }
+
 
     $query = 'INSERT OR IGNORE INTO Type (name) VALUES (:name)'; //insert if not exists
 

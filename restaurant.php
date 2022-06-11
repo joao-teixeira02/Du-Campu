@@ -232,11 +232,11 @@
                 <img id="close" clickable width="50px" height="50px" src="images/close.png" />
             </header>
             <main>
-                <form id="dish_info" action="/action/action_add_dish_type.php" method="post">
-                    <input id="id" name="dish_restaurant_id" type = "hidden" value="" />
+                <form id="dish_info" action="/action/action_add_dish.php" method="post" enctype="multipart/form-data">
+                    <input id="id" name="id" type = "hidden" value="" />
                     <div id="image-container">
                         <img id="img_dish" width="100px" height="100px" src="images/photos/profile.jpg" />
-                        <input type="file" name="f" id="dish_image_upload">
+                        <input type="file" name="fileToUpload" id="dish_image_upload">
                     </div>
                     <h3 id="name">Dish Name</h3>
                     <input name="n" class="attr" id="dish_name" type="text" placeholder="Dish Name" required="required" />
@@ -259,11 +259,11 @@
                 <img id="close" clickable width="50px" height="50px" src="images/close.png" />
             </header>
             <main>
-                <form id="dish_info" action="/action/action_add_dish.php" method="post">
+                <form id="dish_info" action="/action/action_add_dish.php" method="post" enctype="multipart/form-data">
                     <input name="id" id="dish_restaurant_id" type="hidden" value=""/>
                     <div id="image-container">
                         <img id="img_dish" width="100px" height="100px" src="images/photos/profile.jpg" />
-                        <input type="file" name="f" id="dish_image_upload">
+                        <input type="file" name="fileToUpload" id="dish_image_upload">
                     </div>
                     <h3 id="name">Dish Name</h3>
                     <input name="n" class="attr" id="dish_name" type="text" placeholder="Dish Name" required="required" />
@@ -307,11 +307,11 @@
                 <img id="close" clickable width="50px" height="50px" src="images/close.png" />
             </header>
             <main>
-                <form id="dish_info" action="/action/action_edit_dish.php" method="post">
+                <form id="dish_info" action="/action/action_edit_dish.php" method="post" enctype="multipart/form-data">
                     <input id="id_dish_input" name="id_dish" type = "hidden" value="" />
                     <div id="image-container">
                         <img id="img_dish" width="100px" height="100px" src="" />
-                        <input type="file" name="f" id="dish_image_upload">
+                        <input type="file" name="fileToUpload" id="dish_image_upload">
                     </div>
                     <h3 id="name">Dish Name</h3>
                     <input name="n" class="attr" id="dish_name" type="text" placeholder="" required="required" />
@@ -350,7 +350,7 @@
                 <h2 id="dish_price"></h2>
 
 
-                <form id="pedido_info" action="/action/action_add_dish_cart.php" method="get">
+                <form id="pedido_info" action="/action/action_add_dish_cart.php" method="get" >
                     <div class="select_quantity">
                         <img id="minus_dish" clickable src="images/minus_light.png" width="50px" height="50px" alt="minus one dish" />
                         <span id="quantity">1</span>
@@ -389,9 +389,14 @@
                 </div>
                 <p class="reviewText"><?php echo($review->review); ?></p>
                 <p class="points"><?php echo($review->points); ?></p>
+
+                <div>
+                <img src = '' width='25px' height='25px' alt='Butao para ver reply' onclick='open_reply_popup(<?php echo $reply->id; ?> )'/>
+
+                </div>
                 <?php
                 if($session->isLogged()) {
-                    if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === Restaurant::getRestaurant($db, $id)->owner_id) {
+                    if ($session->getUserId() === Restaurant::getRestaurant($db, $id)->owner_id) {
                         if ($review->getReply($db) === null) { ?>
                         <form class = "addReply">
                             <input class="reply" type="text-area" placeholder="Write your reply here" name="t" id="reply_input" required="required">
@@ -448,6 +453,24 @@
     <?php
         }
     }
+
+
+    function create_add_review_popup(){
+
+
+        ?>
+
+        <article id="add_review_popup" class="full_window_popup">
+
+
+        </article>
+
+
+
+        <?php
+
+    }
+
     ?>
 
 <!DOCTYPE html>
@@ -544,6 +567,8 @@
     create_edit_restaurant_popup($restaurant_id);
 
     create_edit_dish_popup();
+
+    create_add_review_popup();
     
     show_footer(); 
     ?>
