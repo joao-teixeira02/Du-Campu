@@ -41,7 +41,7 @@ if($_GET['s']){
         <section class = "restaurantsList">     
                 
             <input type="checkbox" class="drawler" id = "drawler_button"/>                                                                   
-            <section class = "filters">
+            <section class = "filters drawler_container">
 
                 <section class = "searchBoxContainer">
                     <form action="" class ="search-bar">
@@ -86,7 +86,7 @@ if($_GET['s']){
 
                 <label for="drawler_button" class="drawler">
                 <img src="/images/drawler.png"/>
-            </label>
+                </label>
             
             </section>
             

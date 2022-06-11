@@ -5,7 +5,7 @@ window.addEventListener('resize', updateFilterPosition)
 window.addEventListener('click', updateFilterPosition)
 
 
-const filters = document.querySelector('.filters');
+const drawler_container = document.querySelector('.drawler_container');
 const drawler = document.querySelector('#drawler_button');
 
 if (window.matchMedia('(max-width: 60em)').matches && drawler) {
@@ -17,16 +17,16 @@ updateFilterPosition()
 function updateFilterPosition()  {
     if (window.matchMedia('(max-width: 60em)').matches) {
         
-        const filters = document.querySelector('.filters');
+        const drawler_container = document.querySelector('.drawler_container');
         const header = document.querySelector('body > header');
         
-        if(filters){
+        if(drawler_container){
             offset = header.getBoundingClientRect().y + header.getBoundingClientRect().height;
 
             if(offset>0){
-                filters.style.top = offset+"px";
+                drawler_container.style.top = offset+"px";
             }else{
-                filters.style.top = 0+"px";
+                drawler_container.style.top = 0+"px";
             }
 
 

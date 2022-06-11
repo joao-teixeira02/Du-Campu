@@ -7,7 +7,7 @@
     display: none;
 }
 
-.filters{
+.drawler_container{
     transition: transform 1s ease-in-out;
     position: sticky;
     width: fit-content;
@@ -28,7 +28,7 @@
         display: inline;
     }
 
-    .filters{
+    .drawler_container{
         position: fixed;
         height: fit-content;
         width: fit-content;
@@ -39,6 +39,10 @@
         box-shadow: 0 0 1em  rgb(112, 112, 112);
         border-top-right-radius:  15px;
         border-bottom-right-radius:  15px;
+    }
+
+    .menuRestaurante{
+        width: auto;
     }
 
     label[for="drawler_button"] {
@@ -60,8 +64,19 @@
     }
     
     
-    #drawler_button:checked ~ .filters{
+    #drawler_button:checked ~ .drawler_container{
         transform: translateX(-100%);
+    }
+
+    .restaurant-page .menuRestaurante{
+        position: fixed;
+        width: auto;
+        
+    }
+
+    .restaurant-page main{
+        display: block;
+        
     }
 
 

@@ -458,6 +458,7 @@
         <link rel="stylesheet" href="css/restaurantPage.css">
         <link rel="stylesheet" href="css/position.css">
         <link rel="stylesheet" href="css/input_box.css">
+        <link rel="stylesheet" href="css/drawler.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
         <script type="text/javascript" src="js/cart.js" defer></script>
         <script type="text/javascript" src="js/likeButtonHeader.js" defer></script>
@@ -467,6 +468,7 @@
         <script type="text/javascript" src="js/addButtonDish.js" defer></script>
         <script type="text/javascript" src="js/addButtonType.js" defer></script>
         <script type="text/javascript" src="js/myRestaurant.js" defer></script>
+        <script type="text/javascript" src="js/drawler.js" defer></script>
 
         <title>Du'Campu</title>
     </head>
@@ -489,9 +491,15 @@
         ?>
             
             <main>
-                <nav class="menuRestaurante">
+                <input type="checkbox" class="drawler" id="drawler_button">
+                <nav class="menuRestaurante drawler_container">
                     <?php show_dishes_types($restaurant_id); ?>
+                
+                    <label for="drawler_button" class="drawler">
+                        <img src="/images/drawler.png"/>
+                    </label>
                 </nav>
+                
 
                 <section id="listaPratos">
                     <?php show_dishes($restaurant_id); ?>
