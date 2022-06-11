@@ -2,6 +2,7 @@
 window.addEventListener('scroll', updateFilterPosition);
 window.addEventListener('load', updateFilterPosition)
 window.addEventListener('resize', updateFilterPosition)
+window.addEventListener('click', updateFilterPosition)
 
 
 const filters = document.querySelector('.filters');
