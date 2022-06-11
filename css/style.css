@@ -955,6 +955,36 @@ strong{
     display: none;
 }
 
+/* PROFILE  NAVBAR*/
+
+.nav-links #profile_navbar{
+    display: none;
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    left: -3em;
+    z-index: 2;
+    background-color: rgb(24, 31, 36);
+    border: #000;
+    opacity: 1;
+
+
+}
+
+.menu .nav-links #profile_list_item:hover > #profile_navbar {
+    display: block;
+}
+
+.menu .nav-links #profile_navbar:hover {
+    display: block;
+}
+
+.nav-links  #profile_navbar li{
+    background-color: rgb(24, 31, 36);
+    opacity: 1;
+    color: white;
+    text-align: center;
+}
+
 
 @media (max-width: 60em){
     .toggle{
@@ -991,7 +1021,6 @@ strong{
     .nav-links-devices ul li{
         font-family: 'Poppins', sans-serif;
         padding: 1em;
-        width: 100%;
     }
 
     .nav-links-devices ul li:hover{
@@ -1008,6 +1037,43 @@ strong{
         flex-direction: column;
     }
 
+    /* PROFILE  NAVBAR*/
+
+    .nav-links-devices #profile_navbar{
+        display: none;
+    }
+
+    .menu .nav-links-devices #profile_list_item:hover > #profile_navbar {
+        display: block;
+    }
+
+    .menu .nav-links-devices #profile_navbar:hover {
+        display: block;
+    }
+    .menu #profile_list_item{
+        padding: 0;
+    }
+
+    .menu #profile_list_item > a{
+        padding: 1em;
+        display: block;
+    }
+
+    .nav-links-devices  #profile_navbar li{
+        background-color: rgb(24, 31, 36);
+        opacity: 1;
+        color: white;
+        text-align: center;
+    }
+
+    .nav-links-devices  #profile_navbar li:hover{
+        background-color: red;
+    }
+
+
 }
+
+
+
 
 

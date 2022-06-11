@@ -20,10 +20,16 @@
             <a href = "index.php"> <img src = "images/logo.png" id= "logo"> </a>
             <div class = "nav-links">
                 <ul>
-                    <li> 
-                        <a href ="profile.php" id="profile"></a>
-                        <label for="profile"> <img clickable src="images/profile.png" id = "profileIcon"
-                        onmouseover="this.src = 'images/profileHoover.png'"  onmouseout="this.src = 'images/profile.png'"></label></label>
+                    <li id="profile_list_item"> 
+                        <label for="profile"> 
+                            <img clickable src="images/profile.png" id = "profileIcon"
+                                onmouseover="this.src = 'images/profileHoover.png'"  onmouseout="this.src = 'images/profile.png'">
+                        </label>
+                    
+                        <ul id="profile_navbar">
+                            <li> <a href = "login.php">LOGIN</a> </li>
+                            <li> <a href = "register.php">REGISTER</a> </li>
+                        </ul>
                     </li>
                     <li id="cart_list"> 
                         <input type="checkbox" id="cart"/>
@@ -36,8 +42,12 @@
 
             <div class = "nav-links-devices">
                 <ul>
-                    <li> 
+                    <li id="profile_list_item"> 
                         <a href ="profile.php" >PROFILE</a>
+                        <ul id="profile_navbar">
+                            <li> <a href = "login.php">LOGIN</a> </li>
+                            <li> <a href = "register.php">REGISTER</a> </li>
+                        </ul>
                     </li>
                     <li> <a href ="restaurants.php" >RESTAURANTS</a></li>
                 </ul>
