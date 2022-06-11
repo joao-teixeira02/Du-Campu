@@ -712,6 +712,11 @@ strong{
     flex-grow: 2;
 }
 
+.restaurantsList .restaurantInfo{
+    white-space: nowrap;
+    width: 90%;
+}
+
 
 .restaurantsList .restaurantContainer  img {
     margin-right: 1em;
@@ -835,6 +840,7 @@ strong{
     transform: scale(3);
   }
   
+  
 
   @media (max-width: 60em){
     .restaurantsList .restaurantInfo #name {
@@ -845,7 +851,7 @@ strong{
 
     .restaurantsList .restaurantInfo  #address {
         margin-bottom: 2em;
-        width: 8em;
+        width: 90%;
         height: 0.5px;
         overflow: hidden;
     }
