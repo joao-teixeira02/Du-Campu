@@ -218,3 +218,10 @@
   width: 4em;
   text-align: left;
 }
+
+@media (max-width: 60em){
+  #profile_page #aside {
+    display: none;
+    grid: none;
+  }
+}

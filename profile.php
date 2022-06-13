@@ -49,10 +49,6 @@
 
     <article id="profile_page">
         <nav id="aside">
-            <a class="menu_option" href="index.php">
-            <span class="material-symbols-outlined">home</span>
-                <p>Home</p>
-            </a>
             <a class="menu_option" href="profile.php?page=account">
             <span class="material-symbols-outlined">account_circle</span>
                 <p>Account</p>

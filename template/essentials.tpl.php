@@ -3,6 +3,7 @@
     require_once(__DIR__ . '/cart.tpl.php');
     require_once(__DIR__ . '/../utils/session.php');
     require_once(__DIR__ . '/../database/category.class.php');
+    require_once(__DIR__ . '/../database/user.class.php');
 
     function show_header_menu(){
         $session = new Session();
@@ -27,9 +28,33 @@
                         </label>
                     
                         <ul id="profile_navbar">
-                            <li> <a href = "login.php">LOGIN</a> </li>
-                            <li> <a href = "register.php">REGISTER</a> </li>
-                        </ul>
+                    <li id="profile_list_item"> 
+
+                    <?php 
+                    
+                    if ($session->isLogged()) { 
+                        $db = getDatabaseConnection();
+            
+                         if(User::isCustomer($db, $session->getUsername())) { ?>
+                            <li> <a href = "profile.php">EDIT ACCOUNT</a> </li>
+                            <li> <a href = "favorites.php">FAVORITES</a> </li>
+                            <li> <a href = "orders.php">ORDERS</a> </li>
+                            <?php
+                        }else{ ?>  
+                            <li> <a href = "profile.php">EDIT ACCOUNT</a> </li>
+                            <li> <a href = "profile.php">FAVORITES</a> </li>
+                            <li> <a href = "profile.php">ORDERS</a> </li>
+                            <li> <a href = "my_restaurant.php">MY RESTAURANTS</a> </li>
+                            <li> <a href = "orders.php">MY RESTAURANT'S ORDERS</a> </li>
+                            <?php }
+                     }else { ?>
+                        <li> <a href = "login.php">LOGIN</a> </li>
+                        <li> <a href = "register.php">REGISTER</a> </li>
+                        <?php                        
+                        }
+                    ?> 
+                </li>
+                </ul>
                     </li>
                     <li id="cart_list"> 
                         <input type="checkbox" id="cart"/>
@@ -42,20 +67,46 @@
 
             <div class = "nav-links-devices">
                 <ul>
+                    <li> <a href ="restaurants.php" >RESTAURANTS</a>
                     <li id="profile_list_item"> 
-                        <a href ="profile.php" >PROFILE</a>
-                        <ul id="profile_navbar">
-                            <li> <a href = "login.php">LOGIN</a> </li>
-                            <li> <a href = "register.php">REGISTER</a> </li>
-                        </ul>
-                    </li>
-                    <li> <a href ="restaurants.php" >RESTAURANTS</a></li>
-                </ul>
-            </div>
+
+                    <?php 
+                    
+                    if ($session->isLogged()) { 
+                        $db = getDatabaseConnection();
             
+                         if(User::isCustomer($db, $session->getUsername())) { ?>
+                            <a>ACCOUNT</a>
+                            <ul id="profile_navbar">
+                            <li> <a href = "profile.php">EDIT ACCOUNT</a> </li>
+                            <li> <a href = "favorites.php">FAVORITES</a> </li>
+                            <li> <a href = "orders.php">ORDERS</a> </li>
+                            </ul>
+                            <?php
+                        }else{ ?>  
+                             <a>ACCOUNT</a>
+                             <ul id="profile_navbar">
+                            <li> <a href = "profile.php">EDIT ACCOUNT</a> </li>
+                            <li> <a href = "profile.php">FAVORITES</a> </li>
+                            <li> <a href = "profile.php">ORDERS</a> </li>
+                            <li> <a href = "my_restaurant.php">MY RESTAURANTS</a> </li>
+                            <li> <a href = "orders.php">MY RESTAURANT'S ORDERS</a> </li>
+                            </ul>
+                            <?php }
+                     }else { ?>
+                        <a>ACCOUNT</a>
+                        <ul id="profile_navbar">
+                        <li> <a href = "login.php">LOGIN</a> </li>
+                        <li> <a href = "register.php">REGISTER</a> </li>
+                        </ul>
+                        <?php                        
+                        }
+                    ?> 
+                </li>
+            </ul>
+        </div>
             
             <label for="drop" class="toggle" id='main-toggle'>
-                
             <span class="material-symbols-outlined">menu</span></label>
         </nav>
     </header>
