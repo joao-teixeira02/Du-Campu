@@ -416,24 +416,6 @@
     transition: width 0.3s, height 0.3s;
 }
 
-/* reviews */
-
-.restaurant-page section.reviews {
-    margin-top: 6em;
-    margin-left: 20em;
-}
-
-.restaurant-page h1{
-    font-weight: bold;
-}
-
-.restaurant-page section.reviews .addReview{
-    width: 100%;
-    height: 5em;
-    
-}
-
-
   /* CLASSIFICATION */
   .classification {
     float: left;
@@ -509,7 +491,42 @@
 
 
 /*REVIEW*/
-.review{
+
+/* reviews */
+
+.restaurant-page section.reviews {
+    margin-top: 6em;
+    margin-left: 20em;
+}
+
+.restaurant-page h1{
+    font-weight: bold;
+}
+
+.restaurant-page section.reviews .addReview{
+    width: 100%;
+    height: 5em;
+    
+}
+
+input[id^="see_reply_"]{
+    display: none;
+}
+
+input[id^="see_reply_"]:checked ~ .reply_list {
+    display: block;
+}
+
+.reply_list{
+    display: none;
+}
+
+label[for^="see_reply_"]{
+
+    grid-column: 2;
+}
+
+.review, .reply{
     padding-top: 0.5em;
     margin-bottom: 1em;
     display: grid;
@@ -519,18 +536,28 @@
     transition: 0.3s ease-in-out;
 }
 
+.addReply{
+    background-color: white;
+    box-shadow: 0 0 1em rgb(183 181 181);
+    padding: 1em;
+}
+
+.addReply textarea{
+    height: 10em;
+}
+
 @media (max-width:60em) {
     .restaurant-page section.reviews {
          margin-left: 0;
     }
 }
 
-.review:hover{
+.review:hover, .reply:hover{
     box-shadow: 0 0 1em  rgb(83, 82, 82);
 }
 
 
-.review .reviewPhoto{
+.review .reviewPhoto, .reply .replyPhoto{
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -541,17 +568,24 @@
 }
 
 
-.review .basicInfo{
+.review .basicInfo, .reply .basicInfo{
     grid-column: 2;
     grid-row: 1;
 }
 
-.review .reviewUsername{
+.review .reviewUsername, .reply .replyUsername{
     font-size: larger;
     font-weight: bolder;
 }
+.reply_list{
+    list-style: none;
+    margin-left: 1em;
+    align-self: flex-end;
 
-.review .date{
+}
+
+
+.review .date, .reply .date{
     font-size: smaller;
     font-weight: lighter;
     color:rgb(120, 120, 120);
@@ -566,7 +600,7 @@
     width: 30px;
 }
 
-.review .reviewText{
+.review .reviewText, .reply .replyText{
     grid-column: 2 / span 2;
     grid-row: 2;
     width: fit-content;

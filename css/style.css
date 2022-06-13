@@ -476,6 +476,13 @@ header.menu{
 }
 
 /* FOOTER */
+
+@media (max-width: 60em){
+    .pageFooter .information{
+        display: none;
+    }
+}
+
 .pageFooter{
     background-color: rgb(24, 31, 36);
     font-family: 'Poppins', sans-serif;

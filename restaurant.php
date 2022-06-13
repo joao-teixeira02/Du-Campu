@@ -381,6 +381,8 @@
             $photo = User::getUser($db, $review->getUsername($db))->getPhoto($db);
             $reply = $review->getReply($db);
             ?>
+            <div>
+            <input type="checkbox" id = "see_reply_<?php echo $review->id; ?>">
             <section class = "review">
                 <img class="reviewPhoto" src = "<?php echo($photo); ?>"/>
                 <div class = "basicInfo">
@@ -390,38 +392,50 @@
                 <p class="reviewText"><?php echo($review->review); ?></p>
                 <p class="points"><?php echo($review->points); ?></p>
 
-                <div>
-                <img src = '' width='25px' height='25px' alt='Butao para ver reply' onclick='open_reply_popup(<?php echo $reply->id; ?> )'/>
+                <label for="see_reply_<?php echo $review->id; ?>">
 
-                </div>
-                <?php
-                if($session->isLogged()) {
-                    if ($session->getUserId() === Restaurant::getRestaurant($db, $id)->owner_id) {
-                        if ($review->getReply($db) === null) { ?>
-                        <form class = "addReply">
-                            <input class="reply" type="text-area" placeholder="Write your reply here" name="t" id="reply_input" required="required">
-                            <input type="hidden" name="r" value="<?php echo($review->id); ?>">
-                            <input formaction="/action/action_reply.php" formmethod="post" type="submit" class="white_button" value="Reply">
-                        </form>
-                <?php
-                        }
-                        else { 
-                            $owner_photo = User::getUser($db, $reply->getUsername($db))->getPhoto($db);?>
-                        <section class="reply">
-                            <img class="replyPhoto" src="<?php echo($owner_photo) ?>"/>
-                            <div class="basicInfo">
-                            <p class="replyUsername"><?php echo($reply->getUsername($db)); ?></p>
-                            <p class="date"><?php echo($reply->date); ?></p>
-                            </div>
-                            <p class="replyText"><?php echo($reply->text); ?></p>
-                        </section>
-                <?php
-                        }
-                    }
-                ?>
+                <span class="material-symbols-outlined">
+                chat
+                </span>
+                Replies
+
+                </label>       
             </section>
+            <ul class = "reply_list">   
+                <li>
+                    <?php
+                        if ($reply !== null) { 
+                            $owner_photo = User::getUser($db, $reply->getUsername($db))->getPhoto($db);
+                            ?>
+                            <section class="reply">
+                                <img class="replyPhoto" src="<?php echo($owner_photo) ?>"/>
+                                <div class="basicInfo">
+                                <p class="replyUsername"><?php echo($reply->getUsername($db)); ?></p>
+                                <p class="date"><?php echo($reply->date); ?></p>
+                                </div>
+                                <p class="replyText"><?php echo($reply->text); ?></p>
+                            </section>
+                    <?php
+                        }else if($session->isLogged()) {
+                            if ($session->getUserId() === Restaurant::getRestaurant($db, $id)->owner_id) {
+                                ?>
+                                <form class = "addReply">
+                                    <textarea class="reply"  placeholder="Write your reply here" name="t" id="reply_input" required="required"></textarea>
+                                    <input type="hidden" name="r" value="<?php echo($review->id); ?>">
+                                    <input formaction="/action/action_reply.php" formmethod="post" type="submit" class="white_button" value="Reply">
+                                </form>
+                        <?php
+                                
+                            }
+                        }
+                        ?>
+
+                </li>
+            </ul>
+
+            </div>
         <?php
-                }
+                
         }
     }
 
@@ -436,7 +450,7 @@
     ?>
         <form class = "addReviewContainer">
             <h2>Add a review</h2>
-            <input class= "addReview" type="text-area" placeholder="Write your review here" name="r" id="review_input" required="required">
+            <textarea class= "addReview"  placeholder="Write your review here" name="r" id="review_input" required="required"></textarea>
             
             <img id="add_review_photo" alt="profile image" src="<?php echo $photo; ?>" />
             
