@@ -87,7 +87,7 @@
                              <a>ACCOUNT</a>
                              <ul id="profile_navbar">
                             <li> <a href = "profile.php">EDIT ACCOUNT</a> </li>
-                            <li> <a href = "profile.php">FAVORITES</a> </li>
+                            <li> <a href = "profile.php?page=favorites">FAVORITES</a> </li>
                             <li> <a href = "profile.php">ORDERS</a> </li>
                             <li> <a href = "my_restaurant.php">MY RESTAURANTS</a> </li>
                             <li> <a href = "orders.php">MY RESTAURANT'S ORDERS</a> </li>

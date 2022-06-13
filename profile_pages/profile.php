@@ -13,6 +13,14 @@ function show_profile() {
     <section id="profile" class="UseInputStyle" >
     <h1>Personal Information</h1>
         <section id="account">
+        <div id="photo_field">
+                <form action="/action/action_profile.php" method="post" enctype="multipart/form-data">
+                    <label>Photo</label>
+                    <img id="photo" src="<?php echo $user_photo; ?>" alt="Profile Picture">
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="submit" name="Submit" value="Upload">
+                </form>
+            </div>
             <section id="fields">
                 <form action="/action/action_profile.php" method="post" class="profile_form">
                     <label>Name</label>
@@ -36,14 +44,7 @@ function show_profile() {
                     <input formaction="/action/action_delete_account.php" type="submit" value="Delete Account">
                 </form>
             </section>
-            <div id="photo_field">
-                <form action="/action/action_profile.php" method="post" enctype="multipart/form-data">
-                    <label>Photo</label>
-                    <img id="photo" src="<?php echo $user_photo; ?>" alt="Profile Picture">
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                    <input type="submit" name="Submit" value="Upload">
-                </form>
-            </div>
+            
         </section>
     </section>
 <?php

@@ -3,6 +3,16 @@
 * Profile
 */
 
+main{
+  overflow-x: hidden;
+}
+
+body{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+}
+
 .editButton {
   height: 8em;
   width: auto;
@@ -14,6 +24,7 @@
     grid-template-rows: auto;
     grid-template-areas: "aside page";
     font-family: 'Poppins', sans-serif;
+    height: 100%;
 }
 
 /*menu de opcoes*/
@@ -62,8 +73,8 @@
 
 #profile_page #profile {
     grid-area: page;
-    margin-left: 2em;
     margin-top: 1em;
+    width: 100%;
 }
 
 #account {
@@ -71,6 +82,13 @@
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: auto;
     grid-template-areas: "fields photo";
+    column-gap: 3em;
+    margin: 2em;
+    margin-top: 0;
+  }
+
+  #profile h1{
+    margin-left: 2em;
   }
   
   #account #fields {
@@ -92,7 +110,7 @@
   
   #account #photo_field {
     grid-area: photo;
-    margin-left: 3em;
+    
   }
   
 
@@ -224,4 +242,23 @@
     display: none;
     grid: none;
   }
+
+  #profile_page  {
+    display: flex;
+  }
+
+  #account{
+    display: flex;
+    flex-direction: column;
+  }
+
+  #account #photo_field{
+    margin-left: 0;
+  }
+
+  .UseInputStyle #photo_field input[type="file"]{
+    display: block;
+  }
+
+
 }
