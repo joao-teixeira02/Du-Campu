@@ -32,7 +32,7 @@
                         ?>
 
                         <li>
-                            <a href="#<?php echo ($type);?>"><?php echo ($type);?></a>
+                            <a href="#<?php echo (htmlentities($type));?>"><?php echo (htmlentities($type));?></a>
                         </li>
 
                         <?php
@@ -52,7 +52,7 @@
             $restaurant = Restaurant::getRestaurant($db, $id);
         ?>
 
-        <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo ($restaurant->getPhoto($db, $id)); ?>">
+        <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo (htmlentities($restaurant->getPhoto($db, $id))); ?>">
         <?php
             global $session;
             if ($session->isLogged() && $session->getUserId() !== $restaurant->owner_id) { ?>
@@ -68,10 +68,10 @@
                 ?>
                 <input type="image" class="editButton" src="images/editIcon.png" onclick="open_edit_restaurant_popup(this)"
                 data-restaurant_id="<?php echo($restaurant->id); ?>"
-                data-restaurant_name="<?php echo($restaurant->name); ?>"
-                data-restaurant_address="<?php echo($restaurant->address); ?>"
+                data-restaurant_name="<?php echo(htmlentities($restaurant->name)); ?>"
+                data-restaurant_address="<?php echo(htmlentities($restaurant->address)); ?>"
                 data-restaurant_price="<?php echo($restaurant->price); ?>"
-                data-restaurant_photo="<?php echo($restaurant->getPhoto($db, $restaurant->id)); ?>"
+                data-restaurant_photo="<?php echo(htmlentities($restaurant->getPhoto($db, $restaurant->id))); ?>"
                 data-restaurant_categories="<?php echo($restaurant->getCategory($db, $restaurant->id)); ?>"
                 />
                 <?php
@@ -82,7 +82,7 @@
                 $categories = Restaurant::getCategory($db, $id);
                 foreach($categories as $category){
                     echo (" • ");
-                    echo ($category);
+                    echo (htmlentities($category));
                 }
                 echo (" • ");
                 for($i = 0; $i < $restaurant->price; $i++) {
@@ -114,7 +114,7 @@
                 $types[] = $dish->getType($db);
             }
             foreach(array_unique($types) as $type){ ?>
-                <section class="dishType" id="<?php echo ($type);?>">
+                <section class="dishType" id="<?php echo (htmlentities($type));?>">
                 <h3><?php echo ($type);?></h3>
                 <ul>
                 <?php 
@@ -128,11 +128,11 @@
                                     echo ('open_add_order_popup_favorite(this)');
                             }?>" 
                             data-dish_id="<?php echo($dish->id)?>"
-                            data-dish_name="<?php echo($dish->getName())?>"
-                            data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"
+                            data-dish_name="<?php echo(htmlentities($dish->getName()))?>"
+                            data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $id)))?>"
                             data-dish_price="<?php echo($dish->getPrice())?>"  >
                             <div class = "photoContainer">
-                            <img src="<?php echo($dish->getPhoto($db, $dish->id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
+                            <img src="<?php echo(htmlentities($dish->getPhoto($db, $dish->id))); ?>" alt="<?php echo(htmlentities($dish->getName())); ?>" width="200px" height="200px" />
                             <?php 
                             if ($session->getUserId() !== $restaurant->owner_id) {
                             ?>
@@ -148,7 +148,7 @@
                             }
                             ?>
                              </div>
-                            <figcaption> <?php echo($dish->getName()); ?> </figcaption>
+                            <figcaption> <?php echo(htmlentities($dish->getName())); ?> </figcaption>
                             <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
 
                             <?php 
@@ -157,10 +157,10 @@
                             <input type="image" class="redCross" src="images/red_cross.png" onclick="location.href='/action/action_remove_dish.php?id=<?php echo($dish->id); ?>'" />
                             <input type="image" class="editDishButton" src="images/editIcon.png" clickable onclick="open_edit_dish_popup(this)"
                             data-dish_id="<?php echo($dish->id)?>"
-                            data-dish_name="<?php echo($dish->getName())?>"
-                            data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"
+                            data-dish_name="<?php echo(htmlentities($dish->getName()))?>"
+                            data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $id)))?>"
                             data-dish_price="<?php echo($dish->getPrice())?>"
-                            data-dish_type="<?php echo ($type); ?>">
+                            data-dish_type="<?php echo (htmlentities($type)); ?>">
                             <?php
                             }
                             ?>
@@ -176,12 +176,12 @@
                             }
                             ?>
                             data-dish_id="<?php echo($dish->id); ?>"
-                            data-dish_name="<?php echo($dish->getName()); ?>"
-                            data-dish_photo="<?php echo($dish->getPhoto($db, $id)); ?>"
+                            data-dish_name="<?php echo(htmlentities($dish->getName())); ?>"
+                            data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $id))); ?>"
                             data-dish_price="<?php echo($dish->getPrice()); ?>" >
-                            <img src="<?php echo($dish->getPhoto($db, $id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
-                            <figcaption> <?php echo($dish->getName()); ?> </figcaption>
-                            <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
+                            <img src="<?php echo(htmlentities($dish->getPhoto($db, $id))); ?>" alt="<?php echo(htmlentities($dish->getName())); ?>" width="200px" height="200px" />
+                            <figcaption> <?php echo(htmlentities($dish->getName())); ?> </figcaption>
+                            <p class="preco"><?php echo(htmlentities($dish->getPrice())); ?> &nbsp;€</p>
                         </figure>
                         <?php 
                         }
@@ -196,7 +196,7 @@
                 if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
                 ?>
                 <figure class="addDish" clickable onclick="open_add_dish_popup(this);"
-                    data-dish_type="<?php echo($type); ?>"
+                    data-dish_type="<?php echo(htmlentities($type)); ?>"
                     data-dish_restaurant_id="<?php echo($id); ?>">
                     <img src="images/plusJoao1.png" id="addDishImage" width="100px" height="100px" />
                 <figcaption>Add New Dish</figcaption>
@@ -382,12 +382,12 @@
             $reply = $review->getReply($db);
             ?>
             <section class = "review">
-                <img class="reviewPhoto" src = "<?php echo($photo); ?>"/>
+                <img class="reviewPhoto" src = "<?php echo(htmlentities($photo)); ?>"/>
                 <div class = "basicInfo">
-                    <p class="reviewUsername"><?php echo($review->getUsername($db)); ?></p>
-                    <p class="date"><?php echo($review->date); ?></p>
+                    <p class="reviewUsername"><?php echo(htmlentities($review->getUsername($db))); ?></p>
+                    <p class="date"><?php echo(htmlentities($review->date)); ?></p>
                 </div>
-                <p class="reviewText"><?php echo($review->review); ?></p>
+                <p class="reviewText"><?php echo(htmlentities($review->review)); ?></p>
                 <p class="points"><?php echo($review->points); ?></p>
                 <?php
                 if($session->isLogged()) {
@@ -403,12 +403,12 @@
                         else { 
                             $owner_photo = User::getUser($db, $reply->getUsername($db))->getPhoto($db);?>
                         <section class="reply">
-                            <img class="replyPhoto" src="<?php echo($owner_photo) ?>"/>
+                            <img class="replyPhoto" src="<?php echo(htmlentities($owner_photo)) ?>"/>
                             <div class="basicInfo">
-                            <p class="replyUsername"><?php echo($reply->getUsername($db)); ?></p>
-                            <p class="date"><?php echo($reply->date); ?></p>
+                            <p class="replyUsername"><?php echo(htmlentities($reply->getUsername($db))); ?></p>
+                            <p class="date"><?php echo(htmlentities($reply->date)); ?></p>
                             </div>
-                            <p class="replyText"><?php echo($reply->text); ?></p>
+                            <p class="replyText"><?php echo(htmlentities($reply->text)); ?></p>
                         </section>
                 <?php
                         }
@@ -433,7 +433,7 @@
             <h2>Add a review</h2>
             <input class= "addReview" type="text-area" placeholder="Write your review here" name="r" id="review_input" required="required">
             
-            <img id="add_review_photo" alt="profile image" src="<?php echo $photo; ?>" />
+            <img id="add_review_photo" alt="profile image" src="<?php echo htmlentities($photo); ?>" />
             
                 <div class = "classification">
                 <input type="radio" id="star5" name="p" value="5"> <label for="star5" required="required"></label>

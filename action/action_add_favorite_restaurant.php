@@ -9,16 +9,19 @@
 
     $db =  getDatabaseConnection();
 
-    $id_restaurant = $_GET['r_id'];
+    if (isset($_GET['r_id'])) {
 
-    $query = 'INSERT INTO FavoriteRestaurant (id_user, id_restaurant) VALUES (:id_user, :id_restaurant)';
+        $id_restaurant = $_GET['r_id'];
 
-    $stmt = $db->prepare($query);
+        $query = 'INSERT INTO FavoriteRestaurant (id_user, id_restaurant) VALUES (:id_user, :id_restaurant)';
 
-    $stmt->bindParam(':id_user', $session->getUserId());
-    $stmt->bindParam(':id_restaurant', $id_restaurant);
+        $stmt = $db->prepare($query);
 
-    $stmt->execute();
+        $stmt->bindParam(':id_user', $session->getUserId());
+        $stmt->bindParam(':id_restaurant', $id_restaurant);
+
+        $stmt->execute();
+    }
 
     header("Location:".$_SERVER['HTTP_REFERER']."");
 ?>

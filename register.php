@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="registerInes.css">
         <link rel="stylesheet" href="css/warnings.css">
 
-        <script type="text/javascript" src="js/register.js" defer></script> 
+        <script type="text/javascript" src="js/validateRegister.js" defer></script> 
 
         <title>Du'Campu</title>
     </head>
@@ -49,7 +49,7 @@
                     <div class="input_div">
                         <input class="input" type="text" placeholder="" name="u" id="username_input" required="required"/>
                         <label for="username_input" class="input_label">Username</label>
-                        <span class="hint">Only lowercase and numbers</span>
+                        <span class="hint">Only lowercase letters and numbers</span>
                     </div>   
 
                     <br>

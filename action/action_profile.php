@@ -9,6 +9,8 @@
 
     $db = getDatabaseConnection();
 
+    $options = ['cost' => 12];
+
 
     /* CRIAR IMAGEM */
     if(isset($_FILES['fileToUpload'])){
@@ -24,7 +26,7 @@
     }
 
 
-    if(isset($_POST['u']) && isset($_POST['n']) && isset($_POST['m']) && isset($_POST['p']) && isset($_POST['a']) && isset($_POST['ph'])){
+    if(isset($_POST['u']) && isset($_POST['n']) && isset($_POST['m']) && isset($_POST['p']) && isset($_POST['a']) && isset($_POST['ph']) && is_numeric($_POST['ph']) && isset($_POST['p2'])){
 
         $username = $_POST['u'];
         $name = $_POST['n'];
@@ -43,7 +45,7 @@
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':mail', $mail);
-        $stmt->bindParam(':password', $password);
+        $stmt->bindParam(':password', password_hash($password, PASSWORD_DEFAULT, $options));
         $stmt->bindParam(':address', $address);
         $stmt->bindParam(':phone', $phone);
         $stmt->bindParam(':oldusername', $session->getUsername());

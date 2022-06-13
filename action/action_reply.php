@@ -7,26 +7,30 @@
 
 	$db = getDatabaseConnection();
 
-	$text = $_POST['t'];
-	$review_id = $_POST['r'];
+	if (isset($_POST['t']) && isset($_POST['r'])) {
 
-	$query = 'SELECT id FROM User WHERE User.username=?';
+		$text = $_POST['t'];
+		$review_id = $_POST['r'];
 
-	$stmt = $db->prepare($query);
+		$query = 'SELECT id FROM User WHERE User.username=?';
 
-	$stmt->execute(array($session->getUsername()));
+		$stmt = $db->prepare($query);
 
-    $owner_id = $stmt->fetch()['id'];
+		$stmt->execute(array($session->getUsername()));
 
-    $query = 'INSERT INTO Reply (text, owner_id, review_id) VALUES (:text, :owner_id, :review_id)';
- 
-    $stmt = $db->prepare($query);
+		$owner_id = $stmt->fetch()['id'];
 
-    $stmt->bindParam(':text', $text);
-    $stmt->bindParam(':owner_id', $owner_id);
-    $stmt->bindParam(':review_id', $review_id);
+		$query = 'INSERT INTO Reply (text, owner_id, review_id) VALUES (:text, :owner_id, :review_id)';
+	
+		$stmt = $db->prepare($query);
 
-    $stmt->execute();
+		$stmt->bindParam(':text', $text);
+		$stmt->bindParam(':owner_id', $owner_id);
+		$stmt->bindParam(':review_id', $review_id);
+
+		$stmt->execute();
+	
+	}
 
     header("Location:".$_SERVER['HTTP_REFERER']."");
 ?>

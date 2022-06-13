@@ -9,7 +9,6 @@
     if(!(isset($_POST['id_restaurant']) && isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']))){
         
         print_r("Erro");
-        //header('Location: '. $_SERVER['HTTP_REFERER']);
         die;
     }
 

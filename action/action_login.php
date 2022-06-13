@@ -15,7 +15,7 @@
             return false;
         }
 
-        return $user->password === $password;
+        return password_verify($password, $user->password);
     }
 
 

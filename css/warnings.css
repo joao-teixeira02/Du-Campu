@@ -61,7 +61,7 @@
     display:block;
   }
   
-  form input[value=Update]{
+  form input[value=Update], form input[value=Register]{
     display: block;
   }
   

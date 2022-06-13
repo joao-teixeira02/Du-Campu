@@ -24,6 +24,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,1,0"/>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/warnings.css">
         <link rel="stylesheet" href="css/position.css">
         <link rel="stylesheet" href="css/favoritesJoao.css">
         <link rel="stylesheet" href="css/myrestaurant.css">
@@ -38,6 +39,7 @@
         <script type="text/javascript" src="js/cart.js" defer></script> 
         <script type="text/javascript" src="js/orders_list.js" defer></script>
         <script type="text/javascript" src="js/myRestaurant.js" defer></script>
+        <script type="text/javascript" src="js/validateProfile.js" defer></script>
          
         <title>Du'Campu</title>
     </head>

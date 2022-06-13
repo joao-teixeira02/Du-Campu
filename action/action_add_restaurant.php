@@ -12,7 +12,7 @@
 	$db = getDatabaseConnection();
 
     if(! ( isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']) && isset($_FILES['fileToUpload']) )){
-        print_r($_POST);
+        print_r("Erro");
         die;
     }
 

@@ -5,58 +5,53 @@
 
 	$db = getDatabaseConnection();
 
-    $name = $_POST['n'];
-    $price = $_POST['p'];
-    $type = $_POST['t'];
-    $restaurant_id = intval($_POST['id']);
-    $id_p = 1;
+    if (isset($_POST['n']) && isset($_POST['p']) && isset($_POST['t']) && isset($_POST['id'])) {
 
-    /*$query = 'INSERT INTO Type (name) VALUES (:type)';
+        $name = $_POST['n'];
+        $price = $_POST['p'];
+        $type = $_POST['t'];
+        $restaurant_id = intval($_POST['id']);
+        $id_p = 1;
 
-    $stmt = $db->prepare($query);
+        $query = 'SELECT id FROM Type WHERE Type.name=?';
 
-    $stmt->bindParam(':type', $type);
+        $stmt = $db->prepare($query);
 
-    $stmt->execute();*/
+        $stmt->execute(array($type));
 
-    $query = 'SELECT id FROM Type WHERE Type.name=?';
+        $id_type = intval($stmt->fetch()['id']);
+    
+        $query = 'INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES (:name, :price, :id_photo, :restaurant_id)';
+    
+        $stmt = $db->prepare($query);
 
-    $stmt = $db->prepare($query);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':id_photo', $id_p);
+        $stmt->bindParam(':restaurant_id', $restaurant_id);
 
-    $stmt->execute(array($type));
+        $stmt->execute();
 
-    $id_type = intval($stmt->fetch()['id']);
- 
-	$query = 'INSERT INTO Dish (name, price, id_photo, restaurant_id) VALUES (:name, :price, :id_photo, :restaurant_id)';
- 
-	$stmt = $db->prepare($query);
+        $query ='SELECT id FROM Dish WHERE Dish.name=:name AND Dish.restaurant_id=:restaurant_id';
 
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':price', $price);
-    $stmt->bindParam(':id_photo', $id_p);
-    $stmt->bindParam(':restaurant_id', $restaurant_id);
+        $stmt = $db->prepare($query);
 
-    $stmt->execute();
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':restaurant_id', $restaurant_id);
 
-    $query ='SELECT id FROM Dish WHERE Dish.name=:name AND Dish.restaurant_id=:restaurant_id';
+        $stmt->execute();
 
-    $stmt = $db->prepare($query);
+        $id_dish = intval($stmt->fetch()['id']);
 
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':restaurant_id', $restaurant_id);
+        $query = 'INSERT INTO DishType(id_dish, id_type) VALUES (:id_dish, :id_type)';
 
-    $stmt->execute();
+        $stmt = $db->prepare($query);
 
-    $id_dish = intval($stmt->fetch()['id']);
+        $stmt->bindParam(':id_dish', $id_dish);
+        $stmt->bindParam(':id_type', $id_type);
 
-    $query = 'INSERT INTO DishType(id_dish, id_type) VALUES (:id_dish, :id_type)';
-
-    $stmt = $db->prepare($query);
-
-    $stmt->bindParam(':id_dish', $id_dish);
-    $stmt->bindParam(':id_type', $id_type);
-
-    $stmt->execute();
+        $stmt->execute();
+    }
     
 	header("Location:".$_SERVER['HTTP_REFERER']."");
 ?>

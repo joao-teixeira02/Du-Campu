@@ -28,7 +28,7 @@
                         ?>
 
                         <li>
-                            <a href="#<?php echo ($type);?>"><?php echo ($type);?></a>
+                            <a href="#<?php echo (htmlentities($type));?>"><?php echo (htmlentities($type));?></a>
                         </li>
 
                         <?php
@@ -51,22 +51,21 @@
         
         ?>
 
-        <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo ($restaurant->getPhoto($db, $id)); ?>">
+        <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo (htmlentities($restaurant->getPhoto($db, $id))); ?>">
         
         <header>
             <h1>
-                <input name="n" class="attr" type="text" placeholder="Name" value="<?php echo $session->getName(); ?>" required="required">
+                <input name="n" class="attr" type="text" placeholder="Name" value="<?php echo htmlentities($session->getName()); ?>" required="required">
             </h1>
             <p id="classificao"><?php echo ($restaurant->calcRating($db, $id));?>
             <?php
                 $categories = Restaurant::getCategory($db, $id);
                 foreach($categories as $category){
                     echo (" • ");
-                    echo ($category);
+                    echo (htmlentities($category));
                 }
             ?>
             </p>
-            <p id="tempo">5 - 15 min</p>
         </header>
         <?php
     }
@@ -81,8 +80,8 @@
                 $types[] = $dish->getType($db);
             }
             foreach(array_unique($types) as $type){ ?>
-                <section class="dishType" id="<?php echo ($type);?>">
-                <h3><?php echo ($type);?></h3>
+                <section class="dishType" id="<?php echo (htmlentities($type));?>">
+                <h3><?php echo (htmlentities($type));?></h3>
                 <ul>
                 <?php 
                 foreach($dishes as $dish){ 
@@ -90,11 +89,11 @@
                         <li>
                         <figure class="comida" clickable onclick="open_add_order_popup(this);" 
                             data-dish_id="<?php echo($dish->id)?>"
-                            data-dish_name="<?php echo($dish->getName())?>"
-                            data-dish_photo="<?php echo($dish->getPhoto($db, $id))?>"
+                            data-dish_name="<?php echo(htmlentities($dish->getName()))?>"
+                            data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $id)))?>"
                             data-dish_price="<?php echo($dish->getPrice())?>"   >
-                            <img src="<?php echo($dish->getPhoto($db, $id)); ?>" alt="<?php echo($dish->getName()); ?>" width="200px" height="200px" />
-                            <figcaption> <?php echo($dish->getName()); ?> </figcaption>
+                            <img src="<?php echo(htmlentities($dish->getPhoto($db, $id))); ?>" alt="<?php echo(htmlentities($dish->getName())); ?>" width="200px" height="200px" />
+                            <figcaption> <?php echo(htmlentities($dish->getName())); ?> </figcaption>
                             <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
                         </figure>
                         </li>
@@ -157,12 +156,12 @@
             $photo = User::getUser($db, $review->getUsername($db))->getPhoto($db);
             ?>
             <section class = "review">
-                <img class="reviewPhoto" src = "<?php echo($photo); ?>"/>
+                <img class="reviewPhoto" src = "<?php echo(htmlentities($photo)); ?>"/>
                 <div class = "basicInfo">
-                <p class="reviewUsername"><?php echo($review->getUsername($db)); ?></p>
-                <p class="date"><?php echo($review->date); ?></p>
+                <p class="reviewUsername"><?php echo(htmlentities($review->getUsername($db))); ?></p>
+                <p class="date"><?php echo(htmlentities($review->date)); ?></p>
                 </div>
-                <p class="reviewText"><?php echo($review->review); ?></p>
+                <p class="reviewText"><?php echo(htmlentities($review->review)); ?></p>
                 <p class="points"><?php echo($review->points); ?></p>
                 <?php
                 if($session->isLogged()) {
@@ -194,7 +193,7 @@
             <h2>Add a review</h2>
             <input class= "addReview" type="text-area" placeholder="Write your review here" name="r" id="review_input" required="required">
             
-            <img id="add_review_photo" alt="profile image" src="<?php echo $photo; ?>" />
+            <img id="add_review_photo" alt="profile image" src="<?php echo htmlentities($photo); ?>" />
             
                 <div class = "classification">
                 <input type="radio" id="star5" name="p" value="5"> <label for="star5" required="required"></label>
