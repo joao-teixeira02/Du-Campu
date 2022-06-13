@@ -21,22 +21,33 @@
     margin-bottom: 5em;
   }
 
-  #noFavs {
+  .noFavs {
     height: 10em;
-    width: 10em;
-    opacity: 0.2;
+    width:  100%;
+    cursor: pointer;
+    background-color: rgb(15,20,24);
+    display: flex;
+    align-items: center;
+    align-self: center;
+    padding: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    text-decoration: none;
+    border-radius: 2em;
+    margin-bottom: 2em;
   }
 
-  .goTo {
-    border-radius: 1em;
-    background-color: rgb(15,20,24);
+  .noFavs:hover{
+    box-shadow: 0 0 3em  rgb(183, 181, 181);
+  }
+
+
+  .noFavs h4{
     color: white;
-    cursor: pointer;
-    margin-bottom: 0.25em;
-    font-family: "Poppins";
-    font-size: medium;
-    height: 10em;
-    width: 50em;
+    font-family: 'Poppins', sans-serif;
+    width: fit-content;
+    font-weight: medium;
+
   }
   
   .myRestaurantsList h3,

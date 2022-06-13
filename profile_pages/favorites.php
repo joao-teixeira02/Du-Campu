@@ -22,7 +22,9 @@ function show_favorites() {
         <?php 
         if (sizeof($favRestaurants) === 0) { ?>
             <!--<img id="noFavs" src="images/noFavs.png">-->
-            <input type="button" class="goTo" value="Seems like you have no favorite restaurants yet. Click here to visit our restaurants page to find some!" onclick="location.href='restaurants.php'"/>
+            <a href = "restaurants.php" class = "noFavs">
+            <h4>Seems like you have no favorite restaurants yet. Click here to visit our restaurants page to find some!</h4> 
+            </a>
             <?php
         }
         else { ?>
@@ -50,7 +52,9 @@ function show_favorites() {
         <?php
         if (sizeof($favDishes) === 0) { ?>
             <!--<img id="noFavs" src="images/noFavs.png">-->
-            <input type="button" class="goTo" value="Seems like you have no favorite dishes yet. Click here to visit our restaurants page to find some!" onclick="location.href='restaurants.php'"/>
+            <a href = "restaurants.php" class = "noFavs">
+            <h4>Seems like you have no favorite dishes yet. Click here to visit our restaurants page to find some!</h4> 
+            </a>
             <?php
         }
         else { ?>
