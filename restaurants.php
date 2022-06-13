@@ -16,8 +16,9 @@ if($_GET['s']){
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/position.css">
+    <link rel="stylesheet" href="css/restaurantList.css">
+    <link rel="stylesheet" href="css/headerFooter.css">
+    <link rel="stylesheet" href="css/cart.css">
     <link rel="stylesheet" href="css/drawler.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
     <script type="text/javascript" src="js/likeButtonRestaurant.js"></script>

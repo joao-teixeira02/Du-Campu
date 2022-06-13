@@ -5,67 +5,6 @@
     padding: 0;
 }
 
-/* HEADER */
-header.menu{
-    width:100%;
-    background-color: rgb(24, 31, 36);
-    background-size: 100vw 100vh;
-    box-shadow: rgb(0, 0, 0) 0px 0px 5px;
-}
-
-.menu .nav-links ul li{
-    list-style: none;
-    align-items:center;/*Vertical align*/
-    justify-content:center;/*horizontal align*/
-}
-
-.menu .nav-links ul li a{
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-}
-
-
-.menu #restaurantIcon{
-    background-color:rgb(214, 156, 92);
-    padding: 0.3em;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: bold;
-    padding-right: 0.5em;
-    padding-left: 0.5em;
-}
-
-.menu #restaurantIcon:hover{
-    background-color:white;
-    color:rgb(214, 156, 92);
-}
-
-
-.menu #profileIcon{
-    width: 32px;
-    height: 32px;
-}
-
-.menu #logo{
-    width: 15em;
-    height: 4em;
-}
-
-.menu #cartIcon{
-    width: 25px;
-    height: 25px;
-}
-
-
-
-#asc,
-#cart,
-#lupa{
-    display: none;  
-}
-
 
 /** FOOTER AND HEADER **/
 
@@ -141,32 +80,15 @@ header.menu{
 
 
 
-.price-range [name=classification]{
-    display: none;  
-}
 
-.price-range [name=classification]{
-    display: none;  
-}
 
 [clickable]{  
     cursor: pointer ;
 }   
 
-.search{
-    width: 0em;
-    visibility: collapse;
-    -webkit-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-}
 
-#lupa:checked + .search{
-    visibility: visible;
-    width: 10em;
-}
 
 /* CART */
-
 #cart_box{
     display: none;
     position: fixed;
@@ -181,7 +103,6 @@ header.menu{
     -webkit-transition: all 0.5s ease-in-out;
     opacity: 1;
     transition: all 0.5s ease-in-out;
-
     grid-template-rows: auto 1fr 4.5em;
 }
 
@@ -194,7 +115,6 @@ header.menu{
     height: 2em;
     padding: 1em;
 }
-
 
 #cart_box main{
     display: flex;
@@ -226,28 +146,21 @@ header.menu{
 
 #cart_box #check-in{
     text-decoration: none;
-
     display: none;
     grid-row: 3;
     font-size: 1em;
     font-weight: bold;
-
     font-family: 'Poppins', sans-serif;
-    
     color: white;
     background-color: rgb(15,20,24);
-
     margin-bottom: 1em;
     margin-top: 1em;
-    
     margin-left: auto;
     margin-right: auto;
-    
     width: 10em;
     border-radius: 1em;
-
-    align-items:center;/*Vertical align*/
-    justify-content:center;/*horizontal align*/
+    align-items:center;
+    justify-content:center;
 }
 
 #cart_box #check-in:hover{
@@ -481,59 +394,6 @@ header.menu{
 
 /* FOOTER */
 
-@media (max-width: 60em){
-    .pageFooter .information{
-        display: none;
-    }
-}
-
-.pageFooter{
-    background-color: rgb(24, 31, 36);
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-}
-
-.pageFooter .information{
-    width: 100%;
-    max-width: 1200px;
-    padding: 45px 0px;
-}
-
-
-.pageFooter .information .box figure{
-    width: 100%;
-    height: 100%;
-}
-
-.pageFooter .information .box img{
-    width: 200px;
-    align-items:center;
-}
-
-.pageFooter .information .box h2{
-    font-size: 20px;
-    color: white;
-    text-align: center;
-}
-
-.pageFooter .information .box p{
-    margin-bottom: 1px;
-    color: #b6b6b6;
-    text-align: center;
-}
-
-
-.pageFooter .copyright{
-    background-color: rgb(15,20,24);
-    padding: 15px 10px;
-    text-align: center;
-    color: white;
-
-}
-
-.pageFooter .small{
-    font-size: 50px;
-}
 
 strong{
     font-weight: bold;
@@ -608,291 +468,7 @@ strong{
 }
 
 
-/* RESTAURANTS LIST PRICE BAR*/
 
-.slider{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    width: 170px;
-    height: 80px;
-    background: white;
-    border-radius: 20px;
-}
-
-.slider .number{
-    display: inline-block;
-    width: 30px;
-    height: 20px;
-    background: white;
-    border: 1px solid #ddd;
-    font-size: 12px;
-    font-weight: 600;
-    text-align: center;
-    border-radius: 5px;
-}
-
-
-.slider .range-slider{
-    position: relative;
-    width: 800px;
-    height: 5px;
-    background: #ddd;
-    outline: none;
-    top: 1px;
-    margin: 10px;  
-}
-
-.slider .range-slider .progress{
-    left: 25%;
-    right: 25%;
-    height: 100%;
-    background: rgb(15,20,24);
-    border-radius: 50px;
-    position: absolute;
-}
-
-
-.slider .range-slider input[type="range"]{
-    position: absolute;
-    top: -8px;
-    width: 101%;
-    -webkit-appearance: none;
-    pointer-events: none;
-    background: none;
-    outline: none;
-}
-
-
-.slider .range-slider input::-webkit-slider-thumb{
-    pointer-events: auto;
-    -webkit-appearance: none;
-    width: 17px;
-    height: 17px;
-    background: rgb(15,20,24);
-    border-radius: 50px;
-}
-
-
-  /* PRICE RANGE */
-.price-range {
-    float: left;
-    display:block;
-}
-
-/* restaurant list */
-
-.restaurantsListPage{
-    font-family: 'Poppins', sans-serif;
-    margin: 0.5em;
-    margin-right: 0;
-    margin-bottom: 1em;
-}
-
-.restaurantsListPage h1{
-    font-size: 2em;
-    font-weight: bold;
-}
-
-.restaurantsList {
-    display: grid;
-    grid-template-columns: 15em 1fr;
-    grid-template-rows: auto 1fr;
-}
-
-.filters {
-    grid-column-start: 1;
-    grid-row: 1 / span 2;
-    position: sticky;
-    top:0;
-    font-family: 'Poppins', sans-serif;
-    padding: 0 10px;
-    padding-bottom: 20px;
-    margin-left: 0.6em;;
-}
-
-.filters p{
-    font-weight: 800;
-}
-
-.restaurants {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    grid-column-start: 2;
-    align-content: flex-start;
-
-}
-
-.orderBy {
-    grid-column-start: 2;
-    display:flex;
-    flex-direction: row;
-    height: 1.2em;
-    margin: 0.5em;
-}
-
-.orderBy #sorter{
-    margin-left: 0.6em;
-    margin-right: 0.4em;
-    border-color:#b6b6b6;
-    font-weight: lighter;
-    color:rgb(123, 123, 123)
-}
-
-
-
-.restaurantsList .restaurantContainer{
-    position: relative;
-    box-shadow: #b6b6b6;
-    display: flex;
-    flex-direction: row;
-    margin:0.5em;
-    padding: 1em;
-    width: 35em;
-    height: 160px;
-    cursor: pointer;
-    margin-right: 1.5em;
-    margin-bottom: 1em;
-
-}
-
-#category ul {
-    display: flex;
-    align-content: space-between;
-    flex-direction: column;
-    flex-grow: 2;
-}
-
-.restaurantsList .restaurantInfo{
-    white-space: nowrap;
-    width: 90%;
-}
-
-
-.restaurantsList .restaurantContainer  img {
-    margin-right: 1em;
-    height: 100%;
-    width: 10em;
-}
-
-.restaurantsList .restaurantInfo #name {
-    align-self: auto;
-    display: block;
-    font-size: 1.2em;
-    font-weight: 900;
-    color: rgb(214, 156, 92);
-    width: fit-content;
-    overflow: hidden;
-}
-
-.restaurantsList .restaurantInfo  #address {
-    padding-bottom: 3em;
-    display: block;
-    font-weight: lighter;
-    font-size: small;
-    width:fit-content;
-    height: fit-content;
-    color:  rgb(91, 90, 90);
-}
-
-
-
-.restaurantsList .restaurantInfo  #price::before {
-    content: "Price range: "
-}
-
-.restaurantsList .restaurantInfo  #price {
-    align-self:baseline;
-    display: block;
-    color:  rgb(91, 90, 90, 0.8);
-    font-weight: 700;
-}
-
-
-.restaurantsList .restaurantInfo  #rating::after {
-    content: "\00a0•\00a0";
-}
-
-.restaurantsList .restaurantInfo  #rating::before {
-    color: rgb(214, 156, 92);
-    content: "\002605 ";
-}
-
-.restaurantsList .restaurantInfo  .likeIcon {
-    cursor: pointer;
-    position: absolute;
-    top: 23px;
-    right:2em;
-    width:20px;
-    height:20px;
-    transition: width 2s, height 2s;
-}
-
-.restaurantsList .restaurantInfo  .likeIcon:hover {
-    width: 4em;
-    height: auto;
-}
-
-.restaurantsList .restaurantInfo  #rating {
-    display:inline-flex;
-    width:fit-content;
-    color:  rgb(91, 90, 90, 0.8);
-    font-weight: 700;
-} 
-
-.restaurantsList .restaurants .restaurantContainer {
-    transition: 0.3s ease-in-out;
-}
-
-.restaurantsList .restaurants .restaurantContainer:hover{
-    box-shadow: 0 0 1em  rgb(183, 181, 181);
-}
-
-/* checkbox pretty */
-.categories input[type=checkbox]{
-    display: block;
-    margin: 0.2em;
-    cursor: pointer;
-    padding: 0.2em;
-  }
-  
-  .categories input[type=checkbox] {
-    display: none;
-  }
-  
-  .categories input[type=checkbox] +label:before {
-    content: "";
-    border: 0.1em solid #000;
-    border-radius: 0.2em;
-    display: inline-flex;
-    flex-direction: row;
-    width: 0.5em;
-    height: 0.5em;
-    padding-top: 0.15em;
-    padding-left: 0.2em;
-    padding-bottom: 0.15em;
-    margin-right: 0.2em;
-    vertical-align: middle;
-    color: transparent;
-    transition: .2s;
-    border-radius: 35px;
-  }
-  
-  .categories input[type=checkbox] + :active:before {
-    transform: scale(2);
-  }
-  
-  .categories input[type=checkbox]:checked + :before {
-    background-color: rgb(214, 156, 92);
-    border-color: rgb(214, 156, 92);
-  }
-  
-  .categories input[type=checkbox]:disabled + :before {
-    transform: scale(3);
-  }
-  
   
 
   @media (max-width: 60em){
@@ -915,216 +491,13 @@ strong{
         width:10px;
         height:10px;
     }
-    
-    
 
   }
   
   
-  /* search box */
-
-
-  .restaurantsList .searchBox{
-    display: block;
-    width:fit-content;
-    height: fit-content;
-    margin-top: 0.4em;
-}
-
-.restaurantsList .searchRestaurant{
-    border-radius: 15px;
-    color:  rgb(91, 90, 90);
-    width: 165px;
-    height: 30px;
-    background-color: rgb(15,20,24, 0.1);
-    border:none;
-}
-
-.searchBoxContainer{
-    width: 120px;
-    height: 15px;
-    display: flex;
-    align-items: center;
-    margin-top: 1em;
-}
-
-.search-bar{
-    width: 120px;
-    height: 15px;
-    background-color: rgb(15,20,24, 0.08);
-    display: flex;
-    align-items: center;
-    border-radius: 60px;
-    padding: 10px 20px;
-}
-
-.search-bar input{
-    width: 110px;
-    background: transparent;
-    flex:1;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    padding-left: 0.25em;
-}
-
-.search-bar button img{
-    width: 25px;
-    height: 25px;
-    bottom: 5px;
-    margin-bottom: 5px;
-    margin-left: -8px;
-}
-
-.search-bar button{
-    border:0;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    display: block;
-}
 
 
 
-/* DROP BUTTON*/
-
-.menu .material-symbols-outlined{
-    color: white;
-}
-
-.toggle{
-    display: none;
-    position: absolute;
-    left: 1em;
-    top: 1.2em;
-}
-
-#drop{
-    display: none;
-
-}
-
-.nav-links-devices{
-    display: none;
-}
-
-/* PROFILE  NAVBAR*/
-
-.nav-links #profile_navbar{
-    display: none;
-    font-family: 'Poppins', sans-serif;
-    position: absolute;
-    left: -3em;
-    z-index: 2;
-    background-color: rgb(24, 31, 36);
-    border: #000;
-    opacity: 1;
-
-
-}
-
-.menu .nav-links #profile_list_item:hover > #profile_navbar {
-    display: block;
-}
-
-.menu .nav-links #profile_navbar:hover {
-    display: block;
-}
-
-.nav-links  #profile_navbar li{
-    background-color: rgb(24, 31, 36);
-    opacity: 1;
-    color: white;
-    text-align: center;
-}
-
-
-@media (max-width: 60em){
-    .toggle{
-        display: block;
-        width: 3em;
-        height: auto;
-    }
-    
-    header.menu .nav-links > ul > li{
-        display: none;
-    }
-
-    .nav-links #cart_list{
-        display: block;
-        position: absolute;
-        top: 0.7em;
-        right: 0;
-    }
-
-    #drop:checked ~ .nav-links-devices{
-        display: block;
-    }
-
-    .nav-links-devices{
-        width: 100vw;
-    }
-
-    .nav-links-devices ul{
-        list-style: none;
-        display: block;
-        text-align: center;
-    }
-
-    .nav-links-devices ul li{
-        font-family: 'Poppins', sans-serif;
-        padding: 1em;
-    }
-
-    .nav-links-devices ul li:hover{
-        background-color: #3d3d3b;
-    }
-
-    .nav-links-devices ul li a{
-        color: white;
-        font-weight: bold;
-        text-decoration: none;
-    }
-    
-    .menu nav{
-        flex-direction: column;
-    }
-
-    /* PROFILE  NAVBAR*/
-
-    .nav-links-devices #profile_navbar{
-        display: none;
-    }
-
-    .menu .nav-links-devices #profile_list_item:hover > #profile_navbar {
-        display: block;
-    }
-
-    .menu .nav-links-devices #profile_navbar:hover {
-        display: block;
-    }
-    .menu #profile_list_item{
-        padding: 0;
-    }
-
-    .menu #profile_list_item > a{
-        padding: 1em;
-        display: block;
-    }
-
-    .nav-links-devices  #profile_navbar li{
-        background-color: rgb(24, 31, 36);
-        opacity: 1;
-        color: white;
-        text-align: center;
-    }
-
-    .nav-links-devices  #profile_navbar li:hover{
-        background-color: rgb(214, 156, 92);
-    }
-
-
-}
 
 
 

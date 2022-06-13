@@ -1,4 +1,8 @@
-
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  
 
 .addRestaurant{
     width: 50em;
