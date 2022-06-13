@@ -491,9 +491,9 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/cart.css">
         <link rel="stylesheet" href="css/restaurantPage.css">
-        <link rel="stylesheet" href="css/position.css">
+        <link rel="stylesheet" href="css/headerFooter.css">
         <link rel="stylesheet" href="css/input_box.css">
         <link rel="stylesheet" href="css/drawler.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
