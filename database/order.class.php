@@ -53,6 +53,35 @@
         
         }
 
+        public static function getOrdersFromRestaurantWithState(PDO $db, int $state_id, int $restaurant_id) : ?array{
+            
+            
+            $stmt = $db->prepare('SELECT "Order".id, "Order".state_id, "Order".customer_id, "Order".date
+                            FROM "OrderDishQuantity" JOIN "Order" ON (OrderDishQuantity.id_order = "Order".id) 
+                            JOIN "Dish" ON (Dish.id = OrderDishQuantity.id_dish) 
+                            WHERE Dish.restaurant_id = :restaurant_id and "Order".state_id = :state_id 
+                            Group by "Order".id ');
+            $stmt->bindParam(':state_id', $state_id);
+            $stmt->bindParam(':restaurant_id', $restaurant_id);
+            $stmt->execute();
+
+
+            $orders = array();
+            while ($order_data = $stmt->fetch()) {
+                
+                $orders[] = new Order(intval($order_data['id']), 
+                                    intval($order_data['state_id']),
+                                    intval($order_data['customer_id']),
+                                    $order_data['date']);
+
+            }
+
+            return $orders;
+        
+        }
+
+        
+
         public static function getOrderActive(PDO $db, int $customer_id) : ?array{
             $stmt = $db->prepare('SELECT * FROM "Order" WHERE state_id<>4 AND customer_id=:customer_id order by date DESC');
             $stmt->bindParam(':customer_id', $customer_id);
@@ -124,6 +153,12 @@
         public function addDishInDatabase(PDO $db, int $id_dish, int $quantity){
             $stmt = $db->prepare('INSERT INTO "OrderDishQuantity" (id_order, id_dish, quantity) VALUES (?, ?, ?)');
             $stmt->execute(array($this->id, $id_dish, $quantity));
+        }
+
+        public function updateInDatabase(PDO $db){
+            $stmt = $db->prepare('UPDATE "Order" SET state_id = ? WHERE id = ?');
+            
+            $stmt->execute(array($this->state_id ,$this->id));
         }
 
     }

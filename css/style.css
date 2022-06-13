@@ -403,12 +403,16 @@ header.menu{
 #add_order #img_order{
     width: 100%;
     object-fit: contain;
-    height: 70%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
 }
+#add_order header{
+    height: 70%;
+}
 
 #add_order main{
+    display: block;
     margin: 1em;
 }
 

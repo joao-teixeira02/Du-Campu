@@ -8,12 +8,16 @@
         public string $username;
         public string $password;
         public int $photo;
+        public string $address;
+        public string $name;
         
-        public function __construct(int $id, string $username, string $password, int $photo){ 
+        public function __construct(int $id, string $username, string $password, int $photo, string $address, string $name){ 
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->photo = $photo;
+        $this->address = $address;
+        $this->name = $name;
         }
 
         static function getUser(PDO $db, string $username) : ?User {
@@ -26,7 +30,30 @@
                 intval($user_data['id']),
                 $user_data['username'],
                 $user_data['password'],
-                intval($user_data['photo'])
+                intval($user_data['photo']),
+                $user_data['address'],
+                $user_data['name']
+                );
+                
+                break;
+            }
+    
+            return $user;
+        }
+
+        static function getUserById(PDO $db, int $id) : ?User {
+            $stmt = $db->prepare('SELECT * FROM User WHERE User.id=?');
+            $stmt->execute(array($id));
+        
+            $user = null;
+            while ($user_data = $stmt->fetch()) {
+                $user = new User(
+                intval($user_data['id']),
+                $user_data['username'],
+                $user_data['password'],
+                intval($user_data['photo']),
+                $user_data['address'],
+                $user_data['name']
                 );
                 
                 break;

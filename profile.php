@@ -70,6 +70,11 @@
                 <span class="material-symbols-outlined">restaurant</span>
                     <p>My Restaurants</p>
                 </a>
+            
+                <a class="menu_option" href="profile.php?page=restaurantOrders">
+                <span class="material-symbols-outlined">restaurant</span>
+                    <p>My Restaurants Orders</p>
+                </a>
             <?php
             }
             ?>
@@ -88,6 +93,8 @@
             show_favorites();
         }else if ($page === 'orders') {
             show_orders();
+        }else if ($page === 'restaurantOrders') {
+            show_owner_orders();
         }
         ?>
 
@@ -96,7 +103,7 @@
     </main>
 
     <?php 
-        if ($page === 'orders') {
+        if ($page === 'orders' || $page === 'restaurantOrders') {
             show_order_details_popup();
         }
 
