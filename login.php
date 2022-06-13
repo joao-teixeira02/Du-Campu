@@ -6,9 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/position.css">
-        <link rel="stylesheet" href="css/loginInes.css">
+        <link rel="stylesheet" href="css/register.css">
         <title>Du'Campu</title>
     </head>
     <body>

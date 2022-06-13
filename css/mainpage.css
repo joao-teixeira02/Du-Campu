@@ -1,12 +1,10 @@
 *{
     margin:0em;
     padding: 0em;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow:hidden;
   }
 
 body{ 
-    /* serve para o footer possa ficar sempre no fundo da pagina*/
    min-height: 100vh;
    display:flex; 
    flex-direction:column; 
