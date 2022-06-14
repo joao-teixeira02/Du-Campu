@@ -8,7 +8,7 @@
 
 function restaurant_form(string $action, Restaurant $restaurant = null){
     $name = '';
-    $photo = '/images/restaurant1/capa.jpg';
+    $photo = '/images/restaurant/defaultRestaurantPhoto.png';
     $address = '';
     $id = '';
     $edit = false;
@@ -38,12 +38,12 @@ function restaurant_form(string $action, Restaurant $restaurant = null){
 
                 <div id="photo_field">
                     <img src="<?php echo htmlentities($photo);?>" id="photo" alt="Restaurant image" width="100%" height="200px"/>
-                    <input type="file" name="fileToUpload" require id="fileToUpload">
+                    <input type="file" name="fileToUpload" required id="fileToUpload">
                 </div>
         
 
                 <label for="newRestaurantName" > Restaurant Name </label>
-                <input type="text" class="attr" name="n" require id="newRestaurantName" <?php
+                <input type="text" class="attr" name="n" required id="newRestaurantName" <?php
                 if($edit){
                     echo 'value = "'.htmlentities($name) .'" placeholder="'. htmlentities($name) .'"';
                 }else{
@@ -52,7 +52,7 @@ function restaurant_form(string $action, Restaurant $restaurant = null){
                 ?>
                 />
                 <label for="address" > Address </label>
-                <input type="text" class="attr" name="a" require id="address" <?php
+                <input type="text" class="attr" name="a" required id="address" <?php
                 if($edit){
                     echo 'value = "'.htmlentities($address) .'" placeholder="'. htmlentities($address) .'"';
                 }else{

@@ -52,7 +52,7 @@
             $restaurant = Restaurant::getRestaurant($db, $id);
         ?>
 
-        <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo (htmlentities($restaurant->getPhoto($db, $id))); ?>">
+        <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo (htmlentities(Restaurant::getPhoto($db, $restaurant->id))); ?>">
         <?php
             global $session;
             if ($session->isLogged() && $session->getUserId() !== $restaurant->owner_id) { ?>
@@ -241,7 +241,7 @@
                     <input id="id" name="id" type = "hidden" value="" />
                     <div id="image-container">
                         <img id="img_dish" src="images/photos/profile.jpg" />
-                        <input type="file" name="fileToUpload" id="dish_image_upload">
+                        <input type="file" name="fileToUpload" id="dish_image_upload" >
                     </div>
                     <h3 id="name">Dish Name</h3>
                     <input name="n" class="attr" id="dish_name" type="text" placeholder="Dish Name" required="required" />

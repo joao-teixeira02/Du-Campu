@@ -896,3 +896,15 @@ label[for^="see_reply_"]{
     width: 50px;
     height: 50px;
 }
+
+.white_button{
+    background-color: rgb(214, 156, 92);
+    color: white;
+    border:none;
+    border-radius: 15px;
+    padding: 1em;
+}
+
+.white_button:hover{
+    box-shadow: 0 0 1em rgb(183 181 181);
+}
