@@ -43,7 +43,6 @@ header.menu{
 
 .menu .nav-links ul li a{
     color: white;
-    font-size: 18px;
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
 }
@@ -110,6 +109,7 @@ header.menu{
 .nav-links #profile_navbar{
     display: none;
     font-family: 'Poppins', sans-serif;
+    font-size: small;
     position: absolute;
     left: -3em;
     z-index: 2;
@@ -130,7 +130,13 @@ header.menu{
     background-color: rgb(24, 31, 36);
     opacity: 1;
     color: white;
-    text-align: center;
+    font-weight: lighter;
+    font-size: medium;
+    width: 100%;
+}
+
+.nav-links  #profile_navbar li:hover{
+    background-color: rgb(214, 156, 92);
 }
 
 
