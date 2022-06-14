@@ -4,6 +4,7 @@ const rangeR = document.querySelector('.range-max')
 const categories_input = document.querySelectorAll('.categories input')
 const asc = document.querySelector('#asc')
 const sorter = document.querySelector('#sorter')
+const csrf = sorter.getAttribute('csrf')
 const price_input = document.querySelectorAll('.price-range input')
 
 if (rangeL) {
@@ -128,6 +129,7 @@ async function updateRestaurantList() {
         const likeIcon = document.createElement('img')
         likeIcon.setAttribute("id", "likeIcon"+restaurant.id)
         likeIcon.setAttribute("data-id", restaurant.id)
+        likeIcon.setAttribute("csrf", csrf)
         if (favorites.includes(restaurant.id)){
           likeIcon.setAttribute('isSelected', '')
           likeIcon.src = 'images/heart.png'

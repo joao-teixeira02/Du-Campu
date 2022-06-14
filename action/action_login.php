@@ -9,6 +9,8 @@
     if (isset($_POST['csrf'])) {
 
         if ($_SESSION['csrf'] !== $_POST['csrf']) {
+            print_r($_POST);
+            print_r($_SESSION['csrf']);
             die();
         }
 

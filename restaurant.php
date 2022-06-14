@@ -406,7 +406,18 @@
                 <span class="material-symbols-outlined">
                 chat
                 </span>
-                Replies
+                <?php if (sizeof($reply) !== 0) {
+                    echo("Replies");
+                }
+                else{
+
+                    if (User::isCustomer($db, $session->getUsername()))  {
+                        echo("No replies");
+                    }
+                    else echo("Add reply");
+
+                }
+                ?>
 
                 </label>       
             </section>
