@@ -16,12 +16,6 @@
 
         $db = getDatabaseConnection();
 
-        $query = 'DELETE FROM DishType WHERE DishType.id_dish=?';
-
-        $stmt = $db->prepare($query);
-
-        $stmt->execute(array($id_dish));
-
         $query = 'DELETE FROM Dish WHERE Dish.id=?';
 
         $stmt = $db->prepare($query);
