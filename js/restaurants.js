@@ -68,14 +68,13 @@ async function updateRestaurantList() {
     const response2 = await fetch('/api/api_get_session_id.php')
     const user_id = await response2.json()
 
-    console.log(user_id)
-
     const section = document.querySelector('.restaurants')
     section.innerHTML = ''
 
     for (const restaurant of restaurants) {
 
-      console.log(restaurant.owner_id)
+      const restaurantLikeIcon = document.createElement('div')
+      restaurantLikeIcon.classList.add('restaurantLikeIcon')
 
       const restaurantContainer = document.createElement('div')
       restaurantContainer.classList.add("restaurantContainer")
@@ -122,8 +121,6 @@ async function updateRestaurantList() {
       price.innerHTML = price_str
       restaurantInfo.appendChild(price)
 
-      console.log(user_id)
-
       if (user_id == 0) {
 
       }
@@ -140,12 +137,13 @@ async function updateRestaurantList() {
           likeIcon.classList.add("likeIcon")
           likeIcon.style.width = "30px"
           likeIcon.style.height = "30px"
-          restaurantInfo.appendChild(likeIcon)
+          restaurantLikeIcon.appendChild(likeIcon)
       }
 
 
       restaurantContainer.appendChild(restaurantInfo)
-      section.appendChild(restaurantContainer)
+      restaurantLikeIcon.appendChild(restaurantContainer)
+      section.appendChild(restaurantLikeIcon)
 
       restaurantContainer.addEventListener("click",()=>{location.href='restaurant.php?id=' + restaurant.id})
       

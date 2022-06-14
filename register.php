@@ -14,6 +14,10 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/registerLogin.css">
+        <link rel="stylesheet" href="css/warnings.css">
+
+        <script type="text/javascript" src="js/validateRegister.js" defer></script> 
+
         <title>Du'Campu</title>
     </head>
     <body>
@@ -29,52 +33,65 @@
                 </div> 
 
                 <h2>Register</h2>
-                <form >
+                <form class="register_form">
                     <br>
 
                      <div class="input_div">
-                        <input class="input" type="text" placeholder=" " name="n" id="name_input" value="<?php echo $session->getName(); ?>" required="required"/> 
+                        <input class="input" type="text" placeholder="" name="n" id="name_input" required="required"/> 
                         <label for="name_input" class="input_label">Name</label>
+                        <span class="hint">Only letters</span>
                     </div>   
                     
                     <br>
 
                     <div class="input_div">
-                        <input class="input" type="text" placeholder=" " name="u" id="username_input" value="<?php echo $session->getUsername(); ?>" required="required"/>
+                        <input class="input" type="text" placeholder="" name="u" id="username_input" required="required"/>
                         <label for="username_input" class="input_label">Username</label>
+                        <span class="hint">Only lowercase letters and numbers</span>
                     </div>   
 
                     <br>
 
                     <div class="input_div">
-                        <input class="input" type="text" placeholder=" " name="m" id="mail_input" value="<?php echo $session->getEmail(); ?>" required="required"/>
+                        <input class="input" type="text" placeholder="" name="m" id="mail_input" required="required"/>
                         <label for="mail_input" class="input_label">Email</label>
+                        <span class="hint">Not a valid email</span>
                     </div> 
                         
                     <br>
 
                     <div class="input_div">
-                        <input class="input" type="text" placeholder=" " name="ph" id="phone_input" value="<?php echo $session->getPhone(); ?>" required=""/>
+                        <input class="input" type="text" placeholder="" name="ph" id="phone_input" required=""/>
                         <label for="phone_input" class="input_label">Phone Number</label>
+                        <span class="hint">Must have 9 numbers</span>
                     </div> 
 
                     <br>
 
                     <div class="input_div">
-                        <input class="input" type="text" placeholder=" " name="a" id="address_input" value="<?php echo $session->getAddress(); ?>" required=""/>
+                        <input class="input" type="text" placeholder="" name="a" id="address_input" required=""/>
                         <label for="address_input" class="input_label">Address</label>
                     </div> 
 
                     <br>
 
                     <div class="input_div">
-                        <input class="input" type="password" placeholder=" " name="p" id="password_input" value="<?php echo $session->getPassword(); ?>" required="required"/>
+                        <input class="input" type="password" placeholder="" name="p" id="password_input" required="required"/>
                         <label for="password_input" class="input_label">Password</label>
                     </div>  
+
+                    <br>
+
+                    <div class="input_div">
+                        <input class="input" type="password" placeholder ="" name="p2" id="password_repeat_input" required="required"/>
+                        <label for="password_input" class="input_label">Repeat Password</label>
+                        <span class="hint">Passwords must match</span>
+                    </div>
 
                     <br>   
 
                     <input type="hidden" name="flag" value="<?php echo ($flag); ?>"/>
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 
                     <input formaction="/action/action_register.php" formmethod="post" type="submit" class="white_button" value="Register">
                     

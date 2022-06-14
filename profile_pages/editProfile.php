@@ -14,37 +14,46 @@ function show_profile() {
     <h1>Personal Information</h1>
         <section id="account">
         <div id="photo_field">
-                <form action="/action/action_profile.php" method="post" enctype="multipart/form-data">
-                    <label>Photo</label>
-                    <img id="photo" src="<?php echo $user_photo; ?>" alt="Profile Picture">
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                    <input type="submit" name="Submit" value="Upload">
-                </form>
-            </div>
+            <form action="/action/action_profile.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                <label>Photo</label>
+                <img id="photo" src="<?php echo htmlentities($user_photo); ?>" alt="Profile Picture">
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" name="Submit" value="Upload">
+            </form>
+        </div>
             <section id="fields">
                 <form action="/action/action_profile.php" method="post" class="profile_form">
                     <label>Name</label>
-                    <input name="n" class="attr" type="text" placeholder="Name" value="<?php echo $session->getName(); ?>" required="required">
+                    <input name="n" class="attr" type="text" placeholder="Name" value="<?php echo htmlentities($session->getName()); ?>" required="required">
+                    <span class="hint">Only letters</span>
                     <label>Username</label>
-                    <input name="u" class="attr" type="text" placeholder="Username" value="<?php echo $session->getUsername(); ?>" required="required">
+                    <input name="u" class="attr" type="text" placeholder="Username" value="<?php echo htmlentities($session->getUsername()); ?>" required="required">
+                    <span class="hint">Only lowercase letters and numbers</span>
                     <label>Email</label>
-                    <input name="m" class="attr" type="text" placeholder="Email" value="<?php echo $session->getEmail(); ?>" required="required">
+                    <input name="m" class="attr" type="text" placeholder="Email" value="<?php echo htmlentities($session->getEmail()); ?>" required="required">
+                    <span class="hint">Not a valid email</span>
                     <label>Phone</label>
-                    <input name="ph" class="attr" type="text" placeholder="Phone Number" value="<?php echo $session->getPhone(); ?>">
+                    <input name="ph" class="attr" type="text" placeholder="Phone Number" value="<?php echo htmlentities($session->getPhone()); ?>">
+                    <span class="hint">Must have 9 numbers</span>
                     <label>Address</label>
-                    <input name="a" class="attr" type="text" placeholder="Address" value="<?php echo $session->getAddress(); ?>">
-                    <label>Password</label>
-                    <input name="p" class="attr" type="password" placeholder="Password" value="<?php echo $session->getPassword(); ?>" required="required">
+                    <input name="a" class="attr" type="text" placeholder="Address" value="<?php echo htmlentities($session->getAddress()); ?>">
+                    <label>Optional</label>
+                    <input name="p" class="attr" type="password" placeholder="New Password" value="">
+                    <input name="p2" class="attr" type="password" placeholder="Repeat New Password" value="">
+                    <span class="hint">Passwords must match</span>
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <input type="submit" name="Submit" value="Update">
                 </form>
                 <form>
-                    <input formaction="/action/action_logout.php" type="submit" value="Logout">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                    <input formaction="/action/action_logout.php" formmethod="POST" type="submit" value="Logout">
                 </form>
                 <form>
-                    <input formaction="/action/action_delete_account.php" type="submit" value="Delete Account">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                    <input formaction="/action/action_delete_account.php" formmethod="POST" type="submit" value="Delete Account">
                 </form>
             </section>
-            
         </section>
     </section>
 <?php

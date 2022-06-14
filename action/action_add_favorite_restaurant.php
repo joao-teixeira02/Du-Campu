@@ -9,16 +9,23 @@
 
     $db =  getDatabaseConnection();
 
-    $id_restaurant = $_GET['r_id'];
+    if (isset($_POST['r_id']) && isset($_POST['csrf'])) {
 
-    $query = 'INSERT INTO FavoriteRestaurant (id_user, id_restaurant) VALUES (:id_user, :id_restaurant)';
+        if ($_SESSION['csrf'] !== $_POST['csrf']) {
+            die;
+        }
 
-    $stmt = $db->prepare($query);
+        $id_restaurant = $_POST['r_id'];
 
-    $stmt->bindParam(':id_user', $session->getUserId());
-    $stmt->bindParam(':id_restaurant', $id_restaurant);
+        $query = 'INSERT INTO FavoriteRestaurant (id_user, id_restaurant) VALUES (:id_user, :id_restaurant)';
 
-    $stmt->execute();
+        $stmt = $db->prepare($query);
+
+        $stmt->bindParam(':id_user', $session->getUserId());
+        $stmt->bindParam(':id_restaurant', $id_restaurant);
+
+        $stmt->execute();
+    }
 
     header("Location:".$_SERVER['HTTP_REFERER']."");
 ?>

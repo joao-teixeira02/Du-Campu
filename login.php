@@ -1,15 +1,19 @@
 <?php
     require_once(__DIR__ . '/template/essentials.tpl.php');
     require_once(__DIR__ . '/utils/session.php');
+    $session = new Session();
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="css/registerLogin.css">
+        <link rel="stylesheet" href="css/warnings.css">
         <title>Du'Campu</title>
     </head>
     <body>
+
+    <?php show_warnings();?>
 
     <section class="login">
 
@@ -26,7 +30,7 @@
             </div> 
 
                 <h2> Login</h2>
-                <form >
+                <form action="/action/action_login.php" method="post" enctype="multipart/form-data">
                     <br>
 
                     <div class="input_div">
@@ -43,7 +47,9 @@
 
                     <br>
 
-                    <input formaction="/action/action_login.php" formmethod="post" type="submit" class="white_button" value="Login">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+
+                    <input type="submit" class="white_button" value="Login">
 
                 </form>
 
