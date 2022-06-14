@@ -3,7 +3,7 @@ Afonso Baldo <br>
 Inês Cardoso <br>
 João Teixeira
 
-Implemented Features:
+**Implemented Features:**
 
 All users are able to:
 Register a new account.
@@ -23,8 +23,8 @@ Add, edit and delete dishes from each one of their restaurants. These includes t
 List and respond to reviews made by customers.
 List orders and change their state (e.g., received, preparing, ready, delivered).
 
-Technologies used:
+**Technologies used:**
 HTML, CSS, PHP, Javascript, Ajax/JSON, PDO/SQL (using sqlite).
 
-Security:
+**Security:**
 The website is secure as possible.
