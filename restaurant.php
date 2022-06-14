@@ -241,7 +241,7 @@
                     <input id="id" name="id" type = "hidden" value="" />
                     <div id="image-container">
                         <img id="img_dish" src="images/photos/profile.jpg" />
-                        <input type="file" name="fileToUpload" id="dish_image_upload">
+                        <input type="file" name="fileToUpload" id="dish_image_upload" >
                     </div>
                     <h3 id="name">Dish Name</h3>
                     <input name="n" class="attr" id="dish_name" type="text" placeholder="Dish Name" required="required" />
@@ -499,8 +499,9 @@
         <link rel="stylesheet" href="css/cart.css">
         <link rel="stylesheet" href="css/restaurantPage.css">
         <link rel="stylesheet" href="css/headerFooter.css">
-        <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="css/inputBox.css">
         <link rel="stylesheet" href="css/drawler.css">
+        <link rel="stylesheet" href="css/restaurantList.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
         <script type="text/javascript" src="js/cart.js" defer></script>
         <script type="text/javascript" src="js/likeButtonHeader.js" defer></script>
