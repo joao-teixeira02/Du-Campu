@@ -13,4 +13,3 @@ INSERT INTO Category (name) VALUES ('Taiwanese');
 INSERT INTO Category (name) VALUES ('Thailandese');
 INSERT INTO Category (name) VALUES ('Indian');
 INSERT INTO Category (name) VALUES ('Pizza');
-

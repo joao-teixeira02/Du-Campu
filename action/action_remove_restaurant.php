@@ -16,20 +16,14 @@
 
         $db = getDatabaseConnection();
 
-        $query = 'DELETE FROM RestaurantCategory WHERE RestaurantCategory.id_restaurant=?';
+        $query = 'DELETE FROM Restaurant WHERE Restaurant.id=?';
 
         $stmt = $db->prepare($query);
 
-        $stmt->execute(array($id_dish));
-
-        $query = 'DELETE FROM Dish WHERE Dish.id=?';
-
-        $stmt = $db->prepare($query);
-
-        $stmt->execute(array($id_dish));
+        $stmt->execute(array($id_restaurant));
 
     }
 
-    header('Location: '. $_SERVER['HTTP_REFERER']);
+    header('Location: /profile.php?page=myRestaurants');
 
 ?>
