@@ -261,6 +261,10 @@
     grid-template-rows: auto 1fr;
 }
 
+.restaurantsList .restaurant_photo{
+    min-width: 10em;
+}
+
 .restaurants {
     display: flex;
     flex-direction: row;
