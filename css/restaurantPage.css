@@ -424,6 +424,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.restaurant-page header .morada{
+    color: gray;
+}
+
 .restaurant-page img#capaRestaurante {
     width: 100%;
     object-fit: cover;

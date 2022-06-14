@@ -78,6 +78,7 @@
                 }
                 ?>
             </h1>
+            <p class="morada"> <?php echo htmlentities($restaurant->address); ?></p>
             <p id="classificao"><?php echo ($restaurant->calcRating($db, $id));
                 $categories = Restaurant::getCategory($db, $id);
                 foreach($categories as $category){
@@ -90,6 +91,7 @@
                 }
             ?>
             </p>
+
             
         </header>
         <?php
@@ -130,7 +132,7 @@
                             data-dish_id="<?php echo($dish->id)?>"
                             data-dish_name="<?php echo(htmlentities($dish->getName()))?>"
                             data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $dish->id)))?>"
-                            data-dish_price="<?php echo($dish->getPrice())?>"  >
+                            data-dish_price="<?php echo(number_format($dish->getPrice(), 2, '.', ''));?>"  >
                             <div class = "photoContainer">
                             <img src="<?php echo(htmlentities($dish->getPhoto($db, $dish->id))); ?>" alt="<?php echo(htmlentities($dish->getName())); ?>" width="200px" height="200px" />
                             <?php 
@@ -150,7 +152,7 @@
                             ?>
                              </div>
                             <figcaption> <?php echo(htmlentities($dish->getName())); ?> </figcaption>
-                            <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
+                            <p class="preco"><?php echo(number_format($dish->getPrice(), 2, '.', '')); ?> &nbsp;€</p>
 
                             <?php 
                             if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
@@ -164,7 +166,7 @@
                             data-dish_id="<?php echo($dish->id)?>"
                             data-dish_name="<?php echo(htmlentities($dish->getName()))?>"
                             data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $dish->id)))?>"
-                            data-dish_price="<?php echo($dish->getPrice())?>"
+                            data-dish_price="<?php echo(number_format($dish->getPrice(), 2, '.', ''))?>"
                             data-dish_type="<?php echo (htmlentities($type)); ?>">
                             <?php
                             }
