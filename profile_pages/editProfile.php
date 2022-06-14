@@ -1,5 +1,19 @@
 <?php
+ declare(strict_types = 1);
 
+ function create_delete_popup() { ?>
+    <article id="delete_popup" class="UseInputStyle full_window_popup">
+        <p>
+            Are you sure you want to delete your account? :(
+        </p>
+        <form id="delete_yes">
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+            <input type="submit" formaction="/action/action_logout.php" formmethod="post" value="Yes">
+        </form>
+        <input clickable onclick="location.href='profile.php'" value="No"/>
+    </article>
+<?php
+}
 
 function show_profile() {
 
@@ -48,10 +62,7 @@ function show_profile() {
                 <form>
                     <input formaction="/action/action_logout.php" formmethod="POST" type="submit" value="Logout">
                 </form>
-                <form>
-                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-                    <input formaction="/action/action_delete_account.php" formmethod="POST" type="submit" value="Delete Account">
-                </form>
+                <input type="button" clickable onclick="create_delete_popup()" value="Delete Account">
             </section>
         </section>
     </section>
