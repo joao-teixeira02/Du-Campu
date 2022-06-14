@@ -46,7 +46,6 @@ function show_profile() {
                     <input type="submit" name="Submit" value="Update">
                 </form>
                 <form>
-                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <input formaction="/action/action_logout.php" formmethod="POST" type="submit" value="Logout">
                 </form>
                 <form>
