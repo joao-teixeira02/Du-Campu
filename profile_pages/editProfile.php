@@ -4,13 +4,15 @@
  function create_delete_popup() { ?>
     <article id="delete_popup" class="UseInputStyle full_window_popup">
         <p>
-            Are you sure you want to delete your account? :(
+            Are you sure you want to delete your account?
         </p>
+        <div id="select_btns">
         <form id="delete_yes">
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-            <input type="submit" formaction="/action/action_logout.php" formmethod="post" value="Yes">
+            <input clickable type="submit" formaction="/action/action_delete_account.php" formmethod="post" value="Yes">
         </form>
-        <input clickable onclick="location.href='profile.php'" value="No"/>
+        <input clickable type="button" id="delete_no" value="No"/>
+        </div>
     </article>
 <?php
 }
@@ -62,7 +64,7 @@ function show_profile() {
                 <form>
                     <input formaction="/action/action_logout.php" formmethod="POST" type="submit" value="Logout">
                 </form>
-                <input type="button" clickable onclick="create_delete_popup()" value="Delete Account">
+                <input id="delete_account_button" type="button" clickable onclick="open_delete_popup()" value="Delete Account">
             </section>
         </section>
     </section>
