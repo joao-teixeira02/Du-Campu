@@ -5,7 +5,9 @@ body{
   
 
 .addRestaurant{
-    width: 50em;
+    width: fit-content;
+    max-width: 90%;
+
     margin: auto;
 }
 
@@ -14,3 +16,6 @@ body{
 }
 
 
+#restaurant_list {
+    overflow-x: hidden;
+}
