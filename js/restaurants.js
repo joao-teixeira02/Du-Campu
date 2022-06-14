@@ -145,6 +145,7 @@ async function updateRestaurantList() {
 
       restaurantContainer.addEventListener("click",(e)=>{ 
         if(!e.target.id.includes('likeIcon')){
+          
           location.href='restaurant.php?id=' + restaurant.id;
         }
       })
