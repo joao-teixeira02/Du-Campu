@@ -112,12 +112,12 @@ function show_restaurant_category($selected = array()){ ?>
 
         foreach(Category::getCategories($db) as $category ){
             if(in_array($category->name, $selected)){
-                echo '<input type="checkbox" checked id="'.htmlentities($category->id).'" name="'.htmlentities($category->name).'" > ';
+                echo '<input type="checkbox" checked id="'.$category->id.'" name="'.htmlentities($category->name).'" > ';
             }else{
-                echo '<input type="checkbox" id="'.htmlentities($category->id).'" name="'.htmlentities($category->name).'" > ';
+                echo '<input type="checkbox" id="'.$category->id.'" name="'.htmlentities($category->name).'" > ';
             }
             ?>
-            <label for="<?php echo (htmlentities($category->id));?>" >
+            <label for="<?php echo ($category->id);?>" >
             <?php echo (htmlentities($category->name));?></label> 
             <br>
             <?php 

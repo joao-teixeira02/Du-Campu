@@ -3,9 +3,15 @@
 
 	require_once(__DIR__ .'/../database/connection.db.php');
 
+    $session = new Session();
+
 	$db = getDatabaseConnection();
 
-    if (isset($_POST['n']) && isset($_POST['p']) && isset($_POST['t']) && isset($_POST['id'])) {
+    if (isset($_POST['n']) && isset($_POST['p']) && isset($_POST['t']) && isset($_POST['id']) && isset($_POST['csrf'])) {
+
+        if ($_SESSION['csrf'] !== $_POST['csrf']) {
+            die;
+        }
 
         $name = $_POST['n'];
         $price = $_POST['p'];

@@ -56,7 +56,7 @@
         <?php
             global $session;
             if ($session->isLogged() && $session->getUserId() !== $restaurant->owner_id) { ?>
-                <img id="likeRestaurant" width="10px" height="10px" src="" data-restaurant_id="<?php echo($id); ?>"/>
+                <img id="likeRestaurant" width="10px" height="10px" src="" data-restaurant_id="<?php echo($id); ?>" csrf="<?= $_SESSION['csrf']?>"/>
             <?php
             }
         ?>
@@ -143,7 +143,8 @@
                                 }else{
                                     echo "images/heartNotSelected.png";
                                 }
-                            ?>"  />
+                            ?>"
+                            csrf="<?= $_SESSION['csrf']?>"/>
                             <?php
                             }
                             ?>
@@ -154,7 +155,11 @@
                             <?php 
                             if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === $restaurant->owner_id) {
                             ?>
-                            <input type="image" class="redCross" src="images/red_cross.png" onclick="location.href='/action/action_remove_dish.php?id=<?php echo($dish->id); ?>'" />
+                            <form>
+                                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                                <input type="hidden" name="id" value="<?php echo($dish->id); ?>">
+                                <input formaction="/action/action_remove_dish.php" formmethod="post" type="image" class="redCross" src="images/red_cross.png" />
+                            </form>
                             <input type="image" class="editDishButton" src="images/editIcon.png" clickable onclick="open_edit_dish_popup(this)"
                             data-dish_id="<?php echo($dish->id)?>"
                             data-dish_name="<?php echo(htmlentities($dish->getName()))?>"
@@ -181,7 +186,7 @@
                             data-dish_price="<?php echo($dish->getPrice()); ?>" >
                             <img src="<?php echo(htmlentities($dish->getPhoto($db, $id))); ?>" alt="<?php echo(htmlentities($dish->getName())); ?>" width="200px" height="200px" />
                             <figcaption> <?php echo(htmlentities($dish->getName())); ?> </figcaption>
-                            <p class="preco"><?php echo(htmlentities($dish->getPrice())); ?> &nbsp;€</p>
+                            <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
                         </figure>
                         <?php 
                         }
@@ -244,6 +249,7 @@
                     <input name="p" class="attr" id="dish_price" type="text" placeholder="Dish Price" required="required" />
                     <h3 id="type">Dish Type</h3>
                     <input name="t" class="attr" id="dish_type" type="text" placeholder="Dish Type" required="required" />
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <button clickable type="submit" id="edit_dish" >Add Dish</button>
                 </form>
             </main>
@@ -270,6 +276,7 @@
                     <h3 id="price">Price</h3>
                     <input name="p" class="attr" id="dish_price" type="text" placeholder="Dish Proce" required="required" />
                     <input name="t" id="dish_type" type="hidden" value=""/>
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <button clickable type="submit" id="add_new_dish" >Add Dish</button>
                 </form>
             </main>
@@ -319,6 +326,7 @@
                     <input name="p" class="attr" id="dish_price" type="text" placeholder="" required="required" />
                     <h3 id="type">Dish Type</h3>
                     <input name="t" class="attr" id="dish_type" type="text" placeholder="" required="required" />
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <button clickable type="submit" id="edit_dish" >Edit Dish</button>
                 </form>
             </main>
@@ -350,7 +358,7 @@
                 <h2 id="dish_price"></h2>
 
 
-                <form id="pedido_info" action="/action/action_add_dish_cart.php" method="get">
+                <form id="pedido_info" action="/action/action_add_dish_cart.php" method="post">
                     <div class="select_quantity">
                         <img id="minus_dish" clickable src="images/minus_light.png" width="50px" height="50px" alt="minus one dish" />
                         <span id="quantity">1</span>
@@ -358,6 +366,7 @@
                         <input id="id_dish_input" name="id_dish" type = "hidden" value="1" />
                         <img id="add_dish" clickable src="images/plus_light.png" width="50px" height="50px" alt="plus one dish" />
                     </div>
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     
                     <button clickable type="submit" id="add_cart" > Add to order</button>
                 </form>
@@ -396,6 +405,7 @@
                         <form class = "addReply">
                             <input class="reply" type="text-area" placeholder="Write your reply here" name="t" id="reply_input" required="required">
                             <input type="hidden" name="r" value="<?php echo($review->id); ?>">
+                            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                             <input formaction="/action/action_reply.php" formmethod="post" type="submit" class="white_button" value="Reply">
                         </form>
                 <?php
@@ -443,6 +453,7 @@
                 <input type="radio" id="star1" name="p" value="1"> <label for="star1" ></label>
                 </div>
                 <input type="hidden" name="r_id" value="<?php echo($id); ?>">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             <input formaction="/action/action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
         </form>
     <?php

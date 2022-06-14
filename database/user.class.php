@@ -76,7 +76,7 @@
 
         static function isCustomer(PDO $db, string $username) : bool {
 
-            $stmt = $db->prepare('SELECT Owner.id FROM Owner INNER JOIN User ON (Owner.id=User.id AND User.username=?)');
+            $stmt = $db->prepare('SELECT Owner.id as id FROM Owner INNER JOIN User ON (Owner.id=User.id AND User.username=?)');
 
             $stmt->execute(array($username));
 

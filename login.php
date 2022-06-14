@@ -48,6 +48,8 @@
 
                     <br>
 
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+
                     <input formaction="/action/action_login.php" formmethod="post" type="submit" class="white_button" value="Login">
 
                 </form>

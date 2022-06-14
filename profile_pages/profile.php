@@ -33,17 +33,21 @@ function show_profile() {
                     <input name="p" class="attr" type="password" placeholder="New Password" value="">
                     <input name="p2" class="attr" type="password" placeholder="Repeat New Password" value="">
                     <span class="hint">Passwords must match</span>
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <input type="submit" name="Submit" value="Update">
                 </form>
                 <form>
-                    <input formaction="/action/action_logout.php" type="submit" value="Logout">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                    <input formaction="/action/action_logout.php" formmethod="POST" type="submit" value="Logout">
                 </form>
                 <form>
-                    <input formaction="/action/action_delete_account.php" type="submit" value="Delete Account">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                    <input formaction="/action/action_delete_account.php" formmethod="POST" type="submit" value="Delete Account">
                 </form>
             </section>
             <div id="photo_field">
                 <form action="/action/action_profile.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     <label>Photo</label>
                     <img id="photo" src="<?php echo htmlentities($user_photo); ?>" alt="Profile Picture">
                     <input type="file" name="fileToUpload" id="fileToUpload">

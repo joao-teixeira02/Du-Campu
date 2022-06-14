@@ -125,12 +125,13 @@
                 <h1 id="dish_name">Chicken Nuggets</h1>
                 <h2 id="dish_price">2.94€</h2>
 
-                <form id="pedido_info" action="/action/action_add_dish_cart.php" method="get">
+                <form id="pedido_info" action="/action/action_add_dish_cart.php" method="post">
                     <div class="select_quantity">
                         <img id="minus_dish" clickable src="images/minus_light.png" width="50px" height="50px" alt="minus one dish" />
                         <span id="quantity">1</span>
                         <input id="quantity_input" name="dish_quantity" type = "hidden" value="1" />
                         <input id="id_dish_input" name="id_dish" type = "hidden" value="1" />
+                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                         <img id="add_dish" clickable src="images/plus_light.png" width="50px" height="50px" alt="plus one dish" />
                     </div>
                     
@@ -169,6 +170,7 @@
                         <form class = "addReply">
                             <input class="reply" type="text-area" placeholder="Write your reply here" name="t" id="reply_input" required="required">
                             <input type="hidden" name="r" value="<?php echo($review->id); ?>">
+                            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                             <input formaction="/action/action_reply.php" formmethod="post" type="submit" class="white_button" value="Reply">
                         </form>
                 <?php
@@ -195,14 +197,16 @@
             
             <img id="add_review_photo" alt="profile image" src="<?php echo htmlentities($photo); ?>" />
             
-                <div class = "classification">
-                <input type="radio" id="star5" name="p" value="5"> <label for="star5" required="required"></label>
-                <input type="radio" id="star4" name="p" value="4"> <label for="star4"></label>
-                <input type="radio" id="star3" name="p" value="3"> <label for="star3"></label>
-                <input type="radio" id="star2" name="p" value="2"> <label for="star2"></label>
-                <input type="radio" id="star1" name="p" value="1"> <label for="star1" ></label>
-                </div>
-                <input formaction="/action/action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
+            <div class = "classification">
+            <input type="radio" id="star5" name="p" value="5"> <label for="star5" required="required"></label>
+            <input type="radio" id="star4" name="p" value="4"> <label for="star4"></label>
+            <input type="radio" id="star3" name="p" value="3"> <label for="star3"></label>
+            <input type="radio" id="star2" name="p" value="2"> <label for="star2"></label>
+            <input type="radio" id="star1" name="p" value="1"> <label for="star1" ></label>
+            </div>
+
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+            <input formaction="/action/action_review.php" formmethod="post" type="submit" class="white_button" value="Publish">
         </form>
     <?php
         }

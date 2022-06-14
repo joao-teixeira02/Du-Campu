@@ -41,7 +41,11 @@ if($_GET['s']){
                 <section class = "searchBoxContainer">
                     <form action="" class ="search-bar">
                         <button type="submit"><img src="images/search.png"></button>
-                        <input type="search" name="search" placeholder= "Search..." value="<?php  echo(htmlentities($search_text))?>">
+                        <input type="search" name="search" placeholder= "Search..." value="
+                        <?php 
+                        if ($search_text !== null) echo(htmlentities($search_text))
+                        ?>
+                        ">
                     </form>
                 </section>    
                 

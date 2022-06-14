@@ -4,14 +4,18 @@
     require_once(__DIR__ . '/../database/connection.db.php');
     require_once(__DIR__ . '/../utils/session.php');
 
-    if (isset($_POST['id_dish']) && isset($_POST['n']) && isset($_POST['p']) && isset($_POST['t'])) {
+    $session = new Session();
+
+    if (isset($_POST['id_dish']) && isset($_POST['n']) && isset($_POST['p']) && isset($_POST['t']) && isset($_POST['csrf'])) {
+
+        if ($_SESSION['csrf'] !== $_POST['csrf']) {
+            die();
+        }
 
         $id_dish = intval($_POST['id_dish']);
         $name = $_POST['n'];
         $price = floatval($_POST['p']);
         $type = $_POST['t'];
-
-        $session = new Session();
 
         $db = getDatabaseConnection();
 

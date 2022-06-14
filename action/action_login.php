@@ -4,30 +4,37 @@
     require_once(__DIR__ .'/../database/connection.db.php');
     require_once(__DIR__ .'/../database/user.class.php');
 
-    $session = new Session();
+    if (isset($_POST['csrf'])) {
 
-    function validateLogin(string $username, string $password) : bool{
-        $db = getDatabaseConnection();
+        $session = new Session();
 
-        $user = User::getUser($db, $username);
-
-        if($user === null){
-            return false;
+        if ($_SESSION['csrf'] !== $_POST['csrf']) {
+            die();
         }
 
-        return password_verify($password, $user->password);
-    }
+        function validateLogin(string $username, string $password) : bool{
+            $db = getDatabaseConnection();
 
+            $user = User::getUser($db, $username);
 
-    // validate login
-    if (isset($_POST['u']) && isset($_POST['p'])){
-        if(validateLogin($_POST['u'], $_POST['p'])){
-            $session->setUsername($_POST['u']);
-            header('Location: /index.php');
-            exit();
+            if($user === null){
+                return false;
+            }
+
+            return password_verify($password, $user->password);
         }
-        else {
-            $session->addMessage('error', 'Wrong password!');
+
+
+        // validate login
+        if (isset($_POST['u']) && isset($_POST['p'])){
+            if(validateLogin($_POST['u'], $_POST['p'])){
+                $session->setUsername($_POST['u']);
+                header('Location: /index.php');
+                exit();
+            }
+            else {
+                $session->addMessage('error', 'Wrong password!');
+            }
         }
     }
 

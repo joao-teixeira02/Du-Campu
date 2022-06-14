@@ -4,15 +4,20 @@ function addEventAsLikeButton(id_box, img_hoover, img_out, img_click){
     for (const box of boxes){
     box.addEventListener('click', async (e) => {
         const this_box= document.getElementById(e.srcElement.id)
-        console.log(this_box.getAttribute('data-id'));
         this_box.toggleAttribute('isSelected')
         if(this_box.hasAttribute('isSelected')) {
-            this_box.src = img_click; 
-            await fetch('/action/action_add_favorite_restaurant.php?r_id=' + this_box.getAttribute('data-id'));
+            this_box.src = img_click;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/action/action_add_favorite_restaurant.php', false);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send('r_id=' + this_box.getAttribute('data-id')+'&csrf=' + this_box.getAttribute('csrf'));
         }
         else {
             this_box.src = img_out;
-            await fetch('/action/action_remove_favorite_restaurant.php?r_id=' + this_box.getAttribute('data-id'));
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/action/action_remove_favorite_restaurant.php', false);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send('r_id=' + this_box.getAttribute('data-id')+'&csrf=' + this_box.getAttribute('csrf'));
         }
     })
 

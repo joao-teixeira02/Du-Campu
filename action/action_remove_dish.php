@@ -4,11 +4,15 @@
     require_once(__DIR__ . '/../database/connection.db.php');
     require_once(__DIR__ . '/../utils/session.php');
 
-    if (isset($_GET['id'])) {
+    $session = new Session();
 
-        $id_dish = $_GET['id'];
+    if (isset($_POST['id']) && isset($_POST['csrf'])) {
 
-        $session = new Session();
+        if ($_SESSION['csrf'] !== $_POST['csrf']) {
+            die;
+        }
+
+        $id_dish = $_POST['id'];
 
         $db = getDatabaseConnection();
 

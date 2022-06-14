@@ -93,6 +93,7 @@
                     <br>   
 
                     <input type="hidden" name="flag" value="<?php echo ($flag); ?>"/>
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 
                     <input formaction="/action/action_register.php" formmethod="post" type="submit" class="white_button" value="Register">
                     

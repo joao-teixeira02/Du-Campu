@@ -11,8 +11,12 @@
     
 	$db = getDatabaseConnection();
 
-    if(! ( isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']) && isset($_FILES['fileToUpload']) )){
+    if(! ( isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']) && isset($_FILES['fileToUpload']) && isset($_POST['csrf']))){
         print_r("Erro");
+        die;
+    }
+
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
         die;
     }
 

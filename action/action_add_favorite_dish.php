@@ -9,9 +9,13 @@
 
     $db =  getDatabaseConnection();
 
-    if (isset($_GET['d_id'])) {
+    if (isset($_POST['d_id']) && isset($_POST['csrf'])) {
 
-        $id_dish = $_GET['d_id'];
+        if ($_SESSION['csrf'] !== $_POST['csrf']) {
+            die;
+        }
+
+        $id_dish = $_POST['d_id'];
 
         $query = 'INSERT INTO FavoriteDish (id_user, id_dish) VALUES (:id_user, :id_dish)';
 

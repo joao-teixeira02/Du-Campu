@@ -3,33 +3,41 @@
 
 	require_once(__DIR__ .'/../database/connection.db.php');
 	require_once(__DIR__ . '/../utils/session.php');
-	$session = new Session();
 
-	$db = getDatabaseConnection();
+	if (isset($_POST['csrf'])) {
 
-	if (isset($_POST['t']) && isset($_POST['r'])) {
+		$session = new Session();
 
-		$text = $_POST['t'];
-		$review_id = $_POST['r'];
+		if ($_SESSION['csrf'] !== $_POST['csrf']) {
+			die();
+		}
 
-		$query = 'SELECT id FROM User WHERE User.username=?';
+		$db = getDatabaseConnection();
 
-		$stmt = $db->prepare($query);
+		if (isset($_POST['t']) && isset($_POST['r'])) {
 
-		$stmt->execute(array($session->getUsername()));
+			$text = $_POST['t'];
+			$review_id = $_POST['r'];
 
-		$owner_id = $stmt->fetch()['id'];
+			$query = 'SELECT id FROM User WHERE User.username=?';
 
-		$query = 'INSERT INTO Reply (text, owner_id, review_id) VALUES (:text, :owner_id, :review_id)';
-	
-		$stmt = $db->prepare($query);
+			$stmt = $db->prepare($query);
 
-		$stmt->bindParam(':text', $text);
-		$stmt->bindParam(':owner_id', $owner_id);
-		$stmt->bindParam(':review_id', $review_id);
+			$stmt->execute(array($session->getUsername()));
 
-		$stmt->execute();
-	
+			$owner_id = $stmt->fetch()['id'];
+
+			$query = 'INSERT INTO Reply (text, owner_id, review_id) VALUES (:text, :owner_id, :review_id)';
+		
+			$stmt = $db->prepare($query);
+
+			$stmt->bindParam(':text', $text);
+			$stmt->bindParam(':owner_id', $owner_id);
+			$stmt->bindParam(':review_id', $review_id);
+
+			$stmt->execute();
+		
+		}
 	}
 
     header("Location:".$_SERVER['HTTP_REFERER']."");

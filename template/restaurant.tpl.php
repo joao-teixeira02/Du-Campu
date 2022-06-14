@@ -34,9 +34,10 @@ function restaurant_form(string $action, Restaurant $restaurant = null){
         <fieldset>
             <div>   
                 <input name="id_restaurant" value="<?php echo $id; ?>" type="hidden"/>
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 
                 <div id="photo_field">
-                    <img src="<?php echo htmlentities($photo);?>" id="photo" alt="Restaurante image" width="100%" height="200px"/>
+                    <img src="<?php echo htmlentities($photo);?>" id="photo" alt="Restaurant image" width="100%" height="200px"/>
                     <input type="file" name="fileToUpload" require id="fileToUpload">
                 </div>
         
@@ -55,7 +56,7 @@ function restaurant_form(string $action, Restaurant $restaurant = null){
                 if($edit){
                     echo 'value = "'.htmlentities($address) .'" placeholder="'. htmlentities($address) .'"';
                 }else{
-                    echo ' placeholder = "Restaurant Addresss"';
+                    echo ' placeholder = "Restaurant Address"';
                 }
                 ?>
 
