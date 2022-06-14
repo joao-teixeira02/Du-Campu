@@ -548,11 +548,17 @@
                     <?php show_dishes($restaurant_id); ?>
                 </section>
 
+                <?php if ($session->isLogged() && !User::isCustomer($db, $session->getUsername())) { ?>
+
                 <form id="delete_restaurant" action="/action/action_remove_restaurant.php" method="post" enctype="multipart/form-data" class="UseInputStyle">
-                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-                <input type="hidden" name="id" value="<?=$restaurant_id?>">
-                <input type="submit" clickable value="Delete Restaurant">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                    <input type="hidden" name="id" value="<?=$restaurant_id?>">
+                    <input type="submit" clickable value="Delete Restaurant">
                 </form>
+
+                <?php
+                }
+                ?>
             
             
             </main>

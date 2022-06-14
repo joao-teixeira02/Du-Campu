@@ -68,8 +68,6 @@
     box-shadow: 0 0 1.24em  rgb(93, 93, 93);
 }
 
-
-
 input{
     padding: 0.2em;
     padding-left: 0.5em;
@@ -86,8 +84,6 @@ input{
     padding-left: 0.5em;
     left: 0;
 }
-
-
 
 .input:focus ~ .input_label , .input:not(:placeholder-shown) ~ .input_label{
     transition: ease-in-out 0.5s;

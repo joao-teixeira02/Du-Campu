@@ -3,6 +3,7 @@ if (namePerson) namePerson.addEventListener("input", validateName, false);
 let username = document.querySelector("form input[name=u]");
 if (username) username.addEventListener("input", validateUsername, false);
 let password = document.querySelector("form input[name=p]");
+if (password) password.addEventListener("input", validatePassword, false);
 let passwordagain = document.querySelector("form input[name=p2]");
 if (passwordagain && password) {
   passwordagain.addEventListener(
@@ -24,6 +25,11 @@ if (emailAddr) emailAddr.addEventListener("input", validateEmail, false);
 
 let register = document.querySelector("form.register_form");
 if (register) register.addEventListener("submit", validateRegister, false);
+
+function validatePassword() {
+  if(!/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/.test(this.value)) this.classList.add("invalid");
+  else this.classList.remove("invalid");
+}
 
 function validateName() {
   if (!/^[a-zA-Z\s]*$/.test(this.value)) this.classList.add("invalid");

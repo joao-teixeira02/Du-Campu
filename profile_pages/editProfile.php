@@ -56,6 +56,7 @@ function show_profile() {
                     <input name="a" class="attr" type="text" placeholder="Address" value="<?php echo htmlentities($session->getAddress()); ?>">
                     <label>Optional</label>
                     <input name="p" class="attr" type="password" placeholder="New Password" value="">
+                    <span class="hint">Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character</span>
                     <input name="p2" class="attr" type="password" placeholder="Repeat New Password" value="">
                     <span class="hint">Passwords must match</span>
                     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
