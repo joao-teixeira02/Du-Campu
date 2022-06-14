@@ -903,3 +903,10 @@ label[for^="see_reply_"]{
 .white_button:hover{
     box-shadow: 0 0 1em rgb(183 181 181);
 }
+
+#delete_restaurant {
+    display: flex;
+    width: fit-content;
+    grid-column: 2;
+    justify-self: end;
+}
