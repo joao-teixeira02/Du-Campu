@@ -53,7 +53,7 @@ function show_restaurants() {
 
             <div class="restaurant-cont">
                 <div class="restaurant_img">
-                        <img class="thumb" alt="Imagem do Restaurante" src="<?php echo (htmlentities($restaurant->getPhoto($db, $id))); ?>">
+                        <img class="thumb" alt="Imagem do Restaurante" src="<?php echo (htmlentities($restaurant->getPhoto($db, $restaurant->id))); ?>">
                         <input type="button" class="card-btn" value="Edit Restaurant" onclick="location.href='restaurant.php?id=<?php echo($restaurant->id); ?>'"/>
                 </div>
                     <h3>

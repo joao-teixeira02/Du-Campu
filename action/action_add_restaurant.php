@@ -11,7 +11,7 @@
     
 	$db = getDatabaseConnection();
 
-    if(! ( isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']) && isset($_FILES['fileToUpload']) && isset($_POST['csrf']))){
+    if(! ( isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']) && isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['error']!==0 && isset($_POST['csrf']))){
         print_r("Erro");
         die;
     }
@@ -61,16 +61,15 @@
     $id_restaurant = $db->lastInsertId();
 
     /* CRIAR IMAGEM */
-    if(isset($_FILES['fileToUpload'])){
-        $originalFileName = 'restaurant_'. $id_restaurant . '_photo.png';
+    $originalFileName = 'restaurant_'. $id_restaurant . '_photo.png';
 
-        $id_photo = Photo::insertPhoto($db, $_FILES['fileToUpload'], $originalFileName);
+    $id_photo = Photo::insertPhoto($db, $_FILES['fileToUpload'], $originalFileName);
 
-        $stmt = $db->prepare('INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (:id_restaurant, :id_photo)');
-        $stmt->bindParam(':id_restaurant', $id_restaurant);
-        $stmt->bindParam(':id_photo',$id_photo);
-        $stmt->execute();
-    }
+    $stmt = $db->prepare('INSERT INTO RestaurantPhoto (id_restaurant, id_photo) VALUES (:id_restaurant, :id_photo)');
+    $stmt->bindParam(':id_restaurant', $id_restaurant);
+    $stmt->bindParam(':id_photo',$id_photo);
+    $stmt->execute();
+
 
     foreach($categories_idlist as $id_category) {
         $stmt1 = $db->prepare('INSERT INTO RestaurantCategory (id_restaurant, id_category) VALUES (:id_restaurant, :id_category)');

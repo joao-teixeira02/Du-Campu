@@ -52,7 +52,7 @@
             $restaurant = Restaurant::getRestaurant($db, $id);
         ?>
 
-        <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo (htmlentities($restaurant->getPhoto($db, $id))); ?>">
+        <img id="capaRestaurante" alt="Imagem do Restaurante" src="<?php echo (htmlentities(Restaurant::getPhoto($db, $restaurant->id))); ?>">
         <?php
             global $session;
             if ($session->isLogged() && $session->getUserId() !== $restaurant->owner_id) { ?>
