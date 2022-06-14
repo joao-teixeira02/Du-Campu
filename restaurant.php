@@ -136,14 +136,14 @@
                             <?php 
                             if ($session->getUserId() !== $restaurant->owner_id) {
                             ?>
-                            <img id="heart_favorite" src="<?php 
+                            <img data-dish_id="<?php echo ($dish->id);?>"  id="heart_favorite" <?php 
                                 
                                 if ($dish->isFavDish($db, $user->id)) {
-                                    echo "images/heart.png";
+                                    echo 'src="images/heart.png" isSelected';
                                 }else{
-                                    echo "images/heartNotSelected.png";
+                                    echo 'src="images/heartNotSelected.png" isSelected';
                                 }
-                            ?>"
+                            ?>
                             csrf="<?= $_SESSION['csrf']?>"/>
                             <?php
                             }

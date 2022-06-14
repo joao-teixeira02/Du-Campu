@@ -81,6 +81,9 @@ if(add_order_popup){
     }
 
     function open_add_order_popup_favorite(e){
+        if(window.event.target.id == 'heart_favorite')
+            return
+
         async function load_popup() {
 
             const response =  await fetch('/api/api_get_favorite_dishes.php')
@@ -141,7 +144,7 @@ if(add_order_popup){
             else {
                 heart.removeAttribute('isSelected')
                 popupHeart.src = img_out;
-                var xhr = new XMLHttpRequest();
+                var xhr = new XMLHttpRequest()
                 xhr.open('POST', '/action/action_remove_favorite_dish.php', false);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhr.send('d_id=' + id_dish_input.value+'&csrf=' + heart.getAttribute('csrf'));
@@ -169,3 +172,46 @@ if(add_order_popup){
 }
 
 
+function addDishLikesButtons(img_hoover, img_out, img_click){
+    const dish_like_buttons = document.querySelectorAll('#heart_favorite');
+
+    for(const heart_button of dish_like_buttons){
+        const id_dish =  heart_button.getAttribute('data-dish_id');
+
+        heart_button.addEventListener('click', async (e) => {
+            heart_button.toggleAttribute('isSelected')
+            
+            if(heart_button.hasAttribute('isSelected')) {
+                heart_button.src = img_click; 
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/action/action_add_favorite_dish.php', false);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('d_id=' + id_dish + '&csrf=' + heart_button.getAttribute('csrf'));
+            }
+            else {
+                heart_button.src = img_out;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/action/action_remove_favorite_dish.php', false);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('d_id=' + id_dish +'&csrf=' + heart_button.getAttribute('csrf'));
+            }
+            
+    
+        })
+    
+    
+        heart_button.addEventListener('mouseover', (e) => {
+            if(!heart_button.hasAttribute('isSelected'))
+                heart_button.src = img_hoover;
+            })
+            
+        heart_button.addEventListener('mouseout', (e) => {
+            if(!heart_button.hasAttribute('isSelected'))
+            heart_button.src = img_out;
+            }
+            )
+    }
+    
+}
+
+addDishLikesButtons( 'images/heartHoover.png', 'images/heartNotSelected.png', 'images/heart.png');
