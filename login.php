@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="css/register.css">
+        <link rel="stylesheet" href="css/registerLogin.css">
         <title>Du'Campu</title>
     </head>
     <body>

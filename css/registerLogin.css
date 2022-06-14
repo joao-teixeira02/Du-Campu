@@ -198,3 +198,23 @@ input{
     font-size: medium;
 }
 
+
+
+@media (max-width: 60em){
+    
+    .animationRegister,
+    .animation{
+        display: none;
+    }
+
+    .register,
+    .login{
+        background-color: rgb(15,20,24);
+    }
+
+    .registerContainer,
+    .loginContainer{
+        box-shadow: none;
+    }
+
+}

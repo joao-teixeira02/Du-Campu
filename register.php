@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="css/register.css">
+        <link rel="stylesheet" href="css/registerLogin.css">
         <title>Du'Campu</title>
     </head>
     <body>
