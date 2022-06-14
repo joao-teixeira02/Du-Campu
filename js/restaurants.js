@@ -74,9 +74,6 @@ async function updateRestaurantList() {
 
     for (const restaurant of restaurants) {
 
-      const restaurantLikeIcon = document.createElement('div')
-      restaurantLikeIcon.classList.add('restaurantLikeIcon')
-
       const restaurantContainer = document.createElement('div')
       restaurantContainer.classList.add("restaurantContainer")
 
@@ -123,7 +120,6 @@ async function updateRestaurantList() {
       restaurantInfo.appendChild(price)
 
       if (user_id == 0) {
-
       }
       else if (restaurant.owner_id != user_id) {
         const likeIcon = document.createElement('img')
@@ -134,18 +130,18 @@ async function updateRestaurantList() {
           likeIcon.setAttribute('isSelected', '')
           likeIcon.src = 'images/heart.png'
         }
-        else
+        else{
           likeIcon.src = 'images/heartNotSelected.png'
+        }
           likeIcon.classList.add("likeIcon")
-          likeIcon.style.width = "30px"
-          likeIcon.style.height = "30px"
-          restaurantLikeIcon.appendChild(likeIcon)
+        likeIcon.style.width = "30px"
+        likeIcon.style.height = "30px"
+        restaurantContainer.appendChild(likeIcon)
       }
 
 
       restaurantContainer.appendChild(restaurantInfo)
-      restaurantLikeIcon.appendChild(restaurantContainer)
-      section.appendChild(restaurantLikeIcon)
+      section.appendChild(restaurantContainer)
 
       restaurantContainer.addEventListener("click",()=>{location.href='restaurant.php?id=' + restaurant.id})
       

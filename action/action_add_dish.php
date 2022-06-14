@@ -27,7 +27,6 @@
         $stmt = $db->prepare($query);
 
         $stmt->bindParam(':name', $type);
-
         $stmt->execute();
 
         $query = 'SELECT id FROM Type WHERE Type.name=?';

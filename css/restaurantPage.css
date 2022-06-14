@@ -50,8 +50,6 @@
     flex-basis: 100%;
 }
 
-
-
 .restaurantForm .categories label{
     display: block;
     position:relative;
@@ -348,8 +346,6 @@
     top:1em;
     right: 2em;
 }
-
-
 
 .restaurant-page .comida figcaption, .comida p{
     text-align: left;
@@ -782,6 +778,13 @@ label[for^="see_reply_"]{
 
 }
 
+#editDish, #addDishType, #addDish{
+    height: fit-content;
+    max-height: 90vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 
 /* ADD order popup */
 
@@ -873,5 +876,23 @@ label[for^="see_reply_"]{
     background-color: black;
     font-size: medium;
     color: white;
+}
 
+
+#likeRestaurant{
+    width: 10px;
+    height: 10px;
+}
+
+#addDishType #img_dish,
+#addDish #img_dish,
+#addTypeImage,
+#addDishImage{
+    width: 100px;
+    height: 100px;
+}
+
+#close{
+    width: 50px;
+    height: 50px;
 }

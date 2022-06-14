@@ -28,7 +28,6 @@
                         </label>
                     
                         <ul id="profile_navbar">
-                    <li id="profile_list_item"> 
 
                     <?php 
                     

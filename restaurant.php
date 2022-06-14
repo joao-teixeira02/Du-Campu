@@ -56,7 +56,7 @@
         <?php
             global $session;
             if ($session->isLogged() && $session->getUserId() !== $restaurant->owner_id) { ?>
-                <img id="likeRestaurant" width="10px" height="10px" src="" data-restaurant_id="<?php echo($id); ?>" csrf="<?= $_SESSION['csrf']?>"/>
+                <img id="likeRestaurant" src="" data-restaurant_id="<?php echo($id); ?>" csrf="<?= $_SESSION['csrf']?>"/>
             <?php
             }
         ?>
@@ -129,7 +129,7 @@
                             }?>" 
                             data-dish_id="<?php echo($dish->id)?>"
                             data-dish_name="<?php echo(htmlentities($dish->getName()))?>"
-                            data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $id)))?>"
+                            data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $dish->id)))?>"
                             data-dish_price="<?php echo($dish->getPrice())?>"  >
                             <div class = "photoContainer">
                             <img src="<?php echo(htmlentities($dish->getPhoto($db, $dish->id))); ?>" alt="<?php echo(htmlentities($dish->getName())); ?>" width="200px" height="200px" />
@@ -163,7 +163,7 @@
                             <input type="image" class="editDishButton" src="images/editIcon.png" clickable onclick="open_edit_dish_popup(this)"
                             data-dish_id="<?php echo($dish->id)?>"
                             data-dish_name="<?php echo(htmlentities($dish->getName()))?>"
-                            data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $id)))?>"
+                            data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $dish->id)))?>"
                             data-dish_price="<?php echo($dish->getPrice())?>"
                             data-dish_type="<?php echo (htmlentities($type)); ?>">
                             <?php
@@ -182,9 +182,9 @@
                             ?>
                             data-dish_id="<?php echo($dish->id); ?>"
                             data-dish_name="<?php echo(htmlentities($dish->getName())); ?>"
-                            data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $id))); ?>"
+                            data-dish_photo="<?php echo(htmlentities($dish->getPhoto($db, $dish->id))); ?>"
                             data-dish_price="<?php echo($dish->getPrice()); ?>" >
-                            <img src="<?php echo(htmlentities($dish->getPhoto($db, $id))); ?>" alt="<?php echo(htmlentities($dish->getName())); ?>" width="200px" height="200px" />
+                            <img src="<?php echo(htmlentities($dish->getPhoto($db, $dish->id))); ?>" alt="<?php echo(htmlentities($dish->getName())); ?>" width="200px" height="200px" />
                             <figcaption> <?php echo(htmlentities($dish->getName())); ?> </figcaption>
                             <p class="preco"><?php echo($dish->getPrice()); ?> &nbsp;€</p>
                         </figure>
@@ -203,7 +203,7 @@
                 <figure class="addDish" clickable onclick="open_add_dish_popup(this);"
                     data-dish_type="<?php echo(htmlentities($type)); ?>"
                     data-dish_restaurant_id="<?php echo($id); ?>">
-                    <img src="images/plusJoao1.png" id="addDishImage" width="100px" height="100px" />
+                    <img src="images/plusJoao1.png" id="addDishImage" />
                 <figcaption>Add New Dish</figcaption>
                 </figure>
                 <?php
@@ -222,7 +222,7 @@
 
             <figure class="addType" clickable onclick="open_add_type_popup(this);"
             data-dish_restaurant_id="<?php echo($id); ?>">
-                <img src="images/plusJoao1.png" id="addTypeImage" width="100px" height="100px" />
+                <img src="images/plusJoao1.png" id="addTypeImage"/>
                 <figcaption>Add New Dish</figcaption>
             </figure>
 
@@ -234,13 +234,13 @@
 
     <article id="addDishType" class="UseInputStyle full_window_popup">
             <header>
-                <img id="close" clickable width="50px" height="50px" src="images/close.png" />
+                <img id="close" clickable src="images/close.png" />
             </header>
             <main>
                 <form id="dish_info" action="/action/action_add_dish.php" method="post" enctype="multipart/form-data">
                     <input id="id" name="id" type = "hidden" value="" />
                     <div id="image-container">
-                        <img id="img_dish" width="100px" height="100px" src="images/photos/profile.jpg" />
+                        <img id="img_dish" src="images/photos/profile.jpg" />
                         <input type="file" name="fileToUpload" id="dish_image_upload">
                     </div>
                     <h3 id="name">Dish Name</h3>
@@ -262,7 +262,7 @@
 
         <article id="addDish" class="UseInputStyle full_window_popup">
             <header>
-                <img id="close" clickable width="50px" height="50px" src="images/close.png" />
+                <img id="close" clickable src="images/close.png" />
             </header>
             <main>
                 <form id="dish_info" action="/action/action_add_dish.php" method="post" enctype="multipart/form-data">
@@ -490,23 +490,6 @@
         }
     }
 
-
-    function create_add_review_popup(){
-
-
-        ?>
-
-        <article id="add_review_popup" class="full_window_popup">
-
-
-        </article>
-
-
-
-        <?php
-
-    }
-
     ?>
 
 <!DOCTYPE html>
@@ -527,7 +510,7 @@
         <script type="text/javascript" src="js/editButtonRestaurant.js" defer></script>
         <script type="text/javascript" src="js/addButtonDish.js" defer></script>
         <script type="text/javascript" src="js/addButtonType.js" defer></script>
-        <script type="text/javascript" src="js/myRestaurant.js" defer></script>
+        <script type="text/javascript" src="js/imagePreview.js" defer></script>
         <script type="text/javascript" src="js/drawler.js" defer></script>
 
         <title>Du'Campu</title>
@@ -604,8 +587,6 @@
     create_edit_restaurant_popup($restaurant_id);
 
     create_edit_dish_popup();
-
-    create_add_review_popup();
     
     show_footer(); 
     ?>

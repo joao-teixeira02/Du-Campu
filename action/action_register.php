@@ -25,7 +25,7 @@
             $phone = $_POST['ph'];
 
             $options = ['cost' => 12];
-        
+
             $query = 'INSERT INTO User (username, name, mail, password, address, phone) VALUES (:username, :name, :mail, :password, :address, :phone)';
         
             $stmt = $db->prepare($query);
@@ -59,6 +59,7 @@
 
                 $stmt->execute();
             }
+        
 
         }
     }

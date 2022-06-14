@@ -1,6 +1,6 @@
 
 const cart_box = document.querySelector("#cart_box");
-const csrf = cart_box.getAttribute('csrf');
+const csrf1 = cart_box.getAttribute('csrf');
 var desaparecerCartTimerON = false
 var aparecerCartTimerON = false
 var id = 0
@@ -195,7 +195,7 @@ function removeDishEvent(e){
     xhr.open('POST', '/action/action_add_dish_cart.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onload = update_cart;
-    xhr.send('id_dish='+id+'&dish_quantity=0&csrf=' + csrf);
+    xhr.send('id_dish='+id+'&dish_quantity=0&csrf=' + csrf1);
 }
 
 
@@ -207,7 +207,7 @@ function changeDishEvent(e){
     xhr.open('POST', '/action/action_add_dish_cart.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onload = update_cart;
-    xhr.send('id_dish='+id+'&dish_quantity='+selected_value + '&csrf=' + csrf);
+    xhr.send('id_dish='+id+'&dish_quantity='+selected_value + '&csrf=' + csrf1);
 }
 
 
