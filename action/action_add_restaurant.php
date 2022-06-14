@@ -8,10 +8,9 @@
 
     //TODO NAO DEIXAR Q UM ATRASADO ADICIONE RESTAURANTE SEM ESTAR LOGIN
     $session = new Session();
-    
 	$db = getDatabaseConnection();
 
-    if(! ( isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']) && isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['error']!==0 && isset($_POST['csrf']))){
+    if(! ( isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']) && isset($_FILES['fileToUpload']) && $_FILES['fileToUpload']['error']===0 && isset($_POST['csrf']))){
         print_r("Erro");
         die;
     }
