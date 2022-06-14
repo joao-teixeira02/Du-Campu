@@ -6,15 +6,17 @@
     require_once(__DIR__ . '/../database/category.class.php');
     require_once(__DIR__ . '/../utils/session.php');
 
-    if(!(isset($_POST['id_restaurant']) && isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']))){
+    if(!(isset($_POST['id_restaurant']) && isset($_POST['n']) && isset($_POST['a']) && isset($_POST['classification']) && isset($_POST['csrf']))){
         
         print_r("Erro");
-        //header('Location: '. $_SERVER['HTTP_REFERER']);
         die;
     }
 
-    
     $session = new Session();
+
+    if ($_SESSION['csrf'] !== $_POST['csrf']) {
+        die();
+    }
 
     $db = getDatabaseConnection();
 

@@ -122,23 +122,29 @@ if(add_order_popup){
         load_popup()
     }
 
-    function addEventAsLikeButton(id_box, img_hoover, img_out, img_click){
+    function addEventDishAsLikeButton(id_box, img_hoover, img_out, img_click){
         const popupHeart = document.querySelector(id_box)
+        
     
         popupHeart.addEventListener('click', async (e) => {
             popupHeart.toggleAttribute('isSelected')
             const heart = document.querySelector(".comida[data-dish_id='" + id_dish_input.value + "'] #heart_favorite")
-    
-    
+            
             if(popupHeart.hasAttribute('isSelected')) {
                 heart.setAttribute('isSelected', "")
                 popupHeart.src = img_click; 
-                await fetch('/action/action_add_favorite_dish.php?d_id=' + id_dish_input.value);
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/action/action_add_favorite_dish.php', false);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('d_id=' + id_dish_input.value+'&csrf=' + heart.getAttribute('csrf'));
             }
             else {
                 heart.removeAttribute('isSelected')
                 popupHeart.src = img_out;
-                await fetch('/action/action_remove_favorite_dish.php?d_id=' + id_dish_input.value);
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/action/action_remove_favorite_dish.php', false);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('d_id=' + id_dish_input.value+'&csrf=' + heart.getAttribute('csrf'));
             }
             heart.src = popupHeart.src;
     
@@ -158,7 +164,7 @@ if(add_order_popup){
       
     }
     
-    addEventAsLikeButton("#add_order #heart_favorite", 'images/heartHoover.png', 'images/heartNotSelected.png', 'images/heart.png')
+    addEventDishAsLikeButton("#add_order #heart_favorite", 'images/heartHoover.png', 'images/heartNotSelected.png', 'images/heart.png')
 
 }
 

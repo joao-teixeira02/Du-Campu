@@ -25,6 +25,7 @@
     display: inline;
     margin: auto;
     grid-column: 1;
+    padding-bottom: 0;
 }
 
 .restaurantForm  #photo_field > input[type="file"]{
@@ -112,6 +113,15 @@
     margin-bottom: 1em;
 }
 
+@media (max-width: 60em){
+    
+
+.restaurantForm  #photo_field{
+    display: flex;
+    flex-direction: column;
+}
+}
+
 
 .addRestaurant fieldset > div label{
     font-size: 1.17em;
@@ -129,13 +139,13 @@
 .popups #image-container #img_dish {
     width: 12em;
     height: auto;
-    grid-area: img;
     border-radius: 1em;
     margin: auto;
+    margin-bottom: 1em;
+
 }
 
 .popups #image-container #dish_image_upload {
-    grid-area: file;
     height: fit-content;
 }
 
@@ -179,8 +189,9 @@
 
 .popups #image-container {
     align-items: center;
-    display: grid;
-    grid-template-areas: "img file";
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
 }
 
 /* EDIT RESTAURANT BUTTON */
@@ -761,9 +772,17 @@ label[for^="see_reply_"]{
     background-color: white;
     font-family: 'Poppins', sans-serif;
 
-    width: 40em;
+    max-width: 40em;
+    width: fit-content;
     height: 40em;
 
+}
+
+#editDish, #addDishType, #addDish{
+    height: fit-content;
+    max-height: 90vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 

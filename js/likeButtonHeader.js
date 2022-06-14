@@ -18,12 +18,18 @@ function createEventLikeRestaurantButton(img_hoover, img_out, img_click) {
     likeRestaurant.addEventListener('click', async () => {
         likeRestaurant.toggleAttribute('isSelected')
         if(likeRestaurant.hasAttribute('isSelected')) {
-            likeRestaurant.src = img_click; 
-            await fetch('/action/action_add_favorite_restaurant.php?r_id=' + likeRestaurant.getAttribute('data-restaurant_id'));
+            likeRestaurant.src = img_click;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/action/action_add_favorite_restaurant.php', false);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send('r_id=' + likeRestaurant.getAttribute('data-restaurant_id')+'&csrf=' + likeRestaurant.getAttribute('csrf'));
         }
         else {
             likeRestaurant.src = img_out;
-            await fetch('/action/action_remove_favorite_restaurant.php?r_id=' + likeRestaurant.getAttribute('data-restaurant_id'));
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/action/action_remove_favorite_restaurant.php', false);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send('r_id=' + likeRestaurant.getAttribute('data-restaurant_id')+'&csrf=' + likeRestaurant.getAttribute('csrf'));
         }
     })
     

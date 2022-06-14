@@ -4,16 +4,34 @@
     require_once(__DIR__ . "/../database/cart.class.php");
     require_once(__DIR__ . "/../database/connection.db.php");
 
+    function generate_random_token() {
+        return bin2hex(openssl_random_pseudo_bytes(32));
+    }
+
     class Session{
         public Cart $cart;
+        private array $messages;
 
         public function __construct(){
-            session_start();
+            if(session_status() !== PHP_SESSION_ACTIVE){
+                session_set_cookie_params(0, '/', $_SERVER['HTTP_HOST'], true, true);
+                session_start();
+            }
+
+            
+            if (!isset($_SESSION['csrf'])) {
+                $_SESSION['csrf'] = generate_random_token();
+            }
             if(!isset($_SESSION["cart"])){
                 $this->cart = new Cart;
                 $this->saveCart();
             }
             $this->loadCart();
+            $this->messages = isset($_SESSION['messages']) ? $_SESSION['messages'] : array();
+        }
+
+        function removeMessages() {
+            unset($_SESSION['messages']);
         }
 
         function getUserId() : ?int {
@@ -101,6 +119,14 @@
 
         function logout(){
             session_destroy();
+        }
+
+        public function addMessage(string $type, string $text) {
+            $_SESSION['messages'][] = array('type' => $type, 'text' => $text);
+        }
+      
+        public function getMessages() {
+            return $this->messages;
         }
 
     }

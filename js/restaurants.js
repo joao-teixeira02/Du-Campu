@@ -4,6 +4,7 @@ const rangeR = document.querySelector('.range-max')
 const categories_input = document.querySelectorAll('.categories input')
 const asc = document.querySelector('#asc')
 const sorter = document.querySelector('#sorter')
+const csrf = sorter.getAttribute('csrf')
 const price_input = document.querySelectorAll('.price-range input')
 
 if (rangeL) {
@@ -68,14 +69,13 @@ async function updateRestaurantList() {
     const response2 = await fetch('/api/api_get_session_id.php')
     const user_id = await response2.json()
 
-    console.log(user_id)
-
     const section = document.querySelector('.restaurants')
     section.innerHTML = ''
 
     for (const restaurant of restaurants) {
 
-      console.log(restaurant.owner_id)
+      const restaurantLikeIcon = document.createElement('div')
+      restaurantLikeIcon.classList.add('restaurantLikeIcon')
 
       const restaurantContainer = document.createElement('div')
       restaurantContainer.classList.add("restaurantContainer")
@@ -122,8 +122,6 @@ async function updateRestaurantList() {
       price.innerHTML = price_str
       restaurantInfo.appendChild(price)
 
-      console.log(user_id)
-
       if (user_id == 0) {
 
       }
@@ -131,21 +129,24 @@ async function updateRestaurantList() {
         const likeIcon = document.createElement('img')
         likeIcon.setAttribute("id", "likeIcon"+restaurant.id)
         likeIcon.setAttribute("data-id", restaurant.id)
+        likeIcon.setAttribute("csrf", csrf)
         if (favorites.includes(restaurant.id)){
           likeIcon.setAttribute('isSelected', '')
           likeIcon.src = 'images/heart.png'
         }
-        else
+        else{
           likeIcon.src = 'images/heartNotSelected.png'
+        }
           likeIcon.classList.add("likeIcon")
-          likeIcon.style.width = "30px"
-          likeIcon.style.height = "30px"
-          restaurantInfo.appendChild(likeIcon)
+        likeIcon.style.width = "30px"
+        likeIcon.style.height = "30px"
+        restaurantLikeIcon.appendChild(likeIcon)
       }
 
 
       restaurantContainer.appendChild(restaurantInfo)
-      section.appendChild(restaurantContainer)
+      restaurantLikeIcon.appendChild(restaurantContainer)
+      section.appendChild(restaurantLikeIcon)
 
       restaurantContainer.addEventListener("click",()=>{location.href='restaurant.php?id=' + restaurant.id})
       

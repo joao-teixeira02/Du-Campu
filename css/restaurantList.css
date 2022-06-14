@@ -348,7 +348,7 @@
     content: "\002605 ";
 }
 
-.restaurantsList .restaurantInfo  .likeIcon {
+.restaurantsList .restaurantLikeIcon .restaurantInfo  .likeIcon {
     cursor: pointer;
     position: absolute;
     top: 23px;
@@ -358,7 +358,7 @@
     transition: width 2s, height 2s;
 }
 
-.restaurantsList .restaurantInfo  .likeIcon:hover {
+.restaurantsList .restaurantLikeIcon .restaurantInfo  .likeIcon:hover {
     width: 4em;
     height: auto;
 }

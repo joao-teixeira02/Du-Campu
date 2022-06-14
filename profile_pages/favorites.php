@@ -21,7 +21,6 @@ function show_favorites() {
     <section class="favRestaurants">
         <?php 
         if (sizeof($favRestaurants) === 0) { ?>
-            <!--<img id="noFavs" src="images/noFavs.png">-->
             <a href = "restaurants.php" class = "noFavs">
             <h4>Seems like you have no favorite restaurants yet. Click here to visit our restaurants page to find some!</h4> 
             </a>
@@ -34,11 +33,11 @@ function show_favorites() {
             foreach($favRestaurants as $favRestaurant) { ?>
                 <div class="restaurant-cont">
                     <div class="restaurant_img">
-                        <img class="thumb" alt="Imagem do Restaurante" src="<?php echo ($favRestaurant->getPhoto($db, $favRestaurant->id)); ?>">
+                        <img class="thumb" alt="Imagem do Restaurante" src="<?php echo (htmlentities($favRestaurant->getPhoto($db, $favRestaurant->id))); ?>">
                         <input type="button" class="card-btn" value="See Restaurant" onclick="location.href='restaurant.php?id=<?php echo($favRestaurant->id); ?>'"/>
                     </div>
                     <h3>
-                        <?php echo($favRestaurant->getName()); ?>
+                        <?php echo(htmlentities($favRestaurant->getName())); ?>
                     </h3>
 
                 </div>
@@ -51,7 +50,6 @@ function show_favorites() {
     <section class="favDishes">
         <?php
         if (sizeof($favDishes) === 0) { ?>
-            <!--<img id="noFavs" src="images/noFavs.png">-->
             <a href = "restaurants.php" class = "noFavs">
             <h4>Seems like you have no favorite dishes yet. Click here to visit our restaurants page to find some!</h4> 
             </a>
@@ -64,12 +62,12 @@ function show_favorites() {
             foreach($favDishes as $favDish) { ?>
             <div class="dish-cont">
                 <div class="dish_img">
-                    <img class="thumb" alt="Imagem do Prato" src="<?php echo ($favDish->getPhoto($db, $favDish->id)); ?>">
-                    <input type="button" class="card-btn" value="See Dish" onclick="location.href='restaurant.php?id=<?php echo($favDish->restaurant_id); ?>#<?php echo($favDish->getType($db)); ?>'"/>
+                    <img class="thumb" alt="Imagem do Prato" src="<?php echo (htmlentities($favDish->getPhoto($db, $favDish->id))); ?>">
+                    <input type="button" class="card-btn" value="See Dish" onclick="location.href='restaurant.php?id=<?php echo($favDish->restaurant_id); ?>#<?php echo(htmlentities($favDish->getType($db))); ?>'"/>
 
                 </div>
                 <h3>
-                    <?php echo($favDish->name); ?>
+                    <?php echo(htmlentities($favDish->name)); ?>
                 </h3>
             </div>
         <?php

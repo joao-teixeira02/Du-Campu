@@ -8,13 +8,21 @@
 
     $db = getDatabaseConnection();
 
-    $id_restaurant = $_GET['r_id'];
+    if (isset($_POST['r_id']) && isset($_POST['csrf'])) {
 
-    $query = 'DELETE FROM FavoriteRestaurant WHERE FavoriteRestaurant.id_user=? AND FavoriteRestaurant.id_restaurant=?';
+        if ($_SESSION['csrf'] !== $_POST['csrf']) {
+            die;
+        }
 
-    $stmt = $db->prepare($query);
+        $id_restaurant = $_POST['r_id'];
 
-    $stmt->execute(array($session->getUserId(), $id_restaurant));
+        $query = 'DELETE FROM FavoriteRestaurant WHERE FavoriteRestaurant.id_user=? AND FavoriteRestaurant.id_restaurant=?';
+
+        $stmt = $db->prepare($query);
+
+        $stmt->execute(array($session->getUserId(), $id_restaurant));
+
+    }
 
     header("Location:".$_SERVER['HTTP_REFERER']."");
 ?>
