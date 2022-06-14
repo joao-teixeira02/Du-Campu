@@ -414,10 +414,10 @@
                 }
                 else{
 
-                    if (User::isCustomer($db, $session->getUsername()))  {
-                        echo("No replies");
+                    if (!User::isCustomer($db, $session->getUsername()) && $session->getUserId() === Restaurant::getRestaurant($db, $id)->owner_id)  {
+                        echo("Add reply");
                     }
-                    else echo("Add reply");
+                    else echo("No replies");
 
                 }
                 ?>
