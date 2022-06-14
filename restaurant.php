@@ -27,8 +27,8 @@
                     foreach(Restaurant::getDishes($db, $id) as $dish ){
                         $types[] = $dish->getType($db);
                     }
-                    
                     foreach( array_unique($types) as $type){
+                        if($type === null) continue;
                         ?>
 
                         <li>
@@ -115,7 +115,8 @@
             foreach($dishes as $dish){
                 $types[] = $dish->getType($db);
             }
-            foreach(array_unique($types) as $type){ ?>
+            foreach(array_unique($types) as $type){ 
+                if($type === null) continue;?>
                 <section class="dishType" id="<?php echo (htmlentities($type));?>">
                 <h3><?php echo ($type);?></h3>
                 <ul>
@@ -503,6 +504,7 @@
         <link rel="stylesheet" href="css/headerFooter.css">
         <link rel="stylesheet" href="css/inputBox.css">
         <link rel="stylesheet" href="css/drawler.css">
+        <link rel="stylesheet" href="css/reviews.css">
         <link rel="stylesheet" href="css/restaurantList.css">
         <link rel="stylesheet" href="css/warnings.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>

@@ -32,6 +32,9 @@ The website is secure as possible.
 
 ## Credentials
 
-Bussiness Account:
-username: osvaldoteixeira
-pass: AdoroOvosMoles1408
+Bussiness Account:<br>
+username: osvaldoteixeira / pass: AdoroOvosMoles1408 <br>
+username: pedrogomes / pass: naogostocabidela
+<br><br>
+Normal Account:<br>
+username: sergiocalado / pass: iloveAVOCADO123
