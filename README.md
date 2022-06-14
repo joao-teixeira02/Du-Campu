@@ -1,6 +1,6 @@
 # ltw-t05-g03
-Afonso Baldo
-Inês Cardoso
+Afonso Baldo <br>
+Inês Cardoso <br>
 João Teixeira
 
 Implemented Features:
