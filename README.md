@@ -32,6 +32,6 @@ The website is secure as possible.
 
 ## Credentials
 
-admin/v3rystr0ngp4a55w0rd
-lapizzeria/myr3staurantisth3best
-johndoe/123456
+Bussiness Account:
+username: osvaldoteixeira
+pass: AdoroOvosMoles1408
