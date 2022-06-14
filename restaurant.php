@@ -27,8 +27,8 @@
                     foreach(Restaurant::getDishes($db, $id) as $dish ){
                         $types[] = $dish->getType($db);
                     }
-                    
                     foreach( array_unique($types) as $type){
+                        if($type === null) continue;
                         ?>
 
                         <li>
@@ -113,7 +113,8 @@
             foreach($dishes as $dish){
                 $types[] = $dish->getType($db);
             }
-            foreach(array_unique($types) as $type){ ?>
+            foreach(array_unique($types) as $type){ 
+                if($type === null) continue;?>
                 <section class="dishType" id="<?php echo (htmlentities($type));?>">
                 <h3><?php echo ($type);?></h3>
                 <ul>
