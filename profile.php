@@ -39,7 +39,7 @@
         <script type="text/javascript" src="js/carrosselSliderFavDish.js" defer></script>
         <script type="text/javascript" src="js/cart.js" defer></script> 
         <script type="text/javascript" src="js/orders_list.js" defer></script>
-        <script type="text/javascript" src="js/myRestaurant.js" defer></script>
+        <script type="text/javascript" src="js/imagePreview.js" defer></script>
         <script type="text/javascript" src="js/validateProfile.js" defer></script>
          
         <title>Du'Campu</title>
