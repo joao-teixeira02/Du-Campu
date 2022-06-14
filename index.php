@@ -23,11 +23,11 @@
             $restaurant = Restaurant::getRestaurant($db, $id); ?>
             <div class="restaurant-card">
                 <div class="restaurant-image">
-                    <img src="<?php echo($restaurant->getPhoto($db, $id)); ?>" class="restaurant-thumb" alt="">
+                    <img src="<?php echo(htmlentities($restaurant->getPhoto($db, $id))); ?>" class="restaurant-thumb" alt="">
                     <input type="button" class="card-btn" value="See Restaurant" onclick="location.href='restaurant.php?id=<?php echo($id); ?>'"/>
                 </div>
                 <div class="restaurant-info">
-                    <h2 class="restaurant-name"><?php echo($restaurant->name); ?></h2>
+                    <h2 class="restaurant-name"><?php echo(htmlentities($restaurant->name)); ?></h2>
                 </div>
             </div>
         <?php

@@ -5,16 +5,20 @@
     require_once(__DIR__ . '/../database/photo.class.php');
     require_once(__DIR__ . '/../utils/session.php');
 
-
-    $id_dish = intval($_POST['id_dish']);
-    $name = $_POST['n'];
-    $price = floatval($_POST['p']);
-    $type = $_POST['t'];
-
     $session = new Session();
 
-    $db = getDatabaseConnection();
+    if (isset($_POST['id_dish']) && isset($_POST['n']) && isset($_POST['p']) && isset($_POST['t']) && isset($_POST['csrf'])) {
 
+        if ($_SESSION['csrf'] !== $_POST['csrf']) {
+            die();
+        }
+
+        $id_dish = intval($_POST['id_dish']);
+        $name = $_POST['n'];
+        $price = floatval($_POST['p']);
+        $type = $_POST['t'];
+
+        $db = getDatabaseConnection();
 
     /* CRIAR IMAGEM */
     if(isset($_FILES['fileToUpload'])){
@@ -26,39 +30,40 @@
 
 
     $query = 'INSERT OR IGNORE INTO Type (name) VALUES (:name)'; //insert if not exists
+        $stmt = $db->prepare($query);
 
-    $stmt = $db->prepare($query);
+        $stmt->bindParam(':name', $type);
 
-    $stmt->bindParam(':name', $type);
+        $stmt->execute();
 
-    $stmt->execute();
+        $query = 'SELECT id FROM Type WHERE name=?';
 
-    $query = 'SELECT id FROM Type WHERE name=?';
+        $stmt = $db->prepare($query);
 
-    $stmt = $db->prepare($query);
+        $stmt->execute(array($type));
 
-    $stmt->execute(array($type));
+        $id_type = intval($stmt->fetch()['id']);
 
-    $id_type = intval($stmt->fetch()['id']);
+        $query = 'UPDATE DishType SET id_type = :id_type WHERE id_dish = :id_dish';
 
-    $query = 'UPDATE DishType SET id_type = :id_type WHERE id_dish = :id_dish';
+        $stmt = $db->prepare($query);
 
-    $stmt = $db->prepare($query);
+        $stmt->bindParam(':id_type', $id_type);
+        $stmt->bindParam(':id_dish', $id_dish);
 
-    $stmt->bindParam(':id_type', $id_type);
-    $stmt->bindParam(':id_dish', $id_dish);
+        $stmt->execute();
 
-    $stmt->execute();
+        $query = 'UPDATE Dish SET name = :name, price = :price WHERE id = :id';
 
-    $query = 'UPDATE Dish SET name = :name, price = :price WHERE id = :id';
+        $stmt = $db->prepare($query);
 
-    $stmt = $db->prepare($query);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':id', $id_dish);
 
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':price', $price);
-    $stmt->bindParam(':id', $id_dish);
+        $stmt->execute();
 
-    $stmt->execute();
+    }
 
     header('Location: '. $_SERVER['HTTP_REFERER']);
     

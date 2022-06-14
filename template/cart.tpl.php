@@ -3,7 +3,7 @@
 
     function show_cart(){
         ?>
-        <article id="cart_box">
+        <article id="cart_box" csrf="<?= $_SESSION['csrf'] ?>">
             <header>
             <img clickable class="cross" src="images/close.png" onclick="close_cart()"/>
             </header>

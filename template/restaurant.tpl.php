@@ -30,13 +30,14 @@ function restaurant_form(string $action, Restaurant $restaurant = null){
 
     ?>
 
-    <form action="<?php echo $action; ?>" class="restaurantForm" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo htmlentities($action); ?>" class="restaurantForm" method="POST" enctype="multipart/form-data">
         <fieldset>
             <div>   
                 <input name="id_restaurant" value="<?php echo $id; ?>" type="hidden"/>
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 
                 <div id="photo_field">
-                    <img src="<?php echo $photo;?>" id="photo" alt="Restaurante image" width="100%" height="200px"/>
+                    <img src="<?php echo htmlentities($photo);?>" id="photo" alt="Restaurant image" width="100%" height="200px"/>
                     <input type="file" name="fileToUpload" require id="fileToUpload">
                 </div>
         
@@ -44,7 +45,7 @@ function restaurant_form(string $action, Restaurant $restaurant = null){
                 <label for="newRestaurantName" > Restaurant Name </label>
                 <input type="text" class="attr" name="n" require id="newRestaurantName" <?php
                 if($edit){
-                    echo 'value = "'.$name .'" placeholder="'. $name .'"';
+                    echo 'value = "'.htmlentities($name) .'" placeholder="'. htmlentities($name) .'"';
                 }else{
                     echo ' placeholder = "Restaurant Name"';
                 }
@@ -53,9 +54,9 @@ function restaurant_form(string $action, Restaurant $restaurant = null){
                 <label for="address" > Address </label>
                 <input type="text" class="attr" name="a" require id="address" <?php
                 if($edit){
-                    echo 'value = "'.$address .'" placeholder="'. $address .'"';
+                    echo 'value = "'.htmlentities($address) .'" placeholder="'. htmlentities($address) .'"';
                 }else{
-                    echo ' placeholder = "Restaurant Addresss"';
+                    echo ' placeholder = "Restaurant Address"';
                 }
                 ?>
 

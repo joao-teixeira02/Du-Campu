@@ -4,14 +4,17 @@
     require_once(__DIR__ . "/../database/cart.class.php");
     require_once(__DIR__ . "/../utils/session.php");
 
+    $session = new Session();
 
-    if(isset($_GET["id_dish"]) && is_numeric($_GET["id_dish"]) && isset($_GET["dish_quantity"]) && is_numeric($_GET["dish_quantity"])){
-        
-        $session = new Session();
+    if(isset($_POST["id_dish"]) && is_numeric($_POST["id_dish"]) && isset($_POST["dish_quantity"]) && is_numeric($_POST["dish_quantity"]) && isset($_POST['csrf'])){
 
-        $session->cart->setDishQuantity(intval($_GET["id_dish"]), intval($_GET["dish_quantity"]));
-        $session->saveCart();
-        
+      if ($_SESSION['csrf'] !== $_POST['csrf']) {
+        die;
+      }
+
+      $session->cart->setDishQuantity(intval($_POST["id_dish"]), intval($_POST["dish_quantity"]));
+      $session->saveCart();
+      
     }
 
     

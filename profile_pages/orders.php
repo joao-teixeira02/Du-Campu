@@ -14,8 +14,8 @@ function print_order(Order $order){
         </header>
         <main>
             <span class="date"><?php echo $order->date;?></span>
-            <span class="price">Total Check: <?php echo number_format($order->getTotalPrice($db),2);?>€</span>
-            <span class="state">State: <?php echo State::getStatebyId( $db, $order->state_id)->name;?></span>
+            <span class="price">Total Check: <?php echo htmlentities(number_format($order->getTotalPrice($db),2));?>€</span>
+            <span class="state">State: <?php echo htmlentities(State::getStatebyId( $db, $order->state_id)->name);?></span>
             <span class="details" data-id_order='<?php echo $order->id;?>' onclick="open_details_popup(this)" >See details</span>
         <main>
     </article>

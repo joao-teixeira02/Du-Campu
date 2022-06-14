@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="css/headerFooter.css">
         <link rel="stylesheet" href="css/favorites.css">
         <link rel="stylesheet" href="css/cart.css">
+        <link rel="stylesheet" href="css/warnings.css">
         <link rel="stylesheet" href="css/myrestaurant.css">
         <link rel="stylesheet" href="css/inputBox.css">
         <link rel="stylesheet" href="css/profile.css">
@@ -39,6 +40,7 @@
         <script type="text/javascript" src="js/cart.js" defer></script> 
         <script type="text/javascript" src="js/orders_list.js" defer></script>
         <script type="text/javascript" src="js/myRestaurant.js" defer></script>
+        <script type="text/javascript" src="js/validateProfile.js" defer></script>
          
         <title>Du'Campu</title>
     </head>
