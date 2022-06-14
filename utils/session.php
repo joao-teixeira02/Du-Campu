@@ -13,8 +13,12 @@
         private array $messages;
 
         public function __construct(){
-            session_set_cookie_params(0, '/', $_SERVER['HTTP_HOST'], true, true);
-            session_start();
+            if(session_status() !== PHP_SESSION_ACTIVE){
+                session_set_cookie_params(0, '/', $_SERVER['HTTP_HOST'], true, true);
+                session_start();
+            }
+
+            
             if (!isset($_SESSION['csrf'])) {
                 $_SESSION['csrf'] = generate_random_token();
             }

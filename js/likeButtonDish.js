@@ -122,7 +122,7 @@ if(add_order_popup){
         load_popup()
     }
 
-    function addEventAsLikeButton(id_box, img_hoover, img_out, img_click){
+    function addEventDishAsLikeButton(id_box, img_hoover, img_out, img_click){
         const popupHeart = document.querySelector(id_box)
         
     
@@ -164,7 +164,7 @@ if(add_order_popup){
       
     }
     
-    addEventAsLikeButton("#add_order #heart_favorite", 'images/heartHoover.png', 'images/heartNotSelected.png', 'images/heart.png')
+    addEventDishAsLikeButton("#add_order #heart_favorite", 'images/heartHoover.png', 'images/heartNotSelected.png', 'images/heart.png')
 
 }
 

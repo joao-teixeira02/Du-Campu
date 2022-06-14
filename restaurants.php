@@ -99,7 +99,7 @@ if($_GET['s']){
 
             <section class = "orderBy">
                 <h5>ORDER BY:</h5>
-                <select id="sorter">
+                <select id="sorter" csrf="<?=$_SESSION['csrf'] ?>">
                     <option value="rating"> Rating</option>
                     <option value="price"> Price</option>
                 </select>
