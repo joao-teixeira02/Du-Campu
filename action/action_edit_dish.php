@@ -10,7 +10,9 @@
     if (isset($_POST['id_dish']) && isset($_POST['n']) && isset($_POST['p']) && isset($_POST['t']) && isset($_POST['csrf'])) {
 
         if ($_SESSION['csrf'] !== $_POST['csrf']) {
-            die();
+
+            $session->addMessage('error', 'You need to send all restaurant informations!');
+            header('Location: '. $_SERVER['HTTP_REFERER']);
         }
 
         $id_dish = intval($_POST['id_dish']);

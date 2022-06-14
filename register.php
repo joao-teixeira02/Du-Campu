@@ -78,6 +78,7 @@
                     <div class="input_div">
                         <input class="input" type="password" placeholder="" name="p" id="password_input" required="required"/>
                         <label for="password_input" class="input_label">Password</label>
+                        <span class="hint">Minimum eight characters, at least one uppercase letter, <br>one lowercase letter, one number and <br>one special character</span>
                     </div>  
 
                     <br>

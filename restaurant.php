@@ -506,7 +506,9 @@
         <link rel="stylesheet" href="css/drawler.css">
         <link rel="stylesheet" href="css/reviews.css">
         <link rel="stylesheet" href="css/restaurantList.css">
+        <link rel="stylesheet" href="css/warnings.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
+
         <script type="text/javascript" src="js/cart.js" defer></script>
         <script type="text/javascript" src="js/likeButtonHeader.js" defer></script>
         <script type="text/javascript" src="js/likeButtonDish.js" defer></script>
@@ -516,14 +518,17 @@
         <script type="text/javascript" src="js/addButtonType.js" defer></script>
         <script type="text/javascript" src="js/imagePreview.js" defer></script>
         <script type="text/javascript" src="js/drawler.js" defer></script>
+        <script type="text/javascript" src="js/warnings.js" defer></script>
 
         <title>Du'Campu</title>
     </head>
     <body>
+        
 
     <?php show_header_menu(); ?>
 
     <main>
+    <?php show_warnings();?>
 
         <article class="restaurant-page">
 
@@ -552,11 +557,17 @@
                     <?php show_dishes($restaurant_id); ?>
                 </section>
 
+                <?php if ($session->isLogged() && !User::isCustomer($db, $session->getUsername())) { ?>
+
                 <form id="delete_restaurant" action="/action/action_remove_restaurant.php" method="post" enctype="multipart/form-data" class="UseInputStyle">
-                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-                <input type="hidden" name="id" value="<?=$restaurant_id?>">
-                <input type="submit" clickable value="Delete Restaurant">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                    <input type="hidden" name="id" value="<?=$restaurant_id?>">
+                    <input type="submit" clickable value="Delete Restaurant">
                 </form>
+
+                <?php
+                }
+                ?>
             
             
             </main>
