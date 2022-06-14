@@ -9,9 +9,9 @@
     require_once(__DIR__ . '/database/state.class.php');
     require_once(__DIR__ . '/database/order.class.php');
     require_once(__DIR__ . '/database/connection.db.php');
-    require_once(__DIR__ . '/profile_pages/profile.php');
+    require_once(__DIR__ . '/profile_pages/editProfile.php');
     require_once(__DIR__ . '/profile_pages/favorites.php');
-    require_once(__DIR__ . '/profile_pages/my_restaurant.php');
+    require_once(__DIR__ . '/profile_pages/myRestaurant.php');
     require_once(__DIR__ . '/profile_pages/orders.php');
 
     $session = new Session();
@@ -23,11 +23,11 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,1,0"/>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/position.css">
-        <link rel="stylesheet" href="css/favoritesJoao.css">
+        <link rel="stylesheet" href="css/headerFooter.css">
+        <link rel="stylesheet" href="css/favorites.css">
+        <link rel="stylesheet" href="css/cart.css">
         <link rel="stylesheet" href="css/myrestaurant.css">
-        <link rel="stylesheet" href="css/input_box.css">
+        <link rel="stylesheet" href="css/inputBox.css">
         <link rel="stylesheet" href="css/profile.css">
         <link rel="stylesheet" href="css/restaurantPage.css">
 
