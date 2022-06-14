@@ -1,20 +1,24 @@
 async function showLikeIcon() {
     const likeRestaurant = document.querySelector('#likeRestaurant')
-    const response1 =  await fetch('/api/api_get_favorite_restaurants.php')
-    const favorites = await response1.json()
-    if (favorites.includes(parseInt(likeRestaurant.getAttribute('data-restaurant_id')))){
-        likeRestaurant.setAttribute('isSelected', '')
-        likeRestaurant.src = 'images/heart.png'
-    }
-    else {
-        likeRestaurant.src = 'images/heartNotSelected.png'
-        likeRestaurant.removeAttribute('isSelected')
+    if(likeRestaurant){
+        const response1 =  await fetch('/api/api_get_favorite_restaurants.php')
+        const favorites = await response1.json()
+        if (favorites.includes(parseInt(likeRestaurant.getAttribute('data-restaurant_id')))){
+            likeRestaurant.setAttribute('isSelected', '')
+            likeRestaurant.src = 'images/heart.png'
+        }
+        else {
+            likeRestaurant.src = 'images/heartNotSelected.png'
+            likeRestaurant.removeAttribute('isSelected')
+        }
     }
 
 }
 
 function createEventLikeRestaurantButton(img_hoover, img_out, img_click) {
     const likeRestaurant = document.querySelector('#likeRestaurant')
+    if(!likeRestaurant) return;
+
     likeRestaurant.addEventListener('click', async () => {
         likeRestaurant.toggleAttribute('isSelected')
         if(likeRestaurant.hasAttribute('isSelected')) {

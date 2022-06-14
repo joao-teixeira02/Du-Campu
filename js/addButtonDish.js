@@ -17,11 +17,9 @@ if (add_dish_popup) {
     function open_add_dish_popup(e) {
 
         const dish_restaurant_id = e.getAttribute('data-dish_restaurant_id')
-        console.log(dish_restaurant_id)
         dish_restaurant_id_element.value = dish_restaurant_id;
 
         const dish_type = e.getAttribute('data-dish_type')
-        console.log(dish_type)
         dish_type_element2.value = dish_type;
         
         add_dish_popup.style.display = "block"

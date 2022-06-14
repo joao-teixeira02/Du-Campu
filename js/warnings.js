@@ -3,7 +3,7 @@ const warnings = document.querySelector('#messages');
 
 
 if(warnings){
-    setTimeout(()=>{
+    const myTimeout = setTimeout(()=>{
         warnings.innerHTML = "";
         clearTimeout(myTimeout);
 

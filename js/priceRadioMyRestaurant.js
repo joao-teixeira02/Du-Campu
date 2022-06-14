@@ -19,49 +19,52 @@ function addEventAsPriceImageChange(){
     
     const euro3_img = document.querySelector('#treseuroo');
     const euro3_check = document.querySelector('#treseuro');
-    
-    function update_checkboxes(){
-        if(euro1_check.checked){
-            euro1_img.src = img_click1;
-        }else{
-            euro1_img.src = img_out1;
-        }
 
-        if(euro2_check.checked){
-            euro2_img.src = img_click2;
-        }else{
-            euro2_img.src = img_out2;
-        }
-
-        if(euro3_check.checked){
-            euro3_img.src = img_click3;
-        }else{
-            euro3_img.src = img_out3;
-        }
-    }
-
-    function addEventsToPrice(checkbox, imagem, img_hoover, img_out){
-        update_checkboxes();
-        imagem.addEventListener('mouseover', () => {
-            if(!checkbox.checked)
-                imagem.src = img_hoover;
+    if(euro1_img && euro1_check && euro2_img && euro2_check && euro3_img && euro3_check){   
+        function update_checkboxes(){
+            if(euro1_check.checked){
+                euro1_img.src = img_click1;
+            }else{
+                euro1_img.src = img_out1;
             }
-        )
 
-        imagem.addEventListener('mouseout', () => {
-            if(!checkbox.checked)
-                imagem.src = img_out;
+            if(euro2_check.checked){
+                euro2_img.src = img_click2;
+            }else{
+                euro2_img.src = img_out2;
             }
-        )
 
-        checkbox.addEventListener('change', (e) => {
+            if(euro3_check.checked){
+                euro3_img.src = img_click3;
+            }else{
+                euro3_img.src = img_out3;
+            }
+        }
+
+        function addEventsToPrice(checkbox, imagem, img_hoover, img_out){
             update_checkboxes();
-        })
-    }
+            imagem.addEventListener('mouseover', () => {
+                if(!checkbox.checked)
+                    imagem.src = img_hoover;
+                }
+            )
 
-    addEventsToPrice(euro1_check, euro1_img, img_hoover1, img_out1)
-    addEventsToPrice(euro2_check, euro2_img, img_hoover2, img_out2)
-    addEventsToPrice(euro3_check, euro3_img, img_hoover3, img_out3)
+            imagem.addEventListener('mouseout', () => {
+                if(!checkbox.checked)
+                    imagem.src = img_out;
+                }
+            )
+
+            checkbox.addEventListener('change', (e) => {
+                update_checkboxes();
+            })
+        }
+
+        addEventsToPrice(euro1_check, euro1_img, img_hoover1, img_out1)
+        addEventsToPrice(euro2_check, euro2_img, img_hoover2, img_out2)
+        addEventsToPrice(euro3_check, euro3_img, img_hoover3, img_out3)
+
+    }
 
   }
 
