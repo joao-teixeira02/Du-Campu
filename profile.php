@@ -43,6 +43,7 @@
         <script type="text/javascript" src="js/imagePreview.js" defer></script>
         <script type="text/javascript" src="js/validateProfile.js" defer></script>
         <script type="text/javascript" src="js/deleteAccountPopup.js" defer></script>
+        <script type="text/javascript" src="js/priceRadioMyRestaurant.js" defer></script>
          
         <title>Du'Campu</title>
     </head>
