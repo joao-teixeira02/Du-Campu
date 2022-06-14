@@ -1,3 +1,4 @@
+INSERT INTO Photo (path) VALUES ('images/photos/profile.jpg');
 
 INSERT INTO State ("state") VALUES ('Being prepared');
 INSERT INTO State ("state") VALUES ('Picked up');
@@ -12,3 +13,4 @@ INSERT INTO Category (name) VALUES ('Taiwanese');
 INSERT INTO Category (name) VALUES ('Thailandese');
 INSERT INTO Category (name) VALUES ('Indian');
 INSERT INTO Category (name) VALUES ('Pizza');
+
