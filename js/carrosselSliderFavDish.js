@@ -6,7 +6,7 @@ const preBtn2 = [...document.querySelectorAll('.pre-btn2')]
     let containerDimensions = item.getBoundingClientRect()
     let containerWidth = containerDimensions.width/2
     const velocity = 5;
-
+    
     nxtBtn2[i].addEventListener('click', () => {
         let scroll = 0;
         let id = window.setInterval(() => {

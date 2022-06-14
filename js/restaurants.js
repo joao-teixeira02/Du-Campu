@@ -78,6 +78,7 @@ async function updateRestaurantList() {
       restaurantContainer.classList.add("restaurantContainer")
 
       const img = document.createElement('img')
+      img.classList.add('restaurant_photo');
       img.src = restaurant.photo
       restaurantContainer.appendChild(img)
 

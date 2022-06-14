@@ -4,7 +4,6 @@
     padding: 0;
 }
 
-
 /* EDIT AND ADD DISH POPUP */
 #editRestaurant {
     max-height: 100vh;
@@ -33,7 +32,6 @@
     grid-column: 2;
 }
 
-
 .restaurantForm .categories{
     display: flex;
     flex-wrap: wrap;
@@ -57,7 +55,6 @@
     height: auto;
     padding-right: 0.25em;
 }
-
 
 #editRestaurant form{
     height: 100%;
@@ -571,9 +568,6 @@
 
 
 /*REVIEW*/
-
-/* reviews */
-
 .restaurant-page section.reviews {
     margin-top: 6em;
     margin-left: 20em;

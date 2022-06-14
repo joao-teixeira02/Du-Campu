@@ -582,10 +582,12 @@
     <div class = "background_filter">
 
     </div>
-    <div class="popups">
     <?php 
     create_add_order();
+    ?>
 
+    <div class="popups">
+    <?php 
     create_add_dish_and_type_popup();
 
     create_add_dish_popup();
