@@ -1,9 +1,9 @@
-##
+## DU'CAMPU
 Du'Campu is the website where you can find the perfect vegetarian restaurants in Oporto.
 Website developed by: Afonso Baldo, Inês Cardoso and João Teixeira (ltw-t05-g03).
 
 ## Features
-All features required were mede.
+All features required were made.
 
 - [x] Register
 - [x] Login/Logout
