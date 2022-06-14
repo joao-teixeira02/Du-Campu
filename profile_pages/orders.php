@@ -238,57 +238,43 @@ function show_owner_orders(){
             </select>
         </form>
         <article id="active_orders_owner" >
+
                 <header>
                     <h1>Active Orders</h1>
                     
                 </header>
 
                 <main>
-                        <table>
-                            <colgroup> 
-                                <col <?php echo 'span="' . $nStates .'"  width="' . 100.0/$nStates .'%"' ?> >
-
-                            </colgroup>
-                            <tr>
-                                <?php
-                                
-                                foreach($states as $state){
-                                    if($state->name !== "Delivered" ){
-                                        echo '<th>'. $state->name . '</th>';
-                                    }
-                                }
-                                ?>
-                            </tr>
+                    <?php
+                        foreach($states as $state){
+                            if($state->name !== 'Delivered'){
                             
-                            <?php
-                            $adicionou = true;
-                            $row_id = 0;
-                            while($adicionou){
-                                $adicionou = false;
-                                
-                                echo '<tr>';
-
-                                foreach($states as $state){
-                                    if($state->name !== "Delivered" ){
-                                        $order = $orders_by_state[$state->id][$row_id];
-                                        echo '<td>';
-                                        if($order!==null){
-                                            print_order_for_owner($order);
-                                            $adicionou = true;
-                                        }
-                                        echo '</td>';
-                                    }
-                                }
-                                
-                                echo '</tr>';
-                                $row_id++;
-
-                            }
-
-
+                            echo '<section id="'. $state->name .'"> ' .  '<h1>'. $state->name . '</h1>';
                             ?>
                             
-                        </table>
+                            <ul>
+                                <?php
+                                foreach($orders_by_state[$state->id] as $order){
+                                    print_order_for_owner($order);
+                                }
+
+                                ?>
+                            </ul>
+                            </section>
+                            <?php
+                            }
+
+                        }
+            
+
+                    ?>
+                            <section>
+                        
+                        </section>
+                            
+                        </div>
+
+                            
                         
                 </main>
         </article>

@@ -298,3 +298,33 @@ body{
 
 
 }
+
+
+/* Restaurant Owner Orders*/
+.page {
+  width: 100%;
+}
+
+.page #active_orders_owner main{
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+@media (max-width: 60em){
+
+  .page #active_orders_owner main{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page #active_orders_owner section > ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+  }
+
+
+}

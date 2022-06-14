@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="css/inputBox.css">
         <link rel="stylesheet" href="css/profile.css">
         <link rel="stylesheet" href="css/restaurantPage.css">
+        <link rel="stylesheet" href="css/restaurantList.css">
 
 
         <script type="text/javascript" src="js/carrosselSliderFavRest.js" defer></script>
