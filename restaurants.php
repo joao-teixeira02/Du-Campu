@@ -6,8 +6,8 @@ require_once(__DIR__ . '/template/essentials.tpl.php');
 require_once(__DIR__ . '/database/category.class.php');
 require_once(__DIR__ . '/database/connection.db.php');
 
-if($_GET['s']){    
-    $search_text = $_GET['s'];
+if(isset($_GET['s'])){    
+    $search_text = trim($_GET['s']);
 }
 
 ?>
@@ -48,11 +48,9 @@ if($_GET['s']){
                 <section class = "searchBoxContainer">
                     <form action="" class ="search-bar">
                         <button type="submit"><img src="images/search.png"></button>
-                        <input type="search" name="search" placeholder= "Search..." value="
-                        <?php 
+                        <input type="search" name="search" placeholder= "Search..." value="<?php 
                         if ($search_text !== null) echo(htmlentities($search_text))
-                        ?>
-                        ">
+                        ?>">
                     </form>
                 </section>    
                 
