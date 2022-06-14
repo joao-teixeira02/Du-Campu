@@ -41,6 +41,7 @@
         <script type="text/javascript" src="js/orders_list.js" defer></script>
         <script type="text/javascript" src="js/imagePreview.js" defer></script>
         <script type="text/javascript" src="js/validateProfile.js" defer></script>
+        <script type="text/javascript" src="js/deleteAccountPopup.js" defer></script>
          
         <title>Du'Campu</title>
     </head>
@@ -111,6 +112,11 @@
         }
 
     ?>
+
+    <div class = "background_filter">
+
+    </div>
+    <?php create_delete_popup(); ?>
 
     <?php show_footer(); ?>
 

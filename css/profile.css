@@ -328,3 +328,27 @@ body{
 
 
 }
+
+/*Delete account popup*/
+
+#delete_popup {
+  height: 10em;
+}
+
+#delete_popup #select_btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#delete_popup #delete_yes {
+  margin-right: 1em;
+}
+
+#delete_popup #delete_no {
+  margin-left: 1em;
+}
+
+#delete_popup p{
+  margin: 1em;
+}
