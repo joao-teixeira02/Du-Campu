@@ -36,16 +36,16 @@
                         $db = getDatabaseConnection();
             
                          if(User::isCustomer($db, $session->getUsername())) { ?>
-                            <li> <a href = "profile.php">EDIT ACCOUNT</a> </li>
-                            <li> <a href = "favorites.php">FAVORITES</a> </li>
-                            <li> <a href = "orders.php">ORDERS</a> </li>
+                            <li> <a href = "profile.php?page=account">EDIT ACCOUNT</a> </li>
+                            <li> <a href = "profile.php?page=favorites">FAVORITES</a> </li>
+                            <li> <a href = "profile.php?page=orders">ORDERS</a> </li>
                             <?php
                         }else{ ?>  
-                            <li> <a href = "profile.php">EDIT ACCOUNT</a> </li>
-                            <li> <a href = "profile.php">FAVORITES</a> </li>
-                            <li> <a href = "profile.php">ORDERS</a> </li>
+                            <li> <a href = "profile.php?page=account">EDIT ACCOUNT</a> </li>
+                            <li> <a href = "profile.php?page=favorites">FAVORITES</a> </li>
+                            <li> <a href = "profile.php?page=orders">ORDERS</a> </li>
                             <li> <a href = "profile.php?page=myRestaurants">MY RESTAURANTS</a> </li>
-                            <li> <a href = "orders.php">MY RESTAURANT'S ORDERS</a> </li>
+                            <li> <a href = "profile.php?page=restaurantOrders">MY RESTAURANT'S ORDERS</a> </li>
                             <?php }
                      }else { ?>
                         <li> <a href = "login.php">LOGIN</a> </li>
@@ -78,19 +78,19 @@
                          if(User::isCustomer($db, $session->getUsername())) { ?>
                             <a>ACCOUNT</a>
                             <ul id="profile_navbar">
-                            <li> <a href = "profile.php">EDIT ACCOUNT</a> </li>
-                            <li> <a href = "favorites.php">FAVORITES</a> </li>
-                            <li> <a href = "orders.php">ORDERS</a> </li>
+                            <li> <a href = "profile.php?page=account">EDIT ACCOUNT</a> </li>
+                            <li> <a href = "profile.php?page=favorites">FAVORITES</a> </li>
+                            <li> <a href = "profile.php?page=orders">ORDERS</a> </li>
                             </ul>
                             <?php
                         }else{ ?>  
                              <a>ACCOUNT</a>
                              <ul id="profile_navbar">
-                            <li> <a href = "profile.php">EDIT ACCOUNT</a> </li>
+                             <li> <a href = "profile.php?page=account">EDIT ACCOUNT</a> </li>
                             <li> <a href = "profile.php?page=favorites">FAVORITES</a> </li>
-                            <li> <a href = "profile.php">ORDERS</a> </li>
+                            <li> <a href = "profile.php?page=orders">ORDERS</a> </li>
                             <li> <a href = "profile.php?page=myRestaurants">MY RESTAURANTS</a> </li>
-                            <li> <a href = "orders.php">MY RESTAURANT'S ORDERS</a> </li>
+                            <li> <a href = "profile.php?page=restaurantOrders">MY RESTAURANT'S ORDERS</a> </li>
                             </ul>
                             <?php }
                      }else { ?>
