@@ -34,7 +34,7 @@ The website is secure as possible.
 
 Bussiness Account:<br>
 username: osvaldoteixeira / pass: AdoroOvosMoles1408 <br>
-username: anacalado / pass: asianOmolete123
+username: pedrogomes / pass: naogostocabidela
 <br><br>
 Normal Account:<br>
 username: sergiocalado / pass: iloveAVOCADO123
