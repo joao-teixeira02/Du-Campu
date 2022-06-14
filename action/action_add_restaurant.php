@@ -37,6 +37,7 @@
         
     }
 
+
     if(empty($categories_idlist)){
         
 	    header("Location: ".$_SERVER['HTTP_REFERER']);

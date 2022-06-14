@@ -21,6 +21,7 @@ if(isset($_GET['s'])){
     <link rel="stylesheet" href="css/cart.css">
     <link rel="stylesheet" href="css/drawler.css">
     <link rel="stylesheet" href="css/inputBox.css">
+    <link rel="stylesheet" href="css/restaurants.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
     <script type="text/javascript" src="js/likeButtonRestaurant.js"></script>
     <script type="text/javascript" src="js/range.js" defer></script>

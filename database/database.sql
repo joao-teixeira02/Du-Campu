@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS "Reviews" (
 	"restaurant_id"	INTEGER NOT NULL,
 	"date"	DATETIME NOT NULL Default CURRENT_TIMESTAMP,
 	PRIMARY KEY("id" AUTOINCREMENT),
-	FOREIGN KEY("customer_id") REFERENCES "Customer"("id") ON DELETE CASCADE,
+	FOREIGN KEY("customer_id") REFERENCES "User"("id") ON DELETE CASCADE,
 	FOREIGN KEY("restaurant_id") REFERENCES "Restaurant"("id") ON DELETE CASCADE
 );
 

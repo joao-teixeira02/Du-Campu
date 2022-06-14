@@ -1,0 +1,10 @@
+
+@media (max-width: 60em) {
+    
+
+    body{
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
+
+}
