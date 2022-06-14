@@ -23,8 +23,8 @@ Add, edit and delete dishes from each one of their restaurants. These includes t
 List and respond to reviews made by customers.
 List orders and change their state (e.g., received, preparing, ready, delivered).
 
-**Technologies used:**
+**Technologies used:** <br>
 HTML, CSS, PHP, Javascript, Ajax/JSON, PDO/SQL (using sqlite).
 
-**Security:**
+**Security:** <br>
 The website is secure as possible.
