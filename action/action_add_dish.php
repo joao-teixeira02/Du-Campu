@@ -24,8 +24,8 @@
 
         $query = 'INSERT OR IGNORE INTO Type (name) VALUES (:name)'; //insert if not exists
 
+        $stmt = $db->prepare($query);
         $stmt->bindParam(':name', $type);
-
         $stmt->execute();
 
         $query = 'SELECT id FROM Type WHERE Type.name=?';

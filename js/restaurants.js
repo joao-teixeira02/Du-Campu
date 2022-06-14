@@ -132,12 +132,13 @@ async function updateRestaurantList() {
           likeIcon.setAttribute('isSelected', '')
           likeIcon.src = 'images/heart.png'
         }
-        else
+        else{
           likeIcon.src = 'images/heartNotSelected.png'
+        }
           likeIcon.classList.add("likeIcon")
-          likeIcon.style.width = "30px"
-          likeIcon.style.height = "30px"
-          restaurantLikeIcon.appendChild(likeIcon)
+        likeIcon.style.width = "30px"
+        likeIcon.style.height = "30px"
+        restaurantLikeIcon.appendChild(likeIcon)
       }
 
 

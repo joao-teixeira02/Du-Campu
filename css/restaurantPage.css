@@ -782,6 +782,13 @@ label[for^="see_reply_"]{
 
 }
 
+#editDish, #addDishType, #addDish{
+    height: fit-content;
+    max-height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 
 /* ADD order popup */
 
