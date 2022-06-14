@@ -30,7 +30,6 @@ function open_details_popup(e) {
 async function  getOrder(id){
     const response =  await fetch('/api/order.php?id='+id);
     const order_data = await response.json()
-    console.log(order_data);
 
     const restaurant_name = document.querySelector('#popup_order_details #restaurant_name')
     const totalPice = document.querySelector('#popup_order_details #TotalPrice')
@@ -52,7 +51,6 @@ async function  getOrder(id){
     </tr>"
     
     for(const dish of order_data.dishes){
-        console.log(dish)
         const tr = document.createElement('tr');
         
         const td_quantity = document.createElement('td');

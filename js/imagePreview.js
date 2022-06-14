@@ -4,7 +4,6 @@ function loadImagePreview(imagecontainer){
     const container = document.querySelectorAll(imagecontainer)
 
     for(const c of container){
-        console.log(c)
         const image = c.querySelector('img');
         const input = c.querySelector('input[type="file"]');
 
@@ -14,7 +13,6 @@ function loadImagePreview(imagecontainer){
                 const reader = new FileReader();
                 reader.onload = function(){
                     image.src = reader.result;
-                    console.log("src")
                 };
                 reader.readAsDataURL(input.files[0]);
             };
