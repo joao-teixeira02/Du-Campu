@@ -46,6 +46,10 @@
                             <li> <a href = "profile.php?page=myRestaurants">MY RESTAURANTS</a> </li>
                             <li> <a href = "profile.php?page=restaurantOrders">MY RESTAURANT'S ORDERS</a> </li>
                             <?php }
+                        ?>
+                        <li> <a href = "/action/action_logout.php"> LOGOUT </a> </li>
+                    
+                    <?php
                      }else { ?>
                         <li> <a href = "login.php">LOGIN</a> </li>
                         <li> <a href = "register.php">REGISTER</a> </li>
@@ -91,7 +95,9 @@
                             <li> <a href = "profile.php?page=myRestaurants">MY RESTAURANTS</a> </li>
                             <li> <a href = "profile.php?page=restaurantOrders">MY RESTAURANT'S ORDERS</a> </li>
                             </ul>
-                            <?php }
+                            <?php } ?>
+                        <li> <a href = "/action/action_logout.php"> LOGOUT </a> </li>
+                        <?php
                      }else { ?>
                         <a>ACCOUNT</a>
                         <ul id="profile_navbar">

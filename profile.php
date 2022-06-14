@@ -32,6 +32,7 @@
         <link rel="stylesheet" href="css/profile.css">
         <link rel="stylesheet" href="css/restaurantPage.css">
         <link rel="stylesheet" href="css/restaurantList.css">
+        <link rel="stylesheet" href="css/reviews.css">
 
 
         <script type="text/javascript" src="js/carrosselSliderFavRest.js" defer></script>

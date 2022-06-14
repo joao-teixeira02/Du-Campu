@@ -38,7 +38,7 @@ function restaurant_form(string $action, Restaurant $restaurant = null){
 
                 <div id="photo_field">
                     <img src="<?php echo htmlentities($photo);?>" id="photo" alt="Restaurant image" width="100%" height="200px"/>
-                    <input type="file" name="fileToUpload" required id="fileToUpload">
+                    <input type="file" name="fileToUpload" <?php echo ($restaurant===null)?'required':'' ?> id="fileToUpload">
                 </div>
         
 

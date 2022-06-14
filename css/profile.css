@@ -267,38 +267,6 @@ body{
   text-align: left;
 }
 
-@media (max-width: 60em){
-  #profile_page #aside {
-    display: none;
-    grid: none;
-  }
-
-#profile_page  {
-  display: flex;
-}
-
-/* orders */
-.order{
-  width: 13em;
-  margin-bottom: 0.5em;
-}
-
-  #account{
-    display: flex;
-    flex-direction: column;
-  }
-
-  #account #photo_field{
-    margin-left: 0;
-  }
-
-  .UseInputStyle #photo_field input[type="file"]{
-    display: block;
-  }
-
-
-}
-
 
 /* Restaurant Owner Orders*/
 .page {
@@ -310,23 +278,6 @@ body{
 
   display: grid;
   grid-template-columns: auto auto auto;
-}
-
-@media (max-width: 60em){
-
-  .page #active_orders_owner main{
-    display: flex;
-    flex-direction: column;
-  }
-
-  .page #active_orders_owner section > ul{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-  }
-
-
 }
 
 /*Delete account popup*/
@@ -351,4 +302,48 @@ body{
 
 #delete_popup p{
   margin: 1em;
+}
+
+@media (max-width: 60em){
+
+  .page #active_orders_owner main{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page #active_orders_owner section > ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+  }
+
+  #profile_page #aside {
+    display: none;
+    grid: none;
+  }
+
+  #profile_page  {
+    display: flex;
+  }
+
+  /* orders */
+  .order{
+    width: 13em;
+    margin-bottom: 0.5em;
+  }
+
+    #account{
+      display: flex;
+      flex-direction: column;
+    }
+
+    #account #photo_field{
+      margin-left: 0;
+    }
+
+    .UseInputStyle #photo_field input[type="file"]{
+      display: block;
+    }
+
 }
