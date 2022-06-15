@@ -144,7 +144,7 @@
                                 if ($dish->isFavDish($db, $user->id)) {
                                     echo 'src="images/heart.png" isSelected';
                                 }else{
-                                    echo 'src="images/heartNotSelected.png" isSelected';
+                                    echo 'src="images/heartNotSelected.png" ';
                                 }
                             ?>
                             csrf="<?= $_SESSION['csrf']?>"/>
@@ -572,21 +572,19 @@
             
             </main>
 
-            <div id = "reviewsContainer">
-                <section class="reviews">
-                    <h1> Reviews (<?php 
-                    $reviews = Restaurant::getReviews($db, $restaurant_id);
-                    echo sizeof($reviews);?>)</h1>
-                    <br>
-                    <?php 
-                    if ($session->getUserId() !== Restaurant::getRestaurant($db, $restaurant_id)->owner_id) {
-                        add_review($restaurant_id); 
-                    }
-                    ?>
+            <section class="reviews">
+                <h1> Reviews (<?php 
+                $reviews = Restaurant::getReviews($db, $restaurant_id);
+                echo sizeof($reviews);?>)</h1>
+                <br>
+                <?php 
+                if ($session->getUserId() !== Restaurant::getRestaurant($db, $restaurant_id)->owner_id) {
+                    add_review($restaurant_id); 
+                }
+                ?>
 
-                    <?php show_reviews($restaurant_id); ?>
-                </section>
-            </div>
+                <?php show_reviews($restaurant_id); ?>
+            </section>
 
         </article>
     
